@@ -6,7 +6,7 @@ export default defineConfig([
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parserOptions: {
-        project: true, // auto-detect tsconfig
+        project: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -20,5 +20,11 @@ export default defineConfig([
       'eslint.config.ts',
       'manifest.config.ts',
     ],
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/unbound-method': 'off',
+    },
   },
 ]);

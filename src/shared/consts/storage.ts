@@ -1,0 +1,1 @@
+export const STORAGE_KEY = 'MIRROR_TAB_SESSION';

@@ -2,9 +2,106 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab - Session Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="./main.js"></script>
+    <div id="app">
+      <header class="header">
+        <div class="logo-lockup">
+          <div class="logo-text">
+            <span class="logo-name">MirrorTab</span>
+            <span class="logo-tagline">DOM interaction mirroring</span>
+          </div>
+        </div>
+        <div id="status-pill" class="status-pill status-idle">
+          <span class="status-dot"></span>
+          <span id="status-label">Idle</span>
+        </div>
+      </header>
+
+      <form id="session-form" class="session-form" novalidate>
+        <div class="field-group">
+          <label class="field-label" for="source-url">
+            <span class="field-icon">🔴</span> Source URL
+          </label>
+          <input
+            id="source-url"
+            class="field-input"
+            type="url"
+            placeholder="https://example.com"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="field-hint">Interactions here will be mirrored</span>
+          <span
+            id="source-error"
+            class="field-error"
+            role="alert"
+            hidden
+          ></span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="target-url">
+            <span class="field-icon">🟢</span> Target URL
+          </label>
+          <input
+            id="target-url"
+            class="field-input"
+            type="url"
+            placeholder="https://example.com"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="field-hint">Events will be replayed here</span>
+          <span
+            id="target-error"
+            class="field-error"
+            role="alert"
+            hidden
+          ></span>
+        </div>
+
+        <p id="error-msg" class="error-msg" role="alert" hidden></p>
+
+        <button id="start-btn" class="btn-primary" type="submit">
+          <span id="btn-label">Start Session</span>
+          <span id="btn-spinner" class="spinner" hidden></span>
+        </button>
+      </form>
+
+      <div id="active-card" class="active-card" hidden>
+        <div class="active-row">
+          <div class="active-col">
+            <span class="active-role source">SOURCE</span>
+            <span id="active-source" class="active-url"></span>
+          </div>
+          <div class="active-arrow">⟶</div>
+          <div class="active-col">
+            <span class="active-role target">TARGET</span>
+            <span id="active-target" class="active-url"></span>
+          </div>
+        </div>
+        <div class="active-actions">
+          <button id="pause-btn" class="btn-pause" type="button">
+            <span id="pause-icon">⏸</span>
+            <span id="pause-label">Pause</span>
+          </button>
+          <button id="stop-btn" class="btn-danger" type="button">✕ Stop</button>
+        </div>
+      </div>
+
+      <footer class="footer">Clicks · Inputs · Scrolls · Keystrokes</footer>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
   </body>
 </html>
