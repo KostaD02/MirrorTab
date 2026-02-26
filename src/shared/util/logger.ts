@@ -23,8 +23,9 @@ class Logger {
   }
 
   private logger(method: 'log' | 'error' | 'warn', ...args: unknown[]) {
+    const date = new Date();
     this.console[method](
-      `[${this.prefix}] [${new Date().toString()}]`,
+      `[${this.prefix}] [${date.toLocaleDateString()} ${date.toLocaleTimeString()}]`,
       ...args,
     );
   }

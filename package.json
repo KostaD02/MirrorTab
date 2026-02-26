@@ -3,6 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "author": "Konstantine datunishvili",
+  "license": "MIT",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build"

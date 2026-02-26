@@ -411,12 +411,6 @@ body {
   text-overflow: ellipsis;
 }
 
-.active-arrow {
-  font-size: 16px;
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
 .active-actions {
   display: flex;
   gap: 8px;

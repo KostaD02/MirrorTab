@@ -37,8 +37,12 @@ export class SessionManager {
         openTab(config.targetUrl),
       ]);
 
-      const sourceTabId = sourceTab.id ?? Math.random();
-      const targetTabId = targetTab.id ?? Math.random();
+      const sourceTabId = Number(sourceTab.id);
+      const targetTabId = Number(targetTab.id);
+
+      if (isNaN(sourceTabId) || isNaN(targetTabId)) {
+        throw new Error('Failed to create tabs');
+      }
 
       await Promise.all([
         waitForTabLoad(sourceTabId),

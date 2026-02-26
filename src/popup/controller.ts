@@ -4,7 +4,7 @@ import {
   ExtensionMessageTypeEnum,
 } from '@/shared/types';
 import { resetFieldState } from '@/shared/util';
-import { validateUrl } from '@/shared/util/url';
+import { validateUrl } from './validate-url';
 
 const StatusEnum = {
   Idle: 'idle',

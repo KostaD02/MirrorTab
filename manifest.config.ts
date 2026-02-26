@@ -3,7 +3,7 @@ import pkg from './package.json';
 
 export default defineManifest({
   manifest_version: 3,
-  name: pkg.name,
+  name: 'MirrorTab',
   version: pkg.version,
   description:
     'Mirror any DOM interactions from a source tab to a target tab in real time.',
