@@ -448,6 +448,73 @@ body {
   transform: var(--btn-transform);
 }
 
+.download-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.download-actions > p {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.download-buttons a {
+  font-family: var(--btn-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: normal;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: var(--btn-transition);
+  text-decoration-skip-ink: auto;
+}
+
+.download-buttons a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.5s ease;
+  background: var(--text-secondary);
+}
+
+.download-buttons a:not(:hover)::after {
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.download-buttons a:hover::after,
+.download-buttons a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.download-buttons a:hover,
+.download-buttons a:focus-visible {
+  outline: none;
+  box-shadow: none;
+  transform: none;
+}
+
 .footer {
   text-align: center;
   font-size: 10px;

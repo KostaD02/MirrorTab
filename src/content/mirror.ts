@@ -7,10 +7,11 @@ import {
   DomScrollEventPayload,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
+  SessionRecord,
   SessionRole,
   SessionRoleEnum,
 } from '@/shared/types';
-import { getUniqueSelector, logger } from '@/shared/util';
+import { getElementMeta, getSemanticSelector, logger } from '@/shared/util';
 
 // are not re-captured and forwarded in an infinite loop.
 let isReplaying = false;
@@ -25,9 +26,28 @@ function sendDomEvent(payload: DomEventPayload): void {
   });
 }
 
+class Record {
+  private readonly records: SessionRecord[] = [];
+
+  get sessionRecords(): ReadonlyArray<SessionRecord> {
+    return this.records;
+  }
+
+  addRecord(record: Omit<SessionRecord, 'timestamp'>): void {
+    this.records.push({
+      ...record,
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  clear(): void {
+    this.records.splice(0);
+  }
+}
+
 export class EventCapture {
-  private role: SessionRole = SessionRoleEnum.Idle;
   private scrollTimer: ReturnType<typeof setTimeout> | null = null;
+  private role: SessionRole = SessionRoleEnum.Idle;
 
   constructor() {
     this.registerListeners();
@@ -49,15 +69,17 @@ export class EventCapture {
         const element = e.target as HTMLElement | null;
         if (!element || element === document.documentElement) return;
         const rect = element.getBoundingClientRect();
+        const selector = getSemanticSelector(element);
+        const content = {
+          offsetXRatio:
+            rect.width > 0 ? (e.clientX - rect.left) / rect.width : 0.5,
+          offsetYRatio:
+            rect.height > 0 ? (e.clientY - rect.top) / rect.height : 0.5,
+        };
         sendDomEvent({
+          content,
+          selector,
           type: DomEventTypeEnum.Click,
-          selector: getUniqueSelector(element),
-          content: {
-            offsetXRatio:
-              rect.width > 0 ? (e.clientX - rect.left) / rect.width : 0.5,
-            offsetYRatio:
-              rect.height > 0 ? (e.clientY - rect.top) / rect.height : 0.5,
-          },
         });
       },
       true,
@@ -72,9 +94,10 @@ export class EventCapture {
           | HTMLTextAreaElement
           | null;
         if (!target) return;
+        const selector = getSemanticSelector(target);
         sendDomEvent({
           type: DomEventTypeEnum.Input,
-          selector: getUniqueSelector(target),
+          selector,
           content: {
             value: target.value,
           },
@@ -89,11 +112,13 @@ export class EventCapture {
         if (!this.active()) return;
         const target = e.target as HTMLInputElement | HTMLSelectElement | null;
         if (!target) return;
+        const selector = getSemanticSelector(target);
+        const value = (target as HTMLInputElement).value;
         sendDomEvent({
           type: DomEventTypeEnum.Change,
-          selector: getUniqueSelector(target),
+          selector,
           content: {
-            value: (target as HTMLInputElement).value,
+            value,
           },
         });
       },
@@ -107,17 +132,19 @@ export class EventCapture {
         const target = e.target as Element | null;
         if (!target) return;
         const { key, code, ctrlKey, shiftKey, altKey, metaKey } = e;
+        const content: DomKeyboardEventPayload = {
+          key,
+          code,
+          ctrlKey,
+          shiftKey,
+          altKey,
+          metaKey,
+        };
+        const selector = getSemanticSelector(target);
         sendDomEvent({
           type: DomEventTypeEnum.Keydown,
-          selector: getUniqueSelector(target),
-          content: {
-            key,
-            code,
-            ctrlKey,
-            shiftKey,
-            altKey,
-            metaKey,
-          },
+          selector,
+          content,
         });
       },
       true,
@@ -130,17 +157,19 @@ export class EventCapture {
         const target = e.target as Element | null;
         if (!target) return;
         const { key, code, ctrlKey, shiftKey, altKey, metaKey } = e;
+        const content: DomKeyboardEventPayload = {
+          key,
+          code,
+          ctrlKey,
+          shiftKey,
+          altKey,
+          metaKey,
+        };
+        const selector = getSemanticSelector(target);
         sendDomEvent({
           type: DomEventTypeEnum.Keyup,
-          selector: getUniqueSelector(target),
-          content: {
-            key,
-            code,
-            ctrlKey,
-            shiftKey,
-            altKey,
-            metaKey,
-          },
+          selector,
+          content,
         });
       },
       true,
@@ -153,13 +182,15 @@ export class EventCapture {
         if (this.scrollTimer) return;
         this.scrollTimer = setTimeout(() => {
           this.scrollTimer = null;
+          const content: DomScrollEventPayload = {
+            scrollX: window.scrollX,
+            scrollY: window.scrollY,
+          };
+          const selector = 'window';
           sendDomEvent({
             type: DomEventTypeEnum.Scroll,
-            selector: 'window',
-            content: {
-              scrollX: window.scrollX,
-              scrollY: window.scrollY,
-            },
+            selector,
+            content,
           });
         }, 16);
       },
@@ -168,7 +199,7 @@ export class EventCapture {
   }
 }
 
-export class EventReplay {
+export class EventReplay extends Record {
   replay(payload: DomEventPayload): void {
     isReplaying = true;
 
@@ -177,6 +208,16 @@ export class EventReplay {
 
       if (type === DomEventTypeEnum.Scroll) {
         const { scrollX, scrollY } = payload.content as DomScrollEventPayload;
+        const content: DomScrollEventPayload = {
+          scrollX,
+          scrollY,
+        };
+        this.addRecord({
+          type: DomEventTypeEnum.Scroll,
+          selector: 'window',
+          selectorStackTrace: 'window',
+          content,
+        });
         window.scrollTo({
           left: scrollX,
           top: scrollY,
@@ -197,6 +238,16 @@ export class EventReplay {
           const { offsetXRatio, offsetYRatio } =
             payload.content as DomClickEventPayload;
           const rect = element.getBoundingClientRect();
+          const content: DomClickEventPayload = {
+            offsetXRatio,
+            offsetYRatio,
+          };
+          this.addRecord({
+            type: DomEventTypeEnum.Click,
+            selector: getElementMeta(element),
+            selectorStackTrace: selector,
+            content,
+          });
 
           element.dispatchEvent(
             new MouseEvent('click', {
@@ -225,6 +276,16 @@ export class EventReplay {
             inputElement.value = value || '';
           }
 
+          const content: DomInputEventPayload = {
+            value,
+          };
+          this.addRecord({
+            type: DomEventTypeEnum.Input,
+            selector: getElementMeta(element),
+            selectorStackTrace: selector,
+            content,
+          });
+
           inputElement.dispatchEvent(new Event('input', { bubbles: true }));
           break;
         }
@@ -233,6 +294,17 @@ export class EventReplay {
           const { value } = payload.content as DomInputEventPayload;
           const changeElement = element as HTMLInputElement | HTMLSelectElement;
           changeElement.value = value || '';
+
+          const content: DomInputEventPayload = {
+            value,
+          };
+          this.addRecord({
+            type: DomEventTypeEnum.Change,
+            selector: getElementMeta(element),
+            selectorStackTrace: selector,
+            content,
+          });
+
           changeElement.dispatchEvent(new Event('change', { bubbles: true }));
           break;
         }
@@ -241,16 +313,25 @@ export class EventReplay {
         case DomEventTypeEnum.Keyup: {
           const { key, code, ctrlKey, shiftKey, altKey, metaKey } =
             payload.content as DomKeyboardEventPayload;
+          const content: DomKeyboardEventPayload = {
+            key,
+            code,
+            ctrlKey,
+            shiftKey,
+            altKey,
+            metaKey,
+          };
+          this.addRecord({
+            type,
+            selector: getElementMeta(element),
+            selectorStackTrace: selector,
+            content,
+          });
           element.dispatchEvent(
             new KeyboardEvent(type, {
               bubbles: true,
               cancelable: true,
-              key,
-              code,
-              ctrlKey,
-              shiftKey,
-              altKey,
-              metaKey,
+              ...content,
             }),
           );
           break;

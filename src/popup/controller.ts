@@ -2,6 +2,7 @@ import {
   ActiveSession,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
+  DownloadFormatEnum,
 } from '@/shared/types';
 import { resetFieldState } from '@/shared/util';
 import { validateUrl } from './validate-url';
@@ -35,10 +36,13 @@ export class PopupController {
     pauseIcon: document.getElementById('pause-icon') as HTMLSpanElement,
     pauseLabel: document.getElementById('pause-label') as HTMLSpanElement,
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
+    downloadJson: document.getElementById('download-json') as HTMLAnchorElement,
+    downloadText: document.getElementById('download-text') as HTMLAnchorElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
   private targetDebounce: ReturnType<typeof setTimeout> | null = null;
+  private session: ActiveSession | null = null;
 
   init(): void {
     this.restoreSession();
@@ -72,6 +76,7 @@ export class PopupController {
       pauseIcon,
       pauseLabel,
     } = this.domRefs;
+    this.session = s;
     sourceInput.value = s.sourceUrl;
     targetInput.value = s.targetUrl;
     this.setFormDisabled(true);
@@ -143,7 +148,8 @@ export class PopupController {
   }
 
   private bindEvents(): void {
-    const { form, pauseBtn, stopBtn } = this.domRefs;
+    const { form, pauseBtn, stopBtn, downloadJson, downloadText } =
+      this.domRefs;
     form.addEventListener('submit', (e) => {
       this.onSubmit(e);
     });
@@ -152,6 +158,14 @@ export class PopupController {
     });
     stopBtn.addEventListener('click', () => {
       this.onStop();
+    });
+    downloadJson.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.onDownload(DownloadFormatEnum.Json);
+    });
+    downloadText.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.onDownload(DownloadFormatEnum.Text);
     });
     this.bindValidationListeners();
   }
@@ -219,10 +233,30 @@ export class PopupController {
   }
 
   private async onStop(): Promise<void> {
+    void this.sendToTargetTab({ type: ExtensionMessageTypeEnum.ClearRecord });
     await chrome.runtime.sendMessage({
       type: ExtensionMessageTypeEnum.StopSession,
     });
+    this.session = null;
     this.resetToIdle();
+  }
+
+  private async onDownload(
+    format: (typeof DownloadFormatEnum)[keyof typeof DownloadFormatEnum],
+  ): Promise<void> {
+    await this.sendToTargetTab({
+      type: ExtensionMessageTypeEnum.DownloadRecord,
+      payload: { format },
+    });
+  }
+
+  private async sendToTargetTab(message: ExtensionMessage): Promise<void> {
+    if (!this.session) return;
+    await chrome.tabs
+      .sendMessage(this.session.targetTabId, message)
+      .catch(() => {
+        // tab may have been closed
+      });
   }
 
   private bindValidationListeners(): void {

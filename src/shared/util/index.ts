@@ -1,4 +1,8 @@
-export { getUniqueSelector } from './selector';
+export {
+  getUniqueSelector,
+  getElementMeta,
+  getSemanticSelector,
+} from './selector';
 export { normaliseUrl } from './url';
 export { logger } from './logger';
 export {

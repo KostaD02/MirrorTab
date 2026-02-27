@@ -1,4 +1,5 @@
 import { DomEventPayload } from './dom-events';
+import { DownloadFormat } from './download';
 import { ActiveSession, SessionConfig, SessionRole } from './session';
 
 export const ExtensionMessageTypeEnum = {
@@ -13,6 +14,8 @@ export const ExtensionMessageTypeEnum = {
   DomEvent: 'dom-event',
   ReplayEvent: 'replay-event',
   SetRole: 'set-role',
+  DownloadRecord: 'download-record',
+  ClearRecord: 'clear-record',
 } as const;
 
 // prettier-ignore
@@ -27,6 +30,8 @@ export type ExtensionMessage =
   | { type: typeof ExtensionMessageTypeEnum.DomEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.ReplayEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.SetRole; role: SessionRole }
+  | { type: typeof ExtensionMessageTypeEnum.DownloadRecord, payload: { format: DownloadFormat } }
+  | { type: typeof ExtensionMessageTypeEnum.ClearRecord }
   | {
       type: typeof ExtensionMessageTypeEnum.SessionStatus;
       payload: ActiveSession | null;

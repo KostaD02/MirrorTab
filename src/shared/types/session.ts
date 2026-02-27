@@ -1,3 +1,5 @@
+import { DomEventContent, DomEventType } from './dom-events';
+
 export const SessionRoleEnum = {
   Idle: 'idle',
   Source: 'source',
@@ -16,4 +18,12 @@ export interface ActiveSession extends SessionConfig {
   sourceTabId: number;
   targetTabId: number;
   isPaused: boolean;
+}
+
+export interface SessionRecord {
+  timestamp: string;
+  selectorStackTrace: string;
+  selector: string;
+  type: DomEventType;
+  content: DomEventContent;
 }
