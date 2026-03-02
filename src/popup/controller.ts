@@ -209,18 +209,22 @@ export class PopupController {
   }
 
   private closeInfo(): void {
-    const { form, infoPanel, infoBtn, infoCloseBtn, statusPill, footer } =
-      this.domRefs;
+    const {
+      form,
+      infoPanel,
+      infoBtn,
+      infoCloseBtn,
+      statusPill,
+      footer,
+      activeCard,
+    } = this.domRefs;
     infoPanel.hidden = true;
     infoBtn.hidden = false;
     infoCloseBtn.hidden = true;
     statusPill.hidden = false;
     footer.hidden = false;
-    if (!this.session) {
-      form.hidden = false;
-    } else {
-      this.domRefs.activeCard.hidden = false;
-    }
+    form.hidden = false;
+    activeCard.hidden = !this.session;
   }
 
   private async onSubmit(e: Event): Promise<void> {
