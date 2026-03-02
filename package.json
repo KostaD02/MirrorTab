@@ -1,7 +1,7 @@
 {
   "name": "mirrortab",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "author": "Konstantine datunishvili",
   "license": "MIT",
@@ -9,6 +9,9 @@
     "start": "vite",
     "build": "tsc && vite build",
     "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
     "postrelease": "pnpm build"
   },
   "devDependencies": {
