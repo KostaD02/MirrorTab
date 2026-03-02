@@ -38,6 +38,12 @@ export class PopupController {
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
     downloadJson: document.getElementById('download-json') as HTMLAnchorElement,
     downloadText: document.getElementById('download-text') as HTMLAnchorElement,
+    infoBtn: document.getElementById('info-btn') as HTMLButtonElement,
+    infoCloseBtn: document.getElementById(
+      'info-close-btn',
+    ) as HTMLButtonElement,
+    infoPanel: document.getElementById('info-panel') as HTMLDivElement,
+    footer: document.getElementById('app-footer') as HTMLElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
@@ -148,8 +154,15 @@ export class PopupController {
   }
 
   private bindEvents(): void {
-    const { form, pauseBtn, stopBtn, downloadJson, downloadText } =
-      this.domRefs;
+    const {
+      form,
+      pauseBtn,
+      stopBtn,
+      downloadJson,
+      downloadText,
+      infoBtn,
+      infoCloseBtn,
+    } = this.domRefs;
     form.addEventListener('submit', (e) => {
       this.onSubmit(e);
     });
@@ -167,7 +180,47 @@ export class PopupController {
       e.preventDefault();
       this.onDownload(DownloadFormatEnum.Text);
     });
+    infoBtn.addEventListener('click', () => {
+      this.openInfo();
+    });
+    infoCloseBtn.addEventListener('click', () => {
+      this.closeInfo();
+    });
     this.bindValidationListeners();
+  }
+
+  private openInfo(): void {
+    const {
+      form,
+      activeCard,
+      infoPanel,
+      infoBtn,
+      infoCloseBtn,
+      statusPill,
+      footer,
+    } = this.domRefs;
+    form.hidden = true;
+    activeCard.hidden = true;
+    infoPanel.hidden = false;
+    infoBtn.hidden = true;
+    infoCloseBtn.hidden = false;
+    statusPill.hidden = true;
+    footer.hidden = true;
+  }
+
+  private closeInfo(): void {
+    const { form, infoPanel, infoBtn, infoCloseBtn, statusPill, footer } =
+      this.domRefs;
+    infoPanel.hidden = true;
+    infoBtn.hidden = false;
+    infoCloseBtn.hidden = true;
+    statusPill.hidden = false;
+    footer.hidden = false;
+    if (!this.session) {
+      form.hidden = false;
+    } else {
+      this.domRefs.activeCard.hidden = false;
+    }
   }
 
   private async onSubmit(e: Event): Promise<void> {

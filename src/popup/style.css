@@ -119,6 +119,19 @@ body {
   letter-spacing: 0.3px;
 }
 
+.logo-sub {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-version {
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.6;
+  letter-spacing: 0.2px;
+}
+
 .status-pill {
   display: flex;
   align-items: center;
@@ -521,4 +534,222 @@ body {
   color: var(--text-muted);
   letter-spacing: 0.5px;
   padding-top: 2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+  flex-shrink: 0;
+}
+
+.info-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.info-btn:hover {
+  color: var(--accent);
+  transform: scale(1.12);
+}
+
+.info-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.info-close-btn:hover {
+  color: var(--text-primary);
+  transform: scale(1.12);
+}
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slide-in 0.22s ease;
+}
+
+.info-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.info-desc strong {
+  color: var(--text-primary);
+}
+
+.info-steps {
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.info-steps li {
+  counter-increment: step;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.info-steps li::before {
+  content: counter(step);
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.info-steps li strong {
+  color: var(--text-primary);
+}
+
+.info-steps .ib {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.info-steps .ib.source {
+  background: #ff6b6b14;
+  color: var(--source-color);
+  border: 1px solid #ff6b6b33;
+}
+
+.info-steps .ib.target {
+  background: #64ffda14;
+  color: var(--target-color);
+  border: 1px solid #64ffda33;
+}
+
+.info-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-link-row {
+  display: flex;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.info-link {
+  font-family: var(--btn-font);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: var(--btn-transition);
+  text-decoration-skip-ink: auto;
+}
+
+.info-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.5s ease;
+  background: currentColor;
+}
+
+.info-link:not(:hover)::after {
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.info-link:hover::after,
+.info-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.info-link:hover,
+.info-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.info-link.star-link:hover {
+  color: #ffd166;
+}
+
+.info-link.website-link:hover {
+  color: var(--accent);
+}
+
+.info-link.issue-link:hover {
+  color: var(--danger-hover);
+}
+
+.info-link.repo-link:hover {
+  color: #6e5494;
+}
+
+.info-credit {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.2px;
+}
+
+.info-credit strong {
+  color: var(--text-secondary);
 }

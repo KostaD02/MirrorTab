@@ -18,12 +18,44 @@
         <div class="logo-lockup">
           <div class="logo-text">
             <span class="logo-name">MirrorTab</span>
-            <span class="logo-tagline">DOM interaction mirroring</span>
+            <div class="logo-sub">
+              <span class="logo-tagline">DOM interaction mirroring</span>
+              <span class="logo-version">v1.0.0</span>
+            </div>
           </div>
         </div>
-        <div id="status-pill" class="status-pill status-idle">
-          <span class="status-dot"></span>
-          <span id="status-label">Idle</span>
+        <div class="header-right">
+          <button
+            id="info-btn"
+            class="info-btn"
+            type="button"
+            aria-label="About MirrorTab"
+            title="About MirrorTab"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 640"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"
+              />
+            </svg>
+          </button>
+          <button
+            id="info-close-btn"
+            class="info-close-btn"
+            type="button"
+            aria-label="Close info"
+            hidden
+          >
+            ✕
+          </button>
+          <div id="status-pill" class="status-pill status-idle">
+            <span class="status-dot"></span>
+            <span id="status-label">Idle</span>
+          </div>
         </div>
       </header>
 
@@ -105,7 +137,80 @@
         </div>
       </div>
 
-      <footer class="footer">Clicks · Inputs · Scrolls · Keystrokes</footer>
+      <div id="info-panel" class="info-panel" hidden>
+        <p class="info-desc">
+          MirrorTab mirrors DOM interactions: clicks, inputs, keystrokes, and
+          scrolls from a <strong>Source</strong> tab to a
+          <strong>Target</strong> tab in real time. Perfect for demos, testing,
+          and live presentations.
+        </p>
+
+        <ol class="info-steps">
+          <li>
+            Enter a <strong>Source URL</strong> and a
+            <strong>Target URL</strong>.
+          </li>
+          <li>
+            Click <strong>Start Session</strong> - two tabs open automatically.
+          </li>
+          <li>
+            Interact with the <span class="ib source">SOURCE</span> tab, actions
+            mirror live to the <span class="ib target">TARGET</span> tab.
+          </li>
+          <li>
+            Use <strong>Pause / Resume</strong> or <strong>Stop</strong> to
+            control the session.
+          </li>
+          <li>
+            Download the event log as <strong>JSON</strong> or
+            <strong>Text</strong> any time.
+          </li>
+        </ol>
+
+        <div class="info-links">
+          <div class="info-link-row">
+            <a
+              href="https://github.com/KostaD02/MirrorTab"
+              target="_blank"
+              rel="noopener"
+              class="info-link repo-link"
+            >
+              GitHub Repository</a
+            >
+            <a
+              href="https://github.com/KostaD02/MirrorTab/stargazers"
+              target="_blank"
+              rel="noopener"
+              class="info-link star-link"
+              >Star on GitHub</a
+            >
+          </div>
+          <div class="info-link-row">
+            <a
+              href="https://github.com/KostaD02/MirrorTab/issues/new/choose"
+              target="_blank"
+              rel="noopener"
+              class="info-link issue-link"
+              >Report Issue / Feature</a
+            >
+          </div>
+        </div>
+
+        <p class="info-credit">
+          Created by
+          <a
+            href="https://konstantinedatunishvili.com/"
+            target="_blank"
+            rel="noopener"
+            class="info-link website-link"
+            >Konstantine Datunishvili</a
+          >
+        </p>
+      </div>
+
+      <footer id="app-footer" class="footer">
+        Clicks · Inputs · Scrolls · Keystrokes
+      </footer>
     </div>
 
     <script type="module" src="./main.ts"></script>
