@@ -13,7 +13,7 @@ export default defineConfig({
   },
   plugins: [
     crx({ manifest }),
-    zip({ outDir: 'release', outFileName: `${name}-${version}.zip` }),
+    zip({ outDir: 'release', outFileName: `MirrorTab-${version}.zip` }),
   ],
   server: {
     cors: {
