@@ -36,5 +36,6 @@ jobs:
         with:
           files: release/MirrorTab-*.zip
           generate_release_notes: true
+          body_path: .github/release-template.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
