@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/KostaD02/MirrorTab/compare/v1.1.4...v1.2.0) (2026-03-04)
+
+
+### Features
+
+* ghost cursor ([#4](https://github.com/KostaD02/MirrorTab/issues/4)) ([dde23b2](https://github.com/KostaD02/MirrorTab/commit/dde23b216d9095453be281df85f3477fab3532fd))
+
 ### [1.1.4](https://github.com/KostaD02/MirrorTab/compare/v1.1.3...v1.1.4) (2026-03-03)
 
 ### [1.1.3](https://github.com/KostaD02/MirrorTab/compare/v1.1.2...v1.1.3) (2026-03-02)
