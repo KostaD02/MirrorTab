@@ -13,6 +13,7 @@ export type {
   DomScrollEventPayload,
   DomKeyboardEventPayload,
   DomClickEventPayload,
+  DomMousemoveEventPayload,
   DomEventContent,
 } from './dom-events';
 export { DomEventTypeEnum } from './dom-events';

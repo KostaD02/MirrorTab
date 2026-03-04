@@ -2,6 +2,11 @@ export interface DomInputEventPayload {
   value: string;
 }
 
+export interface DomMousemoveEventPayload {
+  xRatio: number;
+  yRatio: number;
+}
+
 export interface DomScrollEventPayload {
   scrollX: number;
   scrollY: number;
@@ -25,7 +30,8 @@ export type DomEventContent =
   | DomInputEventPayload
   | DomScrollEventPayload
   | DomKeyboardEventPayload
-  | DomClickEventPayload;
+  | DomClickEventPayload
+  | DomMousemoveEventPayload;
 
 export const DomEventTypeEnum = {
   Click: 'click',
@@ -34,6 +40,7 @@ export const DomEventTypeEnum = {
   Change: 'change',
   Keydown: 'keydown',
   Keyup: 'keyup',
+  Mousemove: 'mousemove',
 } as const;
 
 export type DomEventType =

@@ -4,6 +4,7 @@ import {
   DomEventTypeEnum,
   DomInputEventPayload,
   DomKeyboardEventPayload,
+  DomMousemoveEventPayload,
   DomScrollEventPayload,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
@@ -12,6 +13,7 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import { getElementMeta, getSemanticSelector, logger } from '@/shared/util';
+import { VirtualCursor } from './virtual-cursor';
 
 // are not re-captured and forwarded in an infinite loop.
 let isReplaying = false;
@@ -47,6 +49,9 @@ class Record {
 
 export class EventCapture {
   private scrollTimer: ReturnType<typeof setTimeout> | null = null;
+  private rafPending = false;
+  private lastMouseXRatio = 0;
+  private lastMouseYRatio = 0;
   private role: SessionRole = SessionRoleEnum.Idle;
 
   constructor() {
@@ -196,10 +201,40 @@ export class EventCapture {
       },
       true,
     );
+
+    document.addEventListener(
+      'mousemove',
+      (e: MouseEvent) => {
+        if (!this.active()) return;
+        this.lastMouseXRatio = e.clientX / window.innerWidth;
+        this.lastMouseYRatio = e.clientY / window.innerHeight;
+
+        if (this.rafPending) return;
+        this.rafPending = true;
+        requestAnimationFrame(() => {
+          this.rafPending = false;
+          if (!this.active()) return;
+          const content: DomMousemoveEventPayload = {
+            xRatio: this.lastMouseXRatio,
+            yRatio: this.lastMouseYRatio,
+          };
+          sendDomEvent({
+            type: DomEventTypeEnum.Mousemove,
+            selector: 'window',
+            content,
+          });
+        });
+      },
+      true,
+    );
   }
 }
 
 export class EventReplay extends Record {
+  constructor(private readonly cursor: VirtualCursor) {
+    super();
+  }
+
   replay(payload: DomEventPayload): void {
     isReplaying = true;
 
@@ -226,6 +261,15 @@ export class EventReplay extends Record {
         return;
       }
 
+      if (type === DomEventTypeEnum.Mousemove) {
+        const { xRatio, yRatio } = payload.content as DomMousemoveEventPayload;
+        this.cursor.moveTo(
+          xRatio * window.innerWidth,
+          yRatio * window.innerHeight,
+        );
+        return;
+      }
+
       const element = this.resolveElement(selector) as HTMLElement | null;
 
       if (!element) {
@@ -238,6 +282,8 @@ export class EventReplay extends Record {
           const { offsetXRatio, offsetYRatio } =
             payload.content as DomClickEventPayload;
           const rect = element.getBoundingClientRect();
+          const clickX = rect.left + offsetXRatio * rect.width;
+          const clickY = rect.top + offsetYRatio * rect.height;
           const content: DomClickEventPayload = {
             offsetXRatio,
             offsetYRatio,
@@ -249,12 +295,14 @@ export class EventReplay extends Record {
             content,
           });
 
+          this.cursor.animateClick(clickX, clickY);
+
           element.dispatchEvent(
             new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
-              clientX: rect.left + offsetXRatio * rect.width,
-              clientY: rect.top + offsetYRatio * rect.height,
+              clientX: clickX,
+              clientY: clickY,
             }),
           );
           break;

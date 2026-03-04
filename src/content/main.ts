@@ -3,13 +3,16 @@ import {
   ExtensionMessage,
   ExtensionMessageTypeEnum,
   SessionRecord,
+  SessionRoleEnum,
 } from '@/shared/types';
 import { EventCapture, EventReplay } from './mirror';
 import { RoleBadge } from './role-badge';
+import { VirtualCursor } from './virtual-cursor';
 import { logger } from '@/shared/util';
 
+const cursor = new VirtualCursor();
 const capture = new EventCapture();
-const replay = new EventReplay();
+const replay = new EventReplay(cursor);
 const badge = new RoleBadge();
 
 chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
@@ -17,6 +20,11 @@ chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
     case ExtensionMessageTypeEnum.SetRole: {
       capture.setRole(message.role);
       badge.update(message.role);
+      if (message.role === SessionRoleEnum.Target) {
+        cursor.show();
+      } else {
+        cursor.hide();
+      }
       logger.log(`Role set to: ${message.role}`);
       break;
     }

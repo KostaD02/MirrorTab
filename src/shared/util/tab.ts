@@ -57,7 +57,6 @@ export async function sendRoleToTab(
 
 export async function injectContentScript(tabId: number): Promise<void> {
   try {
-    // TODO: check files on built version
     await chrome.scripting.executeScript({
       target: { tabId },
       files: ['src/content/main.ts'],
