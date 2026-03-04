@@ -48,7 +48,11 @@ class Record {
 }
 
 export class EventCapture {
-  private scrollTimer: ReturnType<typeof setTimeout> | null = null;
+  private readonly scrollTimers = new Map<
+    string,
+    ReturnType<typeof setTimeout>
+  >();
+  private readonly latestScrollPos = new Map<string, DomScrollEventPayload>();
   private rafPending = false;
   private lastMouseXRatio = 0;
   private lastMouseYRatio = 0;
@@ -182,28 +186,51 @@ export class EventCapture {
 
     document.addEventListener(
       DomEventTypeEnum.Scroll,
-      () => {
+      (e: Event) => {
         if (!this.active()) return;
-        if (this.scrollTimer) return;
-        this.scrollTimer = setTimeout(() => {
-          this.scrollTimer = null;
-          const content: DomScrollEventPayload = {
-            scrollX: window.scrollX,
-            scrollY: window.scrollY,
-          };
-          const selector = 'window';
-          sendDomEvent({
-            type: DomEventTypeEnum.Scroll,
-            selector,
-            content,
-          });
-        }, 16);
+
+        const target = e.target as Element | Document | null;
+        const isWindow =
+          !target ||
+          target === document ||
+          (target instanceof Element &&
+            (target === document.documentElement || target === document.body));
+
+        const selector = isWindow
+          ? 'window'
+          : getSemanticSelector(target as Element);
+
+        const position: DomScrollEventPayload = isWindow
+          ? { scrollX: window.scrollX, scrollY: window.scrollY }
+          : {
+              scrollX: (target as Element).scrollLeft,
+              scrollY: (target as Element).scrollTop,
+            };
+
+        this.latestScrollPos.set(selector, position);
+
+        const existing = this.scrollTimers.get(selector);
+        if (existing) clearTimeout(existing);
+        this.scrollTimers.set(
+          selector,
+          setTimeout(() => {
+            this.scrollTimers.delete(selector);
+            if (!this.active()) return;
+            const pos = this.latestScrollPos.get(selector);
+            if (!pos) return;
+            sendDomEvent({
+              type: DomEventTypeEnum.Scroll,
+              selector,
+              content: pos,
+            });
+          }, 50),
+        );
       },
-      true,
+      { capture: true, passive: true },
     );
 
     document.addEventListener(
-      'mousemove',
+      DomEventTypeEnum.Mousemove,
       (e: MouseEvent) => {
         if (!this.active()) return;
         this.lastMouseXRatio = e.clientX / window.innerWidth;
@@ -243,21 +270,25 @@ export class EventReplay extends Record {
 
       if (type === DomEventTypeEnum.Scroll) {
         const { scrollX, scrollY } = payload.content as DomScrollEventPayload;
-        const content: DomScrollEventPayload = {
-          scrollX,
-          scrollY,
-        };
         this.addRecord({
           type: DomEventTypeEnum.Scroll,
-          selector: 'window',
-          selectorStackTrace: 'window',
-          content,
+          selector,
+          selectorStackTrace: selector,
+          content: { scrollX, scrollY },
         });
-        window.scrollTo({
-          left: scrollX,
-          top: scrollY,
-          behavior: 'instant',
-        });
+        if (selector === 'window') {
+          window.scrollTo({ left: scrollX, top: scrollY, behavior: 'smooth' });
+        } else {
+          const el = this.resolveElement(selector);
+          if (el) {
+            el.scrollTo({ left: scrollX, top: scrollY, behavior: 'smooth' });
+          } else {
+            logger.warn(
+              '[replay scroll] could not resolve element for selector:',
+              selector,
+            );
+          }
+        }
         return;
       }
 
