@@ -10,7 +10,7 @@ MirrorTab is a browser extension that mirrors DOM interactions (clicks, keyboard
 
 ---
 
-## Data the extension does NOT collect
+## Data the extension does NOT collect ANYTHING
 
 - No browsing history
 - No page content or URLs beyond what you explicitly type into the extension popup

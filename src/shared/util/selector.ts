@@ -21,37 +21,36 @@ export function getUniqueSelector(el: Element): string {
   return parts.length ? parts.join(' > ') : el.tagName.toLowerCase();
 }
 
-/**
- * Compact human-readable identifier for logging/records.
- * Format: TAG#id#firstClass#attr=val  (NOT a valid CSS selector)
- */
 export function getElementMeta(el: Element): string {
-  const parts: string[] = [el.tagName.toLowerCase()];
+  let result = el.tagName.toLowerCase();
 
-  if (el.id) parts.push(el.id);
+  if (el.id) {
+    result += `#${el.id}`;
+  }
 
   const firstClass = el.classList[0];
-  if (firstClass) parts.push(firstClass);
+  if (firstClass) {
+    result += `.${firstClass}`;
+  }
 
   const idAttrs = ['name', 'data-id', 'aria-label', 'automation-id'];
-
   for (const attr of idAttrs) {
     const val = el.getAttribute(attr);
     if (val) {
-      parts.push(`${attr}=${val}`);
+      result += `[${attr}=${val}]`;
       break;
     }
   }
 
-  return parts.join('#');
+  return result;
 }
 
-/**
- * Returns a valid CSS selector.
- * Uses #id if present (unambiguous), otherwise falls back
- * to the full nth-of-type structural path.
- */
 export function getSemanticSelector(el: Element): string {
-  if (el.id) return `#${CSS.escape(el.id)}`;
+  if (el.id) {
+    const selector = `#${CSS.escape(el.id)}`;
+    if (document.querySelectorAll(selector).length === 1) {
+      return selector;
+    }
+  }
   return getUniqueSelector(el);
 }
