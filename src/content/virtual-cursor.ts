@@ -108,7 +108,7 @@ export class VirtualCursor {
         <path
           d="M3.5 2L3.5 21.5L8 17L11.5 24.5L14.5 23L11 15.5L17.5 15.5L3.5 2Z"
           fill="white"
-          stroke="#64ffda"
+          stroke="#0000007c"
           stroke-width="1.5"
           stroke-linejoin="round"
           stroke-linecap="round"
