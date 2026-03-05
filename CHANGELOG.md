@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/KostaD02/MirrorTab/compare/v1.2.0...v1.2.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* action items click ([#8](https://github.com/KostaD02/MirrorTab/issues/8)) ([8ff99ad](https://github.com/KostaD02/MirrorTab/commit/8ff99ad8f320c528dd3e007f343efb2d86df3088))
+* inner scroll ([#7](https://github.com/KostaD02/MirrorTab/issues/7)) ([3968ee0](https://github.com/KostaD02/MirrorTab/commit/3968ee01203cec4db091df63236755e86e3197e9))
+
 ## [1.2.0](https://github.com/KostaD02/MirrorTab/compare/v1.1.4...v1.2.0) (2026-03-04)
 
 
