@@ -6,6 +6,7 @@ import {
 } from '@/shared/types';
 import { resetFieldState } from '@/shared/util';
 import { validateUrl } from './validate-url';
+import { INPUT_STORAGE_KEY } from '@/shared/consts';
 
 const StatusEnum = {
   Idle: 'idle',
@@ -55,8 +56,33 @@ export class PopupController {
 
   init(): void {
     this.restoreSession();
+    this.restoreInputs();
     this.bindEvents();
     this.domRefs.versionLabel.textContent = `v${this.version}`;
+  }
+
+  private async restoreInputs(): Promise<void> {
+    const data = await chrome.storage.local.get(INPUT_STORAGE_KEY);
+    const inputs = data[INPUT_STORAGE_KEY] as
+      | { source?: string; target?: string }
+      | undefined;
+    if (inputs && !this.session) {
+      if (inputs.source) this.domRefs.sourceInput.value = inputs.source;
+      if (inputs.target) this.domRefs.targetInput.value = inputs.target;
+    }
+  }
+
+  private saveInputsInStorage(): void {
+    chrome.storage.local.set({
+      [INPUT_STORAGE_KEY]: {
+        source: this.domRefs.sourceInput.value,
+        target: this.domRefs.targetInput.value,
+      },
+    });
+  }
+
+  private clearInputsFromStorage(): void {
+    chrome.storage.local.remove(INPUT_STORAGE_KEY);
   }
 
   private async restoreSession(): Promise<void> {
@@ -145,6 +171,7 @@ export class PopupController {
     activeCard.hidden = true;
     this.setStatus(StatusEnum.Idle);
     this.clearError();
+    this.clearInputsFromStorage();
   }
 
   private setLoading(loading: boolean): void {
@@ -294,7 +321,7 @@ export class PopupController {
   }
 
   private async onStop(): Promise<void> {
-    void this.sendToTargetTab({ type: ExtensionMessageTypeEnum.ClearRecord });
+    this.sendToTargetTab({ type: ExtensionMessageTypeEnum.ClearRecord });
     await chrome.runtime.sendMessage({
       type: ExtensionMessageTypeEnum.StopSession,
     });
@@ -324,6 +351,7 @@ export class PopupController {
     const { sourceInput, targetInput, sourceError, targetError } = this.domRefs;
     sourceInput.addEventListener('input', () => {
       if (sourceInput.disabled) return;
+      this.saveInputsInStorage();
       if (this.sourceDebounce) clearTimeout(this.sourceDebounce);
       resetFieldState(sourceInput, sourceError);
       if (sourceInput.value.trim()) {
@@ -342,6 +370,7 @@ export class PopupController {
 
     targetInput.addEventListener('input', () => {
       if (targetInput.disabled) return;
+      this.saveInputsInStorage();
       if (this.targetDebounce) clearTimeout(this.targetDebounce);
       resetFieldState(targetInput, targetError);
       if (targetInput.value.trim()) {
