@@ -1,4 +1,7 @@
 import { PopupController } from './controller';
 import './style.css';
+import pkg from '../../package.json';
 
-new PopupController().init();
+const version = pkg.version || 'X.X.X';
+
+new PopupController(version).init();

@@ -44,15 +44,19 @@ export class PopupController {
     ) as HTMLButtonElement,
     infoPanel: document.getElementById('info-panel') as HTMLDivElement,
     footer: document.getElementById('app-footer') as HTMLElement,
+    versionLabel: document.getElementById('version') as HTMLSpanElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
   private targetDebounce: ReturnType<typeof setTimeout> | null = null;
   private session: ActiveSession | null = null;
 
+  constructor(public readonly version: string) {}
+
   init(): void {
     this.restoreSession();
     this.bindEvents();
+    this.domRefs.versionLabel.textContent = `v${this.version}`;
   }
 
   private async restoreSession(): Promise<void> {
