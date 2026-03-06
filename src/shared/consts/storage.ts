@@ -1,1 +1,2 @@
 export const STORAGE_KEY = 'MIRROR_TAB_SESSION';
+export const INPUT_STORAGE_KEY = 'MIRROR_TAB_INPUTS';
