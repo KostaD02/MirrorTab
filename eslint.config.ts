@@ -3,6 +3,16 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
+    ignores: [
+      'dist',
+      'node_modules',
+      'vite.config.ts',
+      'eslint.config.ts',
+      'manifest.config.ts',
+      'commitlint.config.js',
+    ],
+  },
+  {
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parserOptions: {
@@ -12,15 +22,6 @@ export default defineConfig([
     },
   },
   tseslint.configs.strictTypeChecked,
-  {
-    ignores: [
-      'dist',
-      'node_modules',
-      'vite.config.ts',
-      'eslint.config.ts',
-      'manifest.config.ts',
-    ],
-  },
   {
     rules: {
       '@typescript-eslint/no-floating-promises': 'off',

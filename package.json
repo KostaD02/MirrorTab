@@ -6,8 +6,10 @@
   "author": "Konstantine datunishvili",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky",
     "start": "vite",
     "build": "tsc && vite build",
+    "lint": "pnpm exec eslint .",
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
@@ -15,6 +17,8 @@
     "postrelease": "pnpm build"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
     "@crxjs/vite-plugin": "^2.0.3",
     "@eslint/js": "^10.0.1",
     "@types/chrome": "^0.1.1",
@@ -23,6 +27,7 @@
     "@typescript-eslint/parser": "^8.56.1",
     "eslint": "^10.0.2",
     "globals": "^17.3.0",
+    "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "standard-version": "^9.5.0",
     "typescript": "~5.8.3",
