@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/KostaD02/MirrorTab/compare/v1.2.1...v1.2.2) (2026-03-07)
+
+
+### Features
+
+* dynamic version display ([#14](https://github.com/KostaD02/MirrorTab/issues/14)) ([403d3b0](https://github.com/KostaD02/MirrorTab/commit/403d3b0e17dabb419df89b3d6243da1eb28f933d))
+* husky & commitlint ([#17](https://github.com/KostaD02/MirrorTab/issues/17)) ([3be1c44](https://github.com/KostaD02/MirrorTab/commit/3be1c44d7b6e1ac6746a730b6dd6fc3683988dc6))
+* jest ([#18](https://github.com/KostaD02/MirrorTab/issues/18)) ([13036f6](https://github.com/KostaD02/MirrorTab/commit/13036f63ad72cf7e1677093b6d4c40e6a535a35a))
+* save input data on pop up close ([#15](https://github.com/KostaD02/MirrorTab/issues/15)) ([c9ceebf](https://github.com/KostaD02/MirrorTab/commit/c9ceebf57d0978c688cd3ec928f757eac91d1b07))
+
 ### [1.2.1](https://github.com/KostaD02/MirrorTab/compare/v1.2.0...v1.2.1) (2026-03-05)
 
 
