@@ -2,13 +2,13 @@ export {
   getUniqueSelector,
   getElementMeta,
   getSemanticSelector,
-} from './selector';
-export { normaliseUrl } from './url';
+} from './selector/selector';
+export { normaliseUrl } from './url/url';
 export { logger } from './logger/logger';
 export {
   openTab,
   waitForTabLoad,
   sendRoleToTab,
   injectContentScript,
-} from './tab';
-export { setFieldError, setFieldValid, resetFieldState } from './field';
+} from './tab/tab';
+export { setFieldError, setFieldValid, resetFieldState } from './field/field';
