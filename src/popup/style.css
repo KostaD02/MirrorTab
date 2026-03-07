@@ -54,6 +54,30 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 .source {
   background: #ff6b6b14;
   color: var(--source-color);
@@ -124,9 +148,6 @@ body {
   cursor: pointer;
   color: var(--text-muted);
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   transition:
     color 0.2s,
@@ -138,33 +159,19 @@ body {
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
   gap: 16px;
   padding: 18px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .header-right {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
 
 .logo-lockup {
-  display: flex;
-  align-items: center;
   gap: 10px;
 }
 
 .logo-text {
-  display: flex;
-  flex-direction: column;
   gap: 5px;
   line-height: 1.2;
 }
@@ -190,8 +197,6 @@ body {
 }
 
 .logo-sub {
-  display: flex;
-  align-items: center;
   gap: 6px;
 }
 
@@ -222,8 +227,6 @@ body {
 }
 
 .status-pill {
-  display: flex;
-  align-items: center;
   gap: 6px;
   padding: 4px 10px;
   border-radius: 999px;
@@ -269,31 +272,14 @@ body {
   animation: blink 1.2s ease-in-out infinite;
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
 .session-form {
-  display: flex;
-  flex-direction: column;
   gap: 14px;
 }
-
 .field-group {
-  display: flex;
-  flex-direction: column;
   gap: 5px;
 }
 
 .field-label {
-  display: flex;
-  align-items: center;
   gap: 6px;
   font-size: 12px;
   font-weight: 600;
@@ -392,9 +378,6 @@ body {
 }
 
 .btn-primary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
   width: 100%;
   border: 1px solid var(--accent);
@@ -410,9 +393,6 @@ body {
 
 .btn-pause {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 6px;
   border: 1px solid var(--text-secondary);
   color: var(--text-secondary);
@@ -455,45 +435,22 @@ body {
   display: inline-block;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .active-card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 14px;
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   animation: slide-in 0.3s ease;
 }
 
 .active-row {
-  display: flex;
-  align-items: center;
   gap: 8px;
 }
 
 .active-col {
   flex: 1;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
   gap: 4px;
 }
 
@@ -515,13 +472,10 @@ body {
 }
 
 .active-actions {
-  display: flex;
   gap: 8px;
 }
 
 .download-actions {
-  display: flex;
-  flex-direction: column;
   gap: 8px;
   padding-top: 4px;
   border-top: 1px solid var(--border);
@@ -534,13 +488,10 @@ body {
 }
 
 .download-buttons {
-  display: flex;
   gap: 16px;
 }
 
 .info-panel {
-  display: flex;
-  flex-direction: column;
   gap: 12px;
   animation: slide-in 0.22s ease;
 }
@@ -558,8 +509,6 @@ body {
 .info-steps {
   list-style: none;
   counter-reset: step;
-  display: flex;
-  flex-direction: column;
   gap: 6px;
   padding: 10px 12px;
   background: var(--bg-surface);
@@ -606,16 +555,11 @@ body {
 }
 
 .info-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 8px;
 }
 
 .info-link-row {
-  display: flex;
   gap: 20px;
-  align-items: baseline;
 }
 
 .info-credit {
@@ -633,4 +577,31 @@ body {
   color: var(--text-muted);
   letter-spacing: 0.5px;
   padding-top: 2px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
