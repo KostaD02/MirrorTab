@@ -14,11 +14,16 @@
   <br>
 </p>
 
-MirrorTab is a Chrome extension that captures user interactions on one browser tab (the **source**) and replays them live on another tab (the **target**). It supports clicks, keyboard input, form changes, and scrolling - with session recording and export built in.
+<p align="center">
+  <a href="https://github.com/KostaD02/MirrorTab/actions/workflows/ci.yml"><img src="https://github.com/KostaD02/MirrorTab/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+</p>
+
+MirrorTab is a Chrome extension that captures user interactions on one browser tab (the **source**) and replays them live on another tab (the **target**). It supports clicks, keyboard input, form changes, scrolling, and mouse movement - with session recording and export built in.
 
 ## Features
 
-- **Live mirroring** - clicks, inputs, keystrokes, and scroll events are forwarded from the source tab to the target tab in real time
+- **Live mirroring** - clicks, inputs, keystrokes, scroll events, and mouse movement are forwarded from the source tab to the target tab in real time
+- **Ghost cursor** - a virtual cursor on the target tab shows exactly where the source user is pointing and clicking
 - **Session control** - start, pause, resume, and stop a mirroring session from the popup
 - **Role badges** - a floating badge on each tab shows whether it is SOURCE or TARGET
 - **Session recording** - all events replayed on the target tab are recorded with timestamps
@@ -41,22 +46,21 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 
 Each entry in the exported session log contains:
 
-| Field                | Description                                                            |
-| -------------------- | ---------------------------------------------------------------------- |
-| `timestamp`          | ISO 8601 timestamp of when the event was replayed                      |
-| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`   |
-| `selector`           | Compact element identifier: `TAG#id#firstClass#attr=val`               |
-| `selectorStackTrace` | Full CSS structural path used for DOM resolution                       |
-| `content`            | Event-specific payload (coordinates, value, key info, scroll position) |
+| Field                | Description                                                                       |
+| -------------------- | --------------------------------------------------------------------------------- |
+| `timestamp`          | ISO 8601 timestamp of when the event was replayed                                 |
+| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`, `mousemove` |
+| `selector`           | Compact element identifier: `TAG#id#firstClass#attr=val`                          |
+| `selectorStackTrace` | Full CSS structural path used for DOM resolution                                  |
+| `content`            | Event-specific payload (coordinates, value, key info, scroll position)            |
 
 ## Permissions
 
-| Permission         | Reason                                                             |
-| ------------------ | ------------------------------------------------------------------ |
-| `tabs`             | Open source/target tabs and track their lifecycle                  |
-| `scripting`        | Inject the content script into tabs dynamically                    |
-| `storage`          | Persist the active session across service worker restarts          |
-| `host_permissions` | Send messages to content scripts on `http://` and `https://` pages |
+| Permission  | Reason                                                               |
+| ----------- | -------------------------------------------------------------------- |
+| `tabs`      | Open source/target tabs and track their lifecycle                    |
+| `activeTab` | Access the active tab in response to user interaction with the popup |
+| `storage`   | Persist the active session across service worker restarts            |
 
 ## Contributing
 
