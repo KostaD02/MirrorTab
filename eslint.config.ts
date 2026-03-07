@@ -5,6 +5,7 @@ export default defineConfig([
   {
     ignores: [
       'dist',
+      'release',
       'node_modules',
       'vite.config.ts',
       'eslint.config.ts',
