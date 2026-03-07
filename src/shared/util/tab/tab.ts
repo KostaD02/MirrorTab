@@ -2,10 +2,10 @@ import {
   ExtensionMessage,
   ExtensionMessageTypeEnum,
   SessionRole,
-} from '../types';
-import { normaliseUrl } from './url';
-import { MAX_RETRY_ATTEMPTS, RETRY_DELAY_MS } from '../consts';
-import { logger } from './logger';
+} from '../../types';
+import { normaliseUrl } from '../url/url';
+import { MAX_RETRY_ATTEMPTS, RETRY_DELAY_MS } from '../../consts';
+import { logger } from '../logger/logger';
 
 export async function openTab(url: string): Promise<chrome.tabs.Tab> {
   return chrome.tabs.create({ url: normaliseUrl(url), active: false });
