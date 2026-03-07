@@ -1,6 +1,6 @@
-import { APP_NAME } from '../consts';
+import { APP_NAME } from '@/shared/consts';
 
-class Logger {
+export class Logger {
   readonly console: Console;
 
   constructor(

@@ -10,7 +10,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite/client", "chrome"],
+    "types": ["vite/client", "chrome", "jest"],
     "allowImportingTsExtensions": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
@@ -19,7 +19,8 @@
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src", "jest.config.ts", "jest.setup.ts"]
 }

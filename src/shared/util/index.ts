@@ -4,7 +4,7 @@ export {
   getSemanticSelector,
 } from './selector';
 export { normaliseUrl } from './url';
-export { logger } from './logger';
+export { logger } from './logger/logger';
 export {
   openTab,
   waitForTabLoad,
