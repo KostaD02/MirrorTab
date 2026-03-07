@@ -54,14 +54,3 @@ export async function sendRoleToTab(
     `Could not deliver SET_ROLE:${role} to tab ${tabId.toString()} after ${MAX_RETRY_ATTEMPTS.toString()} attempts`,
   );
 }
-
-export async function injectContentScript(tabId: number): Promise<void> {
-  try {
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      files: ['src/content/main.ts'],
-    });
-  } catch {
-    // Already injected via manifest
-  }
-}
