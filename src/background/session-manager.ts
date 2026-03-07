@@ -6,12 +6,7 @@ import {
   ExtensionMessageTypeEnum,
   SessionRoleEnum,
 } from '@/shared/types';
-import {
-  injectContentScript,
-  openTab,
-  sendRoleToTab,
-  waitForTabLoad,
-} from '@/shared/util';
+import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
 
 export class SessionManager {
   private session: ActiveSession | null = null;
@@ -47,11 +42,6 @@ export class SessionManager {
       await Promise.all([
         waitForTabLoad(sourceTabId),
         waitForTabLoad(targetTabId),
-      ]);
-
-      await Promise.all([
-        injectContentScript(sourceTabId),
-        injectContentScript(targetTabId),
       ]);
 
       await Promise.all([

@@ -2,12 +2,7 @@ import { ExtensionMessageTypeEnum, SessionRoleEnum } from '@/shared/types';
 import { chrome } from 'jest-chrome';
 import { logger } from '../logger/logger';
 import { normaliseUrl } from '../url/url';
-import {
-  openTab,
-  waitForTabLoad,
-  sendRoleToTab,
-  injectContentScript,
-} from './tab';
+import { openTab, waitForTabLoad, sendRoleToTab } from './tab';
 
 jest.mock('../logger/logger', () => ({
   logger: {
@@ -20,18 +15,9 @@ jest.mock('../url/url', () => ({
 }));
 
 describe('Tab utils', () => {
-  let executeScriptMock: jest.Mock;
-
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
-    const chromeScripting = ((
-      chrome as unknown as { scripting: { executeScript: jest.Mock } }
-    ).scripting = {
-      executeScript: jest.fn(),
-    });
-    executeScriptMock = chromeScripting.executeScript;
-    executeScriptMock.mockClear();
   });
 
   afterEach(() => {
@@ -76,25 +62,6 @@ describe('Tab utils', () => {
         role: SessionRoleEnum.Source,
       });
       expect(logger.warn).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('injectContentScript', () => {
-    test('calls chrome.scripting.executeScript with tabId', async () => {
-      executeScriptMock.mockResolvedValue(undefined);
-
-      const tabId = 1;
-      await injectContentScript(tabId);
-
-      expect(executeScriptMock).toHaveBeenCalledWith({
-        target: { tabId },
-        files: ['src/content/main.ts'],
-      });
-    });
-
-    test('does not throw if executeScript fails', async () => {
-      executeScriptMock.mockRejectedValue(new Error('already injected'));
-      await expect(injectContentScript(1)).resolves.toBeUndefined();
     });
   });
 });

@@ -13,21 +13,21 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div id="app">
-      <header class="header">
-        <div class="logo-lockup">
-          <div class="logo-text">
+    <div id="app" class="d-flex flex-col">
+      <header class="header d-flex items-center justify-between">
+        <div class="logo-lockup d-flex items-center">
+          <div class="logo-text d-flex flex-col">
             <span class="logo-name">MirrorTab</span>
-            <div class="logo-sub">
+            <div class="logo-sub d-flex items-center">
               <span class="logo-tagline">DOM interaction mirroring</span>
               <span id="version" class="logo-version">vX.X.X</span>
             </div>
           </div>
         </div>
-        <div class="header-right">
+        <div class="header-right d-flex items-center">
           <button
             id="info-btn"
-            class="icon-btn info-btn"
+            class="icon-btn info-btn d-flex items-center justify-center"
             type="button"
             aria-label="About MirrorTab"
             title="About MirrorTab"
@@ -45,23 +45,26 @@
           </button>
           <button
             id="info-close-btn"
-            class="icon-btn info-close-btn"
+            class="icon-btn info-close-btn d-flex items-center justify-center"
             type="button"
             aria-label="Close info"
             hidden
           >
             ✕
           </button>
-          <div id="status-pill" class="status-pill status-idle">
+          <div
+            id="status-pill"
+            class="status-pill status-idle d-flex items-center"
+          >
             <span class="status-dot"></span>
             <span id="status-label">Idle</span>
           </div>
         </div>
       </header>
 
-      <form id="session-form" class="session-form" novalidate>
-        <div class="field-group">
-          <label class="field-label" for="source-url">
+      <form id="session-form" class="session-form d-flex flex-col" novalidate>
+        <div class="field-group d-flex flex-col">
+          <label class="field-label d-flex items-center" for="source-url">
             <span class="field-icon">🔴</span> Source URL
           </label>
           <input
@@ -81,8 +84,8 @@
           ></span>
         </div>
 
-        <div class="field-group">
-          <label class="field-label" for="target-url">
+        <div class="field-group d-flex flex-col">
+          <label class="field-label d-flex items-center" for="target-url">
             <span class="field-icon">🟢</span> Target URL
           </label>
           <input
@@ -104,33 +107,41 @@
 
         <p id="error-msg" class="error-msg" role="alert" hidden></p>
 
-        <button id="start-btn" class="btn-primary" type="submit">
+        <button
+          id="start-btn"
+          class="btn-primary d-flex items-center justify-center"
+          type="submit"
+        >
           <span id="btn-label">Start Session</span>
           <span id="btn-spinner" class="spinner" hidden></span>
         </button>
       </form>
 
-      <div id="active-card" class="active-card" hidden>
-        <div class="active-row">
-          <div class="active-col">
+      <div id="active-card" class="active-card d-flex flex-col" hidden>
+        <div class="active-row d-flex items-center">
+          <div class="active-col d-flex flex-col">
             <span class="active-role source">SOURCE</span>
             <span id="active-source" class="active-url"></span>
           </div>
-          <div class="active-col">
+          <div class="active-col d-flex flex-col">
             <span class="active-role target">TARGET</span>
             <span id="active-target" class="active-url"></span>
           </div>
         </div>
-        <div class="active-actions">
-          <button id="pause-btn" class="btn-pause" type="button">
+        <div class="active-actions d-flex">
+          <button
+            id="pause-btn"
+            class="btn-pause d-flex items-center justify-center"
+            type="button"
+          >
             <span id="pause-icon">⏸</span>
             <span id="pause-label">Pause</span>
           </button>
           <button id="stop-btn" class="btn-danger" type="button">✕ Stop</button>
         </div>
-        <div class="download-actions">
+        <div class="download-actions d-flex flex-col">
           <p>Download session data:</p>
-          <div class="download-buttons">
+          <div class="download-buttons d-flex">
             <a id="download-json" class="link-underline" role="button"
               >Download JSON</a
             >
@@ -141,7 +152,7 @@
         </div>
       </div>
 
-      <div id="info-panel" class="info-panel" hidden>
+      <div id="info-panel" class="info-panel d-flex flex-col" hidden>
         <p class="info-desc">
           MirrorTab mirrors DOM interactions: clicks, inputs, keystrokes, and
           scrolls from a <strong>Source</strong> tab to a
@@ -149,7 +160,7 @@
           and live presentations.
         </p>
 
-        <ol class="info-steps">
+        <ol class="info-steps d-flex flex-col">
           <li>
             Enter a <strong>Source URL</strong> and a
             <strong>Target URL</strong>.
@@ -171,8 +182,8 @@
           </li>
         </ol>
 
-        <div class="info-links">
-          <div class="info-link-row">
+        <div class="info-links d-flex flex-col items-center">
+          <div class="info-link-row d-flex items-baseline">
             <a
               href="https://github.com/KostaD02/MirrorTab"
               target="_blank"
@@ -189,7 +200,7 @@
               >Star on GitHub</a
             >
           </div>
-          <div class="info-link-row">
+          <div class="info-link-row d-flex items-baseline">
             <a
               href="https://github.com/KostaD02/MirrorTab/issues/new/choose"
               target="_blank"

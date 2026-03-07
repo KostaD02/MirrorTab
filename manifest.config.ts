@@ -29,6 +29,5 @@ export default defineManifest({
       all_frames: false,
     },
   ],
-  permissions: ['tabs', 'scripting', 'storage'],
-  host_permissions: ['https://*/*', 'http://*/*'],
+  permissions: ['tabs', 'activeTab', 'storage'],
 });
