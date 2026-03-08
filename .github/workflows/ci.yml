@@ -80,7 +80,7 @@ jobs:
 
       - name: Append PR Number to Version
         if: github.event_name == 'pull_request'
-        run: node .github/scripts/append-pr-version.js
+        run: node .github/scripts/append-pr-version.cjs
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
 
@@ -101,5 +101,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const script = require('./.github/scripts/comment-pr.js');
+            const script = require('./.github/scripts/comment-pr.cjs');
             await script({ github, context });
