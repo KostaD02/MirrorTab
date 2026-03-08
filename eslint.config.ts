@@ -4,6 +4,7 @@ import { defineConfig } from 'eslint/config';
 export default defineConfig([
   {
     ignores: [
+      '.github',
       'dist',
       'release',
       'node_modules',
