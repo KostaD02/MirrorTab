@@ -2,17 +2,19 @@ const fs = require('fs');
 const path = require('path');
 
 const prNumber = process.env.PR_NUMBER;
-const prCommitCount = process.env.PR_COMMIT_COUNT;
 
-if (!prNumber || !prCommitCount) {
-  console.error('Missing PR_NUMBER or PR_COMMIT_COUNT.');
+if (!prNumber) {
+  console.error('Missing PR_NUMBER');
   process.exit(1);
 }
 
 const packageJsonPath = path.resolve(__dirname, '../../package.json');
 const pkg = require(packageJsonPath);
 
-pkg.version = `${pkg.version}.${prNumber}.${prCommitCount}`;
+const prNumSafe = parseInt(prNumber, 10) || 0;
+const modifier = Math.min(65535, prNumSafe);
+
+pkg.version = `${pkg.version}.${modifier}`;
 
 fs.writeFileSync(packageJsonPath, JSON.stringify(pkg, null, 2) + '\n');
 console.log(`Updated package version to ${pkg.version}`);

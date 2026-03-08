@@ -83,7 +83,6 @@ jobs:
         run: node .github/scripts/append-pr-version.cjs
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_COMMIT_COUNT: ${{ github.event.pull_request.commits }}
 
       - name: Build
         run: pnpm build
