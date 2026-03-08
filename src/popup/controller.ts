@@ -46,6 +46,7 @@ export class PopupController {
     infoPanel: document.getElementById('info-panel') as HTMLDivElement,
     footer: document.getElementById('app-footer') as HTMLElement,
     versionLabel: document.getElementById('version') as HTMLSpanElement,
+    replayLink: document.getElementById('replay-link') as HTMLAnchorElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
@@ -216,6 +217,11 @@ export class PopupController {
     });
     infoCloseBtn.addEventListener('click', () => {
       this.closeInfo();
+    });
+    this.domRefs.replayLink.addEventListener('click', () => {
+      chrome.tabs.create({
+        url: chrome.runtime.getURL('src/replay/index.html'),
+      });
     });
     this.bindValidationListeners();
   }

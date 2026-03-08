@@ -16,6 +16,9 @@ export const ExtensionMessageTypeEnum = {
   SetRole: 'set-role',
   DownloadRecord: 'download-record',
   ClearRecord: 'clear-record',
+  StartReplay: 'start-replay',
+  ReplayReady: 'replay-ready',
+  StopReplay: 'stop-replay',
 } as const;
 
 // prettier-ignore
@@ -32,9 +35,9 @@ export type ExtensionMessage =
   | { type: typeof ExtensionMessageTypeEnum.SetRole; role: SessionRole }
   | { type: typeof ExtensionMessageTypeEnum.DownloadRecord, payload: { format: DownloadFormat } }
   | { type: typeof ExtensionMessageTypeEnum.ClearRecord }
-  | {
-      type: typeof ExtensionMessageTypeEnum.SessionStatus;
-      payload: ActiveSession | null;
-    };
+  | { type: typeof ExtensionMessageTypeEnum.SessionStatus; payload: ActiveSession | null }
+  | { type: typeof ExtensionMessageTypeEnum.StartReplay; payload: { url: string } }
+  | { type: typeof ExtensionMessageTypeEnum.ReplayReady; payload: { targetTabId: number } }
+  | { type: typeof ExtensionMessageTypeEnum.StopReplay; payload: { targetTabId: number } };
 
 export type ExtensionMessageType = ExtensionMessage['type'];

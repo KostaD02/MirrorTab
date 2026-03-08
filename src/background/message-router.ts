@@ -1,4 +1,9 @@
-import { ExtensionMessage, ExtensionMessageTypeEnum } from '@/shared/types';
+import {
+  ExtensionMessage,
+  ExtensionMessageTypeEnum,
+  SessionRoleEnum,
+} from '@/shared/types';
+import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
 import { SessionManager } from './session-manager';
 
 export function createMessageRouter(sessionManager: SessionManager): void {
@@ -55,6 +60,40 @@ export function createMessageRouter(sessionManager: SessionManager): void {
             type: ExtensionMessageTypeEnum.ReplayEvent,
             payload: message.payload,
           });
+          break;
+        }
+
+        case ExtensionMessageTypeEnum.StartReplay: {
+          openTab(message.payload.url)
+            .then((tab) => {
+              const targetTabId = Number(tab.id);
+              if (isNaN(targetTabId)) {
+                throw new Error('Failed to create replay tab');
+              }
+              return waitForTabLoad(targetTabId).then(() => targetTabId);
+            })
+            .then((targetTabId) => {
+              return sendRoleToTab(targetTabId, SessionRoleEnum.Replay).then(
+                () => targetTabId,
+              );
+            })
+            .then((targetTabId) => {
+              sendResponse({
+                type: ExtensionMessageTypeEnum.ReplayReady,
+                payload: { targetTabId },
+              });
+            })
+            .catch(() => {
+              sendResponse({
+                type: ExtensionMessageTypeEnum.SessionError,
+                error: 'Failed to open replay tab',
+              });
+            });
+          return true;
+        }
+
+        case ExtensionMessageTypeEnum.StopReplay: {
+          sendRoleToTab(message.payload.targetTabId, SessionRoleEnum.Idle);
           break;
         }
 

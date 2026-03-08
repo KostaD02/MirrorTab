@@ -1,6 +1,15 @@
 import { APP_NAME } from '@/shared/consts';
 import { SessionRole, SessionRoleEnum } from '@/shared/types';
 
+const ROLE_CONFIG: Record<
+  Exclude<SessionRole, typeof SessionRoleEnum.Idle>,
+  { label: string; bg: string }
+> = {
+  [SessionRoleEnum.Source]: { label: 'SOURCE', bg: '#ef4444cc' },
+  [SessionRoleEnum.Target]: { label: 'TARGET', bg: '#22c55ecc' },
+  [SessionRoleEnum.Replay]: { label: 'REPLAY', bg: '#6366f1cc' },
+};
+
 export class RoleBadge {
   private element: HTMLElement | null = null;
 
@@ -34,11 +43,8 @@ export class RoleBadge {
       document.documentElement.appendChild(this.element);
     }
 
-    this.element.textContent =
-      role === SessionRoleEnum.Source
-        ? `${APP_NAME} · SOURCE`
-        : `${APP_NAME} · TARGET`;
-    this.element.style.background =
-      role === SessionRoleEnum.Source ? '#ef4444cc' : '#22c55ecc';
+    const config = ROLE_CONFIG[role];
+    this.element.textContent = `${APP_NAME} · ${config.label}`;
+    this.element.style.background = config.bg;
   }
 }
