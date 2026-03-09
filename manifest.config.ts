@@ -29,5 +29,5 @@ export default defineManifest({
       all_frames: false,
     },
   ],
-  permissions: ['tabs', 'activeTab', 'storage'],
+  permissions: ['storage'],
 });

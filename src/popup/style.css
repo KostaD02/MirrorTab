@@ -571,6 +571,20 @@ body {
   letter-spacing: 0.2px;
 }
 
+.replay-link-container {
+  padding-top: 4px;
+}
+
+.replay-link {
+  color: #818cf8;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.replay-link:hover {
+  color: #a78bfa;
+}
+
 .footer {
   text-align: center;
   font-size: 10px;

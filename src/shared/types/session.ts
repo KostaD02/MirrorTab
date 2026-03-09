@@ -4,6 +4,7 @@ export const SessionRoleEnum = {
   Idle: 'idle',
   Source: 'source',
   Target: 'target',
+  Replay: 'replay',
 } as const;
 
 export type SessionRole =

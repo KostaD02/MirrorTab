@@ -20,7 +20,10 @@ chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
     case ExtensionMessageTypeEnum.SetRole: {
       capture.setRole(message.role);
       badge.update(message.role);
-      if (message.role === SessionRoleEnum.Target) {
+      if (
+        message.role === SessionRoleEnum.Target ||
+        message.role === SessionRoleEnum.Replay
+      ) {
         cursor.show();
       } else {
         cursor.hide();

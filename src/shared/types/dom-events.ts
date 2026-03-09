@@ -50,4 +50,5 @@ export interface DomEventPayload {
   type: DomEventType;
   selector: string;
   content: DomEventContent;
+  timestamp: string;
 }

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab - Session Replay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app" class="d-flex flex-col">
+      <header class="header d-flex items-center justify-between">
+        <div class="logo-lockup d-flex items-center">
+          <img
+            src="/logo.png"
+            alt="MirrorTab logo"
+            class="logo-img"
+            width="32"
+            height="32"
+          />
+          <div class="logo-text d-flex flex-col">
+            <span class="logo-name">MirrorTab</span>
+            <span class="logo-tagline">Session Replay</span>
+          </div>
+        </div>
+        <div class="header-right d-flex items-center">
+          <div
+            id="status-pill"
+            class="status-pill status-idle d-flex items-center"
+          >
+            <span class="status-dot"></span>
+            <span id="status-label">Ready</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="setup-card" class="setup-card d-flex flex-col">
+        <div class="field-group d-flex flex-col">
+          <label class="field-label d-flex items-center" for="replay-url">
+            Website URL
+          </label>
+          <input
+            id="replay-url"
+            class="field-input"
+            type="url"
+            placeholder="https://example.com"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="field-hint"
+            >The page where recorded actions will be replayed</span
+          >
+          <span id="url-error" class="field-error" role="alert" hidden></span>
+        </div>
+
+        <div class="field-group d-flex flex-col">
+          <label class="field-label d-flex items-center" for="session-file">
+            Session File
+          </label>
+          <div
+            id="drop-zone"
+            class="drop-zone d-flex flex-col items-center justify-center"
+          >
+            <input id="session-file" type="file" accept=".json,.txt" hidden />
+            <div
+              id="drop-zone-idle"
+              class="drop-zone-content d-flex flex-col items-center"
+            >
+              <span class="drop-zone-icon">📂</span>
+              <span class="drop-zone-text"
+                >Drop a <strong>.json</strong> or <strong>.txt</strong> session
+                file here</span
+              >
+              <span class="drop-zone-or">or</span>
+              <button id="browse-btn" class="browse-btn" type="button">
+                Browse Files
+              </button>
+            </div>
+            <div
+              id="drop-zone-loaded"
+              class="drop-zone-content d-flex items-center"
+              hidden
+            >
+              <span class="file-icon">✅</span>
+              <div class="file-info d-flex flex-col">
+                <span id="file-name" class="file-name"></span>
+                <span id="file-events" class="file-events"></span>
+              </div>
+              <button
+                id="clear-file-btn"
+                class="icon-btn clear-file-btn"
+                type="button"
+                aria-label="Remove file"
+                title="Remove file"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+          <span id="file-error" class="field-error" role="alert" hidden></span>
+        </div>
+
+        <div class="field-group d-flex flex-col">
+          <label class="field-label d-flex items-center"> </label>
+          <div class="speed-selector d-flex">
+            <label class="speed-option">
+              <input type="radio" name="speed" value="0.5" />
+              <span class="speed-chip"
+                >0.5x<span class="speed-sub">Slow</span></span
+              >
+            </label>
+            <label class="speed-option">
+              <input type="radio" name="speed" value="1" checked />
+              <span class="speed-chip"
+                >1x<span class="speed-sub">Normal</span></span
+              >
+            </label>
+            <label class="speed-option">
+              <input type="radio" name="speed" value="1.5" />
+              <span class="speed-chip"
+                >1.5x<span class="speed-sub">Fast</span></span
+              >
+            </label>
+          </div>
+        </div>
+
+        <p id="error-msg" class="error-msg" role="alert" hidden></p>
+
+        <button
+          id="start-btn"
+          class="btn-primary d-flex items-center justify-center"
+          type="button"
+          disabled
+        >
+          <span id="btn-label">Start Replay</span>
+          <span id="btn-spinner" class="spinner" hidden></span>
+        </button>
+      </section>
+
+      <section id="active-card" class="active-card d-flex flex-col" hidden>
+        <div class="replay-info d-flex items-center justify-between">
+          <div class="replay-url-info d-flex flex-col">
+            <span class="active-role replay">REPLAY</span>
+            <span id="active-url" class="active-url"></span>
+          </div>
+          <div class="replay-speed-badge d-flex items-center">
+            <span id="speed-badge">1×</span>
+          </div>
+        </div>
+
+        <div class="progress-section d-flex flex-col">
+          <div class="progress-header d-flex items-center justify-between">
+            <span id="progress-label" class="progress-label">Event 0 / 0</span>
+            <span id="progress-percent" class="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div id="progress-bar" class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="active-actions d-flex">
+          <button
+            id="pause-btn"
+            class="btn-pause d-flex items-center justify-center"
+            type="button"
+          >
+            <span id="pause-icon">⏸</span>
+            <span id="pause-label">Pause</span>
+          </button>
+          <button
+            id="restart-btn"
+            class="btn-restart d-flex items-center justify-center"
+            type="button"
+          >
+            🔄 Restart
+          </button>
+          <button id="stop-btn" class="btn-danger" type="button">✕ Stop</button>
+        </div>
+      </section>
+
+      <section
+        id="completed-card"
+        class="completed-card d-flex flex-col"
+        hidden
+      >
+        <div class="completed-icon">✅</div>
+        <p class="completed-text">
+          Replay completed! All <span id="completed-count">0</span> events have
+          been replayed successfully.
+        </p>
+        <div class="completed-actions d-flex">
+          <button
+            id="restart-completed-btn"
+            class="btn-pause d-flex items-center justify-center"
+            type="button"
+          >
+            🔄 Restart
+          </button>
+          <button id="stop-completed-btn" class="btn-danger" type="button">
+            ✕ Close
+          </button>
+        </div>
+      </section>
+
+      <footer class="footer">Replay recorded sessions · MirrorTab</footer>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

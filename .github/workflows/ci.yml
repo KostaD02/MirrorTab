@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -74,5 +78,30 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Append PR Number to Version
+        if: github.event_name == 'pull_request'
+        run: node .github/scripts/append-pr-version.cjs
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+
       - name: Build
         run: pnpm build
+
+      - name: Upload Extension Artifact
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: MirrorTab-PR-${{ github.event.pull_request.number }}-${{ github.event.pull_request.commits }}
+          path: dist/
+          retention-days: 7
+
+      - name: Comment PR with Artifact Link
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          PR_COMMIT_COUNT: ${{ github.event.pull_request.commits }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const script = require('./.github/scripts/comment-pr.cjs');
+            await script({ github, context, core });

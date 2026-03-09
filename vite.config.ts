@@ -3,7 +3,7 @@ import { crx } from '@crxjs/vite-plugin';
 import { defineConfig } from 'vite';
 import zip from 'vite-plugin-zip-pack';
 import manifest from './manifest.config.js';
-import { name, version } from './package.json';
+import { version } from './package.json';
 
 export default defineConfig({
   resolve: {
@@ -15,6 +15,13 @@ export default defineConfig({
     crx({ manifest }),
     zip({ outDir: 'release', outFileName: `MirrorTab-${version}.zip` }),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        replay: 'src/replay/index.html',
+      },
+    },
+  },
   server: {
     cors: {
       origin: [/chrome-extension:\/\//],

@@ -18,10 +18,13 @@ import { VirtualCursor } from './virtual-cursor';
 // are not re-captured and forwarded in an infinite loop.
 let isReplaying = false;
 
-function sendDomEvent(payload: DomEventPayload): void {
+function sendDomEvent(payload: Omit<DomEventPayload, 'timestamp'>): void {
   const extensionMessage: ExtensionMessage = {
     type: ExtensionMessageTypeEnum.DomEvent,
-    payload,
+    payload: {
+      ...payload,
+      timestamp: new Date().toISOString(),
+    },
   };
   chrome.runtime.sendMessage(extensionMessage).catch(() => {
     // safe drop
@@ -35,11 +38,8 @@ class Record {
     return this.records;
   }
 
-  addRecord(record: Omit<SessionRecord, 'timestamp'>): void {
-    this.records.push({
-      ...record,
-      timestamp: new Date().toISOString(),
-    });
+  addRecord(record: SessionRecord): void {
+    this.records.push(record);
   }
 
   clear(): void {
@@ -271,6 +271,7 @@ export class EventReplay extends Record {
       if (type === DomEventTypeEnum.Scroll) {
         const { scrollX, scrollY } = payload.content as DomScrollEventPayload;
         this.addRecord({
+          timestamp: payload.timestamp,
           type: DomEventTypeEnum.Scroll,
           selector,
           selectorStackTrace: selector,
@@ -320,6 +321,7 @@ export class EventReplay extends Record {
             offsetYRatio,
           };
           this.addRecord({
+            timestamp: payload.timestamp,
             type: DomEventTypeEnum.Click,
             selector: getElementMeta(element),
             selectorStackTrace: selector,
@@ -359,6 +361,7 @@ export class EventReplay extends Record {
             value,
           };
           this.addRecord({
+            timestamp: payload.timestamp,
             type: DomEventTypeEnum.Input,
             selector: getElementMeta(element),
             selectorStackTrace: selector,
@@ -378,6 +381,7 @@ export class EventReplay extends Record {
             value,
           };
           this.addRecord({
+            timestamp: payload.timestamp,
             type: DomEventTypeEnum.Change,
             selector: getElementMeta(element),
             selectorStackTrace: selector,
@@ -401,6 +405,7 @@ export class EventReplay extends Record {
             metaKey,
           };
           this.addRecord({
+            timestamp: payload.timestamp,
             type,
             selector: getElementMeta(element),
             selectorStackTrace: selector,

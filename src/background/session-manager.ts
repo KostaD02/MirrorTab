@@ -1,4 +1,4 @@
-import { STORAGE_KEY } from '@/shared/consts';
+import { STORAGE_KEY, RECORDS_STORAGE_KEY } from '@/shared/consts';
 import {
   ActiveSession,
   ExtensionMessage,
@@ -109,7 +109,7 @@ export class SessionManager {
     if (this.session) {
       await chrome.storage.local.set({ [STORAGE_KEY]: this.session });
     } else {
-      await chrome.storage.local.remove(STORAGE_KEY);
+      await chrome.storage.local.remove([STORAGE_KEY, RECORDS_STORAGE_KEY]);
     }
   }
 }
