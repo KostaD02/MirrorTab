@@ -159,6 +159,12 @@ export class ReplayPageController {
     this.dom.stopCompletedBtn.addEventListener('click', () => {
       this.stop();
     });
+
+    chrome.tabs.onRemoved.addListener((tabId) => {
+      if (this.targetTabId !== null && this.targetTabId === tabId) {
+        this.stop();
+      }
+    });
   }
 
   private handleFile(file: File): void {
@@ -405,7 +411,9 @@ export class ReplayPageController {
     if (this.targetTabId === null) return;
 
     const tabId = this.targetTabId;
-    chrome.tabs.reload(tabId, {}, () => {
+    const url = normaliseUrl(this.dom.urlInput.value.trim());
+
+    chrome.tabs.update(tabId, { url }, () => {
       waitForTabLoad(tabId)
         .then(() => sendRoleToTab(tabId, SessionRoleEnum.Replay))
         .then(() => {
