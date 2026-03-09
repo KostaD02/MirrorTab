@@ -27,6 +27,12 @@ src/
 │   ├── validate-url.ts     # URL validation helper
 │   └── style.css           # Popup styles
 │
+├── replay/
+│   ├── index.html          # Replay page markup
+│   ├── main.ts             # Mounts ReplayPageController
+│   ├── controller.ts       # File parsing, playback orchestration and DOM updates
+│   └── style.css           # Replay UI styles
+│
 └── shared/
     ├── consts/             # APP_NAME, STORAGE_KEY, retry config
     ├── types/              # TypeScript interfaces and enums

@@ -28,6 +28,7 @@ MirrorTab is a Chrome extension that captures user interactions on one browser t
 - **Role badges** - a floating badge on each tab shows whether it is SOURCE or TARGET
 - **Session recording** - all events replayed on the target tab are recorded with timestamps
 - **Export** - download the recorded session as JSON or plain text before or after stopping
+- **Standalone Replay Engine** - upload previously exported session files to an isolated Replay tab to automatically replay all recorded user actions with full playback controls (play, pause, stop, adjust speed)
 - **Smart selector** - elements with an `id` are resolved via `#id`; all others use a full structural CSS path, keeping replay accurate across DOM changes
 
 The production bundle can be downloaded from [releases](https://github.com/KostaD02/MirrorTab/releases).
@@ -41,6 +42,13 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 5. Use **Pause / Resume** to temporarily suspend mirroring without closing the session
 6. Use **Download JSON** or **Download Text** to export the full event log from the target tab at any time
 7. Click **Stop** to end the session - recorded events are cleared
+
+### Replaying a saved session
+
+1. Click the **Replay Page** button in the MirrorTab extension popup
+2. Upload your downloaded `.json` or `.txt` session log file
+3. Enter the URL of the environment you want to test the replay on
+4. Click **Start** to spawn the Replay tab and watch the automated execution
 
 ## Recorded event format
 
@@ -56,11 +64,9 @@ Each entry in the exported session log contains:
 
 ## Permissions
 
-| Permission  | Reason                                                               |
-| ----------- | -------------------------------------------------------------------- |
-| `tabs`      | Open source/target tabs and track their lifecycle                    |
-| `activeTab` | Access the active tab in response to user interaction with the popup |
-| `storage`   | Persist the active session across service worker restarts            |
+| Permission | Reason                                                                   |
+| ---------- | ------------------------------------------------------------------------ |
+| `storage`  | Persist the active session and recordings across service worker restarts |
 
 ## Contributing
 
