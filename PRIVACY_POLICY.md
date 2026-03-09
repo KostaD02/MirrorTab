@@ -1,10 +1,10 @@
 # Privacy Policy — MirrorTab
 
-**Last updated:** February 27, 2026
+**Last updated:** March 9, 2026
 
 ## Overview
 
-MirrorTab is a browser extension that mirrors DOM interactions (clicks, keyboard input, scrolling, and form changes) from one browser tab to another in real time.
+MirrorTab is a browser extension that mirrors DOM interactions (clicks, keyboard input, scrolling, and form changes) from one browser tab to another in real time, and allows you to faithfully replay exported interaction logs.
 
 **MirrorTab does not collect, store, transmit, or share any personal data or user data of any kind.**
 
@@ -29,6 +29,7 @@ All processing happens entirely on your device:
 | Session configuration (source URL, target URL, tab IDs) | `chrome.storage.local` on your device only                                                       |
 | Captured DOM events forwarded between tabs              | Passed in-memory via `chrome.runtime` messaging; never written to disk or sent to any server     |
 | Downloaded session logs (JSON / text)                   | Saved to your local filesystem by your browser when you click Download; not transmitted anywhere |
+| Uploaded session logs for replay                        | Parsed strictly in-memory within your browser; never transmitted to any external server          |
 
 The extension communicates solely between the browser's own internal extension APIs (`chrome.tabs`, `chrome.scripting`, `chrome.storage`, `chrome.runtime`). No external servers, APIs, or third-party services are contacted.
 
