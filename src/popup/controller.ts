@@ -47,6 +47,9 @@ export class PopupController {
     footer: document.getElementById('app-footer') as HTMLElement,
     versionLabel: document.getElementById('version') as HTMLSpanElement,
     replayLink: document.getElementById('replay-link') as HTMLAnchorElement,
+    replayLinkContainer: document.getElementById(
+      'replay-link-container',
+    ) as HTMLDivElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
@@ -235,6 +238,7 @@ export class PopupController {
       infoCloseBtn,
       statusPill,
       footer,
+      replayLinkContainer,
     } = this.domRefs;
     form.hidden = true;
     activeCard.hidden = true;
@@ -243,6 +247,7 @@ export class PopupController {
     infoCloseBtn.hidden = false;
     statusPill.hidden = true;
     footer.hidden = true;
+    replayLinkContainer.hidden = true;
   }
 
   private closeInfo(): void {
@@ -254,6 +259,7 @@ export class PopupController {
       statusPill,
       footer,
       activeCard,
+      replayLinkContainer,
     } = this.domRefs;
     infoPanel.hidden = true;
     infoBtn.hidden = false;
@@ -262,6 +268,7 @@ export class PopupController {
     footer.hidden = false;
     form.hidden = false;
     activeCard.hidden = !this.session;
+    replayLinkContainer.hidden = false;
   }
 
   private async onSubmit(e: Event): Promise<void> {
