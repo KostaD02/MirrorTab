@@ -11,6 +11,8 @@
   <a href="CONTRIBUTING.md">Contributing Guidelines</a>
   ·
   <a href="https://github.com/KostaD02/MirrorTab/issues">Submit an Issue</a>
+  ·
+  <a href="https://chromewebstore.google.com/detail/mirrortab/bljopdbabofhephejfdlmclnjjipihpb">Chrome Web Store</a>
   <br>
 </p>
 
