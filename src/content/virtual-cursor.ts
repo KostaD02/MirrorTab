@@ -1,24 +1,19 @@
 import { APP_NAME } from '@/shared/consts';
+import { logger } from '@/shared/util';
 
 export class VirtualCursor {
-  private readonly host: HTMLDivElement;
-  private readonly cursorEl: HTMLElement;
-  private readonly rippleEl: HTMLElement;
-
-  constructor() {
-    const { host, cursorEl, rippleEl } = this.mount();
-    this.host = host;
-    this.cursorEl = cursorEl;
-    this.rippleEl = rippleEl;
-    this.hide();
-  }
+  private host: HTMLDivElement | null = null;
+  private cursorEl: HTMLElement | null = null;
+  private rippleEl: HTMLElement | null = null;
 
   moveTo(x: number, y: number): void {
+    if (!this.cursorEl) return;
     this.cursorEl.style.transform = `translate(${String(Math.round(x))}px, ${String(Math.round(y))}px)`;
   }
 
   animateClick(x: number, y: number): void {
     this.moveTo(x, y);
+    if (!this.rippleEl) return;
 
     const r = this.rippleEl;
     r.style.setProperty('--rx', `${String(Math.round(x - 16))}px`);
@@ -29,18 +24,24 @@ export class VirtualCursor {
   }
 
   show(): void {
-    this.host.style.display = 'block';
+    if (!this.host) {
+      this.mount();
+    }
+
+    if (this.host) {
+      this.host.style.display = 'block';
+      return;
+    }
+
+    logger.error('Virtual cursor host not found');
   }
 
   hide(): void {
+    if (!this.host) return;
     this.host.style.display = 'none';
   }
 
-  private mount(): {
-    host: HTMLDivElement;
-    cursorEl: HTMLElement;
-    rippleEl: HTMLElement;
-  } {
+  private mount(): void {
     const host = document.createElement('div');
     host.id = `${APP_NAME}-cursor-host`;
     Object.assign(host.style, {
@@ -128,6 +129,8 @@ export class VirtualCursor {
 
     document.documentElement.appendChild(host);
 
-    return { host, cursorEl, rippleEl };
+    this.host = host;
+    this.cursorEl = cursorEl;
+    this.rippleEl = rippleEl;
   }
 }
