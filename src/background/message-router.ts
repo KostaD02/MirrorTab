@@ -56,11 +56,23 @@ export function createMessageRouter(sessionManager: SessionManager): void {
           const session = sessionManager.currentSession;
           if (!session || session.isPaused) break;
           if (sender.tab?.id !== session.sourceTabId) break;
-          chrome.tabs.sendMessage(session.targetTabId, {
-            type: ExtensionMessageTypeEnum.ReplayEvent,
-            payload: message.payload,
-          });
+          for (const targetTabId of session.targetTabIds) {
+            chrome.tabs.sendMessage(targetTabId, {
+              type: ExtensionMessageTypeEnum.ReplayEvent,
+              payload: message.payload,
+            });
+          }
           break;
+        }
+
+        case ExtensionMessageTypeEnum.RemoveTarget: {
+          sessionManager.removeTarget(message.payload.targetTabId).then(() => {
+            sendResponse({
+              type: ExtensionMessageTypeEnum.SessionStatus,
+              payload: sessionManager.currentSession,
+            });
+          });
+          return true;
         }
 
         case ExtensionMessageTypeEnum.StartReplay: {

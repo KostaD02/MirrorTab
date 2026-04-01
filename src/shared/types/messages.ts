@@ -11,6 +11,7 @@ export const ExtensionMessageTypeEnum = {
   SessionStarted: 'session-started',
   SessionError: 'session-error',
   SessionStatus: 'session-status',
+  RemoveTarget: 'remove-target',
   DomEvent: 'dom-event',
   ReplayEvent: 'replay-event',
   SetRole: 'set-role',
@@ -30,12 +31,13 @@ export type ExtensionMessage =
   | { type: typeof ExtensionMessageTypeEnum.GetSession }
   | { type: typeof ExtensionMessageTypeEnum.SessionStarted; payload: ActiveSession }
   | { type: typeof ExtensionMessageTypeEnum.SessionError; error: string }
+  | { type: typeof ExtensionMessageTypeEnum.SessionStatus; payload: ActiveSession | null }
+  | { type: typeof ExtensionMessageTypeEnum.RemoveTarget; payload: { targetTabId: number } }
   | { type: typeof ExtensionMessageTypeEnum.DomEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.ReplayEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.SetRole; role: SessionRole }
   | { type: typeof ExtensionMessageTypeEnum.DownloadRecord, payload: { format: DownloadFormat } }
   | { type: typeof ExtensionMessageTypeEnum.ClearRecord }
-  | { type: typeof ExtensionMessageTypeEnum.SessionStatus; payload: ActiveSession | null }
   | { type: typeof ExtensionMessageTypeEnum.StartReplay; payload: { url: string } }
   | { type: typeof ExtensionMessageTypeEnum.ReplayReady; payload: { targetTabId: number } }
   | { type: typeof ExtensionMessageTypeEnum.StopReplay; payload: { targetTabId: number } };

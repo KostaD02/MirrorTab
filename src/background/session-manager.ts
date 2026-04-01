@@ -27,36 +27,36 @@ export class SessionManager {
     sendResponse: (msg: ExtensionMessage) => void,
   ): Promise<void> {
     try {
-      const [sourceTab, targetTab] = await Promise.all([
+      const [sourceTab, ...targetTabs] = await Promise.all([
         openTab(config.sourceUrl),
-        openTab(config.targetUrl),
+        ...config.targetUrls.map((url) => openTab(url)),
       ]);
 
       const sourceTabId = Number(sourceTab.id);
-      const targetTabId = Number(targetTab.id);
+      const targetTabIds = targetTabs.map((t) => Number(t.id));
 
-      if (isNaN(sourceTabId) || isNaN(targetTabId)) {
+      if (isNaN(sourceTabId) || targetTabIds.some(isNaN)) {
         throw new Error('Failed to create tabs');
       }
 
       await Promise.all([
         waitForTabLoad(sourceTabId),
-        waitForTabLoad(targetTabId),
+        ...targetTabIds.map((id) => waitForTabLoad(id)),
       ]);
 
       await Promise.all([
         sendRoleToTab(sourceTabId, SessionRoleEnum.Source),
-        sendRoleToTab(targetTabId, SessionRoleEnum.Target),
+        ...targetTabIds.map((id) => sendRoleToTab(id, SessionRoleEnum.Target)),
       ]);
 
       await chrome.tabs.update(sourceTabId, { active: true });
 
       this.session = {
         sourceTabId,
-        targetTabId,
+        targetTabIds,
         isPaused: false,
         sourceUrl: config.sourceUrl,
-        targetUrl: config.targetUrl,
+        targetUrls: config.targetUrls,
       };
 
       await this.persist();
@@ -80,7 +80,9 @@ export class SessionManager {
     await this.persist();
     await Promise.all([
       sendRoleToTab(this.session.sourceTabId, SessionRoleEnum.Idle),
-      sendRoleToTab(this.session.targetTabId, SessionRoleEnum.Idle),
+      ...this.session.targetTabIds.map((id) =>
+        sendRoleToTab(id, SessionRoleEnum.Idle),
+      ),
     ]);
   }
 
@@ -90,19 +92,39 @@ export class SessionManager {
     await this.persist();
     await Promise.all([
       sendRoleToTab(this.session.sourceTabId, SessionRoleEnum.Source),
-      sendRoleToTab(this.session.targetTabId, SessionRoleEnum.Target),
+      ...this.session.targetTabIds.map((id) =>
+        sendRoleToTab(id, SessionRoleEnum.Target),
+      ),
     ]);
   }
 
   async stop(): Promise<void> {
     if (!this.session) return;
-    const { sourceTabId, targetTabId } = this.session;
+    const { sourceTabId, targetTabIds } = this.session;
     this.session = null;
     await this.persist();
     await Promise.all([
       sendRoleToTab(sourceTabId, SessionRoleEnum.Idle),
-      sendRoleToTab(targetTabId, SessionRoleEnum.Idle),
+      ...targetTabIds.map((id) => sendRoleToTab(id, SessionRoleEnum.Idle)),
     ]);
+  }
+
+  async removeTarget(targetTabId: number): Promise<void> {
+    if (!this.session) return;
+
+    const idx = this.session.targetTabIds.indexOf(targetTabId);
+    if (idx === -1) return;
+
+    this.session.targetTabIds.splice(idx, 1);
+    this.session.targetUrls.splice(idx, 1);
+    await sendRoleToTab(targetTabId, SessionRoleEnum.Idle);
+
+    if (this.session.targetTabIds.length === 0) {
+      await this.stop();
+      return;
+    }
+
+    await this.persist();
   }
 
   private async persist(): Promise<void> {
