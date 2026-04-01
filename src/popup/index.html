@@ -84,25 +84,15 @@
           ></span>
         </div>
 
-        <div class="field-group d-flex flex-col">
-          <label class="field-label d-flex items-center" for="target-url">
-            <span class="field-icon">🟢</span> Target URL
-          </label>
-          <input
-            id="target-url"
-            class="field-input"
-            type="url"
-            placeholder="https://example.com"
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <span class="field-hint">Events will be replayed here</span>
-          <span
-            id="target-error"
-            class="field-error"
-            role="alert"
-            hidden
-          ></span>
+        <div class="targets-section d-flex flex-col">
+          <div id="target-list" class="target-list d-flex flex-col"></div>
+          <button
+            id="add-target-btn"
+            class="btn-add-target d-flex items-center justify-center"
+            type="button"
+          >
+            + Add Target
+          </button>
         </div>
 
         <p id="error-msg" class="error-msg" role="alert" hidden></p>
@@ -118,15 +108,13 @@
       </form>
 
       <div id="active-card" class="active-card d-flex flex-col" hidden>
-        <div class="active-row d-flex items-center">
-          <div class="active-col d-flex flex-col">
-            <span class="active-role source">SOURCE</span>
-            <span id="active-source" class="active-url"></span>
-          </div>
-          <div class="active-col d-flex flex-col">
-            <span class="active-role target">TARGET</span>
-            <span id="active-target" class="active-url"></span>
-          </div>
+        <div class="active-source-row d-flex flex-col">
+          <span class="active-role source">SOURCE</span>
+          <span id="active-source" class="active-url"></span>
+        </div>
+        <div class="active-targets-section d-flex flex-col">
+          <span class="active-targets-label">TARGETS</span>
+          <div id="active-targets-list" class="active-targets-list d-flex flex-col"></div>
         </div>
         <div class="active-actions d-flex">
           <button

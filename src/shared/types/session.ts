@@ -12,12 +12,12 @@ export type SessionRole =
 
 export interface SessionConfig {
   sourceUrl: string;
-  targetUrl: string;
+  targetUrls: string[];
 }
 
 export interface ActiveSession extends SessionConfig {
   sourceTabId: number;
-  targetTabId: number;
+  targetTabIds: number[];
   isPaused: boolean;
 }
 

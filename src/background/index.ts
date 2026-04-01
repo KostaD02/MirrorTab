@@ -16,7 +16,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
   if (tabId === session.sourceTabId) {
     sendRoleToTab(tabId, SessionRoleEnum.Source);
-  } else if (tabId === session.targetTabId) {
+  } else if (session.targetTabIds.includes(tabId)) {
     sendRoleToTab(tabId, SessionRoleEnum.Target);
   }
 });
@@ -24,7 +24,10 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 chrome.tabs.onRemoved.addListener((tabId) => {
   const session = sessionManager.currentSession;
   if (!session) return;
-  if (tabId === session.sourceTabId || tabId === session.targetTabId) {
+
+  if (tabId === session.sourceTabId) {
     sessionManager.stop();
+  } else if (session.targetTabIds.includes(tabId)) {
+    sessionManager.removeTarget(tabId);
   }
 });
