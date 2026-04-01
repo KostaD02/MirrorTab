@@ -20,11 +20,12 @@
   <a href="https://github.com/KostaD02/MirrorTab/actions/workflows/ci.yml"><img src="https://github.com/KostaD02/MirrorTab/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
 </p>
 
-MirrorTab is a Chrome extension that captures user interactions on one browser tab (the **source**) and replays them live on another tab (the **target**). It supports clicks, keyboard input, form changes, scrolling, and mouse movement - with session recording and export built in.
+MirrorTab is a Chrome extension that captures user interactions on one browser tab (the **source**) and replays them live on one or more target tabs. It supports clicks, keyboard input, form changes, scrolling, and mouse movement - with session recording and export built in.
 
 ## Features
 
-- **Live mirroring** - clicks, inputs, keystrokes, scroll events, and mouse movement are forwarded from the source tab to the target tab in real time
+- **Live mirroring** - clicks, inputs, keystrokes, scroll events, and mouse movement are forwarded from the source tab to every target tab in real time
+- **Multi-target sync** - mirror a single source to multiple targets at once; add up to 10 target URLs per session and manage each one independently
 - **Ghost cursor** - a virtual cursor on the target tab shows exactly where the source user is pointing and clicking
 - **Session control** - start, pause, resume, and stop a mirroring session from the popup
 - **Role badges** - a floating badge on each tab shows whether it is SOURCE or TARGET
@@ -38,12 +39,13 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 ## Usage
 
 1. Click the **MirrorTab** icon in the Chrome toolbar to open the popup
-2. Enter a **Source URL** and a **Target URL**
-3. Click **Start Session** - two new tabs will open automatically
-4. Interact with the **SOURCE** tab; every action is mirrored to the **TARGET** tab in real time
+2. Enter a **Source URL** and one or more **Target URLs** (click **+ Add Target** for additional targets)
+3. Click **Start Session** - the source tab and all target tabs will open automatically
+4. Interact with the **SOURCE** tab; every action is mirrored to all **TARGET** tabs in real time
 5. Use **Pause / Resume** to temporarily suspend mirroring without closing the session
-6. Use **Download JSON** or **Download Text** to export the full event log from the target tab at any time
-7. Click **Stop** to end the session - recorded events are cleared
+6. Remove individual targets from an active session without stopping the whole session
+7. Use **Download JSON** or **Download Text** to export the full event log from each target tab at any time
+8. Click **Stop** to end the entire session - recorded events are cleared
 
 ### Replaying a saved session
 
