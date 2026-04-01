@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/KostaD02/MirrorTab/compare/v1.3.0...v1.3.1) (2026-04-01)
+
+
+### Features
+
+* one to many sync ([#28](https://github.com/KostaD02/MirrorTab/issues/28)) ([c975b4b](https://github.com/KostaD02/MirrorTab/commit/c975b4b37b3e4c165d3d88826d59543b25501cc9))
+
+
+### Bug Fixes
+
+* automatic cursor injection ([#29](https://github.com/KostaD02/MirrorTab/issues/29)) ([3bf803b](https://github.com/KostaD02/MirrorTab/commit/3bf803b07deb7d8da5af043fb3cc24fbf560d91e))
+
 ## [1.3.0](https://github.com/KostaD02/MirrorTab/compare/v1.2.3...v1.3.0) (2026-03-09)
 
 
