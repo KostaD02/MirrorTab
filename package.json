@@ -12,6 +12,7 @@
     "lint": "pnpm exec eslint .",
     "test": "pnpm exec jest",
     "test:watch": "pnpm exec jest --watch",
+    "test:coverage": "pnpm exec jest --coverage",
     "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
