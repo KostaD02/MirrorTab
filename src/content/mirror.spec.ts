@@ -99,19 +99,17 @@ describe('EventCapture', () => {
       const btn = document.createElement('button');
       btn.id = 'my-btn';
       document.body.appendChild(btn);
-      jest
-        .spyOn(btn, 'getBoundingClientRect')
-        .mockReturnValue({
-          left: 100,
-          top: 50,
-          width: 200,
-          height: 40,
-          right: 300,
-          bottom: 90,
-          x: 100,
-          y: 50,
-          toJSON: () => ({}),
-        } as DOMRect);
+      jest.spyOn(btn, 'getBoundingClientRect').mockReturnValue({
+        left: 100,
+        top: 50,
+        width: 200,
+        height: 40,
+        right: 300,
+        bottom: 90,
+        x: 100,
+        y: 50,
+        toJSON: () => ({}),
+      } as DOMRect);
 
       btn.dispatchEvent(
         new MouseEvent('click', {
@@ -135,19 +133,17 @@ describe('EventCapture', () => {
       const span = document.createElement('span');
       span.id = 'zero';
       document.body.appendChild(span);
-      jest
-        .spyOn(span, 'getBoundingClientRect')
-        .mockReturnValue({
-          left: 0,
-          top: 0,
-          width: 0,
-          height: 0,
-          right: 0,
-          bottom: 0,
-          x: 0,
-          y: 0,
-          toJSON: () => ({}),
-        } as DOMRect);
+      jest.spyOn(span, 'getBoundingClientRect').mockReturnValue({
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+        right: 0,
+        bottom: 0,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      } as DOMRect);
 
       span.dispatchEvent(
         new MouseEvent('click', { bubbles: true, clientX: 10, clientY: 10 }),
@@ -268,8 +264,14 @@ describe('EventCapture', () => {
     it('captures element scrolls using the element selector and scrollLeft/scrollTop', () => {
       const div = document.createElement('div');
       div.id = 'scrollbox';
-      Object.defineProperty(div, 'scrollLeft', { value: 5, configurable: true });
-      Object.defineProperty(div, 'scrollTop', { value: 15, configurable: true });
+      Object.defineProperty(div, 'scrollLeft', {
+        value: 5,
+        configurable: true,
+      });
+      Object.defineProperty(div, 'scrollTop', {
+        value: 15,
+        configurable: true,
+      });
       document.body.appendChild(div);
 
       div.dispatchEvent(new Event('scroll', { bubbles: true }));
@@ -310,7 +312,8 @@ describe('EventCapture', () => {
         (c) => c[0].payload?.type === DomEventTypeEnum.Mousemove,
       );
       expect(moveCalls).toHaveLength(1);
-      const content = moveCalls[0][0].payload.content as DomMousemoveEventPayload;
+      const content = moveCalls[0][0].payload
+        .content as DomMousemoveEventPayload;
       expect(content.xRatio).toBeCloseTo(0.6);
       expect(content.yRatio).toBeCloseTo(0.2);
 
@@ -350,19 +353,17 @@ describe('EventReplay', () => {
     const btn = document.createElement('button');
     btn.id = 'root';
     document.body.appendChild(btn);
-    jest
-      .spyOn(btn, 'getBoundingClientRect')
-      .mockReturnValue({
-        left: 0,
-        top: 0,
-        width: 100,
-        height: 40,
-        right: 100,
-        bottom: 40,
-        x: 0,
-        y: 0,
-        toJSON: () => ({}),
-      } as DOMRect);
+    jest.spyOn(btn, 'getBoundingClientRect').mockReturnValue({
+      left: 0,
+      top: 0,
+      width: 100,
+      height: 40,
+      right: 100,
+      bottom: 40,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    } as DOMRect);
     const clickSpy = jest.fn();
     btn.addEventListener('click', clickSpy);
 
@@ -513,9 +514,7 @@ describe('EventReplay', () => {
   });
 
   it('logs a warning for scroll events when the selector is unknown', async () => {
-    const { logger } = (await import('@/shared/util')) as {
-      logger: { warn: jest.Mock };
-    };
+    const logger = (await import('@/shared/util')).logger;
 
     replay.replay({
       type: DomEventTypeEnum.Scroll,
@@ -551,9 +550,7 @@ describe('EventReplay', () => {
   });
 
   it('warns and bails out when the selector does not resolve (non-scroll)', async () => {
-    const { logger } = (await import('@/shared/util')) as {
-      logger: { warn: jest.Mock };
-    };
+    const logger = (await import('@/shared/util')).logger;
 
     replay.replay({
       type: DomEventTypeEnum.Click,
@@ -586,19 +583,17 @@ describe('EventReplay', () => {
     const btn = document.createElement('button');
     btn.id = 'root';
     document.body.appendChild(btn);
-    jest
-      .spyOn(btn, 'getBoundingClientRect')
-      .mockReturnValue({
-        left: 0,
-        top: 0,
-        width: 10,
-        height: 10,
-        right: 0,
-        bottom: 0,
-        x: 0,
-        y: 0,
-        toJSON: () => ({}),
-      } as DOMRect);
+    jest.spyOn(btn, 'getBoundingClientRect').mockReturnValue({
+      left: 0,
+      top: 0,
+      width: 10,
+      height: 10,
+      right: 0,
+      bottom: 0,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    } as DOMRect);
 
     replay.replay({
       ...basePayload,
