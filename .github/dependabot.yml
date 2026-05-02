@@ -1,0 +1,54 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Tbilisi
+    open-pull-requests-limit: 5
+    rebase-strategy: disabled
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      eslint-prettier:
+        patterns:
+          - 'eslint'
+          - 'eslint-*'
+          - '@eslint/*'
+          - '@typescript-eslint/*'
+          - 'typescript-eslint'
+          - 'prettier'
+      jest:
+        patterns:
+          - 'jest'
+          - 'jest-*'
+          - 'ts-jest'
+          - '@types/jest'
+      vite:
+        patterns:
+          - 'vite'
+          - 'vite-*'
+          - '@crxjs/*'
+      commitlint:
+        patterns:
+          - '@commitlint/*'
+      types:
+        patterns:
+          - '@types/*'
+        exclude-patterns:
+          - '@types/jest'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: Asia/Tbilisi
+    open-pull-requests-limit: 3
+    rebase-strategy: disabled
+    commit-message:
+      prefix: ci
