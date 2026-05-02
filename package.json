@@ -22,7 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
-    "@crxjs/vite-plugin": "^2.0.3",
+    "@crxjs/vite-plugin": "^2.4.0",
     "@eslint/js": "^10.0.1",
     "@types/chrome": "^0.1.1",
     "@types/jest": "^30.0.0",
@@ -41,7 +41,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^7.0.5",
+    "vite": "^8.0.10",
     "vite-plugin-zip-pack": "^1.2.4"
   }
 }
