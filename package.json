@@ -20,8 +20,8 @@
     "postrelease": "pnpm build"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.0",
-    "@commitlint/config-conventional": "^21.0.0",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@crxjs/vite-plugin": "^2.4.0",
     "@eslint/js": "^10.0.1",
     "@types/chrome": "^0.1.42",
