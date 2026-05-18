@@ -27,9 +27,9 @@
     "@types/chrome": "^0.1.42",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.7.0",
-    "@typescript-eslint/eslint-plugin": "^8.59.2",
-    "@typescript-eslint/parser": "^8.59.2",
-    "eslint": "^10.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "eslint": "^10.4.0",
     "globals": "^17.3.0",
     "husky": "^9.1.7",
     "jest": "^30.4.2",
@@ -40,7 +40,7 @@
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.59.2",
+    "typescript-eslint": "^8.59.3",
     "vite": "^8.0.12",
     "vite-plugin-zip-pack": "^1.2.4"
   }
