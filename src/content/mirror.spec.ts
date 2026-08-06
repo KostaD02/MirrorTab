@@ -341,7 +341,15 @@ describe('EventCapture', () => {
         return field;
       }
 
-      it('does not capture input from a password field by default', () => {
+      function optOutOfPasswords(): void {
+        capture.setSettings({
+          ...DEFAULT_SETTINGS,
+          mirrorPasswordFields: false,
+        });
+      }
+
+      it('does not capture input from a password field when opted out', () => {
+        optOutOfPasswords();
         const field = addPasswordField();
 
         field.dispatchEvent(new Event('input', { bubbles: true }));
@@ -349,7 +357,8 @@ describe('EventCapture', () => {
         expect(getLastDomEvent()).toBeNull();
       });
 
-      it('does not capture change from a password field by default', () => {
+      it('does not capture change from a password field when opted out', () => {
+        optOutOfPasswords();
         const field = addPasswordField();
 
         field.dispatchEvent(new Event('change', { bubbles: true }));
@@ -357,7 +366,8 @@ describe('EventCapture', () => {
         expect(getLastDomEvent()).toBeNull();
       });
 
-      it('does not capture keystrokes typed into a password field', () => {
+      it('does not capture keystrokes in a password field when opted out', () => {
+        optOutOfPasswords();
         const field = addPasswordField();
 
         field.dispatchEvent(
@@ -370,11 +380,7 @@ describe('EventCapture', () => {
         expect(getLastDomEvent()).toBeNull();
       });
 
-      it('captures password fields once the user opts in', () => {
-        capture.setSettings({
-          ...DEFAULT_SETTINGS,
-          mirrorPasswordFields: true,
-        });
+      it('captures password fields by default', () => {
         const field = addPasswordField();
 
         field.dispatchEvent(new Event('input', { bubbles: true }));

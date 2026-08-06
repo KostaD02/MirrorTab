@@ -61,7 +61,7 @@ Open the **gear icon** in the popup header. Changes are saved to `chrome.storage
 
 | Setting                   | Default | Effect                                                                                    |
 | ------------------------- | ------- | ----------------------------------------------------------------------------------------- |
-| **Mirror password fields** | Off     | When off, values and keystrokes from credential inputs are never forwarded or recorded    |
+| **Mirror password fields** | On      | Turn off to keep values and keystrokes from credential inputs out of target tabs and exported logs |
 | **Show ghost cursor**     | On      | The virtual pointer drawn on target and replay tabs                                       |
 | **Show role badge**       | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos    |
 | **Mouse movement**        | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic |
@@ -77,7 +77,7 @@ Some sites rate-limit or throttle a burst of simultaneous page loads. Setting a 
 
 All tabs still appear immediately so you can see the full set, but each target parks on a MirrorTab waiting page showing a live countdown and the URL it is queued for. The session becomes active as soon as the source tab is ready - each target joins as its timer elapses, so the popup is never left waiting on a long queue.
 
-> **Password fields are not mirrored by default.** Credential inputs are detected by `type="password"` and by `autocomplete="current-password"` / `"new-password"`, so fields unmasked by a "show password" toggle stay protected. Enable the setting if you specifically need to mirror a login flow - note that doing so puts the value in plaintext in exported session logs.
+> **Password fields are mirrored by default**, so login flows keep working as before. While it is on, credentials reach the target tabs and appear in plaintext in exported session logs - turn it off when mirroring anything you would not want in an exported file. Credential inputs are detected by `type="password"` and by `autocomplete="current-password"` / `"new-password"`, so fields unmasked by a "show password" toggle are covered too.
 
 ## Recorded event format
 

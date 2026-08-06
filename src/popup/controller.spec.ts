@@ -506,7 +506,7 @@ describe('PopupController', () => {
       controller.init();
       await flushPromises();
 
-      expect(checkbox('set-mirror-passwords').checked).toBe(false);
+      expect(checkbox('set-mirror-passwords').checked).toBe(true);
       expect(checkbox('set-show-cursor').checked).toBe(true);
       expect(checkbox('set-show-badge').checked).toBe(true);
       expect(checkbox('set-mirror-mousemove').checked).toBe(true);
@@ -519,7 +519,7 @@ describe('PopupController', () => {
           key === SETTINGS_STORAGE_KEY
             ? Promise.resolve({
                 [SETTINGS_STORAGE_KEY]: {
-                  mirrorPasswordFields: true,
+                  mirrorPasswordFields: false,
                   showGhostCursor: false,
                   scrollDebounceMs: 250,
                 },
@@ -530,7 +530,7 @@ describe('PopupController', () => {
       controller.init();
       await flushPromises();
 
-      expect(checkbox('set-mirror-passwords').checked).toBe(true);
+      expect(checkbox('set-mirror-passwords').checked).toBe(false);
       expect(checkbox('set-show-cursor').checked).toBe(false);
       expect(checkbox('set-show-badge').checked).toBe(true);
       expect(debounceInput().value).toBe('250');
@@ -591,11 +591,11 @@ describe('PopupController', () => {
       await flushPromises();
 
       const box = checkbox('set-mirror-passwords');
-      box.checked = true;
+      box.checked = false;
       box.dispatchEvent(new Event('change'));
 
       expect(lastSettingsWrite()).toMatchObject({
-        mirrorPasswordFields: true,
+        mirrorPasswordFields: false,
       });
     });
 

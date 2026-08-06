@@ -1,7 +1,7 @@
 import { MirrorSettings } from '../types/settings';
 
 export const DEFAULT_SETTINGS: MirrorSettings = {
-  mirrorPasswordFields: false,
+  mirrorPasswordFields: true,
   showGhostCursor: true,
   showRoleBadge: true,
   mirrorMousemove: true,

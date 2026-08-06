@@ -63,9 +63,15 @@ describe('normaliseSettings', () => {
     expect(normaliseSettings(42)).toEqual(DEFAULT_SETTINGS);
   });
 
-  it('does not mirror password fields by default', () => {
-    expect(DEFAULT_SETTINGS.mirrorPasswordFields).toBe(false);
-    expect(normaliseSettings({}).mirrorPasswordFields).toBe(false);
+  it('mirrors password fields by default, matching pre-settings behaviour', () => {
+    expect(DEFAULT_SETTINGS.mirrorPasswordFields).toBe(true);
+    expect(normaliseSettings({}).mirrorPasswordFields).toBe(true);
+  });
+
+  it('keeps password mirroring off once the user opts out', () => {
+    expect(
+      normaliseSettings({ mirrorPasswordFields: false }).mirrorPasswordFields,
+    ).toBe(false);
   });
 
   it('keeps stored booleans', () => {
