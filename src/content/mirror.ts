@@ -8,11 +8,18 @@ import {
   DomScrollEventPayload,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
+  MirrorSettings,
   SessionRecord,
   SessionRole,
   SessionRoleEnum,
 } from '@/shared/types';
-import { getElementMeta, getSemanticSelector, logger } from '@/shared/util';
+import {
+  getElementMeta,
+  getSemanticSelector,
+  isSensitiveField,
+  logger,
+} from '@/shared/util';
+import { DEFAULT_SETTINGS } from '@/shared/consts';
 import { VirtualCursor } from './virtual-cursor';
 
 // are not re-captured and forwarded in an infinite loop.
@@ -57,6 +64,7 @@ export class EventCapture {
   private lastMouseXRatio = 0;
   private lastMouseYRatio = 0;
   private role: SessionRole = SessionRoleEnum.Idle;
+  private settings: MirrorSettings = { ...DEFAULT_SETTINGS };
 
   constructor() {
     this.registerListeners();
@@ -66,8 +74,16 @@ export class EventCapture {
     this.role = role;
   }
 
+  setSettings(settings: MirrorSettings): void {
+    this.settings = settings;
+  }
+
   private active(): boolean {
     return this.role === SessionRoleEnum.Source && !isReplaying;
+  }
+
+  private blocked(target: Element | null): boolean {
+    return !this.settings.mirrorPasswordFields && isSensitiveField(target);
   }
 
   private registerListeners(): void {
@@ -103,6 +119,7 @@ export class EventCapture {
           | HTMLTextAreaElement
           | null;
         if (!target) return;
+        if (this.blocked(target)) return;
         const selector = getSemanticSelector(target);
         sendDomEvent({
           type: DomEventTypeEnum.Input,
@@ -121,6 +138,7 @@ export class EventCapture {
         if (!this.active()) return;
         const target = e.target as HTMLInputElement | HTMLSelectElement | null;
         if (!target) return;
+        if (this.blocked(target)) return;
         const selector = getSemanticSelector(target);
         const value = (target as HTMLInputElement).value;
         sendDomEvent({
@@ -138,8 +156,10 @@ export class EventCapture {
       DomEventTypeEnum.Keydown,
       (e: KeyboardEvent) => {
         if (!this.active()) return;
+        if (!this.settings.mirrorKeystrokes) return;
         const target = e.target as Element | null;
         if (!target) return;
+        if (this.blocked(target)) return;
         const { key, code, ctrlKey, shiftKey, altKey, metaKey } = e;
         const content: DomKeyboardEventPayload = {
           key,
@@ -163,8 +183,10 @@ export class EventCapture {
       DomEventTypeEnum.Keyup,
       (e: KeyboardEvent) => {
         if (!this.active()) return;
+        if (!this.settings.mirrorKeystrokes) return;
         const target = e.target as Element | null;
         if (!target) return;
+        if (this.blocked(target)) return;
         const { key, code, ctrlKey, shiftKey, altKey, metaKey } = e;
         const content: DomKeyboardEventPayload = {
           key,
@@ -188,6 +210,7 @@ export class EventCapture {
       DomEventTypeEnum.Scroll,
       (e: Event) => {
         if (!this.active()) return;
+        if (!this.settings.mirrorScroll) return;
 
         const target = e.target as Element | Document | null;
         const isWindow =
@@ -223,7 +246,7 @@ export class EventCapture {
               selector,
               content: pos,
             });
-          }, 50),
+          }, this.settings.scrollDebounceMs),
         );
       },
       { capture: true, passive: true },
@@ -233,6 +256,7 @@ export class EventCapture {
       DomEventTypeEnum.Mousemove,
       (e: MouseEvent) => {
         if (!this.active()) return;
+        if (!this.settings.mirrorMousemove) return;
         this.lastMouseXRatio = e.clientX / window.innerWidth;
         this.lastMouseYRatio = e.clientY / window.innerHeight;
 
@@ -258,8 +282,14 @@ export class EventCapture {
 }
 
 export class EventReplay extends Record {
+  private settings: MirrorSettings = { ...DEFAULT_SETTINGS };
+
   constructor(private readonly cursor: VirtualCursor) {
     super();
+  }
+
+  setSettings(settings: MirrorSettings): void {
+    this.settings = settings;
   }
 
   replay(payload: DomEventPayload): void {
@@ -277,12 +307,15 @@ export class EventReplay extends Record {
           selectorStackTrace: selector,
           content: { scrollX, scrollY },
         });
+        const behavior: ScrollBehavior = this.settings.smoothScroll
+          ? 'smooth'
+          : 'auto';
         if (selector === 'window') {
-          window.scrollTo({ left: scrollX, top: scrollY, behavior: 'smooth' });
+          window.scrollTo({ left: scrollX, top: scrollY, behavior });
         } else {
           const el = this.resolveElement(selector);
           if (el) {
-            el.scrollTo({ left: scrollX, top: scrollY, behavior: 'smooth' });
+            el.scrollTo({ left: scrollX, top: scrollY, behavior });
           } else {
             logger.warn(
               '[replay scroll] could not resolve element for selector:',

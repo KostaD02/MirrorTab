@@ -33,6 +33,7 @@ MirrorTab is a Chrome extension that captures user interactions on one browser t
 - **Export** - download the recorded session as JSON or plain text before or after stopping
 - **Standalone Replay Engine** - upload previously exported session files to an isolated Replay tab to automatically replay all recorded user actions with full playback controls (play, pause, stop, adjust speed)
 - **Smart selector** - elements with an `id` are resolved via `#id`; all others use a full structural CSS path, keeping replay accurate across DOM changes
+- **Settings** - a preferences panel in the popup for privacy, overlays, which events to mirror, and playback; saved locally and applied to running sessions immediately
 
 The production bundle can be downloaded from [releases](https://github.com/KostaD02/MirrorTab/releases).
 
@@ -54,6 +55,30 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 3. Enter the URL of the environment you want to test the replay on
 4. Click **Start** to spawn the Replay tab and watch the automated execution
 
+## Settings
+
+Open the **gear icon** in the popup header. Changes are saved to `chrome.storage.local` and picked up by every open tab straight away - no need to restart a session.
+
+| Setting                   | Default | Effect                                                                                    |
+| ------------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| **Mirror password fields** | Off     | When off, values and keystrokes from credential inputs are never forwarded or recorded    |
+| **Show ghost cursor**     | On      | The virtual pointer drawn on target and replay tabs                                       |
+| **Show role badge**       | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos    |
+| **Mouse movement**        | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic |
+| **Scrolling**             | On      | Forward scroll position changes                                                            |
+| **Keystrokes**            | On      | Forward `keydown` / `keyup`, which are separate from typed input values                   |
+| **Smooth scrolling**      | On      | When off, replayed scrolls jump instantly, which keeps fast scrolling in sync              |
+| **Scroll debounce**       | 50 ms   | Quiet period before a settled scroll position is forwarded (0-2000 ms)                    |
+| **Staggered tab opening** | 0 ms    | Delay between each target tab opening (0-60000 ms). `0` opens them all at once            |
+
+### Staggered tab opening
+
+Some sites rate-limit or throttle a burst of simultaneous page loads. Setting a stagger opens the target tabs one delay apart instead of all at once.
+
+All tabs still appear immediately so you can see the full set, but each target parks on a MirrorTab waiting page showing a live countdown and the URL it is queued for. The session becomes active as soon as the source tab is ready - each target joins as its timer elapses, so the popup is never left waiting on a long queue.
+
+> **Password fields are not mirrored by default.** Credential inputs are detected by `type="password"` and by `autocomplete="current-password"` / `"new-password"`, so fields unmasked by a "show password" toggle stay protected. Enable the setting if you specifically need to mirror a login flow - note that doing so puts the value in plaintext in exported session logs.
+
 ## Recorded event format
 
 Each entry in the exported session log contains:
@@ -68,9 +93,9 @@ Each entry in the exported session log contains:
 
 ## Permissions
 
-| Permission | Reason                                                                   |
-| ---------- | ------------------------------------------------------------------------ |
-| `storage`  | Persist the active session and recordings across service worker restarts |
+| Permission | Reason                                                            |
+| ---------- | ------------------------------------------------------------------- |
+| `storage`  | Persist the active session and your settings across service worker restarts |
 
 ## Contributing
 

@@ -2,32 +2,58 @@ import {
   DownloadFormat,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
+  MirrorSettings,
   SessionRecord,
+  SessionRole,
   SessionRoleEnum,
 } from '@/shared/types';
 import { EventCapture, EventReplay } from './mirror';
 import { RoleBadge } from './role-badge';
 import { VirtualCursor } from './virtual-cursor';
-import { logger } from '@/shared/util';
+import { loadSettings, logger, watchSettings } from '@/shared/util';
+import { DEFAULT_SETTINGS } from '@/shared/consts';
 
 const cursor = new VirtualCursor();
 const capture = new EventCapture();
 const replay = new EventReplay(cursor);
 const badge = new RoleBadge();
 
+let currentRole: SessionRole = SessionRoleEnum.Idle;
+let settings: MirrorSettings = { ...DEFAULT_SETTINGS };
+
+function applyOverlays(): void {
+  badge.update(settings.showRoleBadge ? currentRole : SessionRoleEnum.Idle);
+
+  const wantsCursor =
+    currentRole === SessionRoleEnum.Target ||
+    currentRole === SessionRoleEnum.Replay;
+
+  if (settings.showGhostCursor && wantsCursor) {
+    cursor.show();
+  } else {
+    cursor.hide();
+  }
+}
+
+function applySettings(next: MirrorSettings): void {
+  settings = next;
+  capture.setSettings(next);
+  replay.setSettings(next);
+  applyOverlays();
+}
+
+loadSettings()
+  .then(applySettings)
+  .catch(() => undefined);
+
+watchSettings(applySettings);
+
 chrome.runtime.onMessage.addListener((message: ExtensionMessage) => {
   switch (message.type) {
     case ExtensionMessageTypeEnum.SetRole: {
+      currentRole = message.role;
       capture.setRole(message.role);
-      badge.update(message.role);
-      if (
-        message.role === SessionRoleEnum.Target ||
-        message.role === SessionRoleEnum.Replay
-      ) {
-        cursor.show();
-      } else {
-        cursor.hide();
-      }
+      applyOverlays();
       logger.log(`Role set to: ${message.role}`);
       break;
     }
