@@ -2,7 +2,13 @@ import { ExtensionMessageTypeEnum, SessionRoleEnum } from '@/shared/types';
 import { chrome } from 'jest-chrome';
 import { logger } from '../logger/logger';
 import { normaliseUrl } from '../url/url';
-import { openTab, waitForTabLoad, sendRoleToTab } from './tab';
+import {
+  openTab,
+  openRawTab,
+  navigateTab,
+  waitForTabLoad,
+  sendRoleToTab,
+} from './tab';
 import { MAX_RETRY_ATTEMPTS } from '@/shared/consts';
 
 jest.mock('../logger/logger', () => ({
@@ -37,6 +43,34 @@ describe('Tab utils', () => {
       expect(normaliseUrl).toHaveBeenCalledWith(url);
       expect(chrome.tabs.create).toHaveBeenCalledWith({ url, active: false });
       expect(result.id).toBe(123);
+    });
+  });
+
+  describe('openRawTab', () => {
+    test('creates a tab with the URL untouched so extension pages survive', async () => {
+      (chrome.tabs.create as jest.Mock).mockResolvedValue({
+        id: 321,
+      } as unknown as chrome.tabs.Tab);
+
+      const url = 'chrome-extension://abc/src/pending/index.html?url=x';
+      const result = await openRawTab(url);
+
+      expect(normaliseUrl).not.toHaveBeenCalled();
+      expect(chrome.tabs.create).toHaveBeenCalledWith({ url, active: false });
+      expect(result.id).toBe(321);
+    });
+  });
+
+  describe('navigateTab', () => {
+    test('points an existing tab at the normalized URL', async () => {
+      (chrome.tabs.update as jest.Mock).mockResolvedValue(undefined);
+
+      await navigateTab(7, 'example.com');
+
+      expect(normaliseUrl).toHaveBeenCalledWith('example.com');
+      expect(chrome.tabs.update).toHaveBeenCalledWith(7, {
+        url: 'example.com',
+      });
     });
   });
 

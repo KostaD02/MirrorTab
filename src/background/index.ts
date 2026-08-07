@@ -1,7 +1,7 @@
 import { sendRoleToTab } from '@/shared/util';
+import { SessionRoleEnum } from '@/shared/types';
 import { createMessageRouter } from './message-router';
 import { SessionManager } from './session-manager';
-import { SessionRoleEnum } from '@/shared/types';
 
 const sessionManager = new SessionManager();
 

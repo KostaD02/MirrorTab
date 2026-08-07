@@ -23,6 +23,7 @@ import {
 } from '@/shared/types';
 import { EventCapture, EventReplay } from './mirror';
 import { VirtualCursor } from './virtual-cursor';
+import { DEFAULT_SETTINGS } from '@/shared/consts';
 
 jest.mock('@/shared/util', () => ({
   ...jest.requireActual('@/shared/util'),
@@ -65,6 +66,7 @@ describe('EventCapture', () => {
     document.body.innerHTML = '';
     (chrome.runtime.sendMessage as jest.Mock).mockResolvedValue(undefined);
     capture.setRole(SessionRoleEnum.Idle);
+    capture.setSettings({ ...DEFAULT_SETTINGS });
   });
 
   afterEach(() => {
@@ -328,6 +330,126 @@ describe('EventCapture', () => {
 
       expect(getLastDomEvent()).toBeNull();
     });
+
+    describe('settings', () => {
+      function addPasswordField(): HTMLInputElement {
+        const field = document.createElement('input');
+        field.type = 'password';
+        field.id = 'pw';
+        field.value = 'hunter2';
+        document.body.appendChild(field);
+        return field;
+      }
+
+      function optOutOfPasswords(): void {
+        capture.setSettings({
+          ...DEFAULT_SETTINGS,
+          mirrorPasswordFields: false,
+        });
+      }
+
+      it('does not capture input from a password field when opted out', () => {
+        optOutOfPasswords();
+        const field = addPasswordField();
+
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('does not capture change from a password field when opted out', () => {
+        optOutOfPasswords();
+        const field = addPasswordField();
+
+        field.dispatchEvent(new Event('change', { bubbles: true }));
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('does not capture keystrokes in a password field when opted out', () => {
+        optOutOfPasswords();
+        const field = addPasswordField();
+
+        field.dispatchEvent(
+          new KeyboardEvent('keydown', { key: 'h', bubbles: true }),
+        );
+        field.dispatchEvent(
+          new KeyboardEvent('keyup', { key: 'h', bubbles: true }),
+        );
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('captures password fields by default', () => {
+        const field = addPasswordField();
+
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+
+        const payload = getLastDomEvent();
+        expect(payload?.type).toBe(DomEventTypeEnum.Input);
+        expect((payload?.content as DomInputEventPayload).value).toBe(
+          'hunter2',
+        );
+      });
+
+      it('still captures input from ordinary fields', () => {
+        const field = document.createElement('input');
+        field.type = 'text';
+        field.id = 'plain';
+        field.value = 'hello';
+        document.body.appendChild(field);
+
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+
+        expect(getLastDomEvent()?.type).toBe(DomEventTypeEnum.Input);
+      });
+
+      it('skips mousemove when the setting is off', () => {
+        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorMousemove: false });
+
+        document.dispatchEvent(
+          new MouseEvent('mousemove', { clientX: 10, clientY: 10 }),
+        );
+
+        expect(chrome.runtime.sendMessage).not.toHaveBeenCalled();
+      });
+
+      it('skips scroll when the setting is off', () => {
+        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorScroll: false });
+
+        document.dispatchEvent(new Event('scroll'));
+        jest.advanceTimersByTime(200);
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('skips keystrokes when the setting is off', () => {
+        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorKeystrokes: false });
+        const field = document.createElement('input');
+        document.body.appendChild(field);
+
+        field.dispatchEvent(
+          new KeyboardEvent('keydown', { key: 'a', bubbles: true }),
+        );
+        field.dispatchEvent(
+          new KeyboardEvent('keyup', { key: 'a', bubbles: true }),
+        );
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('honours a custom scroll debounce', () => {
+        capture.setSettings({ ...DEFAULT_SETTINGS, scrollDebounceMs: 300 });
+
+        document.dispatchEvent(new Event('scroll'));
+
+        jest.advanceTimersByTime(100);
+        expect(getLastDomEvent()).toBeNull();
+
+        jest.advanceTimersByTime(250);
+        expect(getLastDomEvent()?.type).toBe(DomEventTypeEnum.Scroll);
+      });
+    });
   });
 });
 
@@ -510,6 +632,48 @@ describe('EventReplay', () => {
       left: 5,
       top: 15,
       behavior: 'smooth',
+    });
+  });
+
+  it('jumps instantly when smooth scrolling is disabled', () => {
+    const scrollToSpy = jest
+      .spyOn(window, 'scrollTo')
+      .mockImplementation(() => undefined);
+    replay.setSettings({ ...DEFAULT_SETTINGS, smoothScroll: false });
+
+    replay.replay({
+      type: DomEventTypeEnum.Scroll,
+      selector: 'window',
+      timestamp: basePayload.timestamp,
+      content: { scrollX: 10, scrollY: 20 } as DomScrollEventPayload,
+    });
+
+    expect(scrollToSpy).toHaveBeenCalledWith({
+      left: 10,
+      top: 20,
+      behavior: 'auto',
+    });
+  });
+
+  it('jumps an element instantly when smooth scrolling is disabled', () => {
+    const box = document.createElement('div');
+    box.id = 'scroll';
+    const elScrollSpy = jest.fn();
+    (box as unknown as { scrollTo: typeof elScrollSpy }).scrollTo = elScrollSpy;
+    document.body.appendChild(box);
+    replay.setSettings({ ...DEFAULT_SETTINGS, smoothScroll: false });
+
+    replay.replay({
+      type: DomEventTypeEnum.Scroll,
+      selector: '#scroll',
+      timestamp: basePayload.timestamp,
+      content: { scrollX: 5, scrollY: 15 } as DomScrollEventPayload,
+    });
+
+    expect(elScrollSpy).toHaveBeenCalledWith({
+      left: 5,
+      top: 15,
+      behavior: 'auto',
     });
   });
 

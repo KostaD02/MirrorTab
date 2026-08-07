@@ -23,3 +23,10 @@ export { ExtensionMessageTypeEnum } from './messages';
 
 export type { DownloadFormat } from './download';
 export { DownloadFormatEnum } from './download';
+
+export type {
+  MirrorSettings,
+  MirrorSettingKey,
+  MirrorSettingBooleanKey,
+  MirrorSettingNumberKey,
+} from './settings';

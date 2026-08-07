@@ -6,16 +6,33 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import {
+  DEFAULT_SETTINGS,
   RECORDS_STORAGE_KEY,
   STORAGE_KEY,
 } from '@/shared/consts';
-import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
+import {
+  buildPendingUrl,
+  clampTabOpenDelay,
+  loadSettings,
+  navigateTab,
+  openRawTab,
+  openTab,
+  sendRoleToTab,
+  sleepKeepingWorkerAlive,
+  waitForTabLoad,
+} from '@/shared/util';
 import { SessionManager } from './session-manager';
 
 jest.mock('@/shared/util', () => ({
   openTab: jest.fn(),
+  openRawTab: jest.fn(),
+  navigateTab: jest.fn(),
   sendRoleToTab: jest.fn(),
   waitForTabLoad: jest.fn(),
+  loadSettings: jest.fn(),
+  sleepKeepingWorkerAlive: jest.fn(),
+  buildPendingUrl: jest.fn(),
+  clampTabOpenDelay: jest.fn(),
 }));
 
 const mockedOpenTab = openTab as jest.MockedFunction<typeof openTab>;
@@ -25,9 +42,31 @@ const mockedSendRoleToTab = sendRoleToTab as jest.MockedFunction<
 const mockedWaitForTabLoad = waitForTabLoad as jest.MockedFunction<
   typeof waitForTabLoad
 >;
+const mockedOpenRawTab = openRawTab as jest.MockedFunction<typeof openRawTab>;
+const mockedNavigateTab = navigateTab as jest.MockedFunction<
+  typeof navigateTab
+>;
+const mockedLoadSettings = loadSettings as jest.MockedFunction<
+  typeof loadSettings
+>;
+const mockedSleep = sleepKeepingWorkerAlive as jest.MockedFunction<
+  typeof sleepKeepingWorkerAlive
+>;
+const mockedBuildPendingUrl = buildPendingUrl as jest.MockedFunction<
+  typeof buildPendingUrl
+>;
+const mockedClampTabOpenDelay = clampTabOpenDelay as jest.MockedFunction<
+  typeof clampTabOpenDelay
+>;
 
 const makeTab = (id: number) =>
   ({ id }) as unknown as chrome.tabs.Tab;
+
+async function flushPromises(): Promise<void> {
+  for (let i = 0; i < 50; i++) {
+    await Promise.resolve();
+  }
+}
 
 describe('SessionManager', () => {
   let manager: SessionManager;
@@ -43,6 +82,13 @@ describe('SessionManager', () => {
 
     mockedSendRoleToTab.mockResolvedValue(undefined);
     mockedWaitForTabLoad.mockResolvedValue(undefined);
+    mockedNavigateTab.mockResolvedValue(undefined);
+    mockedSleep.mockResolvedValue(undefined);
+    mockedLoadSettings.mockResolvedValue({ ...DEFAULT_SETTINGS });
+    mockedClampTabOpenDelay.mockImplementation((v) => v);
+    mockedBuildPendingUrl.mockImplementation(
+      (url, deadline) => `pending://${url}?deadline=${String(deadline)}`,
+    );
   });
 
   describe('restore', () => {
@@ -122,6 +168,188 @@ describe('SessionManager', () => {
       expect(sendResponse).toHaveBeenCalledWith({
         type: ExtensionMessageTypeEnum.SessionStarted,
         payload: manager.currentSession,
+      });
+    });
+
+    describe('staggered tab opening', () => {
+      beforeEach(() => {
+        mockedLoadSettings.mockResolvedValue({
+          ...DEFAULT_SETTINGS,
+          tabOpenDelayMs: 10000,
+        });
+      });
+
+      it('parks targets on the waiting page and navigates them one delay apart', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab
+          .mockResolvedValueOnce(makeTab(20))
+          .mockResolvedValueOnce(makeTab(30));
+
+        await manager.start(
+          {
+            sourceUrl: 'https://src.test',
+            targetUrls: ['https://a.test', 'https://b.test'],
+          },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(mockedOpenTab).toHaveBeenCalledTimes(1);
+        expect(mockedOpenTab).toHaveBeenCalledWith('https://src.test');
+        expect(mockedOpenRawTab).toHaveBeenCalledTimes(2);
+
+        const deadlines = mockedBuildPendingUrl.mock.calls.map((c) => c[1]);
+        expect(deadlines[1] - deadlines[0]).toBe(10000);
+
+        expect(mockedSleep).toHaveBeenCalledWith(10000);
+        expect(mockedNavigateTab).toHaveBeenCalledWith(20, 'https://a.test');
+        expect(mockedNavigateTab).toHaveBeenCalledWith(30, 'https://b.test');
+        expect(mockedSendRoleToTab).toHaveBeenCalledWith(
+          20,
+          SessionRoleEnum.Target,
+        );
+        expect(mockedSendRoleToTab).toHaveBeenCalledWith(
+          30,
+          SessionRoleEnum.Target,
+        );
+      });
+
+      it('responds before the stagger finishes so the popup is not blocked', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab.mockResolvedValueOnce(makeTab(20));
+
+        let resolveSleep: (() => void) | null = null;
+        mockedSleep.mockImplementation(
+          () =>
+            new Promise<void>((r) => {
+              resolveSleep = r;
+            }),
+        );
+
+        const sendResponse = jest.fn();
+        await manager.start(
+          { sourceUrl: 'https://src.test', targetUrls: ['https://a.test'] },
+          sendResponse,
+        );
+
+        expect(sendResponse).toHaveBeenCalledWith({
+          type: ExtensionMessageTypeEnum.SessionStarted,
+          payload: manager.currentSession,
+        });
+        expect(mockedNavigateTab).not.toHaveBeenCalled();
+
+        resolveSleep!();
+      });
+
+      it('abandons the remaining queue when the session is stopped mid-stagger', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab
+          .mockResolvedValueOnce(makeTab(20))
+          .mockResolvedValueOnce(makeTab(30));
+
+        mockedSleep.mockImplementation(async () => {
+          await manager.stop();
+        });
+
+        await manager.start(
+          {
+            sourceUrl: 'https://src.test',
+            targetUrls: ['https://a.test', 'https://b.test'],
+          },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(mockedNavigateTab).not.toHaveBeenCalled();
+      });
+
+      it('never navigates a target whose waiting page was closed', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab
+          .mockResolvedValueOnce(makeTab(20))
+          .mockResolvedValueOnce(makeTab(30));
+
+        let closed = false;
+        mockedSleep.mockImplementation(async () => {
+          if (!closed) {
+            closed = true;
+            await manager.removeTarget(20);
+          }
+        });
+
+        await manager.start(
+          {
+            sourceUrl: 'https://src.test',
+            targetUrls: ['https://a.test', 'https://b.test'],
+          },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(mockedNavigateTab).not.toHaveBeenCalledWith(
+          20,
+          'https://a.test',
+        );
+        expect(mockedNavigateTab).toHaveBeenCalledWith(30, 'https://b.test');
+      });
+
+      it('stops the session when the only waiting page is closed', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab.mockResolvedValueOnce(makeTab(20));
+
+        mockedSleep.mockImplementation(async () => {
+          await manager.removeTarget(20);
+        });
+
+        await manager.start(
+          { sourceUrl: 'https://src.test', targetUrls: ['https://a.test'] },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(manager.currentSession).toBeNull();
+        expect(mockedNavigateTab).not.toHaveBeenCalled();
+        expect(mockedSendRoleToTab).toHaveBeenCalledWith(
+          10,
+          SessionRoleEnum.Idle,
+        );
+      });
+
+      it('drops a target that disappears while being navigated', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab.mockResolvedValueOnce(makeTab(20));
+        mockedNavigateTab.mockRejectedValueOnce(new Error('No tab with id 20'));
+
+        await manager.start(
+          { sourceUrl: 'https://src.test', targetUrls: ['https://a.test'] },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(manager.currentSession).toBeNull();
+      });
+
+      it('keeps going when one target tab was closed mid-stagger', async () => {
+        mockedOpenTab.mockResolvedValueOnce(makeTab(10));
+        mockedOpenRawTab
+          .mockResolvedValueOnce(makeTab(20))
+          .mockResolvedValueOnce(makeTab(30));
+        mockedNavigateTab.mockRejectedValueOnce(new Error('No tab with id 20'));
+
+        await manager.start(
+          {
+            sourceUrl: 'https://src.test',
+            targetUrls: ['https://a.test', 'https://b.test'],
+          },
+          jest.fn(),
+        );
+        await flushPromises();
+
+        expect(mockedNavigateTab).toHaveBeenCalledWith(30, 'https://b.test');
+        expect(mockedSendRoleToTab).toHaveBeenCalledWith(
+          30,
+          SessionRoleEnum.Target,
+        );
       });
     });
 

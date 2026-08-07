@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab - Waiting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="stage d-flex flex-col items-center justify-center">
+      <div id="ring" class="ring d-flex items-center justify-center">
+        <div class="ring-track"></div>
+        <span id="countdown" class="countdown">-</span>
+      </div>
+
+      <h1 class="title">Waiting to open</h1>
+      <p id="note" class="note">
+        Staggered start is on, so this tab opens after a short delay.
+      </p>
+
+      <div class="url-chip d-flex items-center justify-center">
+        <span id="target-url" class="url-text"></span>
+      </div>
+
+      <p class="hint">
+        Change this under <strong>Staggered tab opening</strong> in the
+        MirrorTab settings.
+      </p>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

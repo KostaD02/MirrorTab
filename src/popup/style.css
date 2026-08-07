@@ -28,6 +28,8 @@
 }
 
 :root {
+  color-scheme: dark;
+
   --bg-base: #0a192f;
   --bg-surface: #0d2035;
   --bg-elevated: #112240;
@@ -627,6 +629,158 @@ body {
 .info-panel {
   gap: 12px;
   animation: slide-in 0.22s ease;
+}
+
+.settings-btn,
+.settings-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.settings-btn:hover {
+  color: var(--accent);
+}
+
+.settings-panel {
+  gap: 0;
+  max-height: 430px;
+  overflow-y: auto;
+  padding-right: 4px;
+  animation: slide-in 0.22s ease;
+}
+
+.settings-intro {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding-bottom: 4px;
+}
+
+.settings-heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 14px;
+  padding-bottom: 2px;
+}
+
+.settings-heading:first-of-type {
+  margin-top: 4px;
+}
+
+.setting-row {
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #1e3a5f66;
+}
+
+.setting-text {
+  gap: 3px;
+  min-width: 0;
+}
+
+.setting-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.setting-hint {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.setting-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+
+.setting-checkbox:hover {
+  border-color: var(--accent);
+}
+
+.setting-checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.setting-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 9px;
+  border: solid var(--bg-base);
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, calc(-50% - 1px)) rotate(45deg);
+}
+
+.setting-checkbox:focus-visible,
+.setting-number-wrap:focus-within {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.setting-number-wrap {
+  flex-shrink: 0;
+  gap: 5px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 9px;
+  transition: border-color 0.18s;
+}
+
+.setting-number {
+  cursor: text;
+  width: 46px;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.setting-number::-webkit-outer-spin-button,
+.setting-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.setting-unit {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+
+.settings-reset-btn {
+  width: 100%;
+  margin-top: 16px;
 }
 
 .info-desc {

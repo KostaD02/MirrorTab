@@ -11,6 +11,14 @@ export async function openTab(url: string): Promise<chrome.tabs.Tab> {
   return chrome.tabs.create({ url: normaliseUrl(url), active: false });
 }
 
+export async function openRawTab(url: string): Promise<chrome.tabs.Tab> {
+  return chrome.tabs.create({ url, active: false });
+}
+
+export async function navigateTab(tabId: number, url: string): Promise<void> {
+  await chrome.tabs.update(tabId, { url: normaliseUrl(url) });
+}
+
 export async function waitForTabLoad(tabId: number): Promise<void> {
   const tab = await chrome.tabs.get(tabId);
   if (tab.status === 'complete') return;

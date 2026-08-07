@@ -3,10 +3,19 @@ import {
   ExtensionMessage,
   ExtensionMessageTypeEnum,
   DownloadFormatEnum,
+  MirrorSettings,
+  MirrorSettingBooleanKey,
+  MirrorSettingNumberKey,
 } from '@/shared/types';
-import { resetFieldState } from '@/shared/util';
+import {
+  clampScrollDebounce,
+  clampTabOpenDelay,
+  loadSettings,
+  resetFieldState,
+  saveSettings,
+} from '@/shared/util';
 import { validateUrl } from './validate-url';
-import { INPUT_STORAGE_KEY } from '@/shared/consts';
+import { DEFAULT_SETTINGS, INPUT_STORAGE_KEY } from '@/shared/consts';
 
 const MAX_TARGETS = 10;
 
@@ -65,20 +74,109 @@ export class PopupController {
     addTargetBtn: document.getElementById(
       'add-target-btn',
     ) as HTMLButtonElement,
+    settingsBtn: document.getElementById('settings-btn') as HTMLButtonElement,
+    settingsCloseBtn: document.getElementById(
+      'settings-close-btn',
+    ) as HTMLButtonElement,
+    settingsPanel: document.getElementById('settings-panel') as HTMLDivElement,
+    settingsResetBtn: document.getElementById(
+      'settings-reset-btn',
+    ) as HTMLButtonElement,
+  };
+
+  private readonly toggleRefs: Record<
+    MirrorSettingBooleanKey,
+    HTMLInputElement
+  > = {
+    mirrorPasswordFields: document.getElementById(
+      'set-mirror-passwords',
+    ) as HTMLInputElement,
+    showGhostCursor: document.getElementById(
+      'set-show-cursor',
+    ) as HTMLInputElement,
+    showRoleBadge: document.getElementById(
+      'set-show-badge',
+    ) as HTMLInputElement,
+    mirrorMousemove: document.getElementById(
+      'set-mirror-mousemove',
+    ) as HTMLInputElement,
+    mirrorScroll: document.getElementById(
+      'set-mirror-scroll',
+    ) as HTMLInputElement,
+    mirrorKeystrokes: document.getElementById(
+      'set-mirror-keystrokes',
+    ) as HTMLInputElement,
+    smoothScroll: document.getElementById(
+      'set-smooth-scroll',
+    ) as HTMLInputElement,
+  };
+
+  private readonly numberRefs: Record<
+    MirrorSettingNumberKey,
+    HTMLInputElement
+  > = {
+    scrollDebounceMs: document.getElementById(
+      'set-scroll-debounce',
+    ) as HTMLInputElement,
+    tabOpenDelayMs: document.getElementById(
+      'set-tab-open-delay',
+    ) as HTMLInputElement,
   };
 
   private sourceDebounce: ReturnType<typeof setTimeout> | null = null;
   private session: ActiveSession | null = null;
   private targetEntries: TargetEntry[] = [];
   private nextTargetId = 0;
+  private settings: MirrorSettings = { ...DEFAULT_SETTINGS };
 
   constructor(public readonly version: string) {}
 
   init(): void {
     this.restoreSession();
     this.restoreInputs();
+    this.restoreSettings();
     this.bindEvents();
     this.domRefs.versionLabel.textContent = `v${this.version}`;
+  }
+
+  private async restoreSettings(): Promise<void> {
+    this.settings = await loadSettings();
+    this.renderSettings();
+  }
+
+  private renderSettings(): void {
+    for (const [key, input] of Object.entries(this.toggleRefs)) {
+      input.checked = this.settings[key as MirrorSettingBooleanKey];
+    }
+    for (const [key, input] of Object.entries(this.numberRefs)) {
+      input.value = String(this.settings[key as MirrorSettingNumberKey]);
+    }
+  }
+
+  private commitSettings(): void {
+    const next: MirrorSettings = {
+      ...this.settings,
+      scrollDebounceMs: clampScrollDebounce(
+        Number(this.numberRefs.scrollDebounceMs.value),
+      ),
+      tabOpenDelayMs: clampTabOpenDelay(
+        Number(this.numberRefs.tabOpenDelayMs.value),
+      ),
+    };
+
+    for (const [key, input] of Object.entries(this.toggleRefs)) {
+      next[key as MirrorSettingBooleanKey] = input.checked;
+    }
+
+    this.settings = next;
+    this.renderSettings();
+    saveSettings(next);
+  }
+
+  private resetSettings(): void {
+    this.settings = { ...DEFAULT_SETTINGS };
+    this.renderSettings();
+    saveSettings(this.settings);
   }
 
   private async restoreInputs(): Promise<void> {
@@ -358,6 +456,9 @@ export class PopupController {
       infoBtn,
       infoCloseBtn,
       addTargetBtn,
+      settingsBtn,
+      settingsCloseBtn,
+      settingsResetBtn,
     } = this.domRefs;
     form.addEventListener('submit', (e) => {
       this.onSubmit(e);
@@ -377,11 +478,30 @@ export class PopupController {
       this.onDownload(DownloadFormatEnum.Text);
     });
     infoBtn.addEventListener('click', () => {
-      this.openInfo();
+      this.openPanel('info');
     });
     infoCloseBtn.addEventListener('click', () => {
-      this.closeInfo();
+      this.closePanels();
     });
+    settingsBtn.addEventListener('click', () => {
+      this.openPanel('settings');
+    });
+    settingsCloseBtn.addEventListener('click', () => {
+      this.closePanels();
+    });
+    settingsResetBtn.addEventListener('click', () => {
+      this.resetSettings();
+    });
+    for (const input of Object.values(this.toggleRefs)) {
+      input.addEventListener('change', () => {
+        this.commitSettings();
+      });
+    }
+    for (const input of Object.values(this.numberRefs)) {
+      input.addEventListener('change', () => {
+        this.commitSettings();
+      });
+    }
     this.domRefs.replayLink.addEventListener('click', () => {
       chrome.tabs.create({
         url: chrome.runtime.getURL('src/replay/index.html'),
@@ -395,46 +515,52 @@ export class PopupController {
     this.bindSourceValidation();
   }
 
-  private openInfo(): void {
-    const {
-      form,
-      activeCard,
-      infoPanel,
-      infoBtn,
-      infoCloseBtn,
-      statusPill,
-      footer,
-      replayLinkContainer,
-    } = this.domRefs;
-    form.hidden = true;
-    activeCard.hidden = true;
-    infoPanel.hidden = false;
-    infoBtn.hidden = true;
-    infoCloseBtn.hidden = false;
-    statusPill.hidden = true;
-    footer.hidden = true;
-    replayLinkContainer.hidden = true;
+  private setShellHidden(hidden: boolean): void {
+    const { form, activeCard, statusPill, footer, replayLinkContainer } =
+      this.domRefs;
+    form.hidden = hidden;
+    statusPill.hidden = hidden;
+    footer.hidden = hidden;
+    replayLinkContainer.hidden = hidden;
+    activeCard.hidden = hidden || !this.session;
   }
 
-  private closeInfo(): void {
+  private openPanel(panel: 'info' | 'settings'): void {
     const {
-      form,
       infoPanel,
       infoBtn,
       infoCloseBtn,
-      statusPill,
-      footer,
-      activeCard,
-      replayLinkContainer,
+      settingsPanel,
+      settingsBtn,
+      settingsCloseBtn,
     } = this.domRefs;
+
+    this.setShellHidden(true);
+    infoPanel.hidden = panel !== 'info';
+    settingsPanel.hidden = panel !== 'settings';
+    infoBtn.hidden = true;
+    settingsBtn.hidden = true;
+    infoCloseBtn.hidden = panel !== 'info';
+    settingsCloseBtn.hidden = panel !== 'settings';
+  }
+
+  private closePanels(): void {
+    const {
+      infoPanel,
+      infoBtn,
+      infoCloseBtn,
+      settingsPanel,
+      settingsBtn,
+      settingsCloseBtn,
+    } = this.domRefs;
+
     infoPanel.hidden = true;
+    settingsPanel.hidden = true;
     infoBtn.hidden = false;
+    settingsBtn.hidden = false;
     infoCloseBtn.hidden = true;
-    statusPill.hidden = false;
-    footer.hidden = false;
-    form.hidden = false;
-    activeCard.hidden = !this.session;
-    replayLinkContainer.hidden = false;
+    settingsCloseBtn.hidden = true;
+    this.setShellHidden(false);
   }
 
   private async onSubmit(e: Event): Promise<void> {

@@ -19,6 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         replay: 'src/replay/index.html',
+        pending: 'src/pending/index.html',
       },
     },
   },

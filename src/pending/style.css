@@ -1,0 +1,135 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+
+  --bg-base: #0a192f;
+  --bg-elevated: #112240;
+  --border: #1e3a5f;
+
+  --text-primary: #ccd6f6;
+  --text-secondary: #a8b2d1;
+  --text-muted: #4a5880;
+
+  --accent: #64ffda;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 50% 0%, #112240 0%, transparent 60%),
+    var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.d-flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.justify-center {
+  justify-content: center;
+}
+
+.stage {
+  min-height: 100vh;
+  gap: 18px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.ring {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  margin-bottom: 6px;
+}
+
+.ring-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid #64ffda1f;
+  border-top-color: var(--accent);
+  animation: spin 1.15s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+}
+
+.ring.is-opening .ring-track {
+  animation-duration: 0.5s;
+}
+
+.countdown {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.url-chip {
+  gap: 8px;
+  max-width: min(520px, 90vw);
+  padding: 8px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.url-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.hint strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-track {
+    animation: none;
+  }
+}

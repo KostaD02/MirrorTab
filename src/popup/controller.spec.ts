@@ -12,7 +12,11 @@ import {
   ExtensionMessage,
   ExtensionMessageTypeEnum,
 } from '@/shared/types';
-import { INPUT_STORAGE_KEY } from '@/shared/consts';
+import {
+  DEFAULT_SETTINGS,
+  INPUT_STORAGE_KEY,
+  SETTINGS_STORAGE_KEY,
+} from '@/shared/consts';
 
 jest.mock('./validate-url', () => ({
   validateUrl: jest.fn(),
@@ -478,6 +482,190 @@ describe('PopupController', () => {
       infoCloseBtn.dispatchEvent(new Event('click'));
       expect(infoPanel.hidden).toBe(true);
       expect(form.hidden).toBe(false);
+    });
+  });
+
+  describe('settings panel', () => {
+    const checkbox = (id: string) =>
+      document.getElementById(id) as HTMLInputElement;
+    const debounceInput = () =>
+      document.getElementById('set-scroll-debounce') as HTMLInputElement;
+
+    function lastSettingsWrite(): Record<string, unknown> | null {
+      const calls = (chrome.storage.local.set as jest.Mock).mock.calls;
+      for (let i = calls.length - 1; i >= 0; i--) {
+        const arg = calls[i][0] as Record<string, unknown>;
+        if (SETTINGS_STORAGE_KEY in arg) {
+          return arg[SETTINGS_STORAGE_KEY] as Record<string, unknown>;
+        }
+      }
+      return null;
+    }
+
+    it('renders the defaults when nothing is stored', async () => {
+      controller.init();
+      await flushPromises();
+
+      expect(checkbox('set-mirror-passwords').checked).toBe(true);
+      expect(checkbox('set-show-cursor').checked).toBe(true);
+      expect(checkbox('set-show-badge').checked).toBe(true);
+      expect(checkbox('set-mirror-mousemove').checked).toBe(true);
+      expect(debounceInput().value).toBe('50');
+    });
+
+    it('renders stored settings into the controls', async () => {
+      (chrome.storage.local.get as jest.Mock).mockImplementation(
+        (key: string) =>
+          key === SETTINGS_STORAGE_KEY
+            ? Promise.resolve({
+                [SETTINGS_STORAGE_KEY]: {
+                  mirrorPasswordFields: false,
+                  showGhostCursor: false,
+                  scrollDebounceMs: 250,
+                },
+              })
+            : Promise.resolve({}),
+      );
+
+      controller.init();
+      await flushPromises();
+
+      expect(checkbox('set-mirror-passwords').checked).toBe(false);
+      expect(checkbox('set-show-cursor').checked).toBe(false);
+      expect(checkbox('set-show-badge').checked).toBe(true);
+      expect(debounceInput().value).toBe('250');
+    });
+
+    it('opens and closes the settings panel', async () => {
+      controller.init();
+      await flushPromises();
+
+      const settingsBtn = document.getElementById('settings-btn')!;
+      const settingsCloseBtn = document.getElementById('settings-close-btn')!;
+      const settingsPanel = document.getElementById('settings-panel')!;
+      const form = document.getElementById('session-form')!;
+
+      settingsBtn.dispatchEvent(new Event('click'));
+      expect(settingsPanel.hidden).toBe(false);
+      expect(form.hidden).toBe(true);
+      expect(settingsCloseBtn.hidden).toBe(false);
+      expect(settingsBtn.hidden).toBe(true);
+
+      settingsCloseBtn.dispatchEvent(new Event('click'));
+      expect(settingsPanel.hidden).toBe(true);
+      expect(form.hidden).toBe(false);
+      expect(settingsBtn.hidden).toBe(false);
+    });
+
+    it('shows only one panel at a time', async () => {
+      controller.init();
+      await flushPromises();
+
+      const settingsPanel = document.getElementById('settings-panel')!;
+      const infoPanel = document.getElementById('info-panel')!;
+
+      document.getElementById('info-btn')!.dispatchEvent(new Event('click'));
+      expect(infoPanel.hidden).toBe(false);
+      expect(settingsPanel.hidden).toBe(true);
+
+      document
+        .getElementById('settings-btn')!
+        .dispatchEvent(new Event('click'));
+      expect(settingsPanel.hidden).toBe(false);
+      expect(infoPanel.hidden).toBe(true);
+    });
+
+    it('persists a toggled checkbox', async () => {
+      controller.init();
+      await flushPromises();
+
+      const box = checkbox('set-mirror-mousemove');
+      box.checked = false;
+      box.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({ mirrorMousemove: false });
+    });
+
+    it('persists the password toggle', async () => {
+      controller.init();
+      await flushPromises();
+
+      const box = checkbox('set-mirror-passwords');
+      box.checked = false;
+      box.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({
+        mirrorPasswordFields: false,
+      });
+    });
+
+    it('clamps an out-of-range debounce and writes the clamped value back', async () => {
+      controller.init();
+      await flushPromises();
+
+      const input = debounceInput();
+      input.value = '99999';
+      input.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({ scrollDebounceMs: 2000 });
+      expect(input.value).toBe('2000');
+    });
+
+    it('renders and persists the staggered tab opening delay', async () => {
+      controller.init();
+      await flushPromises();
+
+      const input = document.getElementById(
+        'set-tab-open-delay',
+      ) as HTMLInputElement;
+      expect(input.value).toBe('0');
+
+      input.value = '10000';
+      input.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({ tabOpenDelayMs: 10000 });
+    });
+
+    it('clamps an out-of-range stagger delay', async () => {
+      controller.init();
+      await flushPromises();
+
+      const input = document.getElementById(
+        'set-tab-open-delay',
+      ) as HTMLInputElement;
+      input.value = '500000';
+      input.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({ tabOpenDelayMs: 60000 });
+      expect(input.value).toBe('60000');
+    });
+
+    it('falls back to the default when the debounce is not a number', async () => {
+      controller.init();
+      await flushPromises();
+
+      const input = debounceInput();
+      input.value = '';
+      input.dispatchEvent(new Event('change'));
+
+      expect(lastSettingsWrite()).toMatchObject({ scrollDebounceMs: 0 });
+    });
+
+    it('restores every default when reset is clicked', async () => {
+      controller.init();
+      await flushPromises();
+
+      const box = checkbox('set-show-cursor');
+      box.checked = false;
+      box.dispatchEvent(new Event('change'));
+      expect(lastSettingsWrite()).toMatchObject({ showGhostCursor: false });
+
+      document
+        .getElementById('settings-reset-btn')!
+        .dispatchEvent(new Event('click'));
+
+      expect(box.checked).toBe(true);
+      expect(lastSettingsWrite()).toEqual(DEFAULT_SETTINGS);
     });
   });
 

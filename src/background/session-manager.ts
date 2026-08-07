@@ -6,7 +6,17 @@ import {
   ExtensionMessageTypeEnum,
   SessionRoleEnum,
 } from '@/shared/types';
-import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
+import {
+  buildPendingUrl,
+  clampTabOpenDelay,
+  loadSettings,
+  navigateTab,
+  openRawTab,
+  openTab,
+  sendRoleToTab,
+  sleepKeepingWorkerAlive,
+  waitForTabLoad,
+} from '@/shared/util';
 
 export class SessionManager {
   private session: ActiveSession | null = null;
@@ -27,9 +37,18 @@ export class SessionManager {
     sendResponse: (msg: ExtensionMessage) => void,
   ): Promise<void> {
     try {
+      const settings = await loadSettings();
+      const delayMs = clampTabOpenDelay(settings.tabOpenDelayMs);
+      const staggered = delayMs > 0;
+      const startedAt = Date.now();
+
       const [sourceTab, ...targetTabs] = await Promise.all([
         openTab(config.sourceUrl),
-        ...config.targetUrls.map((url) => openTab(url)),
+        ...config.targetUrls.map((url, i) =>
+          staggered
+            ? openRawTab(buildPendingUrl(url, startedAt + delayMs * (i + 1)))
+            : openTab(url),
+        ),
       ]);
 
       const sourceTabId = Number(sourceTab.id);
@@ -39,15 +58,20 @@ export class SessionManager {
         throw new Error('Failed to create tabs');
       }
 
-      await Promise.all([
-        waitForTabLoad(sourceTabId),
-        ...targetTabIds.map((id) => waitForTabLoad(id)),
-      ]);
+      if (staggered) {
+        await waitForTabLoad(sourceTabId);
+        await sendRoleToTab(sourceTabId, SessionRoleEnum.Source);
+      } else {
+        await Promise.all([
+          waitForTabLoad(sourceTabId),
+          ...targetTabIds.map((id) => waitForTabLoad(id)),
+        ]);
 
-      await Promise.all([
-        sendRoleToTab(sourceTabId, SessionRoleEnum.Source),
-        ...targetTabIds.map((id) => sendRoleToTab(id, SessionRoleEnum.Target)),
-      ]);
+        await Promise.all([
+          sendRoleToTab(sourceTabId, SessionRoleEnum.Source),
+          ...targetTabIds.map((id) => sendRoleToTab(id, SessionRoleEnum.Target)),
+        ]);
+      }
 
       await chrome.tabs.update(sourceTabId, { active: true });
 
@@ -65,6 +89,14 @@ export class SessionManager {
         type: ExtensionMessageTypeEnum.SessionStarted,
         payload: this.session,
       });
+
+      if (staggered) {
+        void this.staggerTargets(
+          [...targetTabIds],
+          [...config.targetUrls],
+          delayMs,
+        );
+      }
     } catch (err) {
       const error = err instanceof Error ? err.message : String(err);
       sendResponse({
@@ -72,6 +104,33 @@ export class SessionManager {
         error,
       });
     }
+  }
+
+  private async staggerTargets(
+    targetTabIds: number[],
+    targetUrls: string[],
+    delayMs: number,
+  ): Promise<void> {
+    for (let i = 0; i < targetTabIds.length; i++) {
+      const tabId = targetTabIds[i];
+
+      await sleepKeepingWorkerAlive(delayMs);
+
+      if (!this.isActiveTarget(tabId)) continue;
+
+      try {
+        await navigateTab(tabId, targetUrls[i]);
+        await waitForTabLoad(tabId);
+        if (!this.isActiveTarget(tabId)) continue;
+        await sendRoleToTab(tabId, SessionRoleEnum.Target);
+      } catch {
+        await this.removeTarget(tabId);
+      }
+    }
+  }
+
+  private isActiveTarget(tabId: number): boolean {
+    return this.session?.targetTabIds.includes(tabId) ?? false;
   }
 
   async pause(): Promise<void> {
