@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/KostaD02/MirrorTab/compare/v1.3.1...v1.4.0) (2026-08-07)
+
+
+### Features
+
+* additional settings ([#67](https://github.com/KostaD02/MirrorTab/issues/67)) ([0e48db1](https://github.com/KostaD02/MirrorTab/commit/0e48db1b2febbd35b26e3331c3d3766fdb55dc6d))
+
 ### [1.3.1](https://github.com/KostaD02/MirrorTab/compare/v1.3.0...v1.3.1) (2026-04-01)
 
 
