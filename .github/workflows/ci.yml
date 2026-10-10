@@ -8,111 +8,30 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
+  hub:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: KostaD02/ci/.github/workflows/ci.yml@v1
+    with:
+      format: ''
+      lint: pnpm lint
+      typecheck: ''
+      test: pnpm test:coverage
+      build: pnpm build
+      pre-build: node .github/scripts/append-pr-version.cjs
+      pre-build-when: pull_request
+      artifact-prefix: MirrorTab
+      size-table: files
+      footer: |
+        ## 🧪 Try it
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 10
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Lint
-        run: pnpm lint
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 10
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Test
-        run: pnpm test:coverage
-
-      - name: Upload Coverage Report
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: coverage-report
-          path: coverage/
-          retention-days: 7
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    needs: [lint, test]
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v6
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 10
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Append PR Number to Version
-        if: github.event_name == 'pull_request'
-        run: node .github/scripts/append-pr-version.cjs
-        env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-
-      - name: Build
-        run: pnpm build
-
-      - name: Upload Extension Artifact
-        if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v7
-        with:
-          name: MirrorTab-PR-${{ github.event.pull_request.number }}-${{ github.event.pull_request.commits }}
-          path: dist/
-          retention-days: 7
-
-      - name: Comment PR with Artifact Link
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v9
-        env:
-          PR_COMMIT_COUNT: ${{ github.event.pull_request.commits }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const script = require('./.github/scripts/comment-pr.cjs');
-            await script({ github, context, core });
+        Unzip the artifact, then load the unzipped folder as an unpacked extension from `chrome://extensions`.
+      node-version: '20'
+      pnpm-version: '10'
