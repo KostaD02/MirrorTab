@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.0](https://github.com/KostaD02/MirrorTab/compare/v1.4.0...v1.5.0) (2026-10-19)
+
+### Features
+
+* migrate the ui to @kostad/brand ([#69](https://github.com/KostaD02/MirrorTab/issues/69)) ([1b6e094](https://github.com/KostaD02/MirrorTab/commit/1b6e094a07b1d2e8491722bea995405c3b7805bf))
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [1.4.0](https://github.com/KostaD02/MirrorTab/compare/v1.3.1...v1.4.0) (2026-08-07)
