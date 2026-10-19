@@ -8,15 +8,17 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import { EventCapture, EventReplay } from './mirror';
+import { OverlayHost } from './overlay-host';
 import { RoleBadge } from './role-badge';
 import { VirtualCursor } from './virtual-cursor';
 import { loadSettings, logger, watchSettings } from '@/shared/util';
 import { DEFAULT_SETTINGS } from '@/shared/consts';
 
-const cursor = new VirtualCursor();
+const overlay = new OverlayHost();
+const cursor = new VirtualCursor(overlay);
 const capture = new EventCapture();
 const replay = new EventReplay(cursor);
-const badge = new RoleBadge();
+const badge = new RoleBadge(overlay);
 
 let currentRole: SessionRole = SessionRoleEnum.Idle;
 let settings: MirrorSettings = { ...DEFAULT_SETTINGS };

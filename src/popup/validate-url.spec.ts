@@ -17,7 +17,7 @@ describe('validateUrl', () => {
     const result = validateUrl('', inputEl, errorEl);
 
     expect(result).toBeNull();
-    expect(inputEl.classList.contains('invalid')).toBe(true);
+    expect(inputEl.classList.contains('kd-invalid')).toBe(true);
     expect(errorEl.textContent).toBe('URL is required.');
     expect(errorEl.hidden).toBe(false);
   });
@@ -34,7 +34,7 @@ describe('validateUrl', () => {
 
     expect(result).toBeNull();
     expect(errorEl.textContent).toBe('Not a valid URL.');
-    expect(inputEl.classList.contains('invalid')).toBe(true);
+    expect(inputEl.classList.contains('kd-invalid')).toBe(true);
   });
 
   it('should reject host without a dot (unless localhost)', () => {
@@ -57,7 +57,7 @@ describe('validateUrl', () => {
     const result = validateUrl('localhost:3000', inputEl, errorEl);
 
     expect(result).toBe('https://localhost:3000');
-    expect(inputEl.classList.contains('valid')).toBe(true);
+    expect(inputEl.classList.contains('kd-valid')).toBe(true);
     expect(errorEl.hidden).toBe(true);
   });
 
@@ -65,7 +65,7 @@ describe('validateUrl', () => {
     const result = validateUrl('example.com', inputEl, errorEl);
 
     expect(result).toBe('https://example.com');
-    expect(inputEl.classList.contains('valid')).toBe(true);
+    expect(inputEl.classList.contains('kd-valid')).toBe(true);
     expect(errorEl.textContent).toBe('');
     expect(errorEl.hidden).toBe(true);
   });
@@ -74,7 +74,7 @@ describe('validateUrl', () => {
     const result = validateUrl('http://example.com/path', inputEl, errorEl);
 
     expect(result).toBe('http://example.com/path');
-    expect(inputEl.classList.contains('valid')).toBe(true);
+    expect(inputEl.classList.contains('kd-valid')).toBe(true);
   });
 
   it('should trim whitespace before validating', () => {

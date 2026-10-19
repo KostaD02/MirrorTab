@@ -4,32 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MirrorTab - Waiting</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <main class="stage d-flex flex-col items-center justify-center">
-      <div id="ring" class="ring d-flex items-center justify-center">
-        <div class="ring-track"></div>
-        <span id="countdown" class="countdown">-</span>
+  <body class="kd-d-flex kd-items-center kd-py-5">
+    <main class="kd-container-xs kd-empty kd-gap-3">
+      <div class="kd-flex-center kd-pos-relative kd-mb-2">
+        <span
+          id="ring"
+          class="kd-spinner kd-spinner--lg"
+          style="--kd-spinner-size: 132px"
+        ></span>
+        <span
+          id="countdown"
+          class="kd-pos-absolute kd-font-mono kd-fs-xxxl kd-fw-bold kd-lh-none kd-text-accent"
+          >-</span
+        >
       </div>
 
-      <h1 class="title">Waiting to open</h1>
-      <p id="note" class="note">
+      <h1 class="kd-m-0 kd-fs-xl kd-fw-bold">Waiting to open</h1>
+      <p id="note" class="kd-fs-xs kd-lh-xxl kd-text-secondary">
         Staggered start is on, so this tab opens after a short delay.
       </p>
 
-      <div class="url-chip d-flex items-center justify-center">
-        <span id="target-url" class="url-text"></span>
-      </div>
+      <span class="kd-chip kd-chip--pill kd-font-mono kd-max-w-100">
+        <span id="target-url" class="kd-text-ellipsis"></span>
+      </span>
 
-      <p class="hint">
-        Change this under <strong>Staggered tab opening</strong> in the
+      <p class="kd-fs-xxxs kd-text-muted">
+        Change this under
+        <strong class="kd-text-secondary">Staggered tab opening</strong> in the
         MirrorTab settings.
       </p>
     </main>

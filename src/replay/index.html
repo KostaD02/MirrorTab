@@ -4,211 +4,252 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MirrorTab - Session Replay</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <div id="app" class="d-flex flex-col">
-      <header class="header d-flex items-center justify-between">
-        <div class="logo-lockup d-flex items-center">
-          <img
-            src="/logo.png"
-            alt="MirrorTab logo"
-            class="logo-img"
-            width="32"
-            height="32"
-          />
-          <div class="logo-text d-flex flex-col">
-            <span class="logo-name">MirrorTab</span>
-            <span class="logo-tagline">Session Replay</span>
+  <body class="kd-d-flex kd-items-center kd-px-3 kd-py-4">
+    <main class="kd-w-100 kd-mx-auto">
+      <div id="app" class="kd-card kd-card--surface kd-shadow-lg kd-gap-4">
+        <header class="kd-d-flex kd-items-center kd-justify-between kd-gap-3">
+          <div class="kd-d-flex kd-items-center kd-gap-3">
+            <img
+              src="/logo.png"
+              alt="MirrorTab logo"
+              class="kd-radius-md"
+              width="32"
+              height="32"
+            />
+            <div class="kd-d-flex kd-flex-column kd-gap-1">
+              <span
+                class="kd-font-primary kd-fs-lg kd-fw-bold kd-lh-sm kd-text-bright"
+                >MirrorTab</span
+              >
+              <span class="kd-fs-micro">Session Replay</span>
+            </div>
           </div>
-        </div>
-        <div class="header-right d-flex items-center">
-          <div
-            id="status-pill"
-            class="status-pill status-idle d-flex items-center"
-          >
-            <span class="status-dot"></span>
+          <div id="status-pill" class="kd-status-pill kd-status-pill--idle">
+            <span class="kd-status-pill__dot"></span>
             <span id="status-label">Ready</span>
           </div>
-        </div>
-      </header>
+        </header>
 
-      <section id="setup-card" class="setup-card d-flex flex-col">
-        <div class="field-group d-flex flex-col">
-          <label class="field-label d-flex items-center" for="replay-url">
-            Website URL
-          </label>
-          <input
-            id="replay-url"
-            class="field-input"
-            type="url"
-            placeholder="https://example.com"
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <span class="field-hint"
-            >The page where recorded actions will be replayed</span
-          >
-          <span id="url-error" class="field-error" role="alert" hidden></span>
-        </div>
-
-        <div class="field-group d-flex flex-col">
-          <label class="field-label d-flex items-center" for="session-file">
-            Session File
-          </label>
-          <div
-            id="drop-zone"
-            class="drop-zone d-flex flex-col items-center justify-center"
-          >
-            <input id="session-file" type="file" accept=".json,.txt" hidden />
-            <div
-              id="drop-zone-idle"
-              class="drop-zone-content d-flex flex-col items-center"
+        <section id="setup-card" class="kd-d-flex kd-flex-column kd-gap-3">
+          <div class="kd-field">
+            <label class="kd-field__label" for="replay-url">Website URL</label>
+            <input
+              id="replay-url"
+              class="kd-field__input"
+              type="url"
+              placeholder="https://example.com"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <span class="kd-field__hint"
+              >The page where recorded actions will be replayed</span
             >
-              <span class="drop-zone-icon">📂</span>
-              <span class="drop-zone-text"
-                >Drop a <strong>.json</strong> or <strong>.txt</strong> session
-                file here</span
-              >
-              <span class="drop-zone-or">or</span>
-              <button id="browse-btn" class="browse-btn" type="button">
-                Browse Files
-              </button>
-            </div>
-            <div
-              id="drop-zone-loaded"
-              class="drop-zone-content d-flex items-center"
+            <span
+              id="url-error"
+              class="kd-field__error"
+              role="alert"
               hidden
+            ></span>
+          </div>
+
+          <div class="kd-field">
+            <label class="kd-field__label" for="session-file"
+              >Session File</label
             >
-              <span class="file-icon">✅</span>
-              <div class="file-info d-flex flex-col">
-                <span id="file-name" class="file-name"></span>
-                <span id="file-events" class="file-events"></span>
-              </div>
-              <button
-                id="clear-file-btn"
-                class="icon-btn clear-file-btn"
-                type="button"
-                aria-label="Remove file"
-                title="Remove file"
+            <div
+              id="drop-zone"
+              class="kd-card kd-p-4 kd-border-2 kd-border-dashed kd-items-center kd-text-center kd-cursor-pointer"
+            >
+              <input id="session-file" type="file" accept=".json,.txt" hidden />
+              <div
+                id="drop-zone-idle"
+                class="kd-d-flex kd-flex-column kd-items-center kd-gap-2"
               >
-                ✕
-              </button>
+                <span class="kd-fs-xs kd-text-secondary"
+                  >Drop a <strong>.json</strong> or
+                  <strong>.txt</strong> session file here</span
+                >
+                <span class="kd-fs-micro">or</span>
+                <button
+                  id="browse-btn"
+                  class="kd-btn kd-btn--ghost kd-btn--sm"
+                  type="button"
+                >
+                  Browse Files
+                </button>
+              </div>
+              <div
+                id="drop-zone-loaded"
+                class="kd-d-flex kd-items-center kd-gap-3 kd-w-100 kd-text-start"
+                hidden
+              >
+                <div class="kd-d-flex kd-flex-column kd-grow-1 kd-min-w-0">
+                  <span
+                    id="file-name"
+                    class="kd-fs-xs kd-text-primary kd-text-ellipsis"
+                  ></span>
+                  <span
+                    id="file-events"
+                    class="kd-fs-micro kd-text-accent"
+                  ></span>
+                </div>
+                <button
+                  id="clear-file-btn"
+                  class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer"
+                  style="
+                    --kd-icon-link-size: 14px;
+                    --kd-icon-link-padding: 0.375rem;
+                  "
+                  type="button"
+                  aria-label="Remove file"
+                  title="Remove file"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 4l8 8M12 4l-8 8" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <span
+              id="file-error"
+              class="kd-field__error"
+              role="alert"
+              hidden
+            ></span>
+          </div>
+
+          <div class="kd-field">
+            <label class="kd-field__label" for="speed">Playback Speed</label>
+            <select id="speed" class="kd-field__input">
+              <option value="0.5">0.5× Slow</option>
+              <option value="1" selected>1× Normal</option>
+              <option value="1.5">1.5× Fast</option>
+            </select>
+          </div>
+
+          <p
+            id="error-msg"
+            class="kd-fs-xxs kd-text-danger"
+            role="alert"
+            hidden
+          ></p>
+
+          <button
+            id="start-btn"
+            class="kd-btn kd-btn--outline kd-btn--block"
+            type="button"
+            disabled
+          >
+            <span id="btn-label">Start Replay</span>
+            <span
+              id="btn-spinner"
+              class="kd-spinner kd-spinner--sm"
+              hidden
+            ></span>
+          </button>
+        </section>
+
+        <section
+          id="active-card"
+          class="kd-d-flex kd-flex-column kd-gap-3"
+          hidden
+        >
+          <div class="kd-d-flex kd-items-center kd-justify-between kd-gap-3">
+            <div class="kd-d-flex kd-flex-column kd-gap-1 kd-min-w-0">
+              <span
+                class="kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-warning"
+                >Replay</span
+              >
+              <span
+                id="active-url"
+                class="kd-fs-xxs kd-text-primary kd-text-ellipsis"
+              ></span>
+            </div>
+            <span id="speed-badge" class="kd-chip kd-chip--accent kd-font-mono"
+              >1×</span
+            >
+          </div>
+
+          <div class="kd-d-flex kd-flex-column kd-gap-2">
+            <div class="kd-d-flex kd-items-center kd-justify-between kd-fs-xxs">
+              <span id="progress-label">Event 0 / 0</span>
+              <span id="progress-percent" class="kd-font-mono kd-text-accent"
+                >0%</span
+              >
+            </div>
+            <div class="kd-radius-pill kd-bg-elevated kd-overflow-hidden">
+              <div
+                id="progress-bar"
+                class="kd-py-1 kd-bg-accent kd-transition"
+              ></div>
             </div>
           </div>
-          <span id="file-error" class="field-error" role="alert" hidden></span>
-        </div>
 
-        <div class="field-group d-flex flex-col">
-          <label class="field-label d-flex items-center"> </label>
-          <div class="speed-selector d-flex">
-            <label class="speed-option">
-              <input type="radio" name="speed" value="0.5" />
-              <span class="speed-chip"
-                >0.5x<span class="speed-sub">Slow</span></span
-              >
-            </label>
-            <label class="speed-option">
-              <input type="radio" name="speed" value="1" checked />
-              <span class="speed-chip"
-                >1x<span class="speed-sub">Normal</span></span
-              >
-            </label>
-            <label class="speed-option">
-              <input type="radio" name="speed" value="1.5" />
-              <span class="speed-chip"
-                >1.5x<span class="speed-sub">Fast</span></span
-              >
-            </label>
+          <div class="kd-d-flex kd-gap-2">
+            <button
+              id="pause-btn"
+              class="kd-btn kd-btn--outline kd-btn--sm kd-grow-1"
+              type="button"
+            >
+              <span id="pause-label">Pause</span>
+            </button>
+            <button
+              id="restart-btn"
+              class="kd-btn kd-btn--ghost kd-btn--sm kd-grow-1"
+              type="button"
+            >
+              Restart
+            </button>
+            <button
+              id="stop-btn"
+              class="kd-btn kd-btn--danger kd-btn--sm kd-grow-1"
+              type="button"
+            >
+              Stop
+            </button>
           </div>
-        </div>
+        </section>
 
-        <p id="error-msg" class="error-msg" role="alert" hidden></p>
-
-        <button
-          id="start-btn"
-          class="btn-primary d-flex items-center justify-center"
-          type="button"
-          disabled
-        >
-          <span id="btn-label">Start Replay</span>
-          <span id="btn-spinner" class="spinner" hidden></span>
-        </button>
-      </section>
-
-      <section id="active-card" class="active-card d-flex flex-col" hidden>
-        <div class="replay-info d-flex items-center justify-between">
-          <div class="replay-url-info d-flex flex-col">
-            <span class="active-role replay">REPLAY</span>
-            <span id="active-url" class="active-url"></span>
+        <section id="completed-card" class="kd-empty kd-gap-3" hidden>
+          <p class="kd-empty__code kd-font-primary kd-fw-bold">
+            Replay completed
+          </p>
+          <p class="kd-fs-xs kd-lh-xxl kd-text-secondary">
+            All <span id="completed-count">0</span> events have been replayed
+            successfully.
+          </p>
+          <div class="kd-d-flex kd-gap-2 kd-w-100">
+            <button
+              id="restart-completed-btn"
+              class="kd-btn kd-btn--outline kd-btn--sm kd-grow-1"
+              type="button"
+            >
+              Restart
+            </button>
+            <button
+              id="stop-completed-btn"
+              class="kd-btn kd-btn--danger kd-btn--sm kd-grow-1"
+              type="button"
+            >
+              Close
+            </button>
           </div>
-          <div class="replay-speed-badge d-flex items-center">
-            <span id="speed-badge">1×</span>
-          </div>
-        </div>
+        </section>
 
-        <div class="progress-section d-flex flex-col">
-          <div class="progress-header d-flex items-center justify-between">
-            <span id="progress-label" class="progress-label">Event 0 / 0</span>
-            <span id="progress-percent" class="progress-percent">0%</span>
-          </div>
-          <div class="progress-bar-track">
-            <div id="progress-bar" class="progress-bar-fill"></div>
-          </div>
-        </div>
-
-        <div class="active-actions d-flex">
-          <button
-            id="pause-btn"
-            class="btn-pause d-flex items-center justify-center"
-            type="button"
-          >
-            <span id="pause-icon">⏸</span>
-            <span id="pause-label">Pause</span>
-          </button>
-          <button
-            id="restart-btn"
-            class="btn-restart d-flex items-center justify-center"
-            type="button"
-          >
-            🔄 Restart
-          </button>
-          <button id="stop-btn" class="btn-danger" type="button">✕ Stop</button>
-        </div>
-      </section>
-
-      <section
-        id="completed-card"
-        class="completed-card d-flex flex-col"
-        hidden
-      >
-        <div class="completed-icon">✅</div>
-        <p class="completed-text">
-          Replay completed! All <span id="completed-count">0</span> events have
-          been replayed successfully.
-        </p>
-        <div class="completed-actions d-flex">
-          <button
-            id="restart-completed-btn"
-            class="btn-pause d-flex items-center justify-center"
-            type="button"
-          >
-            🔄 Restart
-          </button>
-          <button id="stop-completed-btn" class="btn-danger" type="button">
-            ✕ Close
-          </button>
-        </div>
-      </section>
-
-      <footer class="footer">Replay recorded sessions · MirrorTab</footer>
-    </div>
+        <footer class="kd-fs-micro kd-text-center">
+          Replay recorded sessions · MirrorTab
+        </footer>
+      </div>
+    </main>
 
     <script type="module" src="./main.ts"></script>
   </body>

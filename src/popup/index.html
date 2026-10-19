@@ -3,31 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MirrorTab - Session Setup</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
+    <title>MirrorTab</title>
   </head>
-  <body>
-    <div id="app" class="d-flex flex-col">
-      <header class="header d-flex items-center justify-between">
-        <div class="logo-lockup d-flex items-center">
-          <div class="logo-text d-flex flex-col">
-            <span class="logo-name">MirrorTab</span>
-            <div class="logo-sub d-flex items-center">
-              <span class="logo-tagline">DOM interaction mirroring</span>
-              <span id="version" class="logo-version">vX.X.X</span>
-            </div>
-          </div>
+  <body class="kd-min-h-0">
+    <div id="app" class="kd-d-flex kd-flex-column kd-gap-2 kd-px-3 kd-pb-3">
+      <header
+        class="kd-d-flex kd-items-center kd-justify-between kd-pos-sticky kd-top-0 kd-z-sticky kd-bg-base kd-py-3"
+      >
+        <div class="kd-d-flex kd-flex-column kd-gap-1 kd-min-w-0">
+          <span
+            class="kd-font-primary kd-fs-lg kd-fw-bold kd-lh-sm kd-text-bright"
+            >MirrorTab</span
+          >
+          <span
+            class="kd-d-flex kd-items-center kd-gap-2 kd-fs-micro kd-whitespace-nowrap"
+          >
+            <span class="kd-text-ellipsis">DOM interaction mirroring</span>
+            <span id="version" class="kd-shrink-0 kd-font-mono kd-opacity-75"
+              >vX.X.X</span
+            >
+          </span>
         </div>
-        <div class="header-right d-flex items-center">
+        <div class="kd-d-flex kd-items-center kd-gap-1 kd-shrink-0">
           <button
             id="settings-btn"
-            class="icon-btn settings-btn d-flex items-center justify-center"
+            class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer"
+            style="--kd-icon-link-size: 16px; --kd-icon-link-padding: 0.25rem"
             type="button"
             aria-label="MirrorTab settings"
             title="Settings"
@@ -45,16 +46,29 @@
           </button>
           <button
             id="settings-close-btn"
-            class="icon-btn info-close-btn d-flex items-center justify-center"
+            class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer"
+            style="--kd-icon-link-size: 16px; --kd-icon-link-padding: 0.25rem"
             type="button"
             aria-label="Close settings"
+            title="Close"
             hidden
           >
-            ✕
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4l8 8M12 4l-8 8" />
+            </svg>
           </button>
           <button
             id="info-btn"
-            class="icon-btn info-btn d-flex items-center justify-center"
+            class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer"
+            style="--kd-icon-link-size: 16px; --kd-icon-link-padding: 0.25rem"
             type="button"
             aria-label="About MirrorTab"
             title="About MirrorTab"
@@ -72,310 +86,457 @@
           </button>
           <button
             id="info-close-btn"
-            class="icon-btn info-close-btn d-flex items-center justify-center"
+            class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer"
+            style="--kd-icon-link-size: 16px; --kd-icon-link-padding: 0.25rem"
             type="button"
             aria-label="Close info"
+            title="Close"
             hidden
           >
-            ✕
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4l8 8M12 4l-8 8" />
+            </svg>
           </button>
-          <div
-            id="status-pill"
-            class="status-pill status-idle d-flex items-center"
-          >
-            <span class="status-dot"></span>
-            <span id="status-label">Idle</span>
+          <div id="status-pill" class="kd-status-pill kd-status-pill--idle">
+            <span class="kd-status-pill__dot"></span>
+            <span id="status-label" class="kd-text-capitalize">idle</span>
           </div>
         </div>
       </header>
 
-      <form id="session-form" class="session-form d-flex flex-col" novalidate>
-        <div class="field-group d-flex flex-col">
-          <label class="field-label d-flex items-center" for="source-url">
-            <span class="field-icon">🔴</span> Source URL
+      <form
+        id="session-form"
+        class="kd-d-flex kd-flex-column kd-gap-3"
+        novalidate
+      >
+        <div class="kd-field">
+          <label class="kd-field__label" for="source-url">
+            <span class="kd-fs-micro kd-text-danger" aria-hidden="true">●</span>
+            Source URL
           </label>
           <input
             id="source-url"
-            class="field-input"
+            class="kd-field__input"
             type="url"
             placeholder="https://example.com"
             autocomplete="off"
             spellcheck="false"
           />
-          <span class="field-hint">Interactions here will be mirrored</span>
+          <span class="kd-field__hint">Interactions here will be mirrored</span>
           <span
             id="source-error"
-            class="field-error"
+            class="kd-field__error"
             role="alert"
             hidden
           ></span>
         </div>
 
-        <div class="targets-section d-flex flex-col">
-          <div id="target-list" class="target-list d-flex flex-col"></div>
-          <button
-            id="add-target-btn"
-            class="btn-add-target d-flex items-center justify-center"
-            type="button"
-          >
-            + Add Target
-          </button>
-        </div>
+        <div id="target-list" class="kd-d-flex kd-flex-column kd-gap-3"></div>
+        <button
+          id="add-target-btn"
+          class="kd-btn kd-btn--ghost kd-btn--sm kd-btn--block"
+          type="button"
+        >
+          + Add Target
+        </button>
 
-        <p id="error-msg" class="error-msg" role="alert" hidden></p>
+        <p
+          id="error-msg"
+          class="kd-fs-xxs kd-text-danger"
+          role="alert"
+          hidden
+        ></p>
 
         <button
           id="start-btn"
-          class="btn-primary d-flex items-center justify-center"
+          class="kd-btn kd-btn--outline kd-btn--block"
           type="submit"
         >
           <span id="btn-label">Start Session</span>
-          <span id="btn-spinner" class="spinner" hidden></span>
+          <span
+            id="btn-spinner"
+            class="kd-spinner kd-spinner--sm"
+            hidden
+          ></span>
         </button>
       </form>
 
-      <div id="active-card" class="active-card d-flex flex-col" hidden>
-        <div class="active-source-row d-flex flex-col">
-          <span class="active-role source">SOURCE</span>
-          <span id="active-source" class="active-url"></span>
+      <div
+        id="active-card"
+        class="kd-card kd-card--surface kd-p-3 kd-mt-2"
+        hidden
+      >
+        <div class="kd-d-flex kd-flex-column kd-gap-1 kd-min-w-0">
+          <span class="kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-danger"
+            >Source</span
+          >
+          <span
+            id="active-source"
+            class="kd-fs-xxs kd-text-primary kd-text-ellipsis"
+          ></span>
         </div>
-        <div class="active-targets-section d-flex flex-col">
-          <span class="active-targets-label">TARGETS</span>
-          <div id="active-targets-list" class="active-targets-list d-flex flex-col"></div>
+        <div class="kd-d-flex kd-flex-column kd-gap-1 kd-min-w-0">
+          <span class="kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+            >Targets</span
+          >
+          <div
+            id="active-targets-list"
+            class="kd-d-flex kd-flex-column kd-gap-1"
+          ></div>
         </div>
-        <div class="active-actions d-flex">
+        <div class="kd-d-flex kd-gap-2">
           <button
             id="pause-btn"
-            class="btn-pause d-flex items-center justify-center"
+            class="kd-btn kd-btn--outline kd-btn--sm kd-grow-1"
             type="button"
           >
-            <span id="pause-icon">⏸</span>
             <span id="pause-label">Pause</span>
           </button>
-          <button id="stop-btn" class="btn-danger" type="button">✕ Stop</button>
+          <button
+            id="stop-btn"
+            class="kd-btn kd-btn--danger kd-btn--sm kd-grow-1"
+            type="button"
+          >
+            Stop
+          </button>
         </div>
-        <div class="download-actions d-flex flex-col">
-          <p>Download session data:</p>
-          <div class="download-buttons d-flex">
-            <a id="download-json" class="link-underline" role="button"
-              >Download JSON</a
+        <div
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-2 kd-pt-3 kd-border-t-1 kd-fs-xxs"
+        >
+          <span>Download session data</span>
+          <span class="kd-d-flex kd-gap-3">
+            <a id="download-json" class="kd-cursor-pointer" role="button"
+              >JSON</a
             >
-            <a id="download-text" class="link-underline" role="button"
-              >Download Text</a
+            <a id="download-text" class="kd-cursor-pointer" role="button"
+              >Text</a
             >
-          </div>
+          </span>
         </div>
       </div>
 
-      <div id="settings-panel" class="settings-panel d-flex flex-col" hidden>
-        <p class="settings-intro">
+      <div
+        id="settings-panel"
+        class="kd-d-flex kd-flex-column kd-animate-fade-up"
+        hidden
+      >
+        <p class="kd-fs-xxxs">
           Saved automatically and applied to running sessions immediately.
         </p>
 
-        <span class="settings-heading">Privacy</span>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Mirror password fields</span>
-            <span class="setting-hint"
+        <span
+          class="kd-mt-3 kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+          >Privacy</span
+        >
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Mirror password fields</span
+            >
+            <span class="kd-fs-micro"
               >Off keeps credentials out of target tabs and exported logs</span
             >
           </span>
-          <input
-            id="set-mirror-passwords"
-            class="setting-checkbox"
-            type="checkbox"
-          />
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-mirror-passwords"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
         </label>
 
-        <span class="settings-heading">Overlays</span>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Show ghost cursor</span>
-            <span class="setting-hint">The pointer drawn on target tabs</span>
+        <span
+          class="kd-mt-3 kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+          >Overlays</span
+        >
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Show ghost cursor</span
+            >
+            <span class="kd-fs-micro">The pointer drawn on target tabs</span>
           </span>
-          <input id="set-show-cursor" class="setting-checkbox" type="checkbox" />
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-show-cursor"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
         </label>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Show role badge</span>
-            <span class="setting-hint"
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Show role badge</span
+            >
+            <span class="kd-fs-micro"
               >The SOURCE / TARGET label on each tab</span
             >
           </span>
-          <input id="set-show-badge" class="setting-checkbox" type="checkbox" />
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-show-badge"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
         </label>
 
-        <span class="settings-heading">Events to mirror</span>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Mouse movement</span>
-            <span class="setting-hint"
-              >Highest volume event — turn off to cut traffic</span
+        <span
+          class="kd-mt-3 kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+          >Events to mirror</span
+        >
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Mouse movement</span
+            >
+            <span class="kd-fs-micro"
+              >Highest volume event, turn off to cut traffic</span
             >
           </span>
-          <input
-            id="set-mirror-mousemove"
-            class="setting-checkbox"
-            type="checkbox"
-          />
-        </label>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Scrolling</span>
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-mirror-mousemove"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
           </span>
-          <input
-            id="set-mirror-scroll"
-            class="setting-checkbox"
-            type="checkbox"
-          />
         </label>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Keystrokes</span>
-            <span class="setting-hint"
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary">Scrolling</span>
+          </span>
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-mirror-scroll"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
+        </label>
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Keystrokes</span
+            >
+            <span class="kd-fs-micro"
               >Key up / down, separate from typed input values</span
             >
           </span>
-          <input
-            id="set-mirror-keystrokes"
-            class="setting-checkbox"
-            type="checkbox"
-          />
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-mirror-keystrokes"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
         </label>
 
-        <span class="settings-heading">Playback</span>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Smooth scrolling</span>
-            <span class="setting-hint"
-              >Off jumps instantly — keeps fast scrolls in sync</span
+        <span
+          class="kd-mt-3 kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+          >Playback</span
+        >
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1 kd-cursor-pointer"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Smooth scrolling</span
+            >
+            <span class="kd-fs-micro"
+              >Off jumps instantly, keeps fast scrolls in sync</span
             >
           </span>
-          <input
-            id="set-smooth-scroll"
-            class="setting-checkbox"
-            type="checkbox"
-          />
+          <span class="kd-toggle kd-pos-relative">
+            <input
+              id="set-smooth-scroll"
+              class="kd-toggle__input"
+              type="checkbox"
+            />
+            <span class="kd-toggle__track"
+              ><span class="kd-toggle__thumb"></span
+            ></span>
+          </span>
         </label>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Scroll debounce</span>
-            <span class="setting-hint"
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Scroll debounce</span
+            >
+            <span class="kd-fs-micro"
               >Quiet period before a scroll is sent</span
             >
           </span>
-          <span class="setting-number-wrap d-flex items-center">
+          <span class="kd-d-flex kd-items-center kd-gap-1 kd-shrink-0 kd-w-25">
             <input
               id="set-scroll-debounce"
-              class="setting-number"
+              class="kd-field__input kd-min-w-0 kd-px-2 kd-py-1 kd-text-end"
               type="number"
               min="0"
               max="2000"
               step="10"
               inputmode="numeric"
             />
-            <span class="setting-unit">ms</span>
+            <span class="kd-fs-micro">ms</span>
           </span>
         </label>
 
-        <span class="settings-heading">Session start</span>
-        <label class="setting-row d-flex items-center justify-between">
-          <span class="setting-text d-flex flex-col">
-            <span class="setting-label">Staggered tab opening</span>
-            <span class="setting-hint"
+        <span
+          class="kd-mt-3 kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-accent"
+          >Session start</span
+        >
+        <label
+          class="kd-d-flex kd-items-center kd-justify-between kd-gap-3 kd-py-2 kd-border-b-1"
+        >
+          <span class="kd-d-flex kd-flex-column kd-min-w-0">
+            <span class="kd-fs-xs kd-fw-medium kd-text-primary"
+              >Staggered tab opening</span
+            >
+            <span class="kd-fs-micro"
               >Delay between each target tab. 0 opens them all at once; useful
               for sites that rate-limit bursts.</span
             >
           </span>
-          <span class="setting-number-wrap d-flex items-center">
+          <span class="kd-d-flex kd-items-center kd-gap-1 kd-shrink-0 kd-w-25">
             <input
               id="set-tab-open-delay"
-              class="setting-number"
+              class="kd-field__input kd-min-w-0 kd-px-2 kd-py-1 kd-text-end"
               type="number"
               min="0"
               max="60000"
               step="1000"
               inputmode="numeric"
             />
-            <span class="setting-unit">ms</span>
+            <span class="kd-fs-micro">ms</span>
           </span>
         </label>
 
         <button
           id="settings-reset-btn"
-          class="btn-add-target settings-reset-btn"
+          class="kd-btn kd-btn--ghost kd-btn--sm kd-self-start kd-mt-3"
           type="button"
         >
           Reset to defaults
         </button>
       </div>
 
-      <div id="info-panel" class="info-panel d-flex flex-col" hidden>
-        <p class="info-desc">
-          MirrorTab mirrors DOM interactions: clicks, inputs, keystrokes, and
-          scrolls from a <strong>Source</strong> tab to a
-          <strong>Target</strong> tab in real time. Perfect for demos, testing,
+      <div
+        id="info-panel"
+        class="kd-d-flex kd-flex-column kd-gap-3 kd-animate-fade-up"
+        hidden
+      >
+        <p class="kd-fs-xxs kd-lh-xxl kd-text-secondary">
+          MirrorTab mirrors DOM interactions: clicks, inputs, keystrokes and
+          scrolls from a <strong>Source</strong> tab to one or more
+          <strong>Target</strong> tabs in real time. Perfect for demos, testing
           and live presentations.
         </p>
 
-        <ol class="info-steps d-flex flex-col">
+        <ul class="kd-list" style="margin-top: 0">
           <li>
-            Enter a <strong>Source URL</strong> and a
-            <strong>Target URL</strong>.
+            <span
+              >Enter a <strong>Source URL</strong> and at least one
+              <strong>Target URL</strong>.</span
+            >
           </li>
           <li>
-            Click <strong>Start Session</strong> - two tabs open automatically.
+            <span
+              >Click <strong>Start Session</strong>, the tabs open
+              automatically.</span
+            >
           </li>
           <li>
-            Interact with the <span class="ib source">SOURCE</span> tab, actions
-            mirror live to the <span class="ib target">TARGET</span> tab.
+            <span
+              >Interact with the
+              <strong class="kd-text-danger">SOURCE</strong> tab, actions mirror
+              live to every
+              <strong class="kd-text-accent">TARGET</strong> tab.</span
+            >
           </li>
           <li>
-            Use <strong>Pause / Resume</strong> or <strong>Stop</strong> to
-            control the session.
+            <span
+              >Use <strong>Pause / Resume</strong> or <strong>Stop</strong> to
+              control the session.</span
+            >
           </li>
           <li>
-            Download the event log as <strong>JSON</strong> or
-            <strong>Text</strong> any time.
+            <span
+              >Download the event log as <strong>JSON</strong> or
+              <strong>Text</strong> any time.</span
+            >
           </li>
-        </ol>
+        </ul>
 
-        <div class="info-links d-flex flex-col items-center">
-          <div class="info-link-row d-flex items-baseline">
-            <a
-              href="https://github.com/KostaD02/MirrorTab"
-              target="_blank"
-              rel="noopener"
-              class="link-underline repo-link"
-            >
-              GitHub Repository</a
-            >
-            <a
-              href="https://github.com/KostaD02/MirrorTab/stargazers"
-              target="_blank"
-              rel="noopener"
-              class="link-underline star-link"
-              >Star on GitHub</a
-            >
-          </div>
-          <div class="info-link-row d-flex items-baseline">
-            <a
-              href="https://github.com/KostaD02/MirrorTab/issues/new/choose"
-              target="_blank"
-              rel="noopener"
-              class="link-underline issue-link"
-              >Report Issue / Feature</a
-            >
-          </div>
+        <div
+          class="kd-d-flex kd-flex-wrap kd-justify-center kd-gap-x-4 kd-gap-y-2 kd-fs-xxs"
+        >
+          <a
+            href="https://github.com/KostaD02/MirrorTab"
+            class="info-link"
+            style="--link: #6e5494"
+            target="_blank"
+            rel="noopener"
+            >GitHub Repository</a
+          >
+          <a
+            href="https://github.com/KostaD02/MirrorTab/issues/new/choose"
+            class="info-link"
+            style="--link: var(--kd-color-red)"
+            target="_blank"
+            rel="noopener"
+            >Report Issue / Feature</a
+          >
         </div>
 
-        <p class="info-credit">
+        <p class="kd-pt-2 kd-border-t-1 kd-fs-xxs kd-text-center">
           Created by
           <a
             href="https://konstantinedatunishvili.com/"
+            class="info-link"
             target="_blank"
             rel="noopener"
-            class="link-underline website-link"
             >Konstantine Datunishvili</a
           >
         </p>
@@ -383,18 +544,17 @@
 
       <div
         id="replay-link-container"
-        class="replay-link-container d-flex justify-center"
+        class="kd-d-flex kd-justify-center kd-mt-2"
       >
-        <a id="replay-link" class="link-underline replay-link" role="button"
-          >🔄 Open Session Replay</a
+        <a id="replay-link" class="kd-fs-xxs kd-cursor-pointer" role="button"
+          >Open Session Replay</a
         >
       </div>
 
-      <footer id="app-footer" class="footer">
+      <footer id="app-footer" class="kd-mt-2 kd-fs-micro kd-text-center">
         Clicks · Inputs · Scrolls · Keystrokes
       </footer>
     </div>
-
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

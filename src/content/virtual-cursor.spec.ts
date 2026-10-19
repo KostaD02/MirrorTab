@@ -3,59 +3,63 @@
  */
 
 import { APP_NAME } from '@/shared/consts';
+import { OverlayHost } from './overlay-host';
 import { VirtualCursor } from './virtual-cursor';
 
 describe('VirtualCursor', () => {
+  let host: OverlayHost;
   let cursor: VirtualCursor;
 
-  const getHost = () =>
-    document.getElementById(`${APP_NAME}-cursor-host`) as HTMLDivElement | null;
+  const getCursor = () => host.root.querySelector<HTMLElement>('.cursor');
+  const getRipple = () => host.root.querySelector<HTMLElement>('.ripple');
+  const getLayer = () => getCursor()?.parentElement ?? null;
 
   beforeEach(() => {
     document.documentElement.innerHTML = '<head></head><body></body>';
-    cursor = new VirtualCursor();
+    host = new OverlayHost();
+    cursor = new VirtualCursor(host);
   });
 
   describe('show', () => {
-    it('mounts host with a shadow root on first call', () => {
-      expect(getHost()).toBeNull();
+    it('mounts the overlay with the cursor and ripple on first call', () => {
+      expect(getCursor()).toBeNull();
 
       cursor.show();
 
-      const host = getHost();
-      expect(host).not.toBeNull();
-      expect(host?.style.display).toBe('block');
-      expect(host?.shadowRoot).not.toBeNull();
-      expect(host?.shadowRoot?.querySelector('.mt-cursor')).not.toBeNull();
-      expect(host?.shadowRoot?.querySelector('.mt-ripple')).not.toBeNull();
+      expect(document.getElementById(`${APP_NAME}-overlay`)).not.toBeNull();
+      expect(getCursor()).not.toBeNull();
+      expect(getRipple()).not.toBeNull();
+      expect(getLayer()?.hidden).toBe(false);
     });
 
-    it('reuses existing host on subsequent calls', () => {
+    it('reuses the existing layer on subsequent calls', () => {
       cursor.show();
-      const first = getHost();
+      const first = getLayer();
       cursor.hide();
 
       cursor.show();
-      const second = getHost();
+      const second = getLayer();
 
       expect(second).toBe(first);
-      expect(second?.style.display).toBe('block');
+      expect(second?.hidden).toBe(false);
+      expect(host.root.querySelectorAll('.cursor')).toHaveLength(1);
     });
   });
 
   describe('hide', () => {
-    it('sets host display to none after mount', () => {
+    it('hides the layer after mount', () => {
       cursor.show();
       cursor.hide();
 
-      expect(getHost()?.style.display).toBe('none');
+      expect(getLayer()?.hidden).toBe(true);
     });
 
     it('is a no-op if never mounted', () => {
       expect(() => {
         cursor.hide();
       }).not.toThrow();
-      expect(getHost()).toBeNull();
+      expect(getCursor()).toBeNull();
+      expect(document.getElementById(`${APP_NAME}-overlay`)).toBeNull();
     });
   });
 
@@ -70,10 +74,7 @@ describe('VirtualCursor', () => {
       cursor.show();
       cursor.moveTo(12.3, 45.7);
 
-      const cursorEl = getHost()?.shadowRoot?.querySelector(
-        '.mt-cursor',
-      ) as HTMLElement;
-      expect(cursorEl.style.transform).toBe('translate(12px, 46px)');
+      expect(getCursor()?.style.transform).toBe('translate(12px, 46px)');
     });
   });
 
@@ -88,11 +89,9 @@ describe('VirtualCursor', () => {
       cursor.show();
       cursor.animateClick(100, 200);
 
-      const shadow = getHost()?.shadowRoot;
-      const cursorEl = shadow?.querySelector('.mt-cursor') as HTMLElement;
-      const rippleEl = shadow?.querySelector('.mt-ripple') as HTMLElement;
+      const rippleEl = getRipple() as HTMLElement;
 
-      expect(cursorEl.style.transform).toBe('translate(100px, 200px)');
+      expect(getCursor()?.style.transform).toBe('translate(100px, 200px)');
       expect(rippleEl.style.getPropertyValue('--rx')).toBe('84px');
       expect(rippleEl.style.getPropertyValue('--ry')).toBe('184px');
       expect(rippleEl.classList.contains('active')).toBe(true);
@@ -102,9 +101,7 @@ describe('VirtualCursor', () => {
       cursor.show();
       cursor.animateClick(50, 50);
 
-      const rippleEl = getHost()?.shadowRoot?.querySelector(
-        '.mt-ripple',
-      ) as HTMLElement;
+      const rippleEl = getRipple() as HTMLElement;
       expect(rippleEl.classList.contains('active')).toBe(true);
 
       rippleEl.dispatchEvent(new Event('animationend'));

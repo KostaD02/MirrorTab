@@ -28,6 +28,29 @@ const StatusEnum = {
 
 type Status = (typeof StatusEnum)[keyof typeof StatusEnum];
 
+const STATUS_PILL: Record<Status, string> = {
+  idle: 'idle',
+  active: 'active',
+  paused: 'warning',
+  error: 'danger',
+};
+
+const REMOVE_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" /></svg>';
+
+// ? the first class is the hook the specs look up; the rest are @kostad/brand classes
+function createRemoveButton(hook: string, title: string): HTMLButtonElement {
+  const button = document.createElement('button');
+  button.className = `${hook} kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer`;
+  button.style.setProperty('--kd-icon-link-size', '12px');
+  button.style.setProperty('--kd-icon-link-padding', '0.25rem');
+  button.type = 'button';
+  button.title = title;
+  button.setAttribute('aria-label', title);
+  button.innerHTML = REMOVE_ICON;
+  return button;
+}
+
 interface TargetEntry {
   id: number;
   wrapper: HTMLDivElement;
@@ -54,7 +77,6 @@ export class PopupController {
       'active-targets-list',
     ) as HTMLDivElement,
     pauseBtn: document.getElementById('pause-btn') as HTMLButtonElement,
-    pauseIcon: document.getElementById('pause-icon') as HTMLSpanElement,
     pauseLabel: document.getElementById('pause-label') as HTMLSpanElement,
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
     downloadJson: document.getElementById('download-json') as HTMLAnchorElement,
@@ -233,7 +255,6 @@ export class PopupController {
       activeCard,
       activeTargetsList,
       pauseBtn,
-      pauseIcon,
       pauseLabel,
     } = this.domRefs;
     this.session = s;
@@ -246,24 +267,25 @@ export class PopupController {
     const multiTarget = s.targetTabIds.length > 1;
     for (let i = 0; i < s.targetTabIds.length; i++) {
       const row = document.createElement('div');
-      row.className = 'active-target-row d-flex items-center';
+      row.className = 'kd-d-flex kd-items-center kd-gap-2 kd-min-w-0';
 
       const dot = document.createElement('span');
-      dot.className = 'active-target-dot';
+      dot.className = 'kd-fs-micro kd-text-accent';
+      dot.setAttribute('aria-hidden', 'true');
+      dot.textContent = '●';
       row.appendChild(dot);
 
       const url = document.createElement('span');
-      url.className = 'active-url';
+      url.className = 'kd-grow-1 kd-fs-xxs kd-text-primary kd-text-ellipsis';
       url.textContent = s.targetUrls[i];
       url.title = s.targetUrls[i];
       row.appendChild(url);
 
       if (multiTarget) {
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'btn-remove-target';
-        removeBtn.type = 'button';
-        removeBtn.textContent = '✕';
-        removeBtn.title = 'Remove this target';
+        const removeBtn = createRemoveButton(
+          'btn-remove-target',
+          'Remove this target',
+        );
         const tabId = s.targetTabIds[i];
         removeBtn.addEventListener('click', () => {
           this.onRemoveActiveTarget(tabId);
@@ -279,12 +301,10 @@ export class PopupController {
     if (s.isPaused) {
       this.setStatus(StatusEnum.Paused);
       pauseBtn.classList.add('is-paused');
-      pauseIcon.textContent = '▶';
       pauseLabel.textContent = 'Resume';
     } else {
       this.setStatus(StatusEnum.Active);
       pauseBtn.classList.remove('is-paused');
-      pauseIcon.textContent = '⏸';
       pauseLabel.textContent = 'Pause';
     }
   }
@@ -303,7 +323,7 @@ export class PopupController {
 
   private setStatus(status: Status): void {
     const { statusPill, statusLabel } = this.domRefs;
-    statusPill.className = `status-pill status-${status}`;
+    statusPill.className = `kd-status-pill kd-status-pill--${STATUS_PILL[status]}`;
     statusLabel.textContent = status;
   }
 
@@ -353,22 +373,18 @@ export class PopupController {
     const id = this.nextTargetId++;
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'field-group d-flex flex-col target-field-group';
+    wrapper.className = 'kd-field';
 
     const labelRow = document.createElement('div');
-    labelRow.className = 'target-label-row d-flex items-center justify-between';
+    labelRow.className = 'kd-d-flex kd-items-center kd-justify-between';
 
     const label = document.createElement('label');
-    label.className = 'field-label d-flex items-center';
+    label.className = 'kd-field__label';
     label.htmlFor = `target-url-${id.toString()}`;
     label.innerHTML =
-      '<span class="field-icon">🟢</span> Target URL';
+      '<span class="kd-fs-micro kd-text-accent" aria-hidden="true">●</span> Target URL';
 
-    const removeBtn = document.createElement('button');
-    removeBtn.className = 'btn-remove-input';
-    removeBtn.type = 'button';
-    removeBtn.textContent = '✕';
-    removeBtn.title = 'Remove target';
+    const removeBtn = createRemoveButton('btn-remove-input', 'Remove target');
 
     labelRow.appendChild(label);
     labelRow.appendChild(removeBtn);
@@ -376,7 +392,7 @@ export class PopupController {
 
     const input = document.createElement('input');
     input.id = `target-url-${id.toString()}`;
-    input.className = 'field-input';
+    input.className = 'kd-field__input';
     input.type = 'url';
     input.placeholder = 'https://example.com';
     input.autocomplete = 'off';
@@ -385,12 +401,12 @@ export class PopupController {
     wrapper.appendChild(input);
 
     const hint = document.createElement('span');
-    hint.className = 'field-hint';
+    hint.className = 'kd-field__hint';
     hint.textContent = 'Events will be replayed here';
     wrapper.appendChild(hint);
 
     const error = document.createElement('span');
-    error.className = 'field-error';
+    error.className = 'kd-field__error';
     error.setAttribute('role', 'alert');
     error.hidden = true;
     wrapper.appendChild(error);

@@ -1,0 +1,78 @@
+// Only the part of @kostad/brand the overlay uses; the --kd-* tokens are declared on :host by brand-tokens.ts
+@use 'pkg:@kostad/brand/scss/components/pill';
+
+// What follows is only what the brand has no class for: placement over the page and the ghost cursor
+
+// ? the host element lives in the page, where a rule like `div { … }` beats a plain
+// :host reset; only an important declaration from inside the shadow tree wins
+:host {
+  all: initial !important;
+  // ? pages do not load the brand fonts, so a system face stands in for Poppins
+  --kd-font-secondary: 'Poppins', system-ui, sans-serif;
+}
+
+.badge {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 2147483647;
+  font-family: var(--kd-font-secondary);
+  // ? the pill tints are see-through, so a navy base keeps the label readable on any page
+  background:
+    linear-gradient(var(--kd-pill-bg), var(--kd-pill-bg)), var(--kd-bg);
+  box-shadow: var(--kd-shadow-md);
+  pointer-events: none;
+}
+
+.cursor,
+.ripple {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+.cursor {
+  width: 18px;
+  height: 21px;
+  transition: transform 50ms linear;
+  will-change: transform;
+  filter: drop-shadow(0 1px 2px rgba(var(--kd-color-shadow-rgb), 0.35))
+    drop-shadow(0 0 4px var(--kd-accent-line));
+
+  path {
+    fill: var(--kd-text-bright);
+    stroke: var(--kd-bg);
+  }
+}
+
+.ripple {
+  width: 32px;
+  height: 32px;
+  border: var(--kd-border-width-2) solid var(--kd-accent);
+  border-radius: var(--kd-radius-circle);
+  background: var(--kd-accent-soft);
+  opacity: 0;
+  transform: translate(0, 0) scale(0);
+
+  &.active {
+    animation: ripple 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(var(--rx), var(--ry)) scale(0.15);
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translate(var(--rx), var(--ry)) scale(1.9);
+    opacity: 0;
+  }
+}

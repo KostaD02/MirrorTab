@@ -1,50 +1,43 @@
 import { APP_NAME } from '@/shared/consts';
 import { SessionRole, SessionRoleEnum } from '@/shared/types';
+import { OverlayHost } from './overlay-host';
 
 const ROLE_CONFIG: Record<
   Exclude<SessionRole, typeof SessionRoleEnum.Idle>,
-  { label: string; bg: string }
+  { label: string; pill: string }
 > = {
-  [SessionRoleEnum.Source]: { label: 'SOURCE', bg: '#ef4444cc' },
-  [SessionRoleEnum.Target]: { label: 'TARGET', bg: '#22c55ecc' },
-  [SessionRoleEnum.Replay]: { label: 'REPLAY', bg: '#6366f1cc' },
+  [SessionRoleEnum.Source]: { label: 'SOURCE', pill: 'danger' },
+  [SessionRoleEnum.Target]: { label: 'TARGET', pill: 'active' },
+  [SessionRoleEnum.Replay]: { label: 'REPLAY', pill: 'warning' },
 };
 
 export class RoleBadge {
   private element: HTMLElement | null = null;
+  private label: HTMLSpanElement | null = null;
+
+  constructor(private readonly host: OverlayHost) {}
 
   update(role: SessionRole): void {
     if (role === SessionRoleEnum.Idle) {
       this.element?.remove();
       this.element = null;
+      this.label = null;
       return;
     }
 
-    if (!this.element) {
+    if (!this.element || !this.label) {
+      this.host.mount();
       this.element = document.createElement('div');
       this.element.id = `${APP_NAME}-badge`;
-      Object.assign(this.element.style, {
-        position: 'fixed',
-        top: '10px',
-        right: '10px',
-        zIndex: '2147483647',
-        color: '#fff',
-        fontFamily: 'system-ui, sans-serif',
-        fontSize: '12px',
-        fontWeight: '700',
-        padding: '5px 10px',
-        borderRadius: '8px',
-        backdropFilter: 'blur(6px)',
-        boxShadow: '0 2px 8px rgba(0,0,0,.3)',
-        pointerEvents: 'none',
-        letterSpacing: '.4px',
-        transition: 'background .3s',
-      });
-      document.documentElement.appendChild(this.element);
+      const dot = document.createElement('span');
+      dot.className = 'kd-status-pill__dot';
+      this.label = document.createElement('span');
+      this.element.append(dot, this.label);
+      this.host.root.appendChild(this.element);
     }
 
     const config = ROLE_CONFIG[role];
-    this.element.textContent = `${APP_NAME} · ${config.label}`;
-    this.element.style.background = config.bg;
+    this.element.className = `badge kd-status-pill kd-status-pill--${config.pill}`;
+    this.label.textContent = `${APP_NAME} · ${config.label}`;
   }
 }
