@@ -10,6 +10,16 @@ import { normaliseUrl, sendRoleToTab, waitForTabLoad } from '@/shared/util';
 
 const INITIAL_DELAY_MS = 500;
 
+const STATUS_PILL = {
+  idle: 'idle',
+  playing: 'active',
+  paused: 'warning',
+  completed: 'idle',
+  error: 'danger',
+} as const;
+
+type ReplayStatus = keyof typeof STATUS_PILL;
+
 export class ReplayPageController {
   private readonly dom = {
     statusPill: document.getElementById('status-pill') as HTMLDivElement,
@@ -36,6 +46,8 @@ export class ReplayPageController {
     ) as HTMLButtonElement,
     fileError: document.getElementById('file-error') as HTMLSpanElement,
 
+    speedSelect: document.getElementById('speed') as HTMLSelectElement,
+
     errorMsg: document.getElementById('error-msg') as HTMLParagraphElement,
     startBtn: document.getElementById('start-btn') as HTMLButtonElement,
     btnLabel: document.getElementById('btn-label') as HTMLSpanElement,
@@ -50,7 +62,6 @@ export class ReplayPageController {
     progressBar: document.getElementById('progress-bar') as HTMLDivElement,
 
     pauseBtn: document.getElementById('pause-btn') as HTMLButtonElement,
-    pauseIcon: document.getElementById('pause-icon') as HTMLSpanElement,
     pauseLabel: document.getElementById('pause-label') as HTMLSpanElement,
     restartBtn: document.getElementById('restart-btn') as HTMLButtonElement,
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
@@ -88,9 +99,11 @@ export class ReplayPageController {
     });
 
     this.dom.dropZone.addEventListener('click', (e) => {
+      // ? contains, not ===, because a click on the clear button's icon targets the svg inside it
+      const target = e.target as Node | null;
       if (
-        e.target === this.dom.browseBtn ||
-        e.target === this.dom.clearFileBtn
+        this.dom.browseBtn.contains(target) ||
+        this.dom.clearFileBtn.contains(target)
       ) {
         return;
       }
@@ -124,13 +137,9 @@ export class ReplayPageController {
       this.updateStartButton();
     });
 
-    document
-      .querySelectorAll<HTMLInputElement>('input[name="speed"]')
-      .forEach((radio) => {
-        radio.addEventListener('change', () => {
-          this.speed = Number(radio.value) as ReplaySpeed;
-        });
-      });
+    this.dom.speedSelect.addEventListener('change', () => {
+      this.speed = Number(this.dom.speedSelect.value) as ReplaySpeed;
+    });
 
     this.dom.startBtn.addEventListener('click', () => {
       this.start();
@@ -375,7 +384,6 @@ export class ReplayPageController {
       clearTimeout(this.timerId);
       this.timerId = null;
     }
-    this.dom.pauseIcon.textContent = '▶';
     this.dom.pauseLabel.textContent = 'Continue';
     this.dom.pauseBtn.classList.add('is-paused');
     this.setStatus('paused', 'Paused');
@@ -383,7 +391,6 @@ export class ReplayPageController {
 
   private continue(): void {
     this.isPaused = false;
-    this.dom.pauseIcon.textContent = '⏸';
     this.dom.pauseLabel.textContent = 'Pause';
     this.dom.pauseBtn.classList.remove('is-paused');
     this.setStatus('playing', 'Playing');
@@ -397,7 +404,6 @@ export class ReplayPageController {
     }
     this.currentIndex = 0;
     this.isPaused = false;
-    this.dom.pauseIcon.textContent = '⏸';
     this.dom.pauseLabel.textContent = 'Pause';
     this.dom.pauseBtn.classList.remove('is-paused');
 
@@ -480,11 +486,8 @@ export class ReplayPageController {
     this.dom.progressBar.style.width = `${String(percent)}%`;
   }
 
-  private setStatus(
-    className: 'idle' | 'playing' | 'paused' | 'completed' | 'error',
-    label: string,
-  ): void {
-    this.dom.statusPill.className = `status-pill status-${className} d-flex items-center`;
+  private setStatus(status: ReplayStatus, label: string): void {
+    this.dom.statusPill.className = `kd-status-pill kd-status-pill--${STATUS_PILL[status]}`;
     this.dom.statusLabel.textContent = label;
   }
 

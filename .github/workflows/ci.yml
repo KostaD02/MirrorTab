@@ -25,13 +25,10 @@ jobs:
       typecheck: ''
       test: pnpm test:coverage
       build: pnpm build
-      pre-build: node .github/scripts/append-pr-version.cjs
-      pre-build-when: pull_request
+      pr-version: true
       artifact-prefix: MirrorTab
       size-table: files
       footer: |
-        ## 🧪 Try it
+        ## Try it
 
         Unzip the artifact, then load the unzipped folder as an unpacked extension from `chrome://extensions`.
-      node-version: '20'
-      pnpm-version: '10'

@@ -278,6 +278,38 @@ describe('ReplayPageController', () => {
         '1 events',
       );
     });
+
+    it('opens the browse dialog when the empty zone is clicked', () => {
+      const fileInput = document.getElementById(
+        'session-file',
+      ) as HTMLInputElement;
+      const clickSpy = jest.spyOn(fileInput, 'click').mockImplementation(() => {
+        /* noop */
+      });
+
+      document
+        .getElementById('drop-zone')
+        ?.dispatchEvent(new Event('click', { bubbles: true }));
+
+      expect(clickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('clears the file without reopening the dialog when the clear icon is clicked', async () => {
+      await loadFile('s.json', JSON.stringify([sampleRecord()]));
+      const fileInput = document.getElementById(
+        'session-file',
+      ) as HTMLInputElement;
+      const clickSpy = jest.spyOn(fileInput, 'click').mockImplementation(() => {
+        /* noop */
+      });
+
+      document
+        .querySelector('#clear-file-btn svg')
+        ?.dispatchEvent(new Event('click', { bubbles: true }));
+
+      expect(document.getElementById('drop-zone-idle')?.hidden).toBe(false);
+      expect(clickSpy).not.toHaveBeenCalled();
+    });
   });
 
   describe('url validation and start button', () => {
@@ -501,16 +533,19 @@ describe('ReplayPageController', () => {
   });
 
   describe('speed selection', () => {
-    it('updates speed when a different radio is selected', () => {
-      const slow = document.querySelector<HTMLInputElement>(
-        'input[name="speed"][value="0.5"]',
-      )!;
-      slow.checked = true;
-      slow.dispatchEvent(new Event('change'));
+    it('replays at the speed picked in the select', async () => {
+      const speed = document.getElementById('speed') as HTMLSelectElement;
+      speed.value = '0.5';
+      speed.dispatchEvent(new Event('change'));
 
-      // No public accessor — indirect check via speed badge after start, but
-      // at minimum verify the handler runs without throwing.
-      expect(slow.checked).toBe(true);
+      await loadFile('s.json', JSON.stringify([sampleRecord()]));
+      const url = document.getElementById('replay-url') as HTMLInputElement;
+      url.value = 'example.com';
+      url.dispatchEvent(new Event('input'));
+      document.getElementById('start-btn')?.dispatchEvent(new Event('click'));
+      await flushPromises();
+
+      expect(document.getElementById('speed-badge')?.textContent).toBe('0.5×');
     });
   });
 });

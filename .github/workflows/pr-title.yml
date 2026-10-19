@@ -11,6 +11,3 @@ permissions:
 jobs:
   commitlint:
     uses: KostaD02/ci/.github/workflows/pr-title.yml@v1
-    with:
-      node-version: '20'
-      pnpm-version: '10'

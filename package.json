@@ -5,6 +5,7 @@
   "private": true,
   "author": "Konstantine datunishvili",
   "license": "MIT",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "prepare": "husky",
     "start": "vite",
@@ -12,18 +13,18 @@
     "lint": "pnpm exec eslint .",
     "test": "pnpm exec jest",
     "test:watch": "pnpm exec jest --watch",
-    "test:coverage": "pnpm exec jest --coverage",
-    "release": "standard-version",
-    "release:patch": "standard-version --release-as patch",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major",
-    "postrelease": "pnpm build"
+    "test:coverage": "pnpm exec jest --coverage"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.0",
-    "@commitlint/config-conventional": "^21.0.0",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@crxjs/vite-plugin": "^2.4.0",
     "@eslint/js": "^10.0.1",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
+    "@fontsource/raleway": "^5.3.0",
+    "@kostad/brand": "^1.5.0",
+    "@release-it/conventional-changelog": "^12.0.2",
     "@types/chrome": "^0.1.42",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.7.0",
@@ -36,12 +37,63 @@
     "jest-chrome": "^0.8.0",
     "jest-environment-jsdom": "^30.4.1",
     "jiti": "^2.6.1",
-    "standard-version": "^9.5.0",
+    "release-it": "^21.1.1",
+    "sass": "1.105.1",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12",
     "vite-plugin-zip-pack": "^1.2.4"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}",
+      "tagName": "v${version}",
+      "requireBranch": "main"
+    },
+    "github": {
+      "release": false
+    },
+    "npm": {
+      "publish": false
+    },
+    "hooks": {
+      "before:init": [
+        "pnpm lint",
+        "pnpm test"
+      ],
+      "after:bump": "pnpm build"
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "infile": "CHANGELOG.md",
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features"
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes"
+            },
+            {
+              "type": "perf",
+              "section": "Performance"
+            },
+            {
+              "type": "docs",
+              "section": "Documentations"
+            },
+            {
+              "type": "refactor",
+              "section": "Refactors"
+            }
+          ]
+        }
+      }
+    }
   }
 }

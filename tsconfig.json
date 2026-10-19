@@ -12,6 +12,7 @@
     },
     "types": ["vite/client", "chrome", "jest"],
     "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
@@ -22,5 +23,5 @@
     "noUncheckedSideEffectImports": true,
     "esModuleInterop": true
   },
-  "include": ["src", "jest.config.ts", "jest.setup.ts"]
+  "include": ["src", "jest.config.ts", "jest.setup.ts", "jest.css-stub.ts"]
 }

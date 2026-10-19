@@ -22,6 +22,7 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import { EventCapture, EventReplay } from './mirror';
+import { OverlayHost } from './overlay-host';
 import { VirtualCursor } from './virtual-cursor';
 import { DEFAULT_SETTINGS } from '@/shared/consts';
 
@@ -460,7 +461,7 @@ describe('EventReplay', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     document.body.innerHTML = '';
-    cursor = new VirtualCursor();
+    cursor = new VirtualCursor(new OverlayHost());
     jest.spyOn(cursor, 'moveTo').mockImplementation(() => undefined);
     jest.spyOn(cursor, 'animateClick').mockImplementation(() => undefined);
     replay = new EventReplay(cursor);
