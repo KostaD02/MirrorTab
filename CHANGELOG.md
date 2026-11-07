@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.0](https://github.com/KostaD02/MirrorTab/compare/v1.5.0...v1.6.0) (2026-11-07)
+
+### Features
+
+* iframe mirroring ([#70](https://github.com/KostaD02/MirrorTab/issues/70)) ([4e48058](https://github.com/KostaD02/MirrorTab/commit/4e480587bc7be0b9e5a445da84473242cd1ddbc4))
+
 ## [1.5.0](https://github.com/KostaD02/MirrorTab/compare/v1.4.0...v1.5.0) (2026-10-19)
 
 ### Features
