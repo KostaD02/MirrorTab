@@ -47,6 +47,7 @@ const sampleRecord = (
   overrides: Partial<SessionRecord> = {},
 ): SessionRecord => ({
   timestamp: '2026-04-24T10:00:00.000Z',
+  framePath: '',
   selectorStackTrace: '#x',
   selector: 'div#x',
   type: DomEventTypeEnum.Click,
@@ -127,6 +128,8 @@ describe('ReplayPageController', () => {
       },
     );
 
+    chrome.tabs.onUpdated.clearListeners();
+    chrome.tabs.onRemoved.clearListeners();
     controller = new ReplayPageController();
     controller.init();
   });
@@ -139,7 +142,9 @@ describe('ReplayPageController', () => {
   async function loadFile(name: string, content: string): Promise<void> {
     const reader = MockFileReader.instances[MockFileReader.instances.length];
     const file = fakeFile(name, content);
-    const fileInput = document.getElementById('session-file') as HTMLInputElement;
+    const fileInput = document.getElementById(
+      'session-file',
+    ) as HTMLInputElement;
     Object.defineProperty(fileInput, 'files', {
       value: [file],
       configurable: true,
@@ -210,6 +215,28 @@ describe('ReplayPageController', () => {
       );
     });
 
+    it('parses the optional frame part and keeps separators inside values', async () => {
+      const content =
+        '[2026-04-24T10:00:00.000Z] input | selector stack trace: #a | selector: input#a | content: {"value":"a | b"} | frame: iframe#widget';
+
+      await loadFile('session.txt', content);
+
+      expect(document.getElementById('file-events')?.textContent).toBe(
+        '1 events loaded',
+      );
+    });
+
+    it('accepts JSON exports made before frame paths existed', async () => {
+      const legacy = { ...sampleRecord() } as Partial<SessionRecord>;
+      delete legacy.framePath;
+
+      await loadFile('legacy.json', JSON.stringify([legacy]));
+
+      expect(document.getElementById('file-events')?.textContent).toBe(
+        '1 events loaded',
+      );
+    });
+
     it('shows an error for malformed text files', async () => {
       await loadFile('bad.txt', 'no timestamp here');
 
@@ -271,7 +298,10 @@ describe('ReplayPageController', () => {
       const reader =
         MockFileReader.instances[MockFileReader.instances.length - 1];
       reader.result = JSON.stringify([sampleRecord()]);
-      reader.onload?.call(reader as unknown as FileReader, new ProgressEvent(''));
+      reader.onload?.call(
+        reader as unknown as FileReader,
+        new ProgressEvent(''),
+      );
       await flushPromises();
 
       expect(document.getElementById('file-events')?.textContent).toContain(
@@ -314,7 +344,9 @@ describe('ReplayPageController', () => {
 
   describe('url validation and start button', () => {
     it('start button is disabled until URL and file are present', () => {
-      const startBtn = document.getElementById('start-btn') as HTMLButtonElement;
+      const startBtn = document.getElementById(
+        'start-btn',
+      ) as HTMLButtonElement;
       expect(startBtn.disabled).toBe(true);
 
       const url = document.getElementById('replay-url') as HTMLInputElement;
@@ -392,6 +424,60 @@ describe('ReplayPageController', () => {
       expect(document.getElementById('completed-card')?.hidden).toBe(false);
     });
 
+    it('holds playback while the tab navigates and resends the role once it loaded', async () => {
+      const records: SessionRecord[] = [
+        sampleRecord({ timestamp: '2026-04-24T10:00:00.000Z' }),
+        sampleRecord({ timestamp: '2026-04-24T10:00:05.000Z' }),
+      ];
+      await readyToStart(records);
+      document.getElementById('start-btn')?.dispatchEvent(new Event('click'));
+      await flushPromises();
+      mockedSendRoleToTab.mockClear();
+      mockedSendRoleToTab.mockResolvedValue(undefined);
+
+      jest.advanceTimersByTime(600);
+      const sent = () =>
+        (chrome.tabs.sendMessage as jest.Mock).mock.calls.filter(
+          (c) =>
+            (c[1] as ExtensionMessage).type ===
+            ExtensionMessageTypeEnum.ReplayEvent,
+        ).length;
+      expect(sent()).toBe(1);
+
+      chrome.tabs.onUpdated.callListeners(
+        42,
+        { status: 'loading' },
+        {} as chrome.tabs.Tab,
+      );
+      jest.advanceTimersByTime(20_000);
+      expect(sent()).toBe(1);
+      expect(mockedSendRoleToTab).not.toHaveBeenCalled();
+
+      chrome.tabs.onUpdated.callListeners(
+        999,
+        { status: 'complete' },
+        {} as chrome.tabs.Tab,
+      );
+      await flushPromises();
+      expect(mockedSendRoleToTab).not.toHaveBeenCalled();
+
+      chrome.tabs.onUpdated.callListeners(
+        42,
+        { status: 'complete' },
+        {} as chrome.tabs.Tab,
+      );
+      await flushPromises();
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
+        42,
+        SessionRoleEnum.Replay,
+      );
+
+      jest.advanceTimersByTime(20_000);
+      await flushPromises();
+      expect(sent()).toBe(2);
+      expect(document.getElementById('completed-card')?.hidden).toBe(false);
+    });
+
     it('shows an error when backend returns SessionError', async () => {
       (chrome.runtime.sendMessage as jest.Mock).mockImplementationOnce(
         (
@@ -452,7 +538,10 @@ describe('ReplayPageController', () => {
 
   describe('pause / continue / stop / restart', () => {
     async function startSession() {
-      await loadFile('s.json', JSON.stringify([sampleRecord(), sampleRecord()]));
+      await loadFile(
+        's.json',
+        JSON.stringify([sampleRecord(), sampleRecord()]),
+      );
       const url = document.getElementById('replay-url') as HTMLInputElement;
       url.value = 'example.com';
       url.dispatchEvent(new Event('input'));
@@ -463,12 +552,14 @@ describe('ReplayPageController', () => {
     it('toggles pause and continue', async () => {
       await startSession();
 
-      const pauseBtn = document.getElementById('pause-btn') as HTMLButtonElement;
+      const pauseBtn = document.getElementById(
+        'pause-btn',
+      ) as HTMLButtonElement;
       pauseBtn.dispatchEvent(new Event('click'));
       expect(pauseBtn.classList.contains('is-paused')).toBe(true);
-      expect(
-        document.getElementById('pause-label')?.textContent,
-      ).toBe('Continue');
+      expect(document.getElementById('pause-label')?.textContent).toBe(
+        'Continue',
+      );
 
       pauseBtn.dispatchEvent(new Event('click'));
       expect(pauseBtn.classList.contains('is-paused')).toBe(false);

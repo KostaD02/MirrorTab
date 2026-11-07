@@ -30,7 +30,9 @@ describe('isSensitiveField', () => {
 
   it('detects a text input revealed by a "show password" toggle', () => {
     expect(
-      isSensitiveField(input({ type: 'text', autocomplete: 'current-password' })),
+      isSensitiveField(
+        input({ type: 'text', autocomplete: 'current-password' }),
+      ),
     ).toBe(true);
     expect(
       isSensitiveField(input({ type: 'text', autocomplete: 'new-password' })),

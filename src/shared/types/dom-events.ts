@@ -1,5 +1,13 @@
 export interface DomInputEventPayload {
   value: string;
+  // ? checkboxes and radios carry their state, contenteditable carries its markup
+  checked?: boolean;
+  html?: string;
+}
+
+export interface DomResizeEventPayload {
+  width: string;
+  height: string;
 }
 
 export interface DomMousemoveEventPayload {
@@ -26,12 +34,19 @@ export interface DomClickEventPayload {
   offsetYRatio: number;
 }
 
+// ? whether the source element matched :focus-visible, so keyboard and mouse focus look alike on both tabs
+export interface DomFocusEventPayload {
+  visible?: boolean;
+}
+
 export type DomEventContent =
   | DomInputEventPayload
   | DomScrollEventPayload
   | DomKeyboardEventPayload
   | DomClickEventPayload
-  | DomMousemoveEventPayload;
+  | DomMousemoveEventPayload
+  | DomFocusEventPayload
+  | DomResizeEventPayload;
 
 export const DomEventTypeEnum = {
   Click: 'click',
@@ -41,6 +56,9 @@ export const DomEventTypeEnum = {
   Keydown: 'keydown',
   Keyup: 'keyup',
   Mousemove: 'mousemove',
+  Focus: 'focus',
+  Blur: 'blur',
+  Resize: 'resize',
 } as const;
 
 export type DomEventType =
@@ -49,6 +67,8 @@ export type DomEventType =
 export interface DomEventPayload {
   type: DomEventType;
   selector: string;
+  // ? iframe selector chain from the top document; empty for the page itself
+  framePath: string;
   content: DomEventContent;
   timestamp: string;
 }

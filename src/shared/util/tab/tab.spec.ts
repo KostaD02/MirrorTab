@@ -97,27 +97,21 @@ describe('Tab utils', () => {
       expect(chrome.tabs.onUpdated.hasListeners()).toBe(true);
 
       // Non-matching tab id should be ignored
-      chrome.tabs.onUpdated.callListeners(
-        999,
-        { status: 'complete' },
-        { status: 'complete' } as unknown as chrome.tabs.Tab,
-      );
+      chrome.tabs.onUpdated.callListeners(999, { status: 'complete' }, {
+        status: 'complete',
+      } as unknown as chrome.tabs.Tab);
       expect(chrome.tabs.onUpdated.hasListeners()).toBe(true);
 
       // Matching tab but non-complete status should be ignored
-      chrome.tabs.onUpdated.callListeners(
-        tabId,
-        { status: 'loading' },
-        { status: 'loading' } as unknown as chrome.tabs.Tab,
-      );
+      chrome.tabs.onUpdated.callListeners(tabId, { status: 'loading' }, {
+        status: 'loading',
+      } as unknown as chrome.tabs.Tab);
       expect(chrome.tabs.onUpdated.hasListeners()).toBe(true);
 
       // Matching tab id and complete status resolves and removes listener
-      chrome.tabs.onUpdated.callListeners(
-        tabId,
-        { status: 'complete' },
-        { status: 'complete' } as unknown as chrome.tabs.Tab,
-      );
+      chrome.tabs.onUpdated.callListeners(tabId, { status: 'complete' }, {
+        status: 'complete',
+      } as unknown as chrome.tabs.Tab);
 
       await expect(promise).resolves.toBeUndefined();
       expect(chrome.tabs.onUpdated.hasListeners()).toBe(false);

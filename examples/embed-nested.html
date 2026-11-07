@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@kostad/brand@1.5.0/dist/kostad-brand.min.css"
+    />
+    <link rel="stylesheet" href="examples.css" />
+    <style>
+      /* ? embedded pages have no navbar */
+      main {
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body class="kd-bg-elevated">
+    <main class="kd-p-3 kd-d-flex kd-flex-column kd-gap-3">
+      <div class="kd-d-flex kd-items-center kd-justify-between">
+        <span class="kd-font-primary kd-fs-sm kd-fw-bold kd-text-bright"
+          >Terms of service</span
+        >
+        <span class="kd-chip kd-chip--bare kd-font-mono">frame 2</span>
+      </div>
+
+      <div id="terms-text" class="scroll-box kd-prose kd-fs-xxs kd-pr-2">
+        <p>
+          The service is provided as is. Sessions, recordings and exported logs
+          stay in the browser that produced them and are never sent anywhere by
+          the extension.
+        </p>
+        <p>
+          Mirroring reproduces interactions on tabs you opened yourself. You are
+          responsible for what those pages do with the input they receive,
+          including forms that submit, pay or delete.
+        </p>
+        <p>
+          Password fields are mirrored by default so sign-in flows keep working.
+          Turn that off before mirroring anything you would not want inside an
+          exported file.
+        </p>
+        <p>
+          Exported logs contain every value typed on the source tab. Treat them
+          like any other file with user input in it.
+        </p>
+        <p>Scrolling this box is an inner scroll inside the second frame.</p>
+      </div>
+
+      <label
+        class="kd-d-flex kd-items-center kd-gap-2 kd-fs-xs kd-cursor-pointer"
+      >
+        <input id="accept-terms" type="checkbox" /> I have read the terms
+      </label>
+
+      <div class="kd-d-flex kd-items-center kd-gap-3">
+        <button
+          id="accept-btn"
+          class="kd-btn kd-btn--outline kd-btn--sm"
+          type="button"
+          disabled
+        >
+          Accept
+        </button>
+        <span class="kd-chip" data-hover>hover me</span>
+        <span id="accept-state" class="kd-fs-xxs kd-text-success" hidden
+          >Accepted</span
+        >
+      </div>
+
+      <div class="kd-table-scroll kd-m-0">
+        <table id="activity" class="activity kd-fs-xxs">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Count</th>
+              <th>Last target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-event="click">
+              <td>click</td>
+              <td data-count>0</td>
+              <td data-target class="kd-font-mono"></td>
+            </tr>
+            <tr data-event="change">
+              <td>change</td>
+              <td data-count>0</td>
+              <td data-target class="kd-font-mono"></td>
+            </tr>
+            <tr data-event="focus">
+              <td>focus</td>
+              <td data-count>0</td>
+              <td data-target class="kd-font-mono"></td>
+            </tr>
+            <tr data-event="scroll">
+              <td>scroll</td>
+              <td data-count>0</td>
+              <td data-target class="kd-font-mono"></td>
+            </tr>
+            <tr data-event="mousemove">
+              <td>mousemove</td>
+              <td data-count>0</td>
+              <td data-target class="kd-font-mono"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="examples.js"></script>
+    <script>
+      const accept = document.querySelector('#accept-terms');
+      const acceptBtn = document.querySelector('#accept-btn');
+
+      accept.addEventListener('change', () => {
+        acceptBtn.disabled = !accept.checked;
+      });
+
+      acceptBtn.addEventListener('click', () => {
+        document.querySelector('#accept-state').hidden = false;
+      });
+    </script>
+  </body>
+</html>

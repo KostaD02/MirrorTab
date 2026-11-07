@@ -23,6 +23,7 @@ export interface ActiveSession extends SessionConfig {
 
 export interface SessionRecord {
   timestamp: string;
+  framePath: string;
   selectorStackTrace: string;
   selector: string;
   type: DomEventType;

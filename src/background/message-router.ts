@@ -4,9 +4,13 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
+import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 
-export function createMessageRouter(sessionManager: SessionManager): void {
+export function createMessageRouter(
+  sessionManager: SessionManager,
+  recordStore: RecordStore,
+): void {
   chrome.runtime.onMessage.addListener(
     (
       message: ExtensionMessage,
@@ -57,11 +61,29 @@ export function createMessageRouter(sessionManager: SessionManager): void {
           if (!session || session.isPaused) break;
           if (sender.tab?.id !== session.sourceTabId) break;
           for (const targetTabId of session.targetTabIds) {
-            chrome.tabs.sendMessage(targetTabId, {
-              type: ExtensionMessageTypeEnum.ReplayEvent,
-              payload: message.payload,
-            });
+            // ? a target still parked on the pending page has no content script yet
+            chrome.tabs
+              .sendMessage(targetTabId, {
+                type: ExtensionMessageTypeEnum.ReplayEvent,
+                payload: message.payload,
+              })
+              .catch(() => undefined);
           }
+          break;
+        }
+
+        case ExtensionMessageTypeEnum.RecordEvent: {
+          const tabId = sender.tab?.id;
+          if (tabId !== undefined) recordStore.add(tabId, message.payload);
+          break;
+        }
+
+        case ExtensionMessageTypeEnum.GetRecords: {
+          const tabId = sender.tab?.id;
+          sendResponse({
+            type: ExtensionMessageTypeEnum.Records,
+            payload: tabId === undefined ? [] : recordStore.get(tabId),
+          });
           break;
         }
 
@@ -105,6 +127,7 @@ export function createMessageRouter(sessionManager: SessionManager): void {
         }
 
         case ExtensionMessageTypeEnum.StopReplay: {
+          recordStore.clear(message.payload.targetTabId);
           sendRoleToTab(message.payload.targetTabId, SessionRoleEnum.Idle);
           break;
         }

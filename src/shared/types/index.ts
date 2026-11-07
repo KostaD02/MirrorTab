@@ -14,6 +14,8 @@ export type {
   DomKeyboardEventPayload,
   DomClickEventPayload,
   DomMousemoveEventPayload,
+  DomFocusEventPayload,
+  DomResizeEventPayload,
   DomEventContent,
 } from './dom-events';
 export { DomEventTypeEnum } from './dom-events';

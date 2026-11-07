@@ -1,6 +1,11 @@
 import { DomEventPayload } from './dom-events';
 import { DownloadFormat } from './download';
-import { ActiveSession, SessionConfig, SessionRole } from './session';
+import {
+  ActiveSession,
+  SessionConfig,
+  SessionRecord,
+  SessionRole,
+} from './session';
 
 export const ExtensionMessageTypeEnum = {
   StartSession: 'start-session',
@@ -15,8 +20,10 @@ export const ExtensionMessageTypeEnum = {
   DomEvent: 'dom-event',
   ReplayEvent: 'replay-event',
   SetRole: 'set-role',
+  RecordEvent: 'record-event',
+  GetRecords: 'get-records',
+  Records: 'records',
   DownloadRecord: 'download-record',
-  ClearRecord: 'clear-record',
   StartReplay: 'start-replay',
   ReplayReady: 'replay-ready',
   StopReplay: 'stop-replay',
@@ -36,8 +43,10 @@ export type ExtensionMessage =
   | { type: typeof ExtensionMessageTypeEnum.DomEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.ReplayEvent; payload: DomEventPayload }
   | { type: typeof ExtensionMessageTypeEnum.SetRole; role: SessionRole }
+  | { type: typeof ExtensionMessageTypeEnum.RecordEvent; payload: SessionRecord }
+  | { type: typeof ExtensionMessageTypeEnum.GetRecords }
+  | { type: typeof ExtensionMessageTypeEnum.Records; payload: SessionRecord[] }
   | { type: typeof ExtensionMessageTypeEnum.DownloadRecord, payload: { format: DownloadFormat } }
-  | { type: typeof ExtensionMessageTypeEnum.ClearRecord }
   | { type: typeof ExtensionMessageTypeEnum.StartReplay; payload: { url: string } }
   | { type: typeof ExtensionMessageTypeEnum.ReplayReady; payload: { targetTabId: number } }
   | { type: typeof ExtensionMessageTypeEnum.StopReplay; payload: { targetTabId: number } };

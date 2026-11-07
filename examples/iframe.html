@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab examples - Iframes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@kostad/brand@1.5.0/dist/kostad-brand.min.css"
+    />
+    <link rel="stylesheet" href="examples.css" />
+  </head>
+  <body>
+    <header class="kd-navbar">
+      <a
+        href="index.html"
+        class="kd-navbar__brand kd-font-primary kd-fw-bold kd-text-bright"
+        >MirrorTab examples</a
+      >
+      <ul class="kd-navbar__menu">
+        <li><a href="basic.html" class="kd-navbar__link">Basic</a></li>
+        <li>
+          <a href="iframe.html" class="kd-navbar__link" aria-current="page"
+            >Iframes</a
+          >
+        </li>
+        <li><a href="advanced.html" class="kd-navbar__link">Hard cases</a></li>
+      </ul>
+    </header>
+
+    <main class="kd-container-lg kd-gutter-5 kd-gutter-sm-3 kd-pb-5">
+      <section class="kd-section kd-section--tight">
+        <h1 class="kd-heading">Checkout</h1>
+
+        <div class="kd-split kd-split--md kd-items-start">
+          <div class="kd-d-flex kd-flex-column kd-gap-4">
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
+                <span class="kd-card__title">Order</span>
+                <span class="kd-chip">#4821</span>
+              </div>
+              <table class="kd-fs-xs">
+                <tbody>
+                  <tr>
+                    <td>Team plan, 5 seats</td>
+                    <td class="kd-text-end kd-font-mono">45.00</td>
+                  </tr>
+                  <tr>
+                    <td>Extra storage, 100 GB</td>
+                    <td class="kd-text-end kd-font-mono">8.00</td>
+                  </tr>
+                  <tr>
+                    <th class="kd-text-start">Total</th>
+                    <th class="kd-text-end kd-font-mono">53.00</th>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="kd-field">
+                <label class="kd-field__label" for="coupon">Coupon</label>
+                <input
+                  id="coupon"
+                  class="kd-field__input"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="SPRING"
+                />
+                <span class="kd-field__hint"
+                  >This field belongs to the page, not to a frame</span
+                >
+              </div>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
+                <span class="kd-card__title">Payment</span>
+                <span id="frame-origin" class="kd-status-pill"
+                  ><span class="kd-status-pill__dot"></span
+                  ><span>frame</span></span
+                >
+              </div>
+              <p class="kd-card__text kd-fs-xxs">
+                <code>iframe#payment</code>, which embeds a terms frame of its
+                own. Add <code>?frame=</code> with this frame's URL on
+                <code>127.0.0.1</code> instead of <code>localhost</code> for the
+                cross-origin case.
+              </p>
+              <iframe
+                id="payment"
+                class="embed embed--tall"
+                src="embed.html"
+                title="Payment"
+                data-override
+              ></iframe>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <span class="kd-card__title">Help</span>
+              <p class="kd-card__text kd-fs-xxs">
+                A frame without an id, so it is addressed by position:
+                <code>iframe:nth-of-type(1)</code> inside this card.
+              </p>
+              <iframe
+                class="embed embed--short"
+                src="embed-nested.html"
+                title="Terms"
+              ></iframe>
+            </div>
+          </div>
+
+          <aside class="kd-card kd-card--surface activity-card">
+            <div class="kd-card__header">
+              <span class="kd-card__title">Activity</span>
+              <button
+                id="activity-reset"
+                class="kd-btn kd-btn--ghost kd-btn--sm"
+                type="button"
+              >
+                Reset
+              </button>
+            </div>
+            <p class="kd-card__text kd-fs-xxs">
+              Only the page itself. Each frame keeps its own table, because a
+              page cannot see inside its frames.
+            </p>
+            <div class="kd-table-scroll kd-m-0">
+              <table id="activity" class="activity kd-fs-xxs">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>Count</th>
+                    <th>Last target</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-event="click">
+                    <td>click</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="input">
+                    <td>input</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="change">
+                    <td>change</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="keydown">
+                    <td>keydown</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="focus">
+                    <td>focus</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="blur">
+                    <td>blur</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="scroll">
+                    <td>scroll</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="mousemove">
+                    <td>mousemove</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="examples.js"></script>
+  </body>
+</html>

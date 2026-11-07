@@ -24,8 +24,9 @@ MirrorTab is a Chrome extension that captures user interactions on one browser t
 
 ## Features
 
-- **Live mirroring** - clicks, inputs, keystrokes, scroll events, and mouse movement are forwarded from the source tab to every target tab in real time
+- **Live mirroring** - clicks, inputs, keystrokes, focus changes, scroll events, and mouse movement are forwarded from the source tab to every target tab in real time
 - **Multi-target sync** - mirror a single source to multiple targets at once; add up to 10 target URLs per session and manage each one independently
+- **Iframe support** - interactions inside embedded frames, including cross-origin ones, are mirrored into the matching frame on every target tab, and the ghost cursor follows into the frame
 - **Ghost cursor** - a virtual cursor on the target tab shows exactly where the source user is pointing and clicking
 - **Session control** - start, pause, resume, and stop a mirroring session from the popup
 - **Role badges** - a floating badge on each tab shows whether it is SOURCE or TARGET
@@ -79,6 +80,12 @@ All tabs still appear immediately so you can see the full set, but each target p
 
 > **Password fields are mirrored by default**, so login flows keep working as before. While it is on, credentials reach the target tabs and appear in plaintext in exported session logs - turn it off when mirroring anything you would not want in an exported file. Credential inputs are detected by `type="password"` and by `autocomplete="current-password"` / `"new-password"`, so fields unmasked by a "show password" toggle are covered too.
 
+## What replays as real input
+
+Replayed events are synthetic DOM events, so pages see them through their JavaScript listeners: a click arrives as the full `pointerdown` / `mousedown` / `mouseup` / `click` gesture and focuses the element, the pointer position raises `mouseover` / `mouseenter` / `mousemove` / `mouseleave` on whatever sits under the ghost cursor, focus changes call `focus()` / `blur()`, checkboxes, radios, contenteditable text and resized textareas follow the source, and selectors reach into open shadow roots.
+
+Synthetic events cannot switch CSS `:hover` or `:focus`, and a window without OS focus draws no focus at all, so MirrorTab copies the page's own `:hover`, `:focus`, `:focus-visible` and `:focus-within` rules onto attributes it sets on the target. Each copy is inserted right after its original, so the cascade stays the same, and the source reports whether its focused element really matched `:focus-visible`, so a mouse click and a Tab press look the same on both tabs. A stylesheet from another origin is fetched and placed inline in the same spot for that; a CDN that sends no CORS headers keeps native hover only. One thing only a real pointer can do, and no extension can fake without the `debugger` permission: opening native pickers such as a `<select>` dropdown. The chosen value is still mirrored.
+
 ## Recorded event format
 
 Each entry in the exported session log contains:
@@ -86,9 +93,10 @@ Each entry in the exported session log contains:
 | Field                | Description                                                                       |
 | -------------------- | --------------------------------------------------------------------------------- |
 | `timestamp`          | ISO 8601 timestamp of when the event was replayed                                 |
-| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`, `mousemove` |
+| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`, `mousemove`, `focus`, `blur`, `resize` |
 | `selector`           | Compact element identifier: `TAG#id#firstClass#attr=val`                          |
 | `selectorStackTrace` | Full CSS structural path used for DOM resolution                                  |
+| `framePath`          | Selectors of the iframes leading to the frame the event happened in, joined by ` >> `; empty for the page itself |
 | `content`            | Event-specific payload (coordinates, value, key info, scroll position)            |
 
 ## Permissions

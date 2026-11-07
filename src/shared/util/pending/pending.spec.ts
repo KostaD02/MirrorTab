@@ -15,9 +15,9 @@ describe('buildPendingUrl', () => {
   it('points at the pending page and carries the url and deadline', () => {
     const url = buildPendingUrl('https://a.test/page', 1750000000000);
 
-    expect(url.startsWith('chrome-extension://abc/src/pending/index.html?')).toBe(
-      true,
-    );
+    expect(
+      url.startsWith('chrome-extension://abc/src/pending/index.html?'),
+    ).toBe(true);
 
     const parsed = parsePendingParams(url.slice(url.indexOf('?')));
     expect(parsed).toEqual({

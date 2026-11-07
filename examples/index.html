@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab examples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@kostad/brand@1.5.0/dist/kostad-brand.min.css"
+    />
+    <link rel="stylesheet" href="examples.css" />
+  </head>
+  <body>
+    <header class="kd-navbar">
+      <a
+        href="index.html"
+        class="kd-navbar__brand kd-font-primary kd-fw-bold kd-text-bright"
+        aria-current="page"
+        >MirrorTab examples</a
+      >
+      <ul class="kd-navbar__menu">
+        <li><a href="basic.html" class="kd-navbar__link">Basic</a></li>
+        <li><a href="iframe.html" class="kd-navbar__link">Iframes</a></li>
+        <li><a href="advanced.html" class="kd-navbar__link">Hard cases</a></li>
+      </ul>
+    </header>
+
+    <main class="kd-container-lg kd-gutter-5 kd-gutter-sm-3 kd-pb-5">
+      <section class="kd-section kd-section--tight">
+        <h1 class="kd-heading">Test pages</h1>
+        <p class="kd-fs-sm kd-text-secondary">
+          Open the same page as source and as target. Every page keeps an
+          activity table of what it received, so the two tabs can be compared
+          row by row.
+        </p>
+
+        <div
+          class="kd-d-grid kd-gap-4 kd-mt-4"
+          style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))"
+        >
+          <article class="kd-card kd-card--interactive kd-card--lift">
+            <div class="kd-card__header">
+              <a href="basic.html" class="kd-card__title">Basic</a>
+              <span class="kd-chip">level 1</span>
+            </div>
+            <p class="kd-card__text">
+              Text, email and password fields, select, textarea, toggles,
+              radios, buttons. Hover state, focus rings, window and inner
+              scrolling.
+            </p>
+          </article>
+
+          <article class="kd-card kd-card--interactive kd-card--lift">
+            <div class="kd-card__header">
+              <a href="iframe.html" class="kd-card__title">Iframes</a>
+              <span class="kd-chip">level 2</span>
+            </div>
+            <p class="kd-card__text">
+              A payment frame with a nested terms frame inside it, plus a second
+              frame without an id. Switch the payment frame to another origin
+              with <code>?frame=</code>.
+            </p>
+          </article>
+
+          <article class="kd-card kd-card--interactive kd-card--lift">
+            <div class="kd-card__header">
+              <a href="advanced.html" class="kd-card__title">Hard cases</a>
+              <span class="kd-chip kd-chip--accent">level 3</span>
+            </div>
+            <p class="kd-card__text">
+              Custom dropdown, tabs, dialog, drawer, tooltips, contenteditable,
+              keyboard shortcuts, filtered lists, dynamic rows, sortable table,
+              shadow DOM.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="examples.js"></script>
+  </body>
+</html>
