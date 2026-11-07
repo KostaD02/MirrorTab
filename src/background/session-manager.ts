@@ -1,4 +1,4 @@
-import { STORAGE_KEY, RECORDS_STORAGE_KEY } from '@/shared/consts';
+import { STORAGE_KEY } from '@/shared/consts';
 import {
   ActiveSession,
   ExtensionMessage,
@@ -17,9 +17,12 @@ import {
   sleepKeepingWorkerAlive,
   waitForTabLoad,
 } from '@/shared/util';
+import { RecordStore } from './record-store';
 
 export class SessionManager {
   private session: ActiveSession | null = null;
+
+  constructor(private readonly records: RecordStore = new RecordStore()) {}
 
   get currentSession(): ActiveSession | null {
     return this.session;
@@ -69,7 +72,9 @@ export class SessionManager {
 
         await Promise.all([
           sendRoleToTab(sourceTabId, SessionRoleEnum.Source),
-          ...targetTabIds.map((id) => sendRoleToTab(id, SessionRoleEnum.Target)),
+          ...targetTabIds.map((id) =>
+            sendRoleToTab(id, SessionRoleEnum.Target),
+          ),
         ]);
       }
 
@@ -161,6 +166,7 @@ export class SessionManager {
     if (!this.session) return;
     const { sourceTabId, targetTabIds } = this.session;
     this.session = null;
+    this.records.clear();
     await this.persist();
     await Promise.all([
       sendRoleToTab(sourceTabId, SessionRoleEnum.Idle),
@@ -176,6 +182,7 @@ export class SessionManager {
 
     this.session.targetTabIds.splice(idx, 1);
     this.session.targetUrls.splice(idx, 1);
+    this.records.clear(targetTabId);
     await sendRoleToTab(targetTabId, SessionRoleEnum.Idle);
 
     if (this.session.targetTabIds.length === 0) {
@@ -190,7 +197,7 @@ export class SessionManager {
     if (this.session) {
       await chrome.storage.local.set({ [STORAGE_KEY]: this.session });
     } else {
-      await chrome.storage.local.remove([STORAGE_KEY, RECORDS_STORAGE_KEY]);
+      await chrome.storage.local.remove(STORAGE_KEY);
     }
   }
 }

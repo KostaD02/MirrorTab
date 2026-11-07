@@ -41,9 +41,7 @@ describe('validateUrl', () => {
     const result = validateUrl('nodot', inputEl, errorEl);
 
     expect(result).toBeNull();
-    expect(errorEl.textContent).toBe(
-      'Enter a full domain (e.g. example.com).',
-    );
+    expect(errorEl.textContent).toBe('Enter a full domain (e.g. example.com).');
   });
 
   it('should reject host starting or ending with dot', () => {

@@ -2,6 +2,8 @@ export {
   getUniqueSelector,
   getElementMeta,
   getSemanticSelector,
+  resolveSelector,
+  SHADOW_SEPARATOR,
 } from './selector/selector';
 export { normaliseUrl } from './url/url';
 export { logger } from './logger/logger';

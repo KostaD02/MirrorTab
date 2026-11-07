@@ -6,6 +6,7 @@ import {
   getUniqueSelector,
   getElementMeta,
   getSemanticSelector,
+  resolveSelector,
 } from './selector';
 
 describe('selector util', () => {
@@ -124,5 +125,53 @@ describe('selector util', () => {
         'body:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1)',
       );
     });
+  });
+});
+
+describe('shadow DOM selectors', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  function mountShadow() {
+    const host = document.createElement('div');
+    host.id = 'host';
+    document.body.appendChild(host);
+    const root = host.attachShadow({ mode: 'open' });
+    const first = document.createElement('button');
+    const second = document.createElement('button');
+    second.id = 'inner';
+    root.append(first, second);
+    return { host, root, first, second };
+  }
+
+  it('prefixes the host path and joins with the shadow separator', () => {
+    const { second } = mountShadow();
+
+    expect(getSemanticSelector(second)).toBe('#host >>> #inner');
+  });
+
+  it('positions elements by siblings inside the shadow root', () => {
+    const { second } = mountShadow();
+    second.removeAttribute('id');
+
+    expect(getSemanticSelector(second)).toBe('#host >>> button:nth-of-type(2)');
+  });
+
+  it('resolves through each host in turn', () => {
+    const { host, second } = mountShadow();
+
+    expect(resolveSelector('#host >>> #inner')).toBe(second);
+    expect(resolveSelector('#host')).toBe(host);
+    expect(resolveSelector('#host >>> #missing')).toBeNull();
+    expect(resolveSelector('#nobody >>> #inner')).toBeNull();
+  });
+
+  it('returns null past an element without a shadow root', () => {
+    const plain = document.createElement('div');
+    plain.id = 'plain';
+    document.body.appendChild(plain);
+
+    expect(resolveSelector('#plain >>> button')).toBeNull();
   });
 });

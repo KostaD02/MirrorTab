@@ -458,8 +458,7 @@ export class PopupController {
   }
 
   private updateAddTargetVisibility(): void {
-    this.domRefs.addTargetBtn.hidden =
-      this.targetEntries.length >= MAX_TARGETS;
+    this.domRefs.addTargetBtn.hidden = this.targetEntries.length >= MAX_TARGETS;
   }
 
   private bindEvents(): void {
@@ -652,7 +651,6 @@ export class PopupController {
   }
 
   private async onStop(): Promise<void> {
-    this.sendToAllTargetTabs({ type: ExtensionMessageTypeEnum.ClearRecord });
     await chrome.runtime.sendMessage({
       type: ExtensionMessageTypeEnum.StopSession,
     });

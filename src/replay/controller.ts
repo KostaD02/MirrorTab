@@ -82,6 +82,7 @@ export class ReplayPageController {
   private speed: ReplaySpeed = REPLAY_SPEEDS.Normal;
   private currentIndex = 0;
   private isPaused = false;
+  private loading = false;
   private timerId: ReturnType<typeof setTimeout> | null = null;
 
   init(): void {
@@ -174,6 +175,17 @@ export class ReplayPageController {
         this.stop();
       }
     });
+
+    // ? a replayed click can navigate the tab: the new document starts idle, so it gets the role again,
+    // and playback waits for the load instead of sending events into a page that is not there yet
+    chrome.tabs.onUpdated.addListener((tabId, info) => {
+      if (this.targetTabId === null || tabId !== this.targetTabId) return;
+      if (info.status === 'loading') {
+        this.holdForLoad();
+      } else if (info.status === 'complete') {
+        void this.resumeAfterLoad(tabId);
+      }
+    });
   }
 
   private handleFile(file: File): void {
@@ -209,7 +221,15 @@ export class ReplayPageController {
       if (!Array.isArray(parsed)) {
         throw new Error('Invalid JSON format');
       }
-      return parsed as SessionRecord[];
+      // ? exports made before iframe support have no framePath
+      return (parsed as Partial<SessionRecord>[]).map(
+        (record) =>
+          ({
+            ...record,
+            framePath:
+              typeof record.framePath === 'string' ? record.framePath : '',
+          }) as SessionRecord,
+      );
     }
 
     const lines = content.split('\n').filter((line) => line.trim().length > 0);
@@ -226,10 +246,17 @@ export class ReplayPageController {
         '',
       );
       const selector = (parts[2] ?? '').replace('selector: ', '');
-      const contentStr = (parts[3] ?? '').replace('content: ', '');
+      const tail = parts.slice(3);
+      // ? the frame part is optional and last; a typed value may itself contain the separator
+      const framePath =
+        tail.length > 1 && tail[tail.length - 1].startsWith('frame: ')
+          ? (tail.pop() ?? '').slice('frame: '.length)
+          : '';
+      const contentStr = tail.join(' | ').replace('content: ', '');
 
       return {
         timestamp: timestampMatch[1],
+        framePath,
         type,
         selectorStackTrace,
         selector,
@@ -325,8 +352,24 @@ export class ReplayPageController {
     );
   }
 
+  private holdForLoad(): void {
+    if (this.timerId !== null) {
+      clearTimeout(this.timerId);
+      this.timerId = null;
+    }
+    this.loading = true;
+  }
+
+  private async resumeAfterLoad(tabId: number): Promise<void> {
+    await sendRoleToTab(tabId, SessionRoleEnum.Replay);
+    if (!this.loading || this.targetTabId !== tabId) return;
+    this.loading = false;
+    this.scheduleNext();
+  }
+
   private scheduleNext(): void {
-    if (this.isPaused || this.targetTabId === null) return;
+    if (this.isPaused || this.loading || this.targetTabId === null) return;
+    if (this.timerId !== null) return;
 
     if (this.currentIndex >= this.records.length) {
       this.onCompleted();
@@ -336,12 +379,13 @@ export class ReplayPageController {
     const delay = this.calculateDelay(this.currentIndex);
 
     this.timerId = setTimeout(() => {
+      this.timerId = null;
       this.playCurrentEvent();
     }, delay);
   }
 
   private playCurrentEvent(): void {
-    if (this.isPaused || this.targetTabId === null) return;
+    if (this.isPaused || this.loading || this.targetTabId === null) return;
     if (this.currentIndex >= this.records.length) {
       this.onCompleted();
       return;
@@ -352,6 +396,7 @@ export class ReplayPageController {
     const payload: DomEventPayload = {
       type: record.type,
       selector: record.selectorStackTrace || record.selector,
+      framePath: record.framePath,
       content: record.content,
       timestamp: record.timestamp,
     };
@@ -445,6 +490,7 @@ export class ReplayPageController {
 
     this.currentIndex = 0;
     this.isPaused = false;
+    this.loading = false;
 
     this.dom.setupCard.hidden = false;
     this.dom.activeCard.hidden = true;

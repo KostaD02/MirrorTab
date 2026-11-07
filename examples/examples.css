@@ -1,0 +1,138 @@
+/* Only what @kostad/brand has no class for; everything else is brand classes in the pages */
+
+/* ? brand display utilities would otherwise show hidden blocks */
+[hidden] {
+  display: none !important;
+}
+
+/* ? the navbar is fixed, so the page starts below it */
+main {
+  padding-top: calc(var(--kd-navbar-height) + var(--kd-space-5));
+}
+
+/* ? replayed events are synthetic and cannot switch :hover, so hover state is a class set by script */
+.is-hovered {
+  border-color: var(--kd-accent);
+  background: var(--kd-accent-soft);
+  color: var(--kd-accent);
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: var(--kd-border-width-1) solid var(--kd-border);
+  border-radius: var(--kd-radius-md);
+  background: var(--kd-bg-elevated);
+}
+
+.embed--short {
+  height: 540px;
+}
+
+/* ? tall enough for the payment form, its nested frame and its activity table without a second scrollbar */
+.embed--tall {
+  height: 1180px;
+}
+
+.scroll-box {
+  max-height: 180px;
+  overflow: auto;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  z-index: var(--kd-z-dropdown);
+  min-width: 100%;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  border: var(--kd-border-width-1) solid var(--kd-border);
+  border-radius: var(--kd-radius-sm);
+  background: var(--kd-bg-elevated);
+  box-shadow: var(--kd-shadow-md);
+}
+
+.menu button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: var(--kd-radius-sm);
+  background: transparent;
+  font-size: var(--kd-font-size-xs);
+  color: var(--kd-text-primary);
+  text-align: start;
+  cursor: pointer;
+}
+
+.menu button.is-hovered,
+.menu button:focus-visible {
+  background: var(--kd-bg-elevated-hover);
+  color: var(--kd-accent);
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: var(--kd-z-dropdown);
+  padding: 0.375rem 0.625rem;
+  border-radius: var(--kd-radius-sm);
+  background: var(--kd-bg-elevated-hover);
+  font-size: var(--kd-font-size-xxs);
+  color: var(--kd-text-bright);
+  white-space: nowrap;
+  box-shadow: var(--kd-shadow-md);
+  transform: translateX(-50%);
+}
+
+dialog {
+  padding: 0;
+  border: var(--kd-border-width-1) solid var(--kd-border);
+  border-radius: var(--kd-radius-md);
+  background: var(--kd-bg-elevated);
+  color: var(--kd-text-primary);
+  box-shadow: var(--kd-shadow-lg);
+}
+
+dialog::backdrop {
+  background: var(--kd-bg-alpha);
+}
+
+.note[contenteditable] {
+  min-height: 5rem;
+  outline: none;
+}
+
+.note[contenteditable]:focus {
+  border-color: var(--kd-accent);
+}
+
+/* ? the activity table is read side by side on two tabs, so it follows the scroll and never reflows */
+.activity-card {
+  position: sticky;
+  top: calc(var(--kd-navbar-height) + var(--kd-space-3));
+}
+
+.activity {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.activity th:nth-child(1),
+.activity td:nth-child(1) {
+  width: 7.5rem;
+}
+
+.activity th:nth-child(2),
+.activity td:nth-child(2) {
+  width: 4rem;
+}
+
+.activity td {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

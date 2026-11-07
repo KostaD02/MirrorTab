@@ -8,6 +8,7 @@ export default defineConfig([
       'dist',
       'release',
       'coverage',
+      'examples',
       'node_modules',
       'vite.config.ts',
       'eslint.config.ts',

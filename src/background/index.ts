@@ -1,13 +1,16 @@
 import { sendRoleToTab } from '@/shared/util';
 import { SessionRoleEnum } from '@/shared/types';
 import { createMessageRouter } from './message-router';
+import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 
-const sessionManager = new SessionManager();
+const recordStore = new RecordStore();
+const sessionManager = new SessionManager(recordStore);
 
 sessionManager.restore();
+recordStore.restore();
 
-createMessageRouter(sessionManager);
+createMessageRouter(sessionManager, recordStore);
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   const session = sessionManager.currentSession;
@@ -22,6 +25,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 });
 
 chrome.tabs.onRemoved.addListener((tabId) => {
+  recordStore.clear(tabId);
+
   const session = sessionManager.currentSession;
   if (!session) return;
 

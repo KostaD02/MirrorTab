@@ -5,11 +5,7 @@ import {
   ExtensionMessageTypeEnum,
   SessionRoleEnum,
 } from '@/shared/types';
-import {
-  DEFAULT_SETTINGS,
-  RECORDS_STORAGE_KEY,
-  STORAGE_KEY,
-} from '@/shared/consts';
+import { DEFAULT_SETTINGS, STORAGE_KEY } from '@/shared/consts';
 import {
   buildPendingUrl,
   clampTabOpenDelay,
@@ -59,8 +55,7 @@ const mockedClampTabOpenDelay = clampTabOpenDelay as jest.MockedFunction<
   typeof clampTabOpenDelay
 >;
 
-const makeTab = (id: number) =>
-  ({ id }) as unknown as chrome.tabs.Tab;
+const makeTab = (id: number) => ({ id }) as unknown as chrome.tabs.Tab;
 
 async function flushPromises(): Promise<void> {
   for (let i = 0; i < 50; i++) {
@@ -394,18 +389,9 @@ describe('SessionManager', () => {
       await manager.pause();
 
       expect(manager.currentSession?.isPaused).toBe(true);
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        1,
-        SessionRoleEnum.Idle,
-      );
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        2,
-        SessionRoleEnum.Idle,
-      );
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        3,
-        SessionRoleEnum.Idle,
-      );
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(1, SessionRoleEnum.Idle);
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(2, SessionRoleEnum.Idle);
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(3, SessionRoleEnum.Idle);
     });
 
     it('is a no-op when there is no session', async () => {
@@ -463,22 +449,10 @@ describe('SessionManager', () => {
       await manager.stop();
 
       expect(manager.currentSession).toBeNull();
-      expect(chrome.storage.local.remove).toHaveBeenCalledWith([
-        STORAGE_KEY,
-        RECORDS_STORAGE_KEY,
-      ]);
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        1,
-        SessionRoleEnum.Idle,
-      );
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        2,
-        SessionRoleEnum.Idle,
-      );
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        3,
-        SessionRoleEnum.Idle,
-      );
+      expect(chrome.storage.local.remove).toHaveBeenCalledWith(STORAGE_KEY);
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(1, SessionRoleEnum.Idle);
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(2, SessionRoleEnum.Idle);
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(3, SessionRoleEnum.Idle);
     });
 
     it('is a no-op when there is no session', async () => {
@@ -497,10 +471,7 @@ describe('SessionManager', () => {
 
       expect(manager.currentSession?.targetTabIds).toEqual([3]);
       expect(manager.currentSession?.targetUrls).toEqual(['https://b.test']);
-      expect(mockedSendRoleToTab).toHaveBeenCalledWith(
-        2,
-        SessionRoleEnum.Idle,
-      );
+      expect(mockedSendRoleToTab).toHaveBeenCalledWith(2, SessionRoleEnum.Idle);
       expect(chrome.storage.local.set).toHaveBeenCalled();
     });
 
@@ -514,10 +485,7 @@ describe('SessionManager', () => {
       await manager.removeTarget(2);
 
       expect(manager.currentSession).toBeNull();
-      expect(chrome.storage.local.remove).toHaveBeenCalledWith([
-        STORAGE_KEY,
-        RECORDS_STORAGE_KEY,
-      ]);
+      expect(chrome.storage.local.remove).toHaveBeenCalledWith(STORAGE_KEY);
     });
 
     it('ignores unknown tab ids', async () => {

@@ -145,9 +145,7 @@ describe('loadSettings', () => {
 
     const settings = await loadSettings();
 
-    expect(chrome.storage.local.get).toHaveBeenCalledWith(
-      SETTINGS_STORAGE_KEY,
-    );
+    expect(chrome.storage.local.get).toHaveBeenCalledWith(SETTINGS_STORAGE_KEY);
     expect(settings.mirrorMousemove).toBe(false);
     expect(settings.mirrorScroll).toBe(true);
   });

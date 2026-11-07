@@ -25,7 +25,9 @@ jest.mock('./validate-url', () => ({
 import { validateUrl } from './validate-url';
 import { PopupController } from './controller';
 
-const mockedValidateUrl = validateUrl as jest.MockedFunction<typeof validateUrl>;
+const mockedValidateUrl = validateUrl as jest.MockedFunction<
+  typeof validateUrl
+>;
 
 function loadPopupHtml(): void {
   const htmlPath = path.resolve(__dirname, 'index.html');
@@ -370,18 +372,13 @@ describe('PopupController', () => {
       expect(resumeCalls).toHaveLength(1);
     });
 
-    it('stop button sends ClearRecord to every target then StopSession', async () => {
+    it('stop button sends StopSession and resets the form', async () => {
       await initWithSession();
 
       document.getElementById('stop-btn')?.dispatchEvent(new Event('click'));
       await flushPromises();
 
-      expect(chrome.tabs.sendMessage).toHaveBeenCalledWith(10, {
-        type: ExtensionMessageTypeEnum.ClearRecord,
-      });
-      expect(chrome.tabs.sendMessage).toHaveBeenCalledWith(11, {
-        type: ExtensionMessageTypeEnum.ClearRecord,
-      });
+      expect(chrome.tabs.sendMessage).not.toHaveBeenCalled();
       const stopCalls = (chrome.runtime.sendMessage as jest.Mock).mock.calls
         .map((c) => c[0] as ExtensionMessage)
         .filter((m) => m.type === ExtensionMessageTypeEnum.StopSession);
@@ -431,9 +428,8 @@ describe('PopupController', () => {
         },
       } satisfies ExtensionMessage);
 
-      const removeBtn = document.querySelector<HTMLButtonElement>(
-        '.btn-remove-target',
-      );
+      const removeBtn =
+        document.querySelector<HTMLButtonElement>('.btn-remove-target');
       removeBtn?.dispatchEvent(new Event('click'));
       await flushPromises();
 
@@ -695,9 +691,8 @@ describe('PopupController', () => {
         document.querySelectorAll('#target-list input[type="url"]'),
       ).toHaveLength(3);
 
-      const removeBtns = document.querySelectorAll<HTMLButtonElement>(
-        '.btn-remove-input',
-      );
+      const removeBtns =
+        document.querySelectorAll<HTMLButtonElement>('.btn-remove-input');
       removeBtns[0].dispatchEvent(new Event('click'));
 
       expect(

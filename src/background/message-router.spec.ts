@@ -7,6 +7,7 @@ import {
 } from '@/shared/types';
 import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
 import { createMessageRouter } from './message-router';
+import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 
 jest.mock('@/shared/util', () => ({
@@ -31,16 +32,16 @@ type Listener = (
 
 describe('createMessageRouter', () => {
   let manager: jest.Mocked<
-    Pick<
-      SessionManager,
-      'start' | 'pause' | 'resume' | 'stop' | 'removeTarget'
-    >
+    Pick<SessionManager, 'start' | 'pause' | 'resume' | 'stop' | 'removeTarget'>
   > & { currentSession: ActiveSession | null };
+
+  let store: jest.Mocked<Pick<RecordStore, 'add' | 'get' | 'clear'>>;
 
   let listener: Listener;
 
   beforeEach(() => {
     jest.clearAllMocks();
+    (chrome.tabs.sendMessage as jest.Mock).mockResolvedValue(undefined);
 
     chrome.runtime.onMessage.clearListeners();
 
@@ -60,7 +61,16 @@ describe('createMessageRouter', () => {
       currentSession: null,
     };
 
-    createMessageRouter(manager as unknown as SessionManager);
+    store = {
+      add: jest.fn(),
+      get: jest.fn().mockReturnValue([]),
+      clear: jest.fn(),
+    };
+
+    createMessageRouter(
+      manager as unknown as SessionManager,
+      store as unknown as RecordStore,
+    );
 
     if (!captured.fn) throw new Error('listener was not registered');
     listener = captured.fn;
@@ -356,7 +366,93 @@ describe('createMessageRouter', () => {
     });
   });
 
-  it('sends Idle role on StopReplay', () => {
+  describe('records', () => {
+    const record = {
+      timestamp: 't',
+      framePath: '',
+      selector: 'div',
+      selectorStackTrace: 'div',
+      type: 'click',
+      content: { offsetXRatio: 0, offsetYRatio: 0 },
+    } as const;
+
+    it('stores RecordEvent under the sending tab', () => {
+      listener(
+        { type: ExtensionMessageTypeEnum.RecordEvent, payload: record },
+        { tab: { id: 20 } } as chrome.runtime.MessageSender,
+        jest.fn(),
+      );
+
+      expect(store.add).toHaveBeenCalledWith(20, record);
+    });
+
+    it('drops RecordEvent without a sender tab', () => {
+      listener(
+        { type: ExtensionMessageTypeEnum.RecordEvent, payload: record },
+        {} as chrome.runtime.MessageSender,
+        jest.fn(),
+      );
+
+      expect(store.add).not.toHaveBeenCalled();
+    });
+
+    it('answers GetRecords with the records of the sending tab', () => {
+      store.get.mockReturnValue([record]);
+      const sendResponse = jest.fn();
+
+      listener(
+        { type: ExtensionMessageTypeEnum.GetRecords },
+        { tab: { id: 20 } } as chrome.runtime.MessageSender,
+        sendResponse,
+      );
+
+      expect(store.get).toHaveBeenCalledWith(20);
+      expect(sendResponse).toHaveBeenCalledWith({
+        type: ExtensionMessageTypeEnum.Records,
+        payload: [record],
+      });
+    });
+
+    it('answers GetRecords with nothing when there is no sender tab', () => {
+      const sendResponse = jest.fn();
+
+      listener(
+        { type: ExtensionMessageTypeEnum.GetRecords },
+        {} as chrome.runtime.MessageSender,
+        sendResponse,
+      );
+
+      expect(store.get).not.toHaveBeenCalled();
+      expect(sendResponse).toHaveBeenCalledWith({
+        type: ExtensionMessageTypeEnum.Records,
+        payload: [],
+      });
+    });
+  });
+
+  it('survives a target that cannot receive DomEvent yet', async () => {
+    manager.currentSession = {
+      sourceTabId: 10,
+      targetTabIds: [20],
+      isPaused: false,
+      sourceUrl: 'a',
+      targetUrls: ['b'],
+    };
+    (chrome.tabs.sendMessage as jest.Mock).mockRejectedValue(
+      new Error('Receiving end does not exist'),
+    );
+
+    listener(
+      { type: ExtensionMessageTypeEnum.DomEvent, payload: {} as never },
+      { tab: { id: 10 } } as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+    await flushPromises();
+
+    expect(chrome.tabs.sendMessage).toHaveBeenCalledTimes(1);
+  });
+
+  it('sends Idle role and clears records on StopReplay', () => {
     listener(
       {
         type: ExtensionMessageTypeEnum.StopReplay,
@@ -367,6 +463,7 @@ describe('createMessageRouter', () => {
     );
 
     expect(mockedSendRoleToTab).toHaveBeenCalledWith(77, SessionRoleEnum.Idle);
+    expect(store.clear).toHaveBeenCalledWith(77);
   });
 });
 

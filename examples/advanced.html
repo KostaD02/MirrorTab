@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MirrorTab examples - Hard cases</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@kostad/brand@1.5.0/dist/kostad-brand.min.css"
+    />
+    <link rel="stylesheet" href="examples.css" />
+  </head>
+  <body>
+    <header class="kd-navbar">
+      <a
+        href="index.html"
+        class="kd-navbar__brand kd-font-primary kd-fw-bold kd-text-bright"
+        >MirrorTab examples</a
+      >
+      <ul class="kd-navbar__menu">
+        <li><a href="basic.html" class="kd-navbar__link">Basic</a></li>
+        <li><a href="iframe.html" class="kd-navbar__link">Iframes</a></li>
+        <li>
+          <a href="advanced.html" class="kd-navbar__link" aria-current="page"
+            >Hard cases</a
+          >
+        </li>
+      </ul>
+    </header>
+
+    <main class="kd-container-lg kd-gutter-5 kd-gutter-sm-3 kd-pb-5">
+      <section class="kd-section kd-section--tight">
+        <h1 class="kd-heading">Project board</h1>
+
+        <div class="kd-split kd-split--md kd-items-start">
+          <div class="kd-d-flex kd-flex-column kd-gap-4">
+            <div class="kd-card kd-card--surface">
+              <span class="kd-card__title">Pickers</span>
+              <div class="kd-d-flex kd-flex-wrap kd-gap-4">
+                <div class="kd-field kd-pos-relative kd-grow-1">
+                  <span class="kd-field__label">Assignee, custom</span>
+                  <button
+                    id="assignee-btn"
+                    class="kd-btn kd-btn--outline kd-w-100 kd-justify-between"
+                    type="button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                  >
+                    <span id="assignee-value">Unassigned</span>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M3 6l5 5 5-5" />
+                    </svg>
+                  </button>
+                  <ul id="assignee-menu" class="menu" role="listbox" hidden>
+                    <li>
+                      <button type="button" role="option" data-hover>
+                        Unassigned
+                      </button>
+                    </li>
+                    <li><button type="button" role="option" data-hover>Test 1</button></li>
+                    <li><button type="button" role="option" data-hover>Test 2</button></li>
+                    <li><button type="button" role="option" data-hover>Test 3</button></li>
+                  </ul>
+                  <span class="kd-field__hint"
+                    >Opens on mousedown, like most dropdown libraries</span
+                  >
+                </div>
+                <div class="kd-field kd-grow-1">
+                  <label class="kd-field__label" for="priority"
+                    >Priority, native</label
+                  >
+                  <select id="priority" class="kd-field__input">
+                    <option value="low">Low</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="high">High</option>
+                  </select>
+                  <span class="kd-field__hint"
+                    >The browser owns this popup, only the value follows</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div
+                class="kd-tabs kd-tabs--horizontal"
+                role="tablist"
+                aria-label="Board views"
+              >
+                <button
+                  id="tab-open"
+                  class="kd-tabs__tab kd-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="panel-open"
+                  tabindex="0"
+                >
+                  Open
+                </button>
+                <button
+                  id="tab-review"
+                  class="kd-tabs__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="panel-review"
+                  tabindex="-1"
+                >
+                  In review
+                </button>
+                <button
+                  id="tab-done"
+                  class="kd-tabs__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="panel-done"
+                  tabindex="-1"
+                >
+                  Done
+                </button>
+              </div>
+              <div
+                id="panel-open"
+                role="tabpanel"
+                aria-labelledby="tab-open"
+                class="kd-fs-xs"
+              >
+                <p class="kd-m-0">
+                  Six open items. Arrow keys move between tabs when one is
+                  focused.
+                </p>
+              </div>
+              <div
+                id="panel-review"
+                role="tabpanel"
+                aria-labelledby="tab-review"
+                class="kd-fs-xs"
+                hidden
+              >
+                <p class="kd-m-0">Two items waiting for review.</p>
+              </div>
+              <div
+                id="panel-done"
+                role="tabpanel"
+                aria-labelledby="tab-done"
+                class="kd-fs-xs"
+                hidden
+              >
+                <p class="kd-m-0">Fourteen items closed this week.</p>
+              </div>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <span class="kd-card__title">Layers</span>
+              <div class="kd-d-flex kd-flex-wrap kd-gap-2">
+                <button
+                  id="invite-btn"
+                  class="kd-btn kd-btn--outline kd-btn--sm"
+                  type="button"
+                >
+                  Invite member
+                </button>
+                <button
+                  id="drawer-btn"
+                  class="kd-btn kd-btn--ghost kd-btn--sm"
+                  type="button"
+                >
+                  Open drawer
+                </button>
+                <span class="kd-pos-relative">
+                  <span
+                    class="kd-chip"
+                    data-hover
+                    data-tip="Waiting for a free runner"
+                    >queued</span
+                  >
+                </span>
+                <span class="kd-pos-relative">
+                  <span
+                    class="kd-chip kd-chip--accent"
+                    data-hover
+                    data-tip="Started 40 seconds ago"
+                    >running</span
+                  >
+                </span>
+              </div>
+              <span
+                id="invite-state"
+                class="kd-fs-xxs kd-text-success"
+                hidden
+              ></span>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <label class="kd-card__title" for="note"
+                >Note, contenteditable</label
+              >
+              <div
+                id="note"
+                class="note kd-field__input kd-fs-xs"
+                contenteditable="true"
+                spellcheck="false"
+              >
+                Release notes draft. Type here on the source.
+              </div>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
+                <span class="kd-card__title">Repositories</span>
+                <span class="kd-fs-micro kd-text-muted"
+                  >Press <kbd>/</kbd> to search, <kbd>Esc</kbd> to clear</span
+                >
+              </div>
+              <input
+                id="repo-search"
+                class="kd-field__input"
+                type="search"
+                autocomplete="off"
+                placeholder="Filter"
+              />
+              <ul id="repo-list" class="kd-list-plain kd-m-0 kd-fs-xs">
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>brand</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>biolume</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>ci</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>MirrorTab</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>steam-idler</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+                <li
+                  class="kd-d-flex kd-items-center kd-justify-between kd-py-2 kd-border-b-1"
+                >
+                  <span>QuickInspect</span
+                  ><button
+                    class="kd-btn kd-btn--ghost kd-btn--sm"
+                    type="button"
+                  >
+                    Archive
+                  </button>
+                </li>
+              </ul>
+              <span class="kd-fs-micro kd-text-muted"
+                >Rows and buttons have no ids, so they are addressed by
+                position.</span
+              >
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
+                <span class="kd-card__title">Environments</span>
+                <button
+                  id="add-env-btn"
+                  class="kd-btn kd-btn--outline kd-btn--sm"
+                  type="button"
+                >
+                  Add row
+                </button>
+              </div>
+              <div class="kd-table-scroll kd-m-0">
+                <table id="env-table" class="kd-fs-xs">
+                  <thead>
+                    <tr>
+                      <th>
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-sort="0"
+                        >
+                          Name
+                        </button>
+                      </th>
+                      <th>
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-sort="1"
+                        >
+                          Region
+                        </button>
+                      </th>
+                      <th>
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-sort="2"
+                        >
+                          Replicas
+                        </button>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>production</td>
+                      <td>eu-west-1</td>
+                      <td class="kd-font-mono">3</td>
+                      <td class="kd-text-end">
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-remove
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>staging</td>
+                      <td>eu-central-1</td>
+                      <td class="kd-font-mono">1</td>
+                      <td class="kd-text-end">
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-remove
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>preview</td>
+                      <td>us-east-1</td>
+                      <td class="kd-font-mono">1</td>
+                      <td class="kd-text-end">
+                        <button
+                          class="kd-btn kd-btn--ghost kd-btn--sm"
+                          type="button"
+                          data-remove
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <span class="kd-fs-micro kd-text-muted"
+                >Headers sort, new rows appear after the session started.</span
+              >
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
+                <span class="kd-card__title">Shadow DOM</span>
+                <span class="kd-chip">open root</span>
+              </div>
+              <p class="kd-card__text kd-fs-xxs">
+                The counter below lives inside an open shadow root, which selectors can cross. Closed roots stay out of reach.
+              </p>
+              <div id="shadow-host"></div>
+            </div>
+          </div>
+
+          <aside class="kd-card kd-card--surface activity-card">
+            <div class="kd-card__header">
+              <span class="kd-card__title">Activity</span>
+              <button
+                id="activity-reset"
+                class="kd-btn kd-btn--ghost kd-btn--sm"
+                type="button"
+              >
+                Reset
+              </button>
+            </div>
+            <p class="kd-card__text kd-fs-xxs">
+              What this page received. Compare it with the same table on the
+              other tab.
+            </p>
+            <div class="kd-table-scroll kd-m-0">
+              <table id="activity" class="activity kd-fs-xxs">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>Count</th>
+                    <th>Last target</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-event="click">
+                    <td>click</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="input">
+                    <td>input</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="change">
+                    <td>change</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="keydown">
+                    <td>keydown</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="focus">
+                    <td>focus</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="blur">
+                    <td>blur</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="scroll">
+                    <td>scroll</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="mousemove">
+                    <td>mousemove</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="invite-dialog">
+      <form
+        id="invite-form"
+        method="dialog"
+        class="kd-d-flex kd-flex-column kd-gap-3 kd-p-4"
+        novalidate
+      >
+        <span class="kd-font-primary kd-fs-md kd-fw-bold kd-text-bright"
+          >Invite a member</span
+        >
+        <div class="kd-field">
+          <label class="kd-field__label" for="invite-email">Email</label>
+          <input
+            id="invite-email"
+            class="kd-field__input"
+            type="email"
+            autocomplete="off"
+            placeholder="name@company.com"
+          />
+        </div>
+        <div class="kd-d-flex kd-justify-end kd-gap-2">
+          <button
+            id="invite-cancel"
+            class="kd-btn kd-btn--ghost kd-btn--sm"
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            id="invite-send"
+            class="kd-btn kd-btn--primary kd-btn--sm"
+            type="submit"
+          >
+            Send invite
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="drawer" class="kd-drawer" hidden>
+      <ul class="kd-drawer__panel">
+        <li><a href="#" class="kd-navbar__link" data-hover>Overview</a></li>
+        <li><a href="#" class="kd-navbar__link" data-hover>Deploys</a></li>
+        <li><a href="#" class="kd-navbar__link" data-hover>Settings</a></li>
+        <li class="kd-mt-4">
+          <button
+            id="drawer-close"
+            class="kd-btn kd-btn--outline kd-btn--sm"
+            type="button"
+          >
+            Close
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="examples.js"></script>
+    <script src="advanced.js"></script>
+  </body>
+</html>

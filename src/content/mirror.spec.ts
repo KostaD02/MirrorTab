@@ -17,13 +17,15 @@ import {
   DomInputEventPayload,
   DomKeyboardEventPayload,
   DomMousemoveEventPayload,
+  DomResizeEventPayload,
   DomScrollEventPayload,
+  ExtensionMessage,
   ExtensionMessageTypeEnum,
+  SessionRecord,
   SessionRoleEnum,
 } from '@/shared/types';
+import { FrameContext } from './frame-bridge';
 import { EventCapture, EventReplay } from './mirror';
-import { OverlayHost } from './overlay-host';
-import { VirtualCursor } from './virtual-cursor';
 import { DEFAULT_SETTINGS } from '@/shared/consts';
 
 jest.mock('@/shared/util', () => ({
@@ -40,6 +42,7 @@ const MOCK_DATE = new Date('2026-04-24T10:00:00.000Z');
 function getLastDomEvent(): {
   type: string;
   selector: string;
+  framePath: string;
   content: unknown;
   timestamp: string;
 } | null {
@@ -50,14 +53,32 @@ function getLastDomEvent(): {
   return last.payload;
 }
 
+type FrameStub = FrameContext & {
+  path: string | null;
+  moveTo: jest.Mock;
+  animateClick: jest.Mock;
+};
+
+function makeFrame(path: string | null = ''): FrameStub {
+  return { path, moveTo: jest.fn(), animateClick: jest.fn() };
+}
+
+function sentRecords(): SessionRecord[] {
+  return (chrome.runtime.sendMessage as jest.Mock).mock.calls
+    .map((c) => c[0] as ExtensionMessage)
+    .filter((m) => m.type === ExtensionMessageTypeEnum.RecordEvent)
+    .map((m) => (m as { payload: SessionRecord }).payload);
+}
+
 describe('EventCapture', () => {
   // One instance for the whole file — EventCapture attaches listeners to
   // `document` and jsdom can't easily remove them between tests, so creating
   // a fresh instance per test would accumulate listeners and duplicate events.
   let capture: EventCapture;
+  const captureFrame = makeFrame();
 
   beforeAll(() => {
-    capture = new EventCapture();
+    capture = new EventCapture(captureFrame);
   });
 
   beforeEach(() => {
@@ -68,6 +89,7 @@ describe('EventCapture', () => {
     (chrome.runtime.sendMessage as jest.Mock).mockResolvedValue(undefined);
     capture.setRole(SessionRoleEnum.Idle);
     capture.setSettings({ ...DEFAULT_SETTINGS });
+    captureFrame.path = '';
   });
 
   afterEach(() => {
@@ -332,6 +354,105 @@ describe('EventCapture', () => {
       expect(getLastDomEvent()).toBeNull();
     });
 
+    it('sends the checked state of checkboxes and radios', () => {
+      const box = document.createElement('input');
+      box.type = 'checkbox';
+      box.id = 'agree';
+      document.body.appendChild(box);
+      box.checked = true;
+
+      box.dispatchEvent(new Event('change', { bubbles: true }));
+
+      expect(getLastDomEvent()).toMatchObject({
+        type: DomEventTypeEnum.Change,
+        selector: '#agree',
+        content: { value: 'on', checked: true },
+      });
+    });
+
+    it('sends the markup of a contenteditable element', () => {
+      const note = document.createElement('div');
+      note.id = 'note';
+      note.contentEditable = 'true';
+      note.innerHTML = 'Hello <i>there</i>';
+      document.body.appendChild(note);
+
+      note.dispatchEvent(new Event('input', { bubbles: true }));
+
+      expect(getLastDomEvent()?.content).toEqual({
+        value: 'Hello there',
+        html: 'Hello <i>there</i>',
+      });
+    });
+
+    it('reports a textarea whose inline size changed', async () => {
+      const area = document.createElement('textarea');
+      area.id = 'bio';
+      document.body.appendChild(area);
+
+      area.style.width = '300px';
+      area.style.height = '120px';
+      await Promise.resolve();
+      jest.advanceTimersByTime(100);
+
+      expect(getLastDomEvent()).toMatchObject({
+        type: DomEventTypeEnum.Resize,
+        selector: '#bio',
+        content: { width: '300px', height: '120px' },
+      });
+    });
+
+    it('addresses elements inside an open shadow root through their host', () => {
+      const host = document.createElement('div');
+      host.id = 'host';
+      document.body.appendChild(host);
+      const button = document.createElement('button');
+      button.id = 'inner';
+      host.attachShadow({ mode: 'open' }).appendChild(button);
+
+      button.dispatchEvent(
+        new MouseEvent('click', { bubbles: true, composed: true }),
+      );
+
+      expect(getLastDomEvent()?.selector).toBe('#host >>> #inner');
+    });
+
+    it('captures focus and blur with the element selector', () => {
+      const input = document.createElement('input');
+      input.id = 'name';
+      document.body.appendChild(input);
+
+      input.dispatchEvent(new FocusEvent('focusin', { bubbles: true }));
+      expect(getLastDomEvent()).toMatchObject({
+        type: DomEventTypeEnum.Focus,
+        selector: '#name',
+        content: { visible: expect.any(Boolean) },
+      });
+
+      input.dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+      expect(getLastDomEvent()?.type).toBe(DomEventTypeEnum.Blur);
+    });
+
+    it('tags every event with the frame path', () => {
+      captureFrame.path = 'iframe#widget';
+      const btn = document.createElement('button');
+      document.body.appendChild(btn);
+
+      btn.click();
+
+      expect(getLastDomEvent()?.framePath).toBe('iframe#widget');
+    });
+
+    it('does not send events while the frame path is unresolved', () => {
+      captureFrame.path = null;
+      const btn = document.createElement('button');
+      document.body.appendChild(btn);
+
+      btn.click();
+
+      expect(chrome.runtime.sendMessage).not.toHaveBeenCalled();
+    });
+
     describe('settings', () => {
       function addPasswordField(): HTMLInputElement {
         const field = document.createElement('input');
@@ -456,19 +577,39 @@ describe('EventCapture', () => {
 
 describe('EventReplay', () => {
   let replay: EventReplay;
-  let cursor: VirtualCursor;
+  let frame: FrameStub;
 
   beforeEach(() => {
     jest.clearAllMocks();
     document.body.innerHTML = '';
-    cursor = new VirtualCursor(new OverlayHost());
-    jest.spyOn(cursor, 'moveTo').mockImplementation(() => undefined);
-    jest.spyOn(cursor, 'animateClick').mockImplementation(() => undefined);
-    replay = new EventReplay(cursor);
+    (chrome.runtime.sendMessage as jest.Mock).mockResolvedValue(undefined);
+    // jsdom has no layout, so the element under the cursor is whatever a test says it is
+    Object.defineProperty(document, 'elementFromPoint', {
+      value: jest.fn(() => null),
+      configurable: true,
+      writable: true,
+    });
+    frame = makeFrame();
+    replay = new EventReplay(frame);
   });
+
+  const atPoint = (el: Element | null) => {
+    (document.elementFromPoint as jest.Mock).mockReturnValue(el);
+  };
+
+  const mousemove = (xRatio: number, yRatio: number) => {
+    replay.replay({
+      type: DomEventTypeEnum.Mousemove,
+      selector: 'window',
+      framePath: '',
+      timestamp: basePayload.timestamp,
+      content: { xRatio, yRatio } as DomMousemoveEventPayload,
+    });
+  };
 
   const basePayload = {
     selector: '#root',
+    framePath: '',
     timestamp: '2026-04-24T10:00:00.000Z',
   };
 
@@ -501,10 +642,10 @@ describe('EventReplay', () => {
     });
 
     expect(clickSpy).toHaveBeenCalledTimes(1);
-    expect(cursor.animateClick).toHaveBeenCalledWith(50, 20);
-    expect(replay.sessionRecords).toHaveLength(1);
-    expect(replay.sessionRecords[0].selector).toBe('button#root');
-    expect(replay.sessionRecords[0].selectorStackTrace).toBe('#root');
+    expect(frame.animateClick).toHaveBeenCalledWith(50, 20);
+    expect(sentRecords()).toHaveLength(1);
+    expect(sentRecords()[0].selector).toBe('button#root');
+    expect(sentRecords()[0].selectorStackTrace).toBe('#root');
   });
 
   it('replays input events using the native value setter so frameworks see the change', () => {
@@ -522,7 +663,7 @@ describe('EventReplay', () => {
 
     expect(input.value).toBe('typed');
     expect(inputSpy).toHaveBeenCalledTimes(1);
-    expect(replay.sessionRecords[0].type).toBe(DomEventTypeEnum.Input);
+    expect(sentRecords()[0].type).toBe(DomEventTypeEnum.Input);
   });
 
   it('replays change events by setting value and dispatching change', () => {
@@ -569,7 +710,7 @@ describe('EventReplay', () => {
     });
 
     expect(kdSpy).toHaveBeenCalledTimes(1);
-    expect(replay.sessionRecords[0].type).toBe(DomEventTypeEnum.Keydown);
+    expect(sentRecords()[0].type).toBe(DomEventTypeEnum.Keydown);
   });
 
   it('replays keyup', () => {
@@ -604,6 +745,7 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Scroll,
       selector: 'window',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { scrollX: 10, scrollY: 20 } as DomScrollEventPayload,
     });
 
@@ -612,7 +754,7 @@ describe('EventReplay', () => {
       top: 20,
       behavior: 'smooth',
     });
-    expect(replay.sessionRecords).toHaveLength(1);
+    expect(sentRecords()).toHaveLength(1);
   });
 
   it('scrolls a matched element when selector resolves', () => {
@@ -626,6 +768,7 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Scroll,
       selector: '#scroll',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { scrollX: 5, scrollY: 15 } as DomScrollEventPayload,
     });
 
@@ -646,6 +789,7 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Scroll,
       selector: 'window',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { scrollX: 10, scrollY: 20 } as DomScrollEventPayload,
     });
 
@@ -668,6 +812,7 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Scroll,
       selector: '#scroll',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { scrollX: 5, scrollY: 15 } as DomScrollEventPayload,
     });
 
@@ -685,6 +830,7 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Scroll,
       selector: '#missing',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { scrollX: 0, scrollY: 0 } as DomScrollEventPayload,
     });
 
@@ -708,10 +854,11 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Mousemove,
       selector: 'window',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { xRatio: 0.4, yRatio: 0.5 } as DomMousemoveEventPayload,
     });
 
-    expect(cursor.moveTo).toHaveBeenCalledWith(400, 300);
+    expect(frame.moveTo).toHaveBeenCalledWith(400, 300);
   });
 
   it('warns and bails out when the selector does not resolve (non-scroll)', async () => {
@@ -721,13 +868,14 @@ describe('EventReplay', () => {
       type: DomEventTypeEnum.Click,
       selector: '#does-not-exist',
       timestamp: basePayload.timestamp,
+      framePath: '',
       content: { offsetXRatio: 0.5, offsetYRatio: 0.5 } as DomClickEventPayload,
     });
 
     expect(logger.warn).toHaveBeenCalledWith(
       'Could not resolve selector: #does-not-exist',
     );
-    expect(replay.sessionRecords).toHaveLength(0);
+    expect(sentRecords()).toHaveLength(0);
   });
 
   it('safely handles invalid selectors via try/catch', () => {
@@ -736,6 +884,7 @@ describe('EventReplay', () => {
         type: DomEventTypeEnum.Click,
         selector: '))))invalid((((',
         timestamp: basePayload.timestamp,
+        framePath: '',
         content: {
           offsetXRatio: 0.5,
           offsetYRatio: 0.5,
@@ -744,29 +893,516 @@ describe('EventReplay', () => {
     }).not.toThrow();
   });
 
-  it('clear() empties stored records', () => {
+  it('replays a click as a full press: pointer and mouse down, focus, up, click', () => {
     const btn = document.createElement('button');
     btn.id = 'root';
     document.body.appendChild(btn);
-    jest.spyOn(btn, 'getBoundingClientRect').mockReturnValue({
-      left: 0,
-      top: 0,
-      width: 10,
-      height: 10,
-      right: 0,
-      bottom: 0,
-      x: 0,
-      y: 0,
-      toJSON: () => ({}),
-    } as DOMRect);
+    const order: string[] = [];
+    for (const type of [
+      'pointerdown',
+      'mousedown',
+      'focus',
+      'pointerup',
+      'mouseup',
+      'click',
+    ]) {
+      btn.addEventListener(type, () => order.push(type));
+    }
 
     replay.replay({
       ...basePayload,
       type: DomEventTypeEnum.Click,
       content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
     });
-    expect(replay.sessionRecords).toHaveLength(1);
-    replay.clear();
-    expect(replay.sessionRecords).toHaveLength(0);
+
+    expect(order).toEqual([
+      'pointerdown',
+      'mousedown',
+      'focus',
+      'pointerup',
+      'mouseup',
+      'click',
+    ]);
+    expect(document.activeElement).toBe(btn);
+  });
+
+  it('focuses the nearest focusable ancestor when a child is clicked', () => {
+    const btn = document.createElement('button');
+    const icon = document.createElement('span');
+    icon.id = 'root';
+    btn.appendChild(icon);
+    document.body.appendChild(btn);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(document.activeElement).toBe(btn);
+  });
+
+  it('replays focus and blur on the element and records them', () => {
+    const input = document.createElement('input');
+    input.id = 'root';
+    document.body.appendChild(input);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: {},
+    });
+    expect(document.activeElement).toBe(input);
+
+    replay.replay({ ...basePayload, type: DomEventTypeEnum.Blur, content: {} });
+    expect(document.activeElement).toBe(document.body);
+
+    expect(sentRecords().map((r) => r.type)).toEqual([
+      DomEventTypeEnum.Focus,
+      DomEventTypeEnum.Blur,
+    ]);
+    expect(sentRecords()[0].selector).toBe('input#root');
+  });
+
+  it('does not blur an element that is not focused', () => {
+    const input = document.createElement('input');
+    input.id = 'root';
+    const other = document.createElement('input');
+    document.body.append(input, other);
+    other.focus();
+
+    replay.replay({ ...basePayload, type: DomEventTypeEnum.Blur, content: {} });
+
+    expect(document.activeElement).toBe(other);
+  });
+
+  it('raises hover and move events on whatever sits under the cursor', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      value: 1000,
+      configurable: true,
+    });
+    Object.defineProperty(window, 'innerHeight', {
+      value: 1000,
+      configurable: true,
+    });
+    const box = document.createElement('div');
+    const inner = document.createElement('span');
+    box.appendChild(inner);
+    document.body.appendChild(box);
+    const seen: string[] = [];
+    const watch = (el: Element, name: string) => {
+      for (const type of [
+        'mouseover',
+        'mouseenter',
+        'mousemove',
+        'mouseout',
+        'mouseleave',
+      ]) {
+        el.addEventListener(type, (e) => {
+          if (
+            e.target === el ||
+            (!type.includes('enter') && !type.includes('leave'))
+          ) {
+            seen.push(`${name}:${type}`);
+          }
+        });
+      }
+    };
+    watch(box, 'box');
+    watch(inner, 'inner');
+
+    atPoint(inner);
+    mousemove(0.1, 0.1);
+    expect(seen).toEqual([
+      'inner:mouseover',
+      'box:mouseover',
+      'box:mouseenter',
+      'inner:mouseenter',
+      'inner:mousemove',
+      'box:mousemove',
+    ]);
+    expect(frame.moveTo).toHaveBeenCalledWith(100, 100);
+
+    seen.length = 0;
+    atPoint(box);
+    mousemove(0.2, 0.2);
+    expect(seen).toEqual([
+      'inner:mouseout',
+      'box:mouseout',
+      'inner:mouseleave',
+      'box:mouseover',
+      'box:mousemove',
+    ]);
+
+    seen.length = 0;
+    atPoint(null);
+    mousemove(0.9, 0.9);
+    expect(seen).toEqual(['box:mouseout', 'box:mouseleave']);
+  });
+
+  it('does not let the click toggle a checkbox; the change event carries the state', () => {
+    const box = document.createElement('input');
+    box.type = 'checkbox';
+    box.id = 'root';
+    document.body.appendChild(box);
+    const clickSpy = jest.fn();
+    box.addEventListener('click', clickSpy);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+    expect(box.checked).toBe(false);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Change,
+      content: { value: 'on', checked: true } as DomInputEventPayload,
+    });
+    expect(box.checked).toBe(true);
+    expect(sentRecords()[1].content).toEqual({ value: 'on', checked: true });
+  });
+
+  it('does not let a label click toggle its checkbox either', () => {
+    const label = document.createElement('label');
+    label.id = 'root';
+    const box = document.createElement('input');
+    box.type = 'checkbox';
+    label.append(box, document.createTextNode('agree'));
+    document.body.appendChild(label);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(box.checked).toBe(false);
+  });
+
+  it('selects a radio from its change event', () => {
+    const a = document.createElement('input');
+    a.type = 'radio';
+    a.name = 'theme';
+    a.checked = true;
+    const b = document.createElement('input');
+    b.type = 'radio';
+    b.name = 'theme';
+    b.id = 'root';
+    document.body.append(a, b);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Change,
+      content: { value: 'on', checked: true } as DomInputEventPayload,
+    });
+
+    expect(b.checked).toBe(true);
+    expect(a.checked).toBe(false);
+  });
+
+  it('sets contenteditable markup from input events', () => {
+    const note = document.createElement('div');
+    note.id = 'root';
+    note.contentEditable = 'true';
+    document.body.appendChild(note);
+    const inputSpy = jest.fn();
+    note.addEventListener('input', inputSpy);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Input,
+      content: { value: 'bold', html: '<b>bold</b>' } as DomInputEventPayload,
+    });
+
+    expect(note.innerHTML).toBe('<b>bold</b>');
+    expect(inputSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('applies the inline size from resize events', () => {
+    const area = document.createElement('textarea');
+    area.id = 'root';
+    document.body.appendChild(area);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Resize,
+      content: { width: '320px', height: '140px' } as DomResizeEventPayload,
+    });
+
+    expect(area.style.width).toBe('320px');
+    expect(area.style.height).toBe('140px');
+    expect(sentRecords()[0].type).toBe(DomEventTypeEnum.Resize);
+  });
+
+  it('raises focus and blur events by hand while the window is unfocused', () => {
+    jest.spyOn(document, 'hasFocus').mockReturnValue(false);
+    const input = document.createElement('input');
+    input.id = 'root';
+    document.body.appendChild(input);
+    const seen: string[] = [];
+    for (const type of ['focus', 'focusin', 'blur', 'focusout']) {
+      input.addEventListener(type, () => seen.push(type));
+    }
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: {},
+    });
+    // ? jsdom fires its own focus events even without window focus, Chrome does not; the second pair is ours
+    expect(document.activeElement).toBe(input);
+    expect(seen.filter((t) => t === 'focus')).toHaveLength(2);
+    expect(seen.filter((t) => t === 'focusin')).toHaveLength(2);
+
+    replay.replay({ ...basePayload, type: DomEventTypeEnum.Blur, content: {} });
+    expect(seen.filter((t) => t === 'blur')).toHaveLength(2);
+    expect(seen.filter((t) => t === 'focusout')).toHaveLength(2);
+  });
+
+  it('leaves focus events to the browser while the window is focused', () => {
+    jest.spyOn(document, 'hasFocus').mockReturnValue(true);
+    const input = document.createElement('input');
+    input.id = 'root';
+    document.body.appendChild(input);
+    const focusSpy = jest.fn();
+    input.addEventListener('focusin', focusSpy);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: {},
+    });
+
+    expect(document.activeElement).toBe(input);
+    expect(focusSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('tells the pseudo style target about hover and focus', () => {
+    const pseudo = {
+      setHover: jest.fn(),
+      setFocus: jest.fn(),
+      reset: jest.fn(),
+    };
+    const styled = new EventReplay(frame, pseudo);
+    const input = document.createElement('input');
+    input.id = 'root';
+    document.body.appendChild(input);
+    Object.defineProperty(window, 'innerWidth', {
+      value: 100,
+      configurable: true,
+    });
+    Object.defineProperty(window, 'innerHeight', {
+      value: 100,
+      configurable: true,
+    });
+
+    atPoint(input);
+    styled.replay({
+      type: DomEventTypeEnum.Mousemove,
+      selector: 'window',
+      framePath: '',
+      timestamp: basePayload.timestamp,
+      content: { xRatio: 0.5, yRatio: 0.5 } as DomMousemoveEventPayload,
+    });
+    expect(pseudo.setHover).toHaveBeenCalledWith(input);
+
+    styled.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: {},
+    });
+    expect(pseudo.setFocus).toHaveBeenCalledWith(input, true);
+
+    styled.replay({ ...basePayload, type: DomEventTypeEnum.Blur, content: {} });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(null, false);
+  });
+
+  it('resolves and replays inside an open shadow root', () => {
+    const host = document.createElement('div');
+    host.id = 'host';
+    document.body.appendChild(host);
+    const button = document.createElement('button');
+    button.id = 'inner';
+    host.attachShadow({ mode: 'open' }).appendChild(button);
+    const clickSpy = jest.fn();
+    button.addEventListener('click', clickSpy);
+
+    replay.replay({
+      ...basePayload,
+      selector: '#host >>> #inner',
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('re-reads the hovered element when a scroll settles under the cursor', () => {
+    Object.defineProperty(window, 'innerWidth', {
+      value: 100,
+      configurable: true,
+    });
+    Object.defineProperty(window, 'innerHeight', {
+      value: 100,
+      configurable: true,
+    });
+    const first = document.createElement('div');
+    const second = document.createElement('div');
+    document.body.append(first, second);
+    const overSpy = jest.fn();
+    second.addEventListener('mouseover', overSpy);
+
+    atPoint(first);
+    mousemove(0.5, 0.5);
+    atPoint(second);
+    document.dispatchEvent(new Event('scrollend'));
+
+    // ? every EventReplay built in this file still listens on the shared document, so only the latest is asserted
+    expect(overSpy).toHaveBeenCalled();
+    expect(document.elementFromPoint).toHaveBeenLastCalledWith(50, 50);
+  });
+
+  it('mirrors the focus-visible verdict of the source and falls back by element kind', () => {
+    const pseudo = {
+      setHover: jest.fn(),
+      setFocus: jest.fn(),
+      reset: jest.fn(),
+    };
+    const styled = new EventReplay(frame, pseudo);
+    const button = document.createElement('button');
+    button.id = 'root';
+    document.body.appendChild(button);
+
+    styled.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: { visible: false },
+    });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(button, false);
+
+    styled.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: { visible: true },
+    });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(button, true);
+
+    styled.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: {},
+    });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(button, false);
+    expect(sentRecords().map((r) => r.content)).toEqual([
+      { visible: false },
+      { visible: true },
+      { visible: false },
+    ]);
+  });
+
+  it('treats a clicked text field as focus-visible but a clicked button not', () => {
+    const pseudo = {
+      setHover: jest.fn(),
+      setFocus: jest.fn(),
+      reset: jest.fn(),
+    };
+    const styled = new EventReplay(frame, pseudo);
+    const input = document.createElement('input');
+    input.id = 'root';
+    const button = document.createElement('button');
+    button.id = 'btn';
+    document.body.append(input, button);
+
+    styled.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(input, true);
+
+    styled.replay({
+      ...basePayload,
+      selector: '#btn',
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+    expect(pseudo.setFocus).toHaveBeenLastCalledWith(button, false);
+  });
+
+  it('does not focus again on click when the focus event already did', () => {
+    const input = document.createElement('input');
+    input.id = 'root';
+    document.body.appendChild(input);
+    const focusSpy = jest.fn();
+    input.addEventListener('focus', focusSpy);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Focus,
+      content: { visible: true },
+    });
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(focusSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('records carry the frame path of the event', () => {
+    frame.path = 'iframe#widget';
+    const btn = document.createElement('button');
+    btn.id = 'root';
+    document.body.appendChild(btn);
+
+    replay.replay({
+      ...basePayload,
+      framePath: 'iframe#widget',
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(sentRecords()).toHaveLength(1);
+    expect(sentRecords()[0].framePath).toBe('iframe#widget');
+  });
+
+  it('ignores events that belong to another frame', () => {
+    const btn = document.createElement('button');
+    btn.id = 'root';
+    document.body.appendChild(btn);
+    const clickSpy = jest.fn();
+    btn.addEventListener('click', clickSpy);
+
+    replay.replay({
+      ...basePayload,
+      framePath: 'iframe#other',
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(clickSpy).not.toHaveBeenCalled();
+    expect(frame.animateClick).not.toHaveBeenCalled();
+    expect(sentRecords()).toHaveLength(0);
+  });
+
+  it('ignores every event while its own frame path is unresolved', () => {
+    frame.path = null;
+    const btn = document.createElement('button');
+    btn.id = 'root';
+    document.body.appendChild(btn);
+    const clickSpy = jest.fn();
+    btn.addEventListener('click', clickSpy);
+
+    replay.replay({
+      ...basePayload,
+      type: DomEventTypeEnum.Click,
+      content: { offsetXRatio: 0, offsetYRatio: 0 } as DomClickEventPayload,
+    });
+
+    expect(clickSpy).not.toHaveBeenCalled();
   });
 });

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@kostad/brand@1.5.0/dist/kostad-brand.min.css"
+    />
+    <link rel="stylesheet" href="examples.css" />
+    <style>
+      /* ? embedded pages have no navbar */
+      main {
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body class="kd-bg-surface">
+    <main class="kd-p-3 kd-d-flex kd-flex-column kd-gap-3">
+      <form
+        id="payment-form"
+        class="kd-d-flex kd-flex-column kd-gap-3"
+        novalidate
+      >
+        <div class="kd-d-flex kd-items-center kd-justify-between">
+          <span class="kd-font-primary kd-fs-md kd-fw-bold kd-text-bright"
+            >Card</span
+          >
+          <span class="kd-chip kd-chip--bare kd-font-mono" id="frame-depth"
+            >frame 1</span
+          >
+        </div>
+
+        <div class="kd-field">
+          <label class="kd-field__label" for="card-number">Card number</label>
+          <input
+            id="card-number"
+            class="kd-field__input kd-font-mono"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="4242 4242 4242 4242"
+          />
+        </div>
+
+        <div class="kd-d-flex kd-gap-3">
+          <div class="kd-field kd-grow-1">
+            <label class="kd-field__label" for="expiry">Expiry</label>
+            <input
+              id="expiry"
+              class="kd-field__input kd-font-mono"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              placeholder="MM / YY"
+            />
+          </div>
+          <div class="kd-field kd-grow-1">
+            <label class="kd-field__label" for="cvc">CVC</label>
+            <input
+              id="cvc"
+              class="kd-field__input kd-font-mono"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              placeholder="123"
+            />
+          </div>
+        </div>
+
+        <div class="kd-field">
+          <label class="kd-field__label" for="country">Country</label>
+          <select id="country" class="kd-field__input">
+            <option value="ge" selected>Georgia</option>
+            <option value="de">Germany</option>
+            <option value="nl">Netherlands</option>
+          </select>
+        </div>
+
+        <div class="kd-d-flex kd-flex-wrap kd-gap-2">
+          <span class="kd-chip" data-hover>Visa</span>
+          <span class="kd-chip" data-hover>Mastercard</span>
+          <span class="kd-chip" data-hover>Amex</span>
+        </div>
+
+        <div class="kd-d-flex kd-items-center kd-gap-3">
+          <button id="pay-btn" class="kd-btn kd-btn--primary" type="submit">
+            Pay 53.00
+          </button>
+          <span id="pay-state" class="kd-fs-xxs kd-text-success" hidden
+            >Payment accepted</span
+          >
+        </div>
+      </form>
+
+      <div class="kd-card kd-p-3">
+        <span class="kd-card__title kd-fs-xs">Terms, nested frame</span>
+        <iframe
+          id="terms"
+          class="embed embed--short"
+          src="embed-nested.html"
+          title="Terms"
+        ></iframe>
+      </div>
+
+      <div class="kd-card kd-p-3">
+        <div class="kd-card__header">
+          <span class="kd-card__title kd-fs-xs">Activity in this frame</span>
+          <button
+            id="activity-reset"
+            class="kd-btn kd-btn--ghost kd-btn--sm"
+            type="button"
+          >
+            Reset
+          </button>
+        </div>
+        <div class="kd-table-scroll kd-m-0">
+          <table id="activity" class="activity kd-fs-xxs">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Count</th>
+                <th>Last target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-event="click">
+                <td>click</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="input">
+                <td>input</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="change">
+                <td>change</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="keydown">
+                <td>keydown</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="focus">
+                <td>focus</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="blur">
+                <td>blur</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="scroll">
+                <td>scroll</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+              <tr data-event="mousemove">
+                <td>mousemove</td>
+                <td data-count>0</td>
+                <td data-target class="kd-font-mono"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script src="examples.js"></script>
+    <script>
+      document
+        .querySelector('#payment-form')
+        .addEventListener('submit', (e) => {
+          e.preventDefault();
+          document.querySelector('#pay-state').hidden = false;
+        });
+    </script>
+  </body>
+</html>
