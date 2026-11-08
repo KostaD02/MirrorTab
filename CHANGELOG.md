@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.0](https://github.com/KostaD02/MirrorTab/compare/v1.6.0...v1.7.0) (2026-11-08)
+
+### Features
+
+* i18n with 42 locales ([#71](https://github.com/KostaD02/MirrorTab/issues/71)) ([ed32220](https://github.com/KostaD02/MirrorTab/commit/ed322202f8b4fc2876dafd5add21776a9f02af67))
+
 ## [1.6.0](https://github.com/KostaD02/MirrorTab/compare/v1.5.0...v1.6.0) (2026-11-07)
 
 ### Features
