@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MirrorTab - Session Replay</title>
+    <title data-i18n="replayTitle">MirrorTab - Session Replay</title>
   </head>
   <body class="kd-d-flex kd-items-center kd-px-3 kd-py-4">
     <main class="kd-w-100 kd-mx-auto">
@@ -13,6 +13,7 @@
             <img
               src="/logo.png"
               alt="MirrorTab logo"
+              data-i18n-attr="alt:logoAlt"
               class="kd-radius-md"
               width="32"
               height="32"
@@ -20,29 +21,38 @@
             <div class="kd-d-flex kd-flex-column kd-gap-1">
               <span
                 class="kd-font-primary kd-fs-lg kd-fw-bold kd-lh-sm kd-text-bright"
+                data-i18n="appName"
                 >MirrorTab</span
               >
-              <span class="kd-fs-micro">Session Replay</span>
+              <span class="kd-fs-micro" data-i18n="replaySubtitle"
+                >Session Replay</span
+              >
             </div>
           </div>
           <div id="status-pill" class="kd-status-pill kd-status-pill--idle">
             <span class="kd-status-pill__dot"></span>
-            <span id="status-label">Ready</span>
+            <span id="status-label" data-i18n="replayStatusReady">Ready</span>
           </div>
         </header>
 
         <section id="setup-card" class="kd-d-flex kd-flex-column kd-gap-3">
           <div class="kd-field">
-            <label class="kd-field__label" for="replay-url">Website URL</label>
+            <label
+              class="kd-field__label"
+              for="replay-url"
+              data-i18n="replayUrlLabel"
+              >Website URL</label
+            >
             <input
               id="replay-url"
               class="kd-field__input"
               type="url"
               placeholder="https://example.com"
+              data-i18n-attr="placeholder:urlPlaceholder"
               autocomplete="off"
               spellcheck="false"
             />
-            <span class="kd-field__hint"
+            <span class="kd-field__hint" data-i18n="replayUrlHint"
               >The page where recorded actions will be replayed</span
             >
             <span
@@ -54,7 +64,10 @@
           </div>
 
           <div class="kd-field">
-            <label class="kd-field__label" for="session-file"
+            <label
+              class="kd-field__label"
+              for="session-file"
+              data-i18n="replayFileLabel"
               >Session File</label
             >
             <div
@@ -66,15 +79,18 @@
                 id="drop-zone-idle"
                 class="kd-d-flex kd-flex-column kd-items-center kd-gap-2"
               >
-                <span class="kd-fs-xs kd-text-secondary"
+                <span
+                  class="kd-fs-xs kd-text-secondary"
+                  data-i18n-html="replayDropHint"
                   >Drop a <strong>.json</strong> or
                   <strong>.txt</strong> session file here</span
                 >
-                <span class="kd-fs-micro">or</span>
+                <span class="kd-fs-micro" data-i18n="replayOr">or</span>
                 <button
                   id="browse-btn"
                   class="kd-btn kd-btn--ghost kd-btn--sm"
                   type="button"
+                  data-i18n="replayBrowse"
                 >
                   Browse Files
                 </button>
@@ -104,6 +120,7 @@
                   type="button"
                   aria-label="Remove file"
                   title="Remove file"
+                  data-i18n-attr="aria-label:replayRemoveFile;title:replayRemoveFile"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -128,11 +145,18 @@
           </div>
 
           <div class="kd-field">
-            <label class="kd-field__label" for="speed">Playback Speed</label>
+            <label
+              class="kd-field__label"
+              for="speed"
+              data-i18n="replaySpeedLabel"
+              >Playback Speed</label
+            >
             <select id="speed" class="kd-field__input">
-              <option value="0.5">0.5× Slow</option>
-              <option value="1" selected>1× Normal</option>
-              <option value="1.5">1.5× Fast</option>
+              <option value="0.5" data-i18n="replaySpeedSlow">0.5× Slow</option>
+              <option value="1" selected data-i18n="replaySpeedNormal">
+                1× Normal
+              </option>
+              <option value="1.5" data-i18n="replaySpeedFast">1.5× Fast</option>
             </select>
           </div>
 
@@ -149,7 +173,7 @@
             type="button"
             disabled
           >
-            <span id="btn-label">Start Replay</span>
+            <span id="btn-label" data-i18n="replayStart">Start Replay</span>
             <span
               id="btn-spinner"
               class="kd-spinner kd-spinner--sm"
@@ -167,6 +191,7 @@
             <div class="kd-d-flex kd-flex-column kd-gap-1 kd-min-w-0">
               <span
                 class="kd-fs-micro kd-fw-bold kd-text-uppercase kd-text-warning"
+                data-i18n="replayHeading"
                 >Replay</span
               >
               <span
@@ -200,12 +225,13 @@
               class="kd-btn kd-btn--outline kd-btn--sm kd-grow-1"
               type="button"
             >
-              <span id="pause-label">Pause</span>
+              <span id="pause-label" data-i18n="pause">Pause</span>
             </button>
             <button
               id="restart-btn"
               class="kd-btn kd-btn--ghost kd-btn--sm kd-grow-1"
               type="button"
+              data-i18n="replayRestart"
             >
               Restart
             </button>
@@ -213,6 +239,7 @@
               id="stop-btn"
               class="kd-btn kd-btn--danger kd-btn--sm kd-grow-1"
               type="button"
+              data-i18n="stop"
             >
               Stop
             </button>
@@ -220,18 +247,21 @@
         </section>
 
         <section id="completed-card" class="kd-empty kd-gap-3" hidden>
-          <p class="kd-empty__code kd-font-primary kd-fw-bold">
+          <p
+            class="kd-empty__code kd-font-primary kd-fw-bold"
+            data-i18n="replayCompletedTitle"
+          >
             Replay completed
           </p>
-          <p class="kd-fs-xs kd-lh-xxl kd-text-secondary">
-            All <span id="completed-count">0</span> events have been replayed
-            successfully.
+          <p id="completed-text" class="kd-fs-xs kd-lh-xxl kd-text-secondary">
+            All 0 events have been replayed successfully.
           </p>
           <div class="kd-d-flex kd-gap-2 kd-w-100">
             <button
               id="restart-completed-btn"
               class="kd-btn kd-btn--outline kd-btn--sm kd-grow-1"
               type="button"
+              data-i18n="replayRestart"
             >
               Restart
             </button>
@@ -239,13 +269,14 @@
               id="stop-completed-btn"
               class="kd-btn kd-btn--danger kd-btn--sm kd-grow-1"
               type="button"
+              data-i18n="replayClose"
             >
               Close
             </button>
           </div>
         </section>
 
-        <footer class="kd-fs-micro kd-text-center">
+        <footer class="kd-fs-micro kd-text-center" data-i18n="replayFooter">
           Replay recorded sessions · MirrorTab
         </footer>
       </div>

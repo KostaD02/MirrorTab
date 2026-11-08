@@ -1,0 +1,438 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Пресликава DOM интеракције са изворне картице на одредишну картицу у реалном времену."
+  },
+  "appTagline": {
+    "message": "Пресликавање DOM-а"
+  },
+  "logoAlt": {
+    "message": "Логотип MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Подешавања MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Подешавања"
+  },
+  "settingsCloseLabel": {
+    "message": "Затвори подешавања"
+  },
+  "closeTitle": {
+    "message": "Затвори"
+  },
+  "infoOpenLabel": {
+    "message": "О MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Затвори информације"
+  },
+  "statusIdle": {
+    "message": "Неактивно"
+  },
+  "statusActive": {
+    "message": "Активно"
+  },
+  "statusPaused": {
+    "message": "Паузирано"
+  },
+  "statusError": {
+    "message": "Грешка"
+  },
+  "sourceUrlLabel": {
+    "message": "Изворни URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Интеракције овде ће бити пресликане"
+  },
+  "targetUrlLabel": {
+    "message": "Одредишни URL"
+  },
+  "targetUrlHint": {
+    "message": "Догађаји ће се овде репродуковати"
+  },
+  "addTarget": {
+    "message": "+ Додај одредиште"
+  },
+  "startSession": {
+    "message": "Покрени сесију"
+  },
+  "removeTarget": {
+    "message": "Уклони одредиште"
+  },
+  "removeActiveTarget": {
+    "message": "Уклони ово одредиште"
+  },
+  "errorUrlRequired": {
+    "message": "URL је обавезан."
+  },
+  "errorUrlInvalid": {
+    "message": "Неважећи URL."
+  },
+  "errorUrlScheme": {
+    "message": "Дозвољени су само http:// и https://."
+  },
+  "errorUrlDomain": {
+    "message": "Унесите пун домен (нпр. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Неважећи домен."
+  },
+  "errorStartSession": {
+    "message": "Сесију није могуће покренути: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Грешка проширења: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Картице није могуће направити"
+  },
+  "errorOpenReplayTab": {
+    "message": "Картицу за репродукцију није могуће отворити"
+  },
+  "activeSource": {
+    "message": "Извор"
+  },
+  "activeTargets": {
+    "message": "Одредишта"
+  },
+  "pause": {
+    "message": "Паузирај"
+  },
+  "resume": {
+    "message": "Настави"
+  },
+  "stop": {
+    "message": "Заустави"
+  },
+  "downloadHeading": {
+    "message": "Преузми податке сесије"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Текст"
+  },
+  "settingsNote": {
+    "message": "Чува се аутоматски и одмах се примењује на активне сесије."
+  },
+  "settingsPrivacy": {
+    "message": "Приватност"
+  },
+  "settingMirrorPasswords": {
+    "message": "Пресликај поља за лозинку"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Искључено држи акредитиве ван одредишних картица и извезених записа"
+  },
+  "settingsOverlays": {
+    "message": "Преклопи"
+  },
+  "settingShowCursor": {
+    "message": "Прикажи курсор-дух"
+  },
+  "settingShowCursorHint": {
+    "message": "Показивач нацртан на одредишним картицама"
+  },
+  "settingShowBadge": {
+    "message": "Прикажи беџ улоге"
+  },
+  "settingShowBadgeHint": {
+    "message": "Ознака ИЗВОР / ОДРЕДИШТЕ на свакој картици"
+  },
+  "settingsEvents": {
+    "message": "Догађаји за пресликавање"
+  },
+  "settingMousemove": {
+    "message": "Померање миша"
+  },
+  "settingMousemoveHint": {
+    "message": "Најчешћи догађај, искључите за мање саобраћаја"
+  },
+  "settingScroll": {
+    "message": "Скроловање"
+  },
+  "settingKeystrokes": {
+    "message": "Притисци тастера"
+  },
+  "settingKeystrokesHint": {
+    "message": "Притисак / отпуштање тастера, одвојено од унетих вредности"
+  },
+  "settingsPlayback": {
+    "message": "Репродукција"
+  },
+  "settingSmoothScroll": {
+    "message": "Глатко скроловање"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Искључено скаче одмах и одржава брзо скроловање усклађеним"
+  },
+  "settingScrollDebounce": {
+    "message": "Одлагање скроловања"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Мирни период пре слања скроловања"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Почетак сесије"
+  },
+  "settingTabDelay": {
+    "message": "Постепено отварање картица"
+  },
+  "settingTabDelayHint": {
+    "message": "Одлагање између сваке одредишне картице. 0 отвара све одједном; корисно за сајтове који ограничавају налете захтева."
+  },
+  "settingsReset": {
+    "message": "Врати подразумевано"
+  },
+  "infoIntro": {
+    "message": "MirrorTab пресликава DOM интеракције: кликове, уносе, притиске тастера, фокус, прелазак мишем и скроловање, укључујући iframe, са <strong>изворне</strong> картице на једну или више <strong>одредишних</strong> картица у реалном времену. Савршено за демонстрације, тестирање и презентације уживо."
+  },
+  "infoStep1": {
+    "message": "Унесите <strong>изворни URL</strong> и бар један <strong>одредишни URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Кликните на <strong>Покрени сесију</strong>, картице се отварају аутоматски."
+  },
+  "infoStep3": {
+    "message": "Радите на картици <strong class=\"kd-text-danger\">ИЗВОР</strong>, радње се уживо пресликавају на сваку картицу <strong class=\"kd-text-accent\">ОДРЕДИШТЕ</strong>."
+  },
+  "infoStep4": {
+    "message": "Сесијом управљајте помоћу <strong>Паузирај / Настави</strong> или <strong>Заустави</strong>."
+  },
+  "infoStep5": {
+    "message": "Запис догађаја преузмите било када као <strong>JSON</strong> или <strong>Текст</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub репозиторијум"
+  },
+  "infoReport": {
+    "message": "Пријави проблем / идеју"
+  },
+  "infoCreatedBy": {
+    "message": "Аутор:"
+  },
+  "replayLink": {
+    "message": "Отвори репродукцију сесије"
+  },
+  "footerEvents": {
+    "message": "Кликови · Уноси · Тастери · Фокус · Прелазак · Скроловање · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Репродукција сесије"
+  },
+  "replaySubtitle": {
+    "message": "Репродукција сесије"
+  },
+  "replayStatusReady": {
+    "message": "Спремно"
+  },
+  "replayStatusPlaying": {
+    "message": "Репродукује се"
+  },
+  "replayStatusPaused": {
+    "message": "Паузирано"
+  },
+  "replayStatusReloading": {
+    "message": "Поновно учитавање…"
+  },
+  "replayStatusCompleted": {
+    "message": "Завршено"
+  },
+  "replayUrlLabel": {
+    "message": "URL сајта"
+  },
+  "replayUrlHint": {
+    "message": "Страница на којој ће се репродуковати снимљене радње"
+  },
+  "replayFileLabel": {
+    "message": "Датотека сесије"
+  },
+  "replayDropHint": {
+    "message": "Овде превуците датотеку сесије <strong>.json</strong> или <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "или"
+  },
+  "replayBrowse": {
+    "message": "Прегледај датотеке"
+  },
+  "replayRemoveFile": {
+    "message": "Уклони датотеку"
+  },
+  "replaySpeedLabel": {
+    "message": "Брзина репродукције"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Споро"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Нормално"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Брзо"
+  },
+  "replayStart": {
+    "message": "Покрени репродукцију"
+  },
+  "replayOpening": {
+    "message": "Отварање картице…"
+  },
+  "replayHeading": {
+    "message": "Репродукција"
+  },
+  "replayProgress": {
+    "message": "Догађај $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Настави"
+  },
+  "replayRestart": {
+    "message": "Испочетка"
+  },
+  "replayCompletedTitle": {
+    "message": "Репродукција завршена"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ догађај је успешно репродукован.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Сва $COUNT$ догађаја су успешно репродукована.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Свих $COUNT$ догађаја је успешно репродуковано.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Затвори"
+  },
+  "replayFooter": {
+    "message": "Репродукујте снимљене сесије · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Отпремите датотеку .json или .txt"
+  },
+  "replayNoEvents": {
+    "message": "У датотеци сесије нема догађаја"
+  },
+  "replayParseError": {
+    "message": "Датотеку сесије није могуће прочитати"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Учитан $COUNT$ догађај",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Учитана $COUNT$ догађаја",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Учитано $COUNT$ догађаја",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Унесите важећи URL"
+  },
+  "replayFileMissing": {
+    "message": "Отпремите датотеку сесије"
+  },
+  "replayNoResponse": {
+    "message": "Комуникација са проширењем није успела"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Чекање"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - чекање на $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Чекање на отварање"
+  },
+  "pendingNote": {
+    "message": "Постепено покретање је укључено, па ће се ова картица отворити након кратког одлагања."
+  },
+  "pendingOpening": {
+    "message": "Отвара се…"
+  },
+  "pendingHint": {
+    "message": "Промените то под <strong class=\"kd-text-secondary\">Постепено отварање картица</strong> у подешавањима MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ИЗВОР"
+  },
+  "badgeTarget": {
+    "message": "ОДРЕДИШТЕ"
+  },
+  "badgeReplay": {
+    "message": "РЕПРОДУКЦИЈА"
+  }
+}

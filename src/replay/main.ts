@@ -5,7 +5,9 @@ import '@fontsource/raleway/latin-700.css';
 import '@fontsource/jetbrains-mono/latin-500.css';
 import '@kostad/brand/css';
 import './style.css';
+import { localizePage } from '@/shared/util';
 import { ReplayPageController } from './controller';
 
+localizePage();
 const controller = new ReplayPageController();
 controller.init();

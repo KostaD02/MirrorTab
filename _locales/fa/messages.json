@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "تعامل‌های DOM را از یک زبانهٔ مبدأ به یک زبانهٔ مقصد به‌صورت بی‌درنگ بازتاب می‌دهد."
+  },
+  "appTagline": {
+    "message": "بازتاب تعامل‌های DOM"
+  },
+  "logoAlt": {
+    "message": "نشان MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "تنظیمات MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "تنظیمات"
+  },
+  "settingsCloseLabel": {
+    "message": "بستن تنظیمات"
+  },
+  "closeTitle": {
+    "message": "بستن"
+  },
+  "infoOpenLabel": {
+    "message": "دربارهٔ MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "بستن اطلاعات"
+  },
+  "statusIdle": {
+    "message": "بی‌کار"
+  },
+  "statusActive": {
+    "message": "فعال"
+  },
+  "statusPaused": {
+    "message": "متوقف"
+  },
+  "statusError": {
+    "message": "خطا"
+  },
+  "sourceUrlLabel": {
+    "message": "نشانی مبدأ"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "تعامل‌های اینجا بازتاب داده می‌شوند"
+  },
+  "targetUrlLabel": {
+    "message": "نشانی مقصد"
+  },
+  "targetUrlHint": {
+    "message": "رویدادها اینجا بازپخش می‌شوند"
+  },
+  "addTarget": {
+    "message": "+ افزودن مقصد"
+  },
+  "startSession": {
+    "message": "شروع نشست"
+  },
+  "removeTarget": {
+    "message": "حذف مقصد"
+  },
+  "removeActiveTarget": {
+    "message": "حذف این مقصد"
+  },
+  "errorUrlRequired": {
+    "message": "نشانی لازم است."
+  },
+  "errorUrlInvalid": {
+    "message": "نشانی معتبر نیست."
+  },
+  "errorUrlScheme": {
+    "message": "فقط http:// و https:// مجاز است."
+  },
+  "errorUrlDomain": {
+    "message": "یک دامنهٔ کامل وارد کنید (مثلاً example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "دامنه معتبر نیست."
+  },
+  "errorStartSession": {
+    "message": "شروع نشست ناموفق بود: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "خطای افزونه: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "ایجاد زبانه‌ها ناموفق بود"
+  },
+  "errorOpenReplayTab": {
+    "message": "باز کردن زبانهٔ بازپخش ناموفق بود"
+  },
+  "activeSource": {
+    "message": "مبدأ"
+  },
+  "activeTargets": {
+    "message": "مقصدها"
+  },
+  "pause": {
+    "message": "توقف"
+  },
+  "resume": {
+    "message": "ازسرگیری"
+  },
+  "stop": {
+    "message": "پایان"
+  },
+  "downloadHeading": {
+    "message": "بارگیری داده‌های نشست"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "متن"
+  },
+  "settingsNote": {
+    "message": "به‌صورت خودکار ذخیره و بلافاصله روی نشست‌های در حال اجرا اعمال می‌شود."
+  },
+  "settingsPrivacy": {
+    "message": "حریم خصوصی"
+  },
+  "settingMirrorPasswords": {
+    "message": "بازتاب فیلدهای گذرواژه"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "خاموش باشد، اطلاعات ورود به زبانه‌های مقصد و گزارش‌های صادرشده راه نمی‌یابد"
+  },
+  "settingsOverlays": {
+    "message": "لایه‌های رویی"
+  },
+  "settingShowCursor": {
+    "message": "نمایش نشانگر شبح"
+  },
+  "settingShowCursorHint": {
+    "message": "نشانگری که روی زبانه‌های مقصد رسم می‌شود"
+  },
+  "settingShowBadge": {
+    "message": "نمایش نشان نقش"
+  },
+  "settingShowBadgeHint": {
+    "message": "برچسب مبدأ / مقصد روی هر زبانه"
+  },
+  "settingsEvents": {
+    "message": "رویدادهای قابل بازتاب"
+  },
+  "settingMousemove": {
+    "message": "حرکت ماوس"
+  },
+  "settingMousemoveHint": {
+    "message": "پرتکرارترین رویداد؛ برای کاهش ترافیک خاموشش کنید"
+  },
+  "settingScroll": {
+    "message": "پیمایش"
+  },
+  "settingKeystrokes": {
+    "message": "ضربه‌های کلید"
+  },
+  "settingKeystrokesHint": {
+    "message": "فشردن و رها کردن کلید، جدا از مقادیر تایپ‌شده"
+  },
+  "settingsPlayback": {
+    "message": "پخش"
+  },
+  "settingSmoothScroll": {
+    "message": "پیمایش نرم"
+  },
+  "settingSmoothScrollHint": {
+    "message": "خاموش باشد، فوراً می‌پرد و پیمایش سریع را همگام نگه می‌دارد"
+  },
+  "settingScrollDebounce": {
+    "message": "تأخیر پیمایش"
+  },
+  "settingScrollDebounceHint": {
+    "message": "مدت سکوت پیش از ارسال پیمایش"
+  },
+  "unitMs": {
+    "message": "میلی‌ثانیه"
+  },
+  "settingsSessionStart": {
+    "message": "شروع نشست"
+  },
+  "settingTabDelay": {
+    "message": "باز کردن مرحله‌ای زبانه‌ها"
+  },
+  "settingTabDelayHint": {
+    "message": "تأخیر بین هر زبانهٔ مقصد. 0 همه را یکجا باز می‌کند؛ برای سایت‌هایی مفید است که درخواست‌های پشت‌سرهم را محدود می‌کنند."
+  },
+  "settingsReset": {
+    "message": "بازنشانی به پیش‌فرض‌ها"
+  },
+  "infoIntro": {
+    "message": "MirrorTab تعامل‌های DOM را بازتاب می‌دهد: کلیک‌ها، ورودی‌ها، ضربه‌های کلید، فوکوس، شناور شدن و پیمایش، شامل iframeها، از یک زبانهٔ <strong>مبدأ</strong> به یک یا چند زبانهٔ <strong>مقصد</strong> به‌صورت بی‌درنگ. عالی برای دمو، آزمایش و ارائه‌های زنده."
+  },
+  "infoStep1": {
+    "message": "یک <strong>نشانی مبدأ</strong> و دست‌کم یک <strong>نشانی مقصد</strong> وارد کنید."
+  },
+  "infoStep2": {
+    "message": "روی <strong>شروع نشست</strong> کلیک کنید؛ زبانه‌ها خودکار باز می‌شوند."
+  },
+  "infoStep3": {
+    "message": "در زبانهٔ <strong class=\"kd-text-danger\">مبدأ</strong> کار کنید؛ کارها به‌صورت زنده در هر زبانهٔ <strong class=\"kd-text-accent\">مقصد</strong> بازتاب می‌یابند."
+  },
+  "infoStep4": {
+    "message": "برای کنترل نشست از <strong>توقف / ازسرگیری</strong> یا <strong>پایان</strong> استفاده کنید."
+  },
+  "infoStep5": {
+    "message": "گزارش رویدادها را هر زمان به‌صورت <strong>JSON</strong> یا <strong>متن</strong> بارگیری کنید."
+  },
+  "infoGithub": {
+    "message": "مخزن GitHub"
+  },
+  "infoReport": {
+    "message": "گزارش مشکل / پیشنهاد قابلیت"
+  },
+  "infoCreatedBy": {
+    "message": "ساختهٔ"
+  },
+  "replayLink": {
+    "message": "باز کردن بازپخش نشست"
+  },
+  "footerEvents": {
+    "message": "کلیک · ورودی · کلیدها · فوکوس · شناور · پیمایش · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - بازپخش نشست"
+  },
+  "replaySubtitle": {
+    "message": "بازپخش نشست"
+  },
+  "replayStatusReady": {
+    "message": "آماده"
+  },
+  "replayStatusPlaying": {
+    "message": "در حال پخش"
+  },
+  "replayStatusPaused": {
+    "message": "متوقف"
+  },
+  "replayStatusReloading": {
+    "message": "در حال بارگذاری مجدد…"
+  },
+  "replayStatusCompleted": {
+    "message": "تکمیل شد"
+  },
+  "replayUrlLabel": {
+    "message": "نشانی وب‌سایت"
+  },
+  "replayUrlHint": {
+    "message": "صفحه‌ای که کارهای ضبط‌شده در آن بازپخش می‌شوند"
+  },
+  "replayFileLabel": {
+    "message": "فایل نشست"
+  },
+  "replayDropHint": {
+    "message": "یک فایل نشست <strong>.json</strong> یا <strong>.txt</strong> را اینجا رها کنید"
+  },
+  "replayOr": {
+    "message": "یا"
+  },
+  "replayBrowse": {
+    "message": "انتخاب فایل"
+  },
+  "replayRemoveFile": {
+    "message": "حذف فایل"
+  },
+  "replaySpeedLabel": {
+    "message": "سرعت پخش"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× آهسته"
+  },
+  "replaySpeedNormal": {
+    "message": "1× عادی"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× سریع"
+  },
+  "replayStart": {
+    "message": "شروع بازپخش"
+  },
+  "replayOpening": {
+    "message": "در حال باز کردن زبانه…"
+  },
+  "replayHeading": {
+    "message": "بازپخش"
+  },
+  "replayProgress": {
+    "message": "رویداد $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "ادامه"
+  },
+  "replayRestart": {
+    "message": "شروع دوباره"
+  },
+  "replayCompletedTitle": {
+    "message": "بازپخش تکمیل شد"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ رویداد با موفقیت بازپخش شد.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "همهٔ $COUNT$ رویداد با موفقیت بازپخش شدند.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "بستن"
+  },
+  "replayFooter": {
+    "message": "بازپخش نشست‌های ضبط‌شده · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "لطفاً یک فایل .json یا .txt بارگذاری کنید"
+  },
+  "replayNoEvents": {
+    "message": "رویدادی در فایل نشست یافت نشد"
+  },
+  "replayParseError": {
+    "message": "خواندن فایل نشست ناموفق بود"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ رویداد بارگذاری شد",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ رویداد بارگذاری شد",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "لطفاً یک نشانی معتبر وارد کنید"
+  },
+  "replayFileMissing": {
+    "message": "لطفاً یک فایل نشست بارگذاری کنید"
+  },
+  "replayNoResponse": {
+    "message": "ارتباط با افزونه ناموفق بود"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - در انتظار"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - در انتظار $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "در انتظار باز شدن"
+  },
+  "pendingNote": {
+    "message": "شروع مرحله‌ای روشن است، بنابراین این زبانه با کمی تأخیر باز می‌شود."
+  },
+  "pendingOpening": {
+    "message": "اکنون باز می‌شود…"
+  },
+  "pendingHint": {
+    "message": "این را در <strong class=\"kd-text-secondary\">باز کردن مرحله‌ای زبانه‌ها</strong> در تنظیمات MirrorTab تغییر دهید."
+  },
+  "badgeSource": {
+    "message": "مبدأ"
+  },
+  "badgeTarget": {
+    "message": "مقصد"
+  },
+  "badgeReplay": {
+    "message": "بازپخش"
+  }
+}

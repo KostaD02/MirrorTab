@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "สะท้อนการโต้ตอบ DOM จากแท็บต้นทางไปยังแท็บปลายทางแบบเรียลไทม์"
+  },
+  "appTagline": {
+    "message": "การสะท้อนการโต้ตอบ DOM"
+  },
+  "logoAlt": {
+    "message": "โลโก้ MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "การตั้งค่า MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "การตั้งค่า"
+  },
+  "settingsCloseLabel": {
+    "message": "ปิดการตั้งค่า"
+  },
+  "closeTitle": {
+    "message": "ปิด"
+  },
+  "infoOpenLabel": {
+    "message": "เกี่ยวกับ MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "ปิดข้อมูล"
+  },
+  "statusIdle": {
+    "message": "ว่าง"
+  },
+  "statusActive": {
+    "message": "ทำงานอยู่"
+  },
+  "statusPaused": {
+    "message": "หยุดชั่วคราว"
+  },
+  "statusError": {
+    "message": "ข้อผิดพลาด"
+  },
+  "sourceUrlLabel": {
+    "message": "URL ต้นทาง"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "การโต้ตอบที่นี่จะถูกสะท้อน"
+  },
+  "targetUrlLabel": {
+    "message": "URL ปลายทาง"
+  },
+  "targetUrlHint": {
+    "message": "เหตุการณ์จะถูกเล่นซ้ำที่นี่"
+  },
+  "addTarget": {
+    "message": "+ เพิ่มปลายทาง"
+  },
+  "startSession": {
+    "message": "เริ่มเซสชัน"
+  },
+  "removeTarget": {
+    "message": "นำปลายทางออก"
+  },
+  "removeActiveTarget": {
+    "message": "นำปลายทางนี้ออก"
+  },
+  "errorUrlRequired": {
+    "message": "ต้องระบุ URL"
+  },
+  "errorUrlInvalid": {
+    "message": "URL ไม่ถูกต้อง"
+  },
+  "errorUrlScheme": {
+    "message": "อนุญาตเฉพาะ http:// และ https:// เท่านั้น"
+  },
+  "errorUrlDomain": {
+    "message": "กรอกโดเมนแบบเต็ม (เช่น example.com)"
+  },
+  "errorDomainInvalid": {
+    "message": "โดเมนไม่ถูกต้อง"
+  },
+  "errorStartSession": {
+    "message": "เริ่มเซสชันไม่สำเร็จ: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "ข้อผิดพลาดของส่วนขยาย: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "สร้างแท็บไม่สำเร็จ"
+  },
+  "errorOpenReplayTab": {
+    "message": "เปิดแท็บเล่นซ้ำไม่สำเร็จ"
+  },
+  "activeSource": {
+    "message": "ต้นทาง"
+  },
+  "activeTargets": {
+    "message": "ปลายทาง"
+  },
+  "pause": {
+    "message": "หยุดชั่วคราว"
+  },
+  "resume": {
+    "message": "ทำต่อ"
+  },
+  "stop": {
+    "message": "หยุด"
+  },
+  "downloadHeading": {
+    "message": "ดาวน์โหลดข้อมูลเซสชัน"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "ข้อความ"
+  },
+  "settingsNote": {
+    "message": "บันทึกอัตโนมัติและมีผลกับเซสชันที่กำลังทำงานทันที"
+  },
+  "settingsPrivacy": {
+    "message": "ความเป็นส่วนตัว"
+  },
+  "settingMirrorPasswords": {
+    "message": "สะท้อนช่องรหัสผ่าน"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "ปิดไว้เพื่อไม่ให้ข้อมูลรับรองไปอยู่ในแท็บปลายทางและบันทึกที่ส่งออก"
+  },
+  "settingsOverlays": {
+    "message": "เลเยอร์ซ้อน"
+  },
+  "settingShowCursor": {
+    "message": "แสดงเคอร์เซอร์เงา"
+  },
+  "settingShowCursorHint": {
+    "message": "ตัวชี้ที่วาดบนแท็บปลายทาง"
+  },
+  "settingShowBadge": {
+    "message": "แสดงป้ายบทบาท"
+  },
+  "settingShowBadgeHint": {
+    "message": "ป้าย ต้นทาง / ปลายทาง บนแต่ละแท็บ"
+  },
+  "settingsEvents": {
+    "message": "เหตุการณ์ที่จะสะท้อน"
+  },
+  "settingMousemove": {
+    "message": "การเลื่อนเมาส์"
+  },
+  "settingMousemoveHint": {
+    "message": "เหตุการณ์ที่เกิดบ่อยที่สุด ปิดเพื่อลดปริมาณข้อมูล"
+  },
+  "settingScroll": {
+    "message": "การเลื่อนหน้า"
+  },
+  "settingKeystrokes": {
+    "message": "การกดแป้น"
+  },
+  "settingKeystrokesHint": {
+    "message": "กด / ปล่อยแป้น แยกจากค่าที่พิมพ์"
+  },
+  "settingsPlayback": {
+    "message": "การเล่น"
+  },
+  "settingSmoothScroll": {
+    "message": "เลื่อนหน้าแบบนุ่มนวล"
+  },
+  "settingSmoothScrollHint": {
+    "message": "ปิดแล้วจะกระโดดทันที ช่วยให้การเลื่อนเร็วยังซิงค์กัน"
+  },
+  "settingScrollDebounce": {
+    "message": "หน่วงการเลื่อนหน้า"
+  },
+  "settingScrollDebounceHint": {
+    "message": "ช่วงเงียบก่อนส่งการเลื่อนหน้า"
+  },
+  "unitMs": {
+    "message": "มิลลิวินาที"
+  },
+  "settingsSessionStart": {
+    "message": "การเริ่มเซสชัน"
+  },
+  "settingTabDelay": {
+    "message": "เปิดแท็บทีละแท็บ"
+  },
+  "settingTabDelayHint": {
+    "message": "การหน่วงเวลาระหว่างแท็บปลายทางแต่ละแท็บ 0 คือเปิดทั้งหมดพร้อมกัน มีประโยชน์กับเว็บไซต์ที่จำกัดคำขอที่มาพร้อมกัน"
+  },
+  "settingsReset": {
+    "message": "รีเซ็ตเป็นค่าเริ่มต้น"
+  },
+  "infoIntro": {
+    "message": "MirrorTab สะท้อนการโต้ตอบ DOM ได้แก่ การคลิก การป้อนข้อมูล การกดแป้น โฟกัส การวางเมาส์ และการเลื่อนหน้า รวมถึงใน iframe จากแท็บ<strong>ต้นทาง</strong>ไปยังแท็บ<strong>ปลายทาง</strong>หนึ่งแท็บหรือมากกว่าแบบเรียลไทม์ เหมาะสำหรับการสาธิต การทดสอบ และการนำเสนอสด"
+  },
+  "infoStep1": {
+    "message": "กรอก <strong>URL ต้นทาง</strong> และ <strong>URL ปลายทาง</strong> อย่างน้อยหนึ่งรายการ"
+  },
+  "infoStep2": {
+    "message": "คลิก <strong>เริ่มเซสชัน</strong> แล้วแท็บจะเปิดขึ้นโดยอัตโนมัติ"
+  },
+  "infoStep3": {
+    "message": "โต้ตอบในแท็บ<strong class=\"kd-text-danger\">ต้นทาง</strong> การกระทำจะถูกสะท้อนสดไปยังทุกแท็บ<strong class=\"kd-text-accent\">ปลายทาง</strong>"
+  },
+  "infoStep4": {
+    "message": "ใช้ <strong>หยุดชั่วคราว / ทำต่อ</strong> หรือ <strong>หยุด</strong> เพื่อควบคุมเซสชัน"
+  },
+  "infoStep5": {
+    "message": "ดาวน์โหลดบันทึกเหตุการณ์เป็น <strong>JSON</strong> หรือ<strong>ข้อความ</strong>ได้ทุกเมื่อ"
+  },
+  "infoGithub": {
+    "message": "ที่เก็บ GitHub"
+  },
+  "infoReport": {
+    "message": "รายงานปัญหา / เสนอฟีเจอร์"
+  },
+  "infoCreatedBy": {
+    "message": "สร้างโดย"
+  },
+  "replayLink": {
+    "message": "เปิดการเล่นซ้ำเซสชัน"
+  },
+  "footerEvents": {
+    "message": "คลิก · ป้อนข้อมูล · แป้น · โฟกัส · วางเมาส์ · เลื่อนหน้า · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - การเล่นซ้ำเซสชัน"
+  },
+  "replaySubtitle": {
+    "message": "การเล่นซ้ำเซสชัน"
+  },
+  "replayStatusReady": {
+    "message": "พร้อม"
+  },
+  "replayStatusPlaying": {
+    "message": "กำลังเล่น"
+  },
+  "replayStatusPaused": {
+    "message": "หยุดชั่วคราว"
+  },
+  "replayStatusReloading": {
+    "message": "กำลังโหลดใหม่…"
+  },
+  "replayStatusCompleted": {
+    "message": "เสร็จสิ้น"
+  },
+  "replayUrlLabel": {
+    "message": "URL เว็บไซต์"
+  },
+  "replayUrlHint": {
+    "message": "หน้าที่จะเล่นซ้ำการกระทำที่บันทึกไว้"
+  },
+  "replayFileLabel": {
+    "message": "ไฟล์เซสชัน"
+  },
+  "replayDropHint": {
+    "message": "วางไฟล์เซสชัน <strong>.json</strong> หรือ <strong>.txt</strong> ที่นี่"
+  },
+  "replayOr": {
+    "message": "หรือ"
+  },
+  "replayBrowse": {
+    "message": "เลือกไฟล์"
+  },
+  "replayRemoveFile": {
+    "message": "นำไฟล์ออก"
+  },
+  "replaySpeedLabel": {
+    "message": "ความเร็วในการเล่น"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× ช้า"
+  },
+  "replaySpeedNormal": {
+    "message": "1× ปกติ"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× เร็ว"
+  },
+  "replayStart": {
+    "message": "เริ่มเล่นซ้ำ"
+  },
+  "replayOpening": {
+    "message": "กำลังเปิดแท็บ…"
+  },
+  "replayHeading": {
+    "message": "เล่นซ้ำ"
+  },
+  "replayProgress": {
+    "message": "เหตุการณ์ $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "ทำต่อ"
+  },
+  "replayRestart": {
+    "message": "เริ่มใหม่"
+  },
+  "replayCompletedTitle": {
+    "message": "เล่นซ้ำเสร็จสิ้น"
+  },
+  "replayCompletedText_other": {
+    "message": "เล่นซ้ำเหตุการณ์ทั้งหมด $COUNT$ รายการสำเร็จแล้ว",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "ปิด"
+  },
+  "replayFooter": {
+    "message": "เล่นซ้ำเซสชันที่บันทึกไว้ · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "โปรดอัปโหลดไฟล์ .json หรือ .txt"
+  },
+  "replayNoEvents": {
+    "message": "ไม่พบเหตุการณ์ในไฟล์เซสชัน"
+  },
+  "replayParseError": {
+    "message": "อ่านไฟล์เซสชันไม่สำเร็จ"
+  },
+  "replayEventsLoaded_other": {
+    "message": "โหลดเหตุการณ์แล้ว $COUNT$ รายการ",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "โปรดกรอก URL ที่ถูกต้อง"
+  },
+  "replayFileMissing": {
+    "message": "โปรดอัปโหลดไฟล์เซสชัน"
+  },
+  "replayNoResponse": {
+    "message": "สื่อสารกับส่วนขยายไม่สำเร็จ"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - กำลังรอ"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - กำลังรอ $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "กำลังรอเปิด"
+  },
+  "pendingNote": {
+    "message": "เปิดใช้การเริ่มทีละแท็บอยู่ แท็บนี้จึงจะเปิดหลังจากหน่วงเวลาสั้นๆ"
+  },
+  "pendingOpening": {
+    "message": "กำลังเปิด…"
+  },
+  "pendingHint": {
+    "message": "เปลี่ยนได้ที่ <strong class=\"kd-text-secondary\">เปิดแท็บทีละแท็บ</strong> ในการตั้งค่า MirrorTab"
+  },
+  "badgeSource": {
+    "message": "ต้นทาง"
+  },
+  "badgeTarget": {
+    "message": "ปลายทาง"
+  },
+  "badgeReplay": {
+    "message": "เล่นซ้ำ"
+  }
+}

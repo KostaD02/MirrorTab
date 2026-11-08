@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Speglar DOM-interaktioner från en källflik till en målflik i realtid."
+  },
+  "appTagline": {
+    "message": "Speglar DOM-händelser"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-logotyp"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-inställningar"
+  },
+  "settingsOpenTitle": {
+    "message": "Inställningar"
+  },
+  "settingsCloseLabel": {
+    "message": "Stäng inställningar"
+  },
+  "closeTitle": {
+    "message": "Stäng"
+  },
+  "infoOpenLabel": {
+    "message": "Om MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Stäng info"
+  },
+  "statusIdle": {
+    "message": "Inaktiv"
+  },
+  "statusActive": {
+    "message": "Aktiv"
+  },
+  "statusPaused": {
+    "message": "Pausad"
+  },
+  "statusError": {
+    "message": "Fel"
+  },
+  "sourceUrlLabel": {
+    "message": "Käll-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaktioner här speglas"
+  },
+  "targetUrlLabel": {
+    "message": "Mål-URL"
+  },
+  "targetUrlHint": {
+    "message": "Händelser spelas upp här"
+  },
+  "addTarget": {
+    "message": "+ Lägg till mål"
+  },
+  "startSession": {
+    "message": "Starta session"
+  },
+  "removeTarget": {
+    "message": "Ta bort mål"
+  },
+  "removeActiveTarget": {
+    "message": "Ta bort det här målet"
+  },
+  "errorUrlRequired": {
+    "message": "URL krävs."
+  },
+  "errorUrlInvalid": {
+    "message": "Ogiltig URL."
+  },
+  "errorUrlScheme": {
+    "message": "Endast http:// och https:// tillåts."
+  },
+  "errorUrlDomain": {
+    "message": "Ange en fullständig domän (t.ex. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Ogiltig domän."
+  },
+  "errorStartSession": {
+    "message": "Sessionen kunde inte startas: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Tilläggsfel: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Flikarna kunde inte skapas"
+  },
+  "errorOpenReplayTab": {
+    "message": "Uppspelningsfliken kunde inte öppnas"
+  },
+  "activeSource": {
+    "message": "Källa"
+  },
+  "activeTargets": {
+    "message": "Mål"
+  },
+  "pause": {
+    "message": "Pausa"
+  },
+  "resume": {
+    "message": "Återuppta"
+  },
+  "stop": {
+    "message": "Stoppa"
+  },
+  "downloadHeading": {
+    "message": "Ladda ned sessionsdata"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Sparas automatiskt och gäller direkt för pågående sessioner."
+  },
+  "settingsPrivacy": {
+    "message": "Integritet"
+  },
+  "settingMirrorPasswords": {
+    "message": "Spegla lösenordsfält"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Avstängt håller inloggningsuppgifter borta från målflikar och exporterade loggar"
+  },
+  "settingsOverlays": {
+    "message": "Överlägg"
+  },
+  "settingShowCursor": {
+    "message": "Visa spökmarkör"
+  },
+  "settingShowCursorHint": {
+    "message": "Pekaren som ritas på målflikar"
+  },
+  "settingShowBadge": {
+    "message": "Visa rollmärke"
+  },
+  "settingShowBadgeHint": {
+    "message": "Etiketten KÄLLA / MÅL på varje flik"
+  },
+  "settingsEvents": {
+    "message": "Händelser att spegla"
+  },
+  "settingMousemove": {
+    "message": "Musrörelse"
+  },
+  "settingMousemoveHint": {
+    "message": "Den vanligaste händelsen, stäng av för mindre trafik"
+  },
+  "settingScroll": {
+    "message": "Skrollning"
+  },
+  "settingKeystrokes": {
+    "message": "Tangenttryck"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tangent ned / upp, oberoende av inmatade värden"
+  },
+  "settingsPlayback": {
+    "message": "Uppspelning"
+  },
+  "settingSmoothScroll": {
+    "message": "Mjuk skrollning"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Avstängt hoppar direkt och håller snabb skrollning synkad"
+  },
+  "settingScrollDebounce": {
+    "message": "Skrollfördröjning"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Tyst period innan en skrollning skickas"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Sessionsstart"
+  },
+  "settingTabDelay": {
+    "message": "Stegvis öppning av flikar"
+  },
+  "settingTabDelayHint": {
+    "message": "Fördröjning mellan varje målflik. 0 öppnar alla på en gång; användbart för webbplatser som begränsar skurar av anrop."
+  },
+  "settingsReset": {
+    "message": "Återställ standard"
+  },
+  "infoIntro": {
+    "message": "MirrorTab speglar DOM-interaktioner: klick, inmatning, tangenttryck, fokus, hover och skrollning, även i iframes, från en <strong>källflik</strong> till en eller flera <strong>målflikar</strong> i realtid. Perfekt för demos, testning och livepresentationer."
+  },
+  "infoStep1": {
+    "message": "Ange en <strong>käll-URL</strong> och minst en <strong>mål-URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Klicka på <strong>Starta session</strong>, flikarna öppnas automatiskt."
+  },
+  "infoStep3": {
+    "message": "Arbeta i fliken <strong class=\"kd-text-danger\">KÄLLA</strong>, åtgärderna speglas live i varje <strong class=\"kd-text-accent\">MÅL</strong>-flik."
+  },
+  "infoStep4": {
+    "message": "Använd <strong>Pausa / Återuppta</strong> eller <strong>Stoppa</strong> för att styra sessionen."
+  },
+  "infoStep5": {
+    "message": "Ladda när som helst ned händelseloggen som <strong>JSON</strong> eller <strong>Text</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub-repository"
+  },
+  "infoReport": {
+    "message": "Rapportera ett problem / en idé"
+  },
+  "infoCreatedBy": {
+    "message": "Skapad av"
+  },
+  "replayLink": {
+    "message": "Öppna sessionsuppspelning"
+  },
+  "footerEvents": {
+    "message": "Klick · Inmatning · Tangenter · Fokus · Hover · Skroll · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Sessionsuppspelning"
+  },
+  "replaySubtitle": {
+    "message": "Sessionsuppspelning"
+  },
+  "replayStatusReady": {
+    "message": "Redo"
+  },
+  "replayStatusPlaying": {
+    "message": "Spelar upp"
+  },
+  "replayStatusPaused": {
+    "message": "Pausad"
+  },
+  "replayStatusReloading": {
+    "message": "Laddar om…"
+  },
+  "replayStatusCompleted": {
+    "message": "Klar"
+  },
+  "replayUrlLabel": {
+    "message": "Webbplats-URL"
+  },
+  "replayUrlHint": {
+    "message": "Sidan där de inspelade åtgärderna spelas upp"
+  },
+  "replayFileLabel": {
+    "message": "Sessionsfil"
+  },
+  "replayDropHint": {
+    "message": "Släpp en <strong>.json</strong>- eller <strong>.txt</strong>-sessionsfil här"
+  },
+  "replayOr": {
+    "message": "eller"
+  },
+  "replayBrowse": {
+    "message": "Bläddra bland filer"
+  },
+  "replayRemoveFile": {
+    "message": "Ta bort fil"
+  },
+  "replaySpeedLabel": {
+    "message": "Uppspelningshastighet"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Långsam"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Snabb"
+  },
+  "replayStart": {
+    "message": "Starta uppspelning"
+  },
+  "replayOpening": {
+    "message": "Öppnar flik…"
+  },
+  "replayHeading": {
+    "message": "Uppspelning"
+  },
+  "replayProgress": {
+    "message": "Händelse $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Fortsätt"
+  },
+  "replayRestart": {
+    "message": "Börja om"
+  },
+  "replayCompletedTitle": {
+    "message": "Uppspelning klar"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ händelse spelades upp.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Alla $COUNT$ händelser spelades upp.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Stäng"
+  },
+  "replayFooter": {
+    "message": "Spela upp inspelade sessioner · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Ladda upp en .json- eller .txt-fil"
+  },
+  "replayNoEvents": {
+    "message": "Inga händelser hittades i sessionsfilen"
+  },
+  "replayParseError": {
+    "message": "Sessionsfilen kunde inte läsas"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ händelse laddad",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ händelser laddade",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Ange en giltig URL"
+  },
+  "replayFileMissing": {
+    "message": "Ladda upp en sessionsfil"
+  },
+  "replayNoResponse": {
+    "message": "Kunde inte kommunicera med tillägget"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Väntar"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - väntar på $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Väntar på att öppnas"
+  },
+  "pendingNote": {
+    "message": "Stegvis start är på, så den här fliken öppnas efter en kort fördröjning."
+  },
+  "pendingOpening": {
+    "message": "Öppnar nu…"
+  },
+  "pendingHint": {
+    "message": "Ändra det under <strong class=\"kd-text-secondary\">Stegvis öppning av flikar</strong> i MirrorTab-inställningarna."
+  },
+  "badgeSource": {
+    "message": "KÄLLA"
+  },
+  "badgeTarget": {
+    "message": "MÅL"
+  },
+  "badgeReplay": {
+    "message": "UPPSPELNING"
+  }
+}

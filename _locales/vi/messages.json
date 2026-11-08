@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Phản chiếu các tương tác DOM từ thẻ nguồn sang thẻ đích theo thời gian thực."
+  },
+  "appTagline": {
+    "message": "Phản chiếu DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Cài đặt MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Cài đặt"
+  },
+  "settingsCloseLabel": {
+    "message": "Đóng cài đặt"
+  },
+  "closeTitle": {
+    "message": "Đóng"
+  },
+  "infoOpenLabel": {
+    "message": "Giới thiệu MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Đóng thông tin"
+  },
+  "statusIdle": {
+    "message": "Không hoạt động"
+  },
+  "statusActive": {
+    "message": "Đang hoạt động"
+  },
+  "statusPaused": {
+    "message": "Đã tạm dừng"
+  },
+  "statusError": {
+    "message": "Lỗi"
+  },
+  "sourceUrlLabel": {
+    "message": "URL nguồn"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Các tương tác ở đây sẽ được phản chiếu"
+  },
+  "targetUrlLabel": {
+    "message": "URL đích"
+  },
+  "targetUrlHint": {
+    "message": "Các sự kiện sẽ được phát lại ở đây"
+  },
+  "addTarget": {
+    "message": "+ Thêm đích"
+  },
+  "startSession": {
+    "message": "Bắt đầu phiên"
+  },
+  "removeTarget": {
+    "message": "Xóa đích"
+  },
+  "removeActiveTarget": {
+    "message": "Xóa đích này"
+  },
+  "errorUrlRequired": {
+    "message": "Cần nhập URL."
+  },
+  "errorUrlInvalid": {
+    "message": "URL không hợp lệ."
+  },
+  "errorUrlScheme": {
+    "message": "Chỉ cho phép http:// và https://."
+  },
+  "errorUrlDomain": {
+    "message": "Nhập tên miền đầy đủ (ví dụ: example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Tên miền không hợp lệ."
+  },
+  "errorStartSession": {
+    "message": "Không thể bắt đầu phiên: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Lỗi tiện ích: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Không thể tạo thẻ"
+  },
+  "errorOpenReplayTab": {
+    "message": "Không thể mở thẻ phát lại"
+  },
+  "activeSource": {
+    "message": "Nguồn"
+  },
+  "activeTargets": {
+    "message": "Đích"
+  },
+  "pause": {
+    "message": "Tạm dừng"
+  },
+  "resume": {
+    "message": "Tiếp tục"
+  },
+  "stop": {
+    "message": "Dừng"
+  },
+  "downloadHeading": {
+    "message": "Tải dữ liệu phiên"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Văn bản"
+  },
+  "settingsNote": {
+    "message": "Tự động lưu và áp dụng ngay cho các phiên đang chạy."
+  },
+  "settingsPrivacy": {
+    "message": "Quyền riêng tư"
+  },
+  "settingMirrorPasswords": {
+    "message": "Phản chiếu trường mật khẩu"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Tắt sẽ giữ thông tin đăng nhập khỏi các thẻ đích và nhật ký xuất ra"
+  },
+  "settingsOverlays": {
+    "message": "Lớp phủ"
+  },
+  "settingShowCursor": {
+    "message": "Hiện con trỏ ảo"
+  },
+  "settingShowCursorHint": {
+    "message": "Con trỏ được vẽ trên các thẻ đích"
+  },
+  "settingShowBadge": {
+    "message": "Hiện huy hiệu vai trò"
+  },
+  "settingShowBadgeHint": {
+    "message": "Nhãn NGUỒN / ĐÍCH trên mỗi thẻ"
+  },
+  "settingsEvents": {
+    "message": "Sự kiện cần phản chiếu"
+  },
+  "settingMousemove": {
+    "message": "Di chuyển chuột"
+  },
+  "settingMousemoveHint": {
+    "message": "Sự kiện nhiều nhất, tắt để giảm lưu lượng"
+  },
+  "settingScroll": {
+    "message": "Cuộn"
+  },
+  "settingKeystrokes": {
+    "message": "Nhấn phím"
+  },
+  "settingKeystrokesHint": {
+    "message": "Nhấn / nhả phím, tách biệt với giá trị đã gõ"
+  },
+  "settingsPlayback": {
+    "message": "Phát lại"
+  },
+  "settingSmoothScroll": {
+    "message": "Cuộn mượt"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Tắt sẽ nhảy ngay lập tức, giữ cuộn nhanh đồng bộ"
+  },
+  "settingScrollDebounce": {
+    "message": "Độ trễ cuộn"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Khoảng lặng trước khi gửi thao tác cuộn"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Bắt đầu phiên"
+  },
+  "settingTabDelay": {
+    "message": "Mở thẻ lần lượt"
+  },
+  "settingTabDelayHint": {
+    "message": "Độ trễ giữa các thẻ đích. 0 mở tất cả cùng lúc; hữu ích với các trang giới hạn yêu cầu dồn dập."
+  },
+  "settingsReset": {
+    "message": "Đặt lại mặc định"
+  },
+  "infoIntro": {
+    "message": "MirrorTab phản chiếu các tương tác DOM: nhấp, nhập liệu, nhấn phím, tiêu điểm, di chuột và cuộn, kể cả iframe, từ thẻ <strong>nguồn</strong> sang một hoặc nhiều thẻ <strong>đích</strong> theo thời gian thực. Lý tưởng cho demo, kiểm thử và thuyết trình trực tiếp."
+  },
+  "infoStep1": {
+    "message": "Nhập một <strong>URL nguồn</strong> và ít nhất một <strong>URL đích</strong>."
+  },
+  "infoStep2": {
+    "message": "Nhấp <strong>Bắt đầu phiên</strong>, các thẻ sẽ tự mở."
+  },
+  "infoStep3": {
+    "message": "Thao tác trên thẻ <strong class=\"kd-text-danger\">NGUỒN</strong>, các hành động được phản chiếu trực tiếp sang mọi thẻ <strong class=\"kd-text-accent\">ĐÍCH</strong>."
+  },
+  "infoStep4": {
+    "message": "Dùng <strong>Tạm dừng / Tiếp tục</strong> hoặc <strong>Dừng</strong> để điều khiển phiên."
+  },
+  "infoStep5": {
+    "message": "Tải nhật ký sự kiện dưới dạng <strong>JSON</strong> hoặc <strong>Văn bản</strong> bất cứ lúc nào."
+  },
+  "infoGithub": {
+    "message": "Kho GitHub"
+  },
+  "infoReport": {
+    "message": "Báo lỗi / đề xuất tính năng"
+  },
+  "infoCreatedBy": {
+    "message": "Tạo bởi"
+  },
+  "replayLink": {
+    "message": "Mở phát lại phiên"
+  },
+  "footerEvents": {
+    "message": "Nhấp · Nhập · Phím · Tiêu điểm · Di chuột · Cuộn · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Phát lại phiên"
+  },
+  "replaySubtitle": {
+    "message": "Phát lại phiên"
+  },
+  "replayStatusReady": {
+    "message": "Sẵn sàng"
+  },
+  "replayStatusPlaying": {
+    "message": "Đang phát"
+  },
+  "replayStatusPaused": {
+    "message": "Đã tạm dừng"
+  },
+  "replayStatusReloading": {
+    "message": "Đang tải lại…"
+  },
+  "replayStatusCompleted": {
+    "message": "Hoàn tất"
+  },
+  "replayUrlLabel": {
+    "message": "URL trang web"
+  },
+  "replayUrlHint": {
+    "message": "Trang mà các hành động đã ghi sẽ được phát lại"
+  },
+  "replayFileLabel": {
+    "message": "Tệp phiên"
+  },
+  "replayDropHint": {
+    "message": "Thả tệp phiên <strong>.json</strong> hoặc <strong>.txt</strong> vào đây"
+  },
+  "replayOr": {
+    "message": "hoặc"
+  },
+  "replayBrowse": {
+    "message": "Duyệt tệp"
+  },
+  "replayRemoveFile": {
+    "message": "Xóa tệp"
+  },
+  "replaySpeedLabel": {
+    "message": "Tốc độ phát"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Chậm"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Bình thường"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Nhanh"
+  },
+  "replayStart": {
+    "message": "Bắt đầu phát lại"
+  },
+  "replayOpening": {
+    "message": "Đang mở thẻ…"
+  },
+  "replayHeading": {
+    "message": "Phát lại"
+  },
+  "replayProgress": {
+    "message": "Sự kiện $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Tiếp tục"
+  },
+  "replayRestart": {
+    "message": "Phát lại từ đầu"
+  },
+  "replayCompletedTitle": {
+    "message": "Phát lại hoàn tất"
+  },
+  "replayCompletedText_other": {
+    "message": "Đã phát lại thành công toàn bộ $COUNT$ sự kiện.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Đóng"
+  },
+  "replayFooter": {
+    "message": "Phát lại các phiên đã ghi · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Vui lòng tải lên tệp .json hoặc .txt"
+  },
+  "replayNoEvents": {
+    "message": "Không tìm thấy sự kiện nào trong tệp phiên"
+  },
+  "replayParseError": {
+    "message": "Không thể đọc tệp phiên"
+  },
+  "replayEventsLoaded_other": {
+    "message": "Đã tải $COUNT$ sự kiện",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Vui lòng nhập URL hợp lệ"
+  },
+  "replayFileMissing": {
+    "message": "Vui lòng tải lên tệp phiên"
+  },
+  "replayNoResponse": {
+    "message": "Không thể liên lạc với tiện ích"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Đang chờ"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - đang chờ $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Đang chờ mở"
+  },
+  "pendingNote": {
+    "message": "Chế độ mở lần lượt đang bật nên thẻ này sẽ mở sau một khoảng trễ ngắn."
+  },
+  "pendingOpening": {
+    "message": "Đang mở…"
+  },
+  "pendingHint": {
+    "message": "Thay đổi tại <strong class=\"kd-text-secondary\">Mở thẻ lần lượt</strong> trong cài đặt MirrorTab."
+  },
+  "badgeSource": {
+    "message": "NGUỒN"
+  },
+  "badgeTarget": {
+    "message": "ĐÍCH"
+  },
+  "badgeReplay": {
+    "message": "PHÁT LẠI"
+  }
+}

@@ -15,6 +15,7 @@ import {
   openTab,
   sendRoleToTab,
   sleepKeepingWorkerAlive,
+  t,
   waitForTabLoad,
 } from '@/shared/util';
 import { RecordStore } from './record-store';
@@ -58,7 +59,7 @@ export class SessionManager {
       const targetTabIds = targetTabs.map((t) => Number(t.id));
 
       if (isNaN(sourceTabId) || targetTabIds.some(isNaN)) {
-        throw new Error('Failed to create tabs');
+        throw new Error(t('errorCreateTabs'));
       }
 
       if (staggered) {

@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Zrkadlí interakcie s DOM zo zdrojovej karty na cieľovú kartu v reálnom čase."
+  },
+  "appTagline": {
+    "message": "Zrkadlenie interakcií s DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Nastavenia MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Nastavenia"
+  },
+  "settingsCloseLabel": {
+    "message": "Zavrieť nastavenia"
+  },
+  "closeTitle": {
+    "message": "Zavrieť"
+  },
+  "infoOpenLabel": {
+    "message": "O MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Zavrieť informácie"
+  },
+  "statusIdle": {
+    "message": "Nečinné"
+  },
+  "statusActive": {
+    "message": "Aktívne"
+  },
+  "statusPaused": {
+    "message": "Pozastavené"
+  },
+  "statusError": {
+    "message": "Chyba"
+  },
+  "sourceUrlLabel": {
+    "message": "Zdrojová URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interakcie tu budú zrkadlené"
+  },
+  "targetUrlLabel": {
+    "message": "Cieľová URL"
+  },
+  "targetUrlHint": {
+    "message": "Udalosti sa tu budú prehrávať"
+  },
+  "addTarget": {
+    "message": "+ Pridať cieľ"
+  },
+  "startSession": {
+    "message": "Spustiť reláciu"
+  },
+  "removeTarget": {
+    "message": "Odstrániť cieľ"
+  },
+  "removeActiveTarget": {
+    "message": "Odstrániť tento cieľ"
+  },
+  "errorUrlRequired": {
+    "message": "URL je povinná."
+  },
+  "errorUrlInvalid": {
+    "message": "Neplatná URL."
+  },
+  "errorUrlScheme": {
+    "message": "Povolené sú len http:// a https://."
+  },
+  "errorUrlDomain": {
+    "message": "Zadajte celú doménu (napr. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Neplatná doména."
+  },
+  "errorStartSession": {
+    "message": "Reláciu sa nepodarilo spustiť: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Chyba rozšírenia: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Karty sa nepodarilo vytvoriť"
+  },
+  "errorOpenReplayTab": {
+    "message": "Kartu na prehranie sa nepodarilo otvoriť"
+  },
+  "activeSource": {
+    "message": "Zdroj"
+  },
+  "activeTargets": {
+    "message": "Ciele"
+  },
+  "pause": {
+    "message": "Pozastaviť"
+  },
+  "resume": {
+    "message": "Pokračovať"
+  },
+  "stop": {
+    "message": "Zastaviť"
+  },
+  "downloadHeading": {
+    "message": "Stiahnuť údaje relácie"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Ukladá sa automaticky a hneď sa použije na bežiace relácie."
+  },
+  "settingsPrivacy": {
+    "message": "Súkromie"
+  },
+  "settingMirrorPasswords": {
+    "message": "Zrkadliť polia s heslom"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Vypnuté udrží prihlasovacie údaje mimo cieľových kariet a exportovaných záznamov"
+  },
+  "settingsOverlays": {
+    "message": "Prekrytia"
+  },
+  "settingShowCursor": {
+    "message": "Zobraziť kurzor-ducha"
+  },
+  "settingShowCursorHint": {
+    "message": "Ukazovateľ vykreslený na cieľových kartách"
+  },
+  "settingShowBadge": {
+    "message": "Zobraziť odznak roly"
+  },
+  "settingShowBadgeHint": {
+    "message": "Štítok ZDROJ / CIEĽ na každej karte"
+  },
+  "settingsEvents": {
+    "message": "Zrkadlené udalosti"
+  },
+  "settingMousemove": {
+    "message": "Pohyb myši"
+  },
+  "settingMousemoveHint": {
+    "message": "Najčastejšia udalosť, vypnite pre zníženie prevádzky"
+  },
+  "settingScroll": {
+    "message": "Posúvanie"
+  },
+  "settingKeystrokes": {
+    "message": "Stlačenia klávesov"
+  },
+  "settingKeystrokesHint": {
+    "message": "Stlačenie a uvoľnenie klávesu, nezávisle od zadaných hodnôt"
+  },
+  "settingsPlayback": {
+    "message": "Prehrávanie"
+  },
+  "settingSmoothScroll": {
+    "message": "Plynulé posúvanie"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Vypnuté skočí okamžite a udrží rýchle posúvanie synchrónne"
+  },
+  "settingScrollDebounce": {
+    "message": "Oneskorenie posúvania"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Pokojný čas pred odoslaním posunu"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Spustenie relácie"
+  },
+  "settingTabDelay": {
+    "message": "Postupné otváranie kariet"
+  },
+  "settingTabDelayHint": {
+    "message": "Oneskorenie medzi jednotlivými cieľovými kartami. 0 otvorí všetky naraz; užitočné pre weby, ktoré obmedzujú nárazové požiadavky."
+  },
+  "settingsReset": {
+    "message": "Obnoviť predvolené"
+  },
+  "infoIntro": {
+    "message": "MirrorTab zrkadlí interakcie s DOM: kliknutia, zadávanie, stlačenia klávesov, fokus, prejdenie myšou a posúvanie, vrátane iframe, zo <strong>zdrojovej</strong> karty na jednu alebo viac <strong>cieľových</strong> kariet v reálnom čase. Ideálne na ukážky, testovanie a živé prezentácie."
+  },
+  "infoStep1": {
+    "message": "Zadajte <strong>zdrojovú URL</strong> a aspoň jednu <strong>cieľovú URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Kliknite na <strong>Spustiť reláciu</strong>, karty sa otvoria automaticky."
+  },
+  "infoStep3": {
+    "message": "Pracujte na karte <strong class=\"kd-text-danger\">ZDROJ</strong>, akcie sa naživo zrkadlia na každú kartu <strong class=\"kd-text-accent\">CIEĽ</strong>."
+  },
+  "infoStep4": {
+    "message": "Reláciu ovládajte pomocou <strong>Pozastaviť / Pokračovať</strong> alebo <strong>Zastaviť</strong>."
+  },
+  "infoStep5": {
+    "message": "Záznam udalostí si kedykoľvek stiahnite ako <strong>JSON</strong> alebo <strong>Text</strong>."
+  },
+  "infoGithub": {
+    "message": "Repozitár na GitHube"
+  },
+  "infoReport": {
+    "message": "Nahlásiť problém / nápad"
+  },
+  "infoCreatedBy": {
+    "message": "Autor:"
+  },
+  "replayLink": {
+    "message": "Otvoriť prehranie relácie"
+  },
+  "footerEvents": {
+    "message": "Kliknutia · Zadávanie · Klávesy · Fokus · Prejdenie · Posun · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Prehranie relácie"
+  },
+  "replaySubtitle": {
+    "message": "Prehranie relácie"
+  },
+  "replayStatusReady": {
+    "message": "Pripravené"
+  },
+  "replayStatusPlaying": {
+    "message": "Prehráva sa"
+  },
+  "replayStatusPaused": {
+    "message": "Pozastavené"
+  },
+  "replayStatusReloading": {
+    "message": "Znova sa načítava…"
+  },
+  "replayStatusCompleted": {
+    "message": "Dokončené"
+  },
+  "replayUrlLabel": {
+    "message": "URL webu"
+  },
+  "replayUrlHint": {
+    "message": "Stránka, na ktorej sa prehrajú zaznamenané akcie"
+  },
+  "replayFileLabel": {
+    "message": "Súbor relácie"
+  },
+  "replayDropHint": {
+    "message": "Sem presuňte súbor relácie <strong>.json</strong> alebo <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "alebo"
+  },
+  "replayBrowse": {
+    "message": "Prehľadávať súbory"
+  },
+  "replayRemoveFile": {
+    "message": "Odstrániť súbor"
+  },
+  "replaySpeedLabel": {
+    "message": "Rýchlosť prehrávania"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Pomaly"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normálne"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rýchlo"
+  },
+  "replayStart": {
+    "message": "Spustiť prehranie"
+  },
+  "replayOpening": {
+    "message": "Otvára sa karta…"
+  },
+  "replayHeading": {
+    "message": "Prehranie"
+  },
+  "replayProgress": {
+    "message": "Udalosť $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Pokračovať"
+  },
+  "replayRestart": {
+    "message": "Odznova"
+  },
+  "replayCompletedTitle": {
+    "message": "Prehranie dokončené"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ udalosť bola úspešne prehraná.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Všetky $COUNT$ udalosti boli úspešne prehrané.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Všetkých $COUNT$ udalostí bolo úspešne prehraných.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Všetkých $COUNT$ udalostí bolo úspešne prehraných.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Zavrieť"
+  },
+  "replayFooter": {
+    "message": "Prehrávajte zaznamenané relácie · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Nahrajte súbor .json alebo .txt"
+  },
+  "replayNoEvents": {
+    "message": "V súbore relácie sa nenašli žiadne udalosti"
+  },
+  "replayParseError": {
+    "message": "Súbor relácie sa nepodarilo prečítať"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Načítaná $COUNT$ udalosť",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Načítané $COUNT$ udalosti",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Načítaných $COUNT$ udalostí",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Načítaných $COUNT$ udalostí",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Zadajte platnú URL"
+  },
+  "replayFileMissing": {
+    "message": "Nahrajte súbor relácie"
+  },
+  "replayNoResponse": {
+    "message": "Komunikácia s rozšírením zlyhala"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Čaká sa"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - čaká sa na $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Čaká sa na otvorenie"
+  },
+  "pendingNote": {
+    "message": "Postupné spúšťanie je zapnuté, takže sa táto karta otvorí po krátkom oneskorení."
+  },
+  "pendingOpening": {
+    "message": "Otvára sa…"
+  },
+  "pendingHint": {
+    "message": "Zmeňte to v časti <strong class=\"kd-text-secondary\">Postupné otváranie kariet</strong> v nastaveniach MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ZDROJ"
+  },
+  "badgeTarget": {
+    "message": "CIEĽ"
+  },
+  "badgeReplay": {
+    "message": "PREHRANIE"
+  }
+}

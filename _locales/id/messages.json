@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Mencerminkan interaksi DOM dari tab sumber ke tab target secara real-time."
+  },
+  "appTagline": {
+    "message": "Cermin interaksi DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Pengaturan MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Pengaturan"
+  },
+  "settingsCloseLabel": {
+    "message": "Tutup pengaturan"
+  },
+  "closeTitle": {
+    "message": "Tutup"
+  },
+  "infoOpenLabel": {
+    "message": "Tentang MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Tutup info"
+  },
+  "statusIdle": {
+    "message": "Tidak aktif"
+  },
+  "statusActive": {
+    "message": "Aktif"
+  },
+  "statusPaused": {
+    "message": "Dijeda"
+  },
+  "statusError": {
+    "message": "Error"
+  },
+  "sourceUrlLabel": {
+    "message": "URL sumber"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaksi di sini akan dicerminkan"
+  },
+  "targetUrlLabel": {
+    "message": "URL target"
+  },
+  "targetUrlHint": {
+    "message": "Peristiwa akan diputar ulang di sini"
+  },
+  "addTarget": {
+    "message": "+ Tambah target"
+  },
+  "startSession": {
+    "message": "Mulai sesi"
+  },
+  "removeTarget": {
+    "message": "Hapus target"
+  },
+  "removeActiveTarget": {
+    "message": "Hapus target ini"
+  },
+  "errorUrlRequired": {
+    "message": "URL wajib diisi."
+  },
+  "errorUrlInvalid": {
+    "message": "URL tidak valid."
+  },
+  "errorUrlScheme": {
+    "message": "Hanya http:// dan https:// yang diizinkan."
+  },
+  "errorUrlDomain": {
+    "message": "Masukkan domain lengkap (mis. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domain tidak valid."
+  },
+  "errorStartSession": {
+    "message": "Gagal memulai sesi: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Error ekstensi: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Gagal membuat tab"
+  },
+  "errorOpenReplayTab": {
+    "message": "Gagal membuka tab putar ulang"
+  },
+  "activeSource": {
+    "message": "Sumber"
+  },
+  "activeTargets": {
+    "message": "Target"
+  },
+  "pause": {
+    "message": "Jeda"
+  },
+  "resume": {
+    "message": "Lanjutkan"
+  },
+  "stop": {
+    "message": "Berhenti"
+  },
+  "downloadHeading": {
+    "message": "Unduh data sesi"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Teks"
+  },
+  "settingsNote": {
+    "message": "Disimpan otomatis dan langsung diterapkan ke sesi yang berjalan."
+  },
+  "settingsPrivacy": {
+    "message": "Privasi"
+  },
+  "settingMirrorPasswords": {
+    "message": "Cerminkan kolom kata sandi"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Nonaktif menjaga kredensial tidak masuk ke tab target dan log yang diekspor"
+  },
+  "settingsOverlays": {
+    "message": "Overlay"
+  },
+  "settingShowCursor": {
+    "message": "Tampilkan kursor bayangan"
+  },
+  "settingShowCursorHint": {
+    "message": "Penunjuk yang digambar di tab target"
+  },
+  "settingShowBadge": {
+    "message": "Tampilkan lencana peran"
+  },
+  "settingShowBadgeHint": {
+    "message": "Label SUMBER / TARGET di setiap tab"
+  },
+  "settingsEvents": {
+    "message": "Peristiwa yang dicerminkan"
+  },
+  "settingMousemove": {
+    "message": "Gerakan mouse"
+  },
+  "settingMousemoveHint": {
+    "message": "Peristiwa paling sering, nonaktifkan untuk mengurangi lalu lintas"
+  },
+  "settingScroll": {
+    "message": "Pengguliran"
+  },
+  "settingKeystrokes": {
+    "message": "Penekanan tombol"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tombol ditekan / dilepas, terpisah dari nilai yang diketik"
+  },
+  "settingsPlayback": {
+    "message": "Pemutaran"
+  },
+  "settingSmoothScroll": {
+    "message": "Pengguliran halus"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Nonaktif melompat seketika dan menjaga pengguliran cepat tetap sinkron"
+  },
+  "settingScrollDebounce": {
+    "message": "Debounce pengguliran"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Jeda tenang sebelum pengguliran dikirim"
+  },
+  "unitMs": {
+    "message": "md"
+  },
+  "settingsSessionStart": {
+    "message": "Awal sesi"
+  },
+  "settingTabDelay": {
+    "message": "Pembukaan tab bertahap"
+  },
+  "settingTabDelayHint": {
+    "message": "Jeda antara tiap tab target. 0 membuka semuanya sekaligus; berguna untuk situs yang membatasi permintaan beruntun."
+  },
+  "settingsReset": {
+    "message": "Setel ulang ke default"
+  },
+  "infoIntro": {
+    "message": "MirrorTab mencerminkan interaksi DOM: klik, input, penekanan tombol, fokus, hover, dan pengguliran, termasuk iframe, dari tab <strong>sumber</strong> ke satu atau lebih tab <strong>target</strong> secara real-time. Cocok untuk demo, pengujian, dan presentasi langsung."
+  },
+  "infoStep1": {
+    "message": "Masukkan <strong>URL sumber</strong> dan minimal satu <strong>URL target</strong>."
+  },
+  "infoStep2": {
+    "message": "Klik <strong>Mulai sesi</strong>, tab akan terbuka otomatis."
+  },
+  "infoStep3": {
+    "message": "Berinteraksilah di tab <strong class=\"kd-text-danger\">SUMBER</strong>, tindakan dicerminkan langsung ke setiap tab <strong class=\"kd-text-accent\">TARGET</strong>."
+  },
+  "infoStep4": {
+    "message": "Gunakan <strong>Jeda / Lanjutkan</strong> atau <strong>Berhenti</strong> untuk mengendalikan sesi."
+  },
+  "infoStep5": {
+    "message": "Unduh log peristiwa sebagai <strong>JSON</strong> atau <strong>Teks</strong> kapan saja."
+  },
+  "infoGithub": {
+    "message": "Repositori GitHub"
+  },
+  "infoReport": {
+    "message": "Laporkan masalah / fitur"
+  },
+  "infoCreatedBy": {
+    "message": "Dibuat oleh"
+  },
+  "replayLink": {
+    "message": "Buka putar ulang sesi"
+  },
+  "footerEvents": {
+    "message": "Klik · Input · Tombol · Fokus · Hover · Gulir · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Putar ulang sesi"
+  },
+  "replaySubtitle": {
+    "message": "Putar ulang sesi"
+  },
+  "replayStatusReady": {
+    "message": "Siap"
+  },
+  "replayStatusPlaying": {
+    "message": "Memutar"
+  },
+  "replayStatusPaused": {
+    "message": "Dijeda"
+  },
+  "replayStatusReloading": {
+    "message": "Memuat ulang…"
+  },
+  "replayStatusCompleted": {
+    "message": "Selesai"
+  },
+  "replayUrlLabel": {
+    "message": "URL situs web"
+  },
+  "replayUrlHint": {
+    "message": "Halaman tempat tindakan yang direkam akan diputar ulang"
+  },
+  "replayFileLabel": {
+    "message": "File sesi"
+  },
+  "replayDropHint": {
+    "message": "Jatuhkan file sesi <strong>.json</strong> atau <strong>.txt</strong> di sini"
+  },
+  "replayOr": {
+    "message": "atau"
+  },
+  "replayBrowse": {
+    "message": "Telusuri file"
+  },
+  "replayRemoveFile": {
+    "message": "Hapus file"
+  },
+  "replaySpeedLabel": {
+    "message": "Kecepatan pemutaran"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lambat"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Cepat"
+  },
+  "replayStart": {
+    "message": "Mulai putar ulang"
+  },
+  "replayOpening": {
+    "message": "Membuka tab…"
+  },
+  "replayHeading": {
+    "message": "Putar ulang"
+  },
+  "replayProgress": {
+    "message": "Peristiwa $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Lanjutkan"
+  },
+  "replayRestart": {
+    "message": "Mulai ulang"
+  },
+  "replayCompletedTitle": {
+    "message": "Putar ulang selesai"
+  },
+  "replayCompletedText_other": {
+    "message": "Semua $COUNT$ peristiwa berhasil diputar ulang.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Tutup"
+  },
+  "replayFooter": {
+    "message": "Putar ulang sesi yang direkam · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Unggah file .json atau .txt"
+  },
+  "replayNoEvents": {
+    "message": "Tidak ada peristiwa dalam file sesi"
+  },
+  "replayParseError": {
+    "message": "Gagal membaca file sesi"
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ peristiwa dimuat",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Masukkan URL yang valid"
+  },
+  "replayFileMissing": {
+    "message": "Unggah file sesi"
+  },
+  "replayNoResponse": {
+    "message": "Gagal berkomunikasi dengan ekstensi"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Menunggu"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - menunggu $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Menunggu untuk dibuka"
+  },
+  "pendingNote": {
+    "message": "Mulai bertahap aktif, jadi tab ini akan terbuka setelah jeda singkat."
+  },
+  "pendingOpening": {
+    "message": "Membuka sekarang…"
+  },
+  "pendingHint": {
+    "message": "Ubah ini di <strong class=\"kd-text-secondary\">Pembukaan tab bertahap</strong> pada pengaturan MirrorTab."
+  },
+  "badgeSource": {
+    "message": "SUMBER"
+  },
+  "badgeTarget": {
+    "message": "TARGET"
+  },
+  "badgeReplay": {
+    "message": "PUTAR ULANG"
+  }
+}

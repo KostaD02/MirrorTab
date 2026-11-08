@@ -20,6 +20,7 @@ import {
 import { SessionManager } from './session-manager';
 
 jest.mock('@/shared/util', () => ({
+  t: jest.requireActual('@/shared/util').t,
   openTab: jest.fn(),
   openRawTab: jest.fn(),
   navigateTab: jest.fn(),

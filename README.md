@@ -60,17 +60,17 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 
 Open the **gear icon** in the popup header. Changes are saved to `chrome.storage.local` and picked up by every open tab straight away - no need to restart a session.
 
-| Setting                   | Default | Effect                                                                                    |
-| ------------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| Setting                    | Default | Effect                                                                                             |
+| -------------------------- | ------- | -------------------------------------------------------------------------------------------------- |
 | **Mirror password fields** | On      | Turn off to keep values and keystrokes from credential inputs out of target tabs and exported logs |
-| **Show ghost cursor**     | On      | The virtual pointer drawn on target and replay tabs                                       |
-| **Show role badge**       | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos    |
-| **Mouse movement**        | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic |
-| **Scrolling**             | On      | Forward scroll position changes                                                            |
-| **Keystrokes**            | On      | Forward `keydown` / `keyup`, which are separate from typed input values                   |
-| **Smooth scrolling**      | On      | When off, replayed scrolls jump instantly, which keeps fast scrolling in sync              |
-| **Scroll debounce**       | 50 ms   | Quiet period before a settled scroll position is forwarded (0-2000 ms)                    |
-| **Staggered tab opening** | 0 ms    | Delay between each target tab opening (0-60000 ms). `0` opens them all at once            |
+| **Show ghost cursor**      | On      | The virtual pointer drawn on target and replay tabs                                                |
+| **Show role badge**        | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos             |
+| **Mouse movement**         | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic      |
+| **Scrolling**              | On      | Forward scroll position changes                                                                    |
+| **Keystrokes**             | On      | Forward `keydown` / `keyup`, which are separate from typed input values                            |
+| **Smooth scrolling**       | On      | When off, replayed scrolls jump instantly, which keeps fast scrolling in sync                      |
+| **Scroll debounce**        | 50 ms   | Quiet period before a settled scroll position is forwarded (0-2000 ms)                             |
+| **Staggered tab opening**  | 0 ms    | Delay between each target tab opening (0-60000 ms). `0` opens them all at once                     |
 
 ### Staggered tab opening
 
@@ -86,23 +86,74 @@ Replayed events are synthetic DOM events, so pages see them through their JavaSc
 
 Synthetic events cannot switch CSS `:hover` or `:focus`, and a window without OS focus draws no focus at all, so MirrorTab copies the page's own `:hover`, `:focus`, `:focus-visible` and `:focus-within` rules onto attributes it sets on the target. Each copy is inserted right after its original, so the cascade stays the same, and the source reports whether its focused element really matched `:focus-visible`, so a mouse click and a Tab press look the same on both tabs. A stylesheet from another origin is fetched and placed inline in the same spot for that; a CDN that sends no CORS headers keeps native hover only. One thing only a real pointer can do, and no extension can fake without the `debugger` permission: opening native pickers such as a `<select>` dropdown. The chosen value is still mirrored.
 
+## Languages
+
+The popup, the replay and waiting pages, the role badges and every error message follow the browser's UI language, the way Chrome's [i18n API](https://developer.chrome.com/docs/extensions/reference/api/i18n) resolves it: the exact locale first (`pt_BR`), then the language alone (`pt`), then English. Arabic, Hebrew and Persian also switch the pages to a right-to-left layout.
+
+| Code     | Language                |
+| -------- | ----------------------- |
+| `en`     | English (default)       |
+| `ar`     | Arabic                  |
+| `bg`     | Bulgarian               |
+| `ca`     | Catalan                 |
+| `cs`     | Czech                   |
+| `da`     | Danish                  |
+| `de`     | German                  |
+| `el`     | Greek                   |
+| `es`     | Spanish                 |
+| `es_419` | Spanish (Latin America) |
+| `et`     | Estonian                |
+| `fa`     | Persian                 |
+| `fi`     | Finnish                 |
+| `fr`     | French                  |
+| `he`     | Hebrew                  |
+| `hi`     | Hindi                   |
+| `hr`     | Croatian                |
+| `hu`     | Hungarian               |
+| `id`     | Indonesian              |
+| `it`     | Italian                 |
+| `ja`     | Japanese                |
+| `ko`     | Korean                  |
+| `lt`     | Lithuanian              |
+| `lv`     | Latvian                 |
+| `ms`     | Malay                   |
+| `nl`     | Dutch                   |
+| `no`     | Norwegian               |
+| `pl`     | Polish                  |
+| `pt_BR`  | Portuguese (Brazil)     |
+| `pt_PT`  | Portuguese (Portugal)   |
+| `ro`     | Romanian                |
+| `ru`     | Russian                 |
+| `sk`     | Slovak                  |
+| `sl`     | Slovenian               |
+| `sr`     | Serbian (Cyrillic)      |
+| `sv`     | Swedish                 |
+| `th`     | Thai                    |
+| `tr`     | Turkish                 |
+| `uk`     | Ukrainian               |
+| `vi`     | Vietnamese              |
+| `zh_CN`  | Chinese (Simplified)    |
+| `zh_TW`  | Chinese (Traditional)   |
+
+Exported session logs stay in English so that every file replays everywhere. To add a language, copy `_locales/en/messages.json` to `_locales/<code>/messages.json` and translate the `message` values; see [CONTRIBUTING.md](CONTRIBUTING.md#translations).
+
 ## Recorded event format
 
 Each entry in the exported session log contains:
 
-| Field                | Description                                                                       |
-| -------------------- | --------------------------------------------------------------------------------- |
-| `timestamp`          | ISO 8601 timestamp of when the event was replayed                                 |
-| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`, `mousemove`, `focus`, `blur`, `resize` |
-| `selector`           | Compact element identifier: `TAG#id#firstClass#attr=val`                          |
-| `selectorStackTrace` | Full CSS structural path used for DOM resolution                                  |
-| `framePath`          | Selectors of the iframes leading to the frame the event happened in, joined by ` >> `; empty for the page itself |
-| `content`            | Event-specific payload (coordinates, value, key info, scroll position)            |
+| Field                | Description                                                                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `timestamp`          | ISO 8601 timestamp of when the event was replayed                                                              |
+| `type`               | Event type: `click`, `input`, `change`, `keydown`, `keyup`, `scroll`, `mousemove`, `focus`, `blur`, `resize`   |
+| `selector`           | Compact element identifier: `TAG#id#firstClass#attr=val`                                                       |
+| `selectorStackTrace` | Full CSS structural path used for DOM resolution                                                               |
+| `framePath`          | Selectors of the iframes leading to the frame the event happened in, joined by `>>`; empty for the page itself |
+| `content`            | Event-specific payload (coordinates, value, key info, scroll position)                                         |
 
 ## Permissions
 
-| Permission | Reason                                                            |
-| ---------- | ------------------------------------------------------------------- |
+| Permission | Reason                                                                      |
+| ---------- | --------------------------------------------------------------------------- |
 | `storage`  | Persist the active session and your settings across service worker restarts |
 
 ## Contributing

@@ -1,0 +1,438 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Oglindește interacțiunile DOM dintr-o filă sursă într-o filă țintă în timp real."
+  },
+  "appTagline": {
+    "message": "Oglindirea interacțiunilor DOM"
+  },
+  "logoAlt": {
+    "message": "Sigla MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Setări MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Setări"
+  },
+  "settingsCloseLabel": {
+    "message": "Închide setările"
+  },
+  "closeTitle": {
+    "message": "Închide"
+  },
+  "infoOpenLabel": {
+    "message": "Despre MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Închide informațiile"
+  },
+  "statusIdle": {
+    "message": "Inactiv"
+  },
+  "statusActive": {
+    "message": "Activ"
+  },
+  "statusPaused": {
+    "message": "În pauză"
+  },
+  "statusError": {
+    "message": "Eroare"
+  },
+  "sourceUrlLabel": {
+    "message": "URL sursă"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interacțiunile de aici vor fi oglindite"
+  },
+  "targetUrlLabel": {
+    "message": "URL țintă"
+  },
+  "targetUrlHint": {
+    "message": "Evenimentele vor fi redate aici"
+  },
+  "addTarget": {
+    "message": "+ Adaugă țintă"
+  },
+  "startSession": {
+    "message": "Pornește sesiunea"
+  },
+  "removeTarget": {
+    "message": "Elimină ținta"
+  },
+  "removeActiveTarget": {
+    "message": "Elimină această țintă"
+  },
+  "errorUrlRequired": {
+    "message": "URL-ul este obligatoriu."
+  },
+  "errorUrlInvalid": {
+    "message": "URL nevalid."
+  },
+  "errorUrlScheme": {
+    "message": "Sunt permise doar http:// și https://."
+  },
+  "errorUrlDomain": {
+    "message": "Introdu un domeniu complet (de ex. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domeniu nevalid."
+  },
+  "errorStartSession": {
+    "message": "Sesiunea nu a putut porni: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Eroare a extensiei: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Filele nu au putut fi create"
+  },
+  "errorOpenReplayTab": {
+    "message": "Fila de redare nu a putut fi deschisă"
+  },
+  "activeSource": {
+    "message": "Sursă"
+  },
+  "activeTargets": {
+    "message": "Ținte"
+  },
+  "pause": {
+    "message": "Pauză"
+  },
+  "resume": {
+    "message": "Reia"
+  },
+  "stop": {
+    "message": "Oprește"
+  },
+  "downloadHeading": {
+    "message": "Descarcă datele sesiunii"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Se salvează automat și se aplică imediat sesiunilor în curs."
+  },
+  "settingsPrivacy": {
+    "message": "Confidențialitate"
+  },
+  "settingMirrorPasswords": {
+    "message": "Oglindește câmpurile de parolă"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Dezactivat ține datele de autentificare departe de filele țintă și de jurnalele exportate"
+  },
+  "settingsOverlays": {
+    "message": "Suprapuneri"
+  },
+  "settingShowCursor": {
+    "message": "Afișează cursorul fantomă"
+  },
+  "settingShowCursorHint": {
+    "message": "Indicatorul desenat pe filele țintă"
+  },
+  "settingShowBadge": {
+    "message": "Afișează insigna rolului"
+  },
+  "settingShowBadgeHint": {
+    "message": "Eticheta SURSĂ / ȚINTĂ pe fiecare filă"
+  },
+  "settingsEvents": {
+    "message": "Evenimente de oglindit"
+  },
+  "settingMousemove": {
+    "message": "Mișcarea mouse-ului"
+  },
+  "settingMousemoveHint": {
+    "message": "Cel mai frecvent eveniment, dezactivează-l pentru a reduce traficul"
+  },
+  "settingScroll": {
+    "message": "Derulare"
+  },
+  "settingKeystrokes": {
+    "message": "Apăsări de taste"
+  },
+  "settingKeystrokesHint": {
+    "message": "Apăsare / eliberare tastă, separat de valorile tastate"
+  },
+  "settingsPlayback": {
+    "message": "Redare"
+  },
+  "settingSmoothScroll": {
+    "message": "Derulare lină"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Dezactivat sare instantaneu și păstrează derulările rapide sincronizate"
+  },
+  "settingScrollDebounce": {
+    "message": "Întârziere derulare"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Perioada de liniște înainte de trimiterea unei derulări"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Pornirea sesiunii"
+  },
+  "settingTabDelay": {
+    "message": "Deschidere eșalonată a filelor"
+  },
+  "settingTabDelayHint": {
+    "message": "Întârzierea dintre filele țintă. 0 le deschide pe toate deodată; util pentru site-urile care limitează rafalele de cereri."
+  },
+  "settingsReset": {
+    "message": "Resetează la valorile implicite"
+  },
+  "infoIntro": {
+    "message": "MirrorTab oglindește interacțiunile DOM: clicuri, intrări, apăsări de taste, focus, hover și derulare, inclusiv în iframe-uri, dintr-o filă <strong>sursă</strong> în una sau mai multe file <strong>țintă</strong> în timp real. Perfect pentru demonstrații, testare și prezentări live."
+  },
+  "infoStep1": {
+    "message": "Introdu un <strong>URL sursă</strong> și cel puțin un <strong>URL țintă</strong>."
+  },
+  "infoStep2": {
+    "message": "Dă clic pe <strong>Pornește sesiunea</strong>, filele se deschid automat."
+  },
+  "infoStep3": {
+    "message": "Interacționează în fila <strong class=\"kd-text-danger\">SURSĂ</strong>, acțiunile se oglindesc live în fiecare filă <strong class=\"kd-text-accent\">ȚINTĂ</strong>."
+  },
+  "infoStep4": {
+    "message": "Folosește <strong>Pauză / Reia</strong> sau <strong>Oprește</strong> pentru a controla sesiunea."
+  },
+  "infoStep5": {
+    "message": "Descarcă oricând jurnalul de evenimente ca <strong>JSON</strong> sau <strong>Text</strong>."
+  },
+  "infoGithub": {
+    "message": "Depozit GitHub"
+  },
+  "infoReport": {
+    "message": "Raportează o problemă / idee"
+  },
+  "infoCreatedBy": {
+    "message": "Creat de"
+  },
+  "replayLink": {
+    "message": "Deschide redarea sesiunii"
+  },
+  "footerEvents": {
+    "message": "Clicuri · Intrări · Taste · Focus · Hover · Derulare · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Redarea sesiunii"
+  },
+  "replaySubtitle": {
+    "message": "Redarea sesiunii"
+  },
+  "replayStatusReady": {
+    "message": "Gata"
+  },
+  "replayStatusPlaying": {
+    "message": "Se redă"
+  },
+  "replayStatusPaused": {
+    "message": "În pauză"
+  },
+  "replayStatusReloading": {
+    "message": "Se reîncarcă…"
+  },
+  "replayStatusCompleted": {
+    "message": "Finalizat"
+  },
+  "replayUrlLabel": {
+    "message": "URL-ul site-ului"
+  },
+  "replayUrlHint": {
+    "message": "Pagina pe care vor fi redate acțiunile înregistrate"
+  },
+  "replayFileLabel": {
+    "message": "Fișier de sesiune"
+  },
+  "replayDropHint": {
+    "message": "Trage aici un fișier de sesiune <strong>.json</strong> sau <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "sau"
+  },
+  "replayBrowse": {
+    "message": "Răsfoiește fișierele"
+  },
+  "replayRemoveFile": {
+    "message": "Elimină fișierul"
+  },
+  "replaySpeedLabel": {
+    "message": "Viteza de redare"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lent"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rapid"
+  },
+  "replayStart": {
+    "message": "Pornește redarea"
+  },
+  "replayOpening": {
+    "message": "Se deschide fila…"
+  },
+  "replayHeading": {
+    "message": "Redare"
+  },
+  "replayProgress": {
+    "message": "Evenimentul $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continuă"
+  },
+  "replayRestart": {
+    "message": "Repornește"
+  },
+  "replayCompletedTitle": {
+    "message": "Redare finalizată"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ eveniment a fost redat cu succes.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Toate cele $COUNT$ evenimente au fost redate cu succes.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Toate cele $COUNT$ de evenimente au fost redate cu succes.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Închide"
+  },
+  "replayFooter": {
+    "message": "Redă sesiunile înregistrate · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Încarcă un fișier .json sau .txt"
+  },
+  "replayNoEvents": {
+    "message": "Nu s-au găsit evenimente în fișierul de sesiune"
+  },
+  "replayParseError": {
+    "message": "Fișierul de sesiune nu a putut fi citit"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ eveniment încărcat",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "$COUNT$ evenimente încărcate",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ de evenimente încărcate",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Introdu un URL valid"
+  },
+  "replayFileMissing": {
+    "message": "Încarcă un fișier de sesiune"
+  },
+  "replayNoResponse": {
+    "message": "Comunicarea cu extensia a eșuat"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - În așteptare"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - se așteaptă $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Se așteaptă deschiderea"
+  },
+  "pendingNote": {
+    "message": "Pornirea eșalonată este activă, așa că această filă se deschide după o scurtă întârziere."
+  },
+  "pendingOpening": {
+    "message": "Se deschide acum…"
+  },
+  "pendingHint": {
+    "message": "Schimbă asta la <strong class=\"kd-text-secondary\">Deschidere eșalonată a filelor</strong> în setările MirrorTab."
+  },
+  "badgeSource": {
+    "message": "SURSĂ"
+  },
+  "badgeTarget": {
+    "message": "ȚINTĂ"
+  },
+  "badgeReplay": {
+    "message": "REDARE"
+  }
+}

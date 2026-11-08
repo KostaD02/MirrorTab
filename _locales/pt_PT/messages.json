@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Espelha interações do DOM de um separador de origem para um separador de destino em tempo real."
+  },
+  "appTagline": {
+    "message": "Espelhamento de ações DOM"
+  },
+  "logoAlt": {
+    "message": "Logótipo do MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Definições do MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Definições"
+  },
+  "settingsCloseLabel": {
+    "message": "Fechar definições"
+  },
+  "closeTitle": {
+    "message": "Fechar"
+  },
+  "infoOpenLabel": {
+    "message": "Sobre o MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Fechar informações"
+  },
+  "statusIdle": {
+    "message": "Inativo"
+  },
+  "statusActive": {
+    "message": "Ativo"
+  },
+  "statusPaused": {
+    "message": "Em pausa"
+  },
+  "statusError": {
+    "message": "Erro"
+  },
+  "sourceUrlLabel": {
+    "message": "URL de origem"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "As interações aqui serão espelhadas"
+  },
+  "targetUrlLabel": {
+    "message": "URL de destino"
+  },
+  "targetUrlHint": {
+    "message": "Os eventos serão reproduzidos aqui"
+  },
+  "addTarget": {
+    "message": "+ Adicionar destino"
+  },
+  "startSession": {
+    "message": "Iniciar sessão"
+  },
+  "removeTarget": {
+    "message": "Remover destino"
+  },
+  "removeActiveTarget": {
+    "message": "Remover este destino"
+  },
+  "errorUrlRequired": {
+    "message": "O URL é obrigatório."
+  },
+  "errorUrlInvalid": {
+    "message": "URL inválido."
+  },
+  "errorUrlScheme": {
+    "message": "Apenas http:// e https:// são permitidos."
+  },
+  "errorUrlDomain": {
+    "message": "Introduza um domínio completo (ex.: example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domínio inválido."
+  },
+  "errorStartSession": {
+    "message": "Não foi possível iniciar a sessão: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Erro da extensão: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Não foi possível criar os separadores"
+  },
+  "errorOpenReplayTab": {
+    "message": "Não foi possível abrir o separador de reprodução"
+  },
+  "activeSource": {
+    "message": "Origem"
+  },
+  "activeTargets": {
+    "message": "Destinos"
+  },
+  "pause": {
+    "message": "Pausar"
+  },
+  "resume": {
+    "message": "Retomar"
+  },
+  "stop": {
+    "message": "Parar"
+  },
+  "downloadHeading": {
+    "message": "Transferir dados da sessão"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Texto"
+  },
+  "settingsNote": {
+    "message": "Guardado automaticamente e aplicado de imediato às sessões em curso."
+  },
+  "settingsPrivacy": {
+    "message": "Privacidade"
+  },
+  "settingMirrorPasswords": {
+    "message": "Espelhar campos de palavra-passe"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Desligado mantém as credenciais fora dos separadores de destino e dos registos exportados"
+  },
+  "settingsOverlays": {
+    "message": "Sobreposições"
+  },
+  "settingShowCursor": {
+    "message": "Mostrar cursor fantasma"
+  },
+  "settingShowCursorHint": {
+    "message": "O ponteiro desenhado nos separadores de destino"
+  },
+  "settingShowBadge": {
+    "message": "Mostrar distintivo de função"
+  },
+  "settingShowBadgeHint": {
+    "message": "A etiqueta ORIGEM / DESTINO em cada separador"
+  },
+  "settingsEvents": {
+    "message": "Eventos a espelhar"
+  },
+  "settingMousemove": {
+    "message": "Movimento do rato"
+  },
+  "settingMousemoveHint": {
+    "message": "O evento mais frequente, desligue para reduzir o tráfego"
+  },
+  "settingScroll": {
+    "message": "Deslocamento"
+  },
+  "settingKeystrokes": {
+    "message": "Teclas premidas"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tecla premida / largada, separado dos valores escritos"
+  },
+  "settingsPlayback": {
+    "message": "Reprodução"
+  },
+  "settingSmoothScroll": {
+    "message": "Deslocamento suave"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Desligado salta de imediato e mantém os deslocamentos rápidos sincronizados"
+  },
+  "settingScrollDebounce": {
+    "message": "Debounce de deslocamento"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Período de calma antes de enviar um deslocamento"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Início da sessão"
+  },
+  "settingTabDelay": {
+    "message": "Abertura escalonada de separadores"
+  },
+  "settingTabDelayHint": {
+    "message": "Atraso entre cada separador de destino. 0 abre todos de uma vez; útil em sites que limitam rajadas de pedidos."
+  },
+  "settingsReset": {
+    "message": "Repor predefinições"
+  },
+  "infoIntro": {
+    "message": "O MirrorTab espelha interações do DOM: cliques, entradas, teclas, foco, hover e deslocamento, iframes incluídos, de um separador de <strong>origem</strong> para um ou mais separadores de <strong>destino</strong> em tempo real. Perfeito para demonstrações, testes e apresentações ao vivo."
+  },
+  "infoStep1": {
+    "message": "Introduza um <strong>URL de origem</strong> e pelo menos um <strong>URL de destino</strong>."
+  },
+  "infoStep2": {
+    "message": "Clique em <strong>Iniciar sessão</strong>, os separadores abrem automaticamente."
+  },
+  "infoStep3": {
+    "message": "Interaja com o separador <strong class=\"kd-text-danger\">ORIGEM</strong>, as ações são espelhadas ao vivo em cada separador <strong class=\"kd-text-accent\">DESTINO</strong>."
+  },
+  "infoStep4": {
+    "message": "Use <strong>Pausar / Retomar</strong> ou <strong>Parar</strong> para controlar a sessão."
+  },
+  "infoStep5": {
+    "message": "Transfira o registo de eventos como <strong>JSON</strong> ou <strong>Texto</strong> a qualquer momento."
+  },
+  "infoGithub": {
+    "message": "Repositório no GitHub"
+  },
+  "infoReport": {
+    "message": "Comunicar problema / sugestão"
+  },
+  "infoCreatedBy": {
+    "message": "Criado por"
+  },
+  "replayLink": {
+    "message": "Abrir reprodução de sessão"
+  },
+  "footerEvents": {
+    "message": "Cliques · Entradas · Teclas · Foco · Hover · Deslocamento · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Reprodução de sessão"
+  },
+  "replaySubtitle": {
+    "message": "Reprodução de sessão"
+  },
+  "replayStatusReady": {
+    "message": "Pronto"
+  },
+  "replayStatusPlaying": {
+    "message": "A reproduzir"
+  },
+  "replayStatusPaused": {
+    "message": "Em pausa"
+  },
+  "replayStatusReloading": {
+    "message": "A recarregar…"
+  },
+  "replayStatusCompleted": {
+    "message": "Concluído"
+  },
+  "replayUrlLabel": {
+    "message": "URL do site"
+  },
+  "replayUrlHint": {
+    "message": "A página onde as ações gravadas serão reproduzidas"
+  },
+  "replayFileLabel": {
+    "message": "Ficheiro de sessão"
+  },
+  "replayDropHint": {
+    "message": "Largue aqui um ficheiro de sessão <strong>.json</strong> ou <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "ou"
+  },
+  "replayBrowse": {
+    "message": "Procurar ficheiros"
+  },
+  "replayRemoveFile": {
+    "message": "Remover ficheiro"
+  },
+  "replaySpeedLabel": {
+    "message": "Velocidade de reprodução"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lenta"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rápida"
+  },
+  "replayStart": {
+    "message": "Iniciar reprodução"
+  },
+  "replayOpening": {
+    "message": "A abrir separador…"
+  },
+  "replayHeading": {
+    "message": "Reprodução"
+  },
+  "replayProgress": {
+    "message": "Evento $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continuar"
+  },
+  "replayRestart": {
+    "message": "Reiniciar"
+  },
+  "replayCompletedTitle": {
+    "message": "Reprodução concluída"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ evento foi reproduzido com êxito.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Todos os $COUNT$ eventos foram reproduzidos com êxito.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Fechar"
+  },
+  "replayFooter": {
+    "message": "Reproduza sessões gravadas · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Carregue um ficheiro .json ou .txt"
+  },
+  "replayNoEvents": {
+    "message": "Nenhum evento encontrado no ficheiro de sessão"
+  },
+  "replayParseError": {
+    "message": "Não foi possível ler o ficheiro de sessão"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ evento carregado",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ eventos carregados",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Introduza um URL válido"
+  },
+  "replayFileMissing": {
+    "message": "Carregue um ficheiro de sessão"
+  },
+  "replayNoResponse": {
+    "message": "Não foi possível comunicar com a extensão"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - A aguardar"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - a aguardar $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "A aguardar abertura"
+  },
+  "pendingNote": {
+    "message": "O arranque escalonado está ativo, pelo que este separador abre após um breve atraso."
+  },
+  "pendingOpening": {
+    "message": "A abrir agora…"
+  },
+  "pendingHint": {
+    "message": "Altere isto em <strong class=\"kd-text-secondary\">Abertura escalonada de separadores</strong> nas definições do MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ORIGEM"
+  },
+  "badgeTarget": {
+    "message": "DESTINO"
+  },
+  "badgeReplay": {
+    "message": "REPRODUÇÃO"
+  }
+}

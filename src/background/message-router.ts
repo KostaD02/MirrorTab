@@ -3,7 +3,7 @@ import {
   ExtensionMessageTypeEnum,
   SessionRoleEnum,
 } from '@/shared/types';
-import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
+import { openTab, sendRoleToTab, t, waitForTabLoad } from '@/shared/util';
 import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 
@@ -120,7 +120,7 @@ export function createMessageRouter(
             .catch(() => {
               sendResponse({
                 type: ExtensionMessageTypeEnum.SessionError,
-                error: 'Failed to open replay tab',
+                error: t('errorOpenReplayTab'),
               });
             });
           return true;

@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Mencerminkan interaksi DOM dari tab sumber ke tab sasaran dalam masa nyata."
+  },
+  "appTagline": {
+    "message": "Cermin interaksi DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Tetapan MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Tetapan"
+  },
+  "settingsCloseLabel": {
+    "message": "Tutup tetapan"
+  },
+  "closeTitle": {
+    "message": "Tutup"
+  },
+  "infoOpenLabel": {
+    "message": "Perihal MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Tutup maklumat"
+  },
+  "statusIdle": {
+    "message": "Tidak aktif"
+  },
+  "statusActive": {
+    "message": "Aktif"
+  },
+  "statusPaused": {
+    "message": "Dijeda"
+  },
+  "statusError": {
+    "message": "Ralat"
+  },
+  "sourceUrlLabel": {
+    "message": "URL sumber"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaksi di sini akan dicerminkan"
+  },
+  "targetUrlLabel": {
+    "message": "URL sasaran"
+  },
+  "targetUrlHint": {
+    "message": "Peristiwa akan dimainkan semula di sini"
+  },
+  "addTarget": {
+    "message": "+ Tambah sasaran"
+  },
+  "startSession": {
+    "message": "Mulakan sesi"
+  },
+  "removeTarget": {
+    "message": "Buang sasaran"
+  },
+  "removeActiveTarget": {
+    "message": "Buang sasaran ini"
+  },
+  "errorUrlRequired": {
+    "message": "URL diperlukan."
+  },
+  "errorUrlInvalid": {
+    "message": "URL tidak sah."
+  },
+  "errorUrlScheme": {
+    "message": "Hanya http:// dan https:// dibenarkan."
+  },
+  "errorUrlDomain": {
+    "message": "Masukkan domain penuh (cth. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domain tidak sah."
+  },
+  "errorStartSession": {
+    "message": "Gagal memulakan sesi: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Ralat sambungan: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Gagal mencipta tab"
+  },
+  "errorOpenReplayTab": {
+    "message": "Gagal membuka tab main semula"
+  },
+  "activeSource": {
+    "message": "Sumber"
+  },
+  "activeTargets": {
+    "message": "Sasaran"
+  },
+  "pause": {
+    "message": "Jeda"
+  },
+  "resume": {
+    "message": "Sambung"
+  },
+  "stop": {
+    "message": "Henti"
+  },
+  "downloadHeading": {
+    "message": "Muat turun data sesi"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Teks"
+  },
+  "settingsNote": {
+    "message": "Disimpan secara automatik dan digunakan serta-merta pada sesi yang sedang berjalan."
+  },
+  "settingsPrivacy": {
+    "message": "Privasi"
+  },
+  "settingMirrorPasswords": {
+    "message": "Cerminkan medan kata laluan"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Dimatikan mengekalkan kelayakan daripada tab sasaran dan log yang dieksport"
+  },
+  "settingsOverlays": {
+    "message": "Tindanan"
+  },
+  "settingShowCursor": {
+    "message": "Tunjukkan kursor hantu"
+  },
+  "settingShowCursorHint": {
+    "message": "Penuding yang dilukis pada tab sasaran"
+  },
+  "settingShowBadge": {
+    "message": "Tunjukkan lencana peranan"
+  },
+  "settingShowBadgeHint": {
+    "message": "Label SUMBER / SASARAN pada setiap tab"
+  },
+  "settingsEvents": {
+    "message": "Peristiwa untuk dicerminkan"
+  },
+  "settingMousemove": {
+    "message": "Pergerakan tetikus"
+  },
+  "settingMousemoveHint": {
+    "message": "Peristiwa paling kerap, matikan untuk mengurangkan trafik"
+  },
+  "settingScroll": {
+    "message": "Penatalan"
+  },
+  "settingKeystrokes": {
+    "message": "Ketukan kekunci"
+  },
+  "settingKeystrokesHint": {
+    "message": "Kekunci ditekan / dilepaskan, berasingan daripada nilai yang ditaip"
+  },
+  "settingsPlayback": {
+    "message": "Main balik"
+  },
+  "settingSmoothScroll": {
+    "message": "Penatalan lancar"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Dimatikan melompat serta-merta dan memastikan penatalan pantas kekal segerak"
+  },
+  "settingScrollDebounce": {
+    "message": "Nyahlantun penatalan"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Tempoh senyap sebelum penatalan dihantar"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Permulaan sesi"
+  },
+  "settingTabDelay": {
+    "message": "Pembukaan tab berperingkat"
+  },
+  "settingTabDelayHint": {
+    "message": "Kelewatan antara setiap tab sasaran. 0 membuka semuanya serentak; berguna untuk tapak yang mengehadkan permintaan beruntun."
+  },
+  "settingsReset": {
+    "message": "Tetapkan semula kepada lalai"
+  },
+  "infoIntro": {
+    "message": "MirrorTab mencerminkan interaksi DOM: klik, input, ketukan kekunci, fokus, hover dan penatalan, termasuk iframe, dari tab <strong>sumber</strong> ke satu atau lebih tab <strong>sasaran</strong> dalam masa nyata. Sesuai untuk demo, pengujian dan pembentangan langsung."
+  },
+  "infoStep1": {
+    "message": "Masukkan <strong>URL sumber</strong> dan sekurang-kurangnya satu <strong>URL sasaran</strong>."
+  },
+  "infoStep2": {
+    "message": "Klik <strong>Mulakan sesi</strong>, tab akan dibuka secara automatik."
+  },
+  "infoStep3": {
+    "message": "Berinteraksi dalam tab <strong class=\"kd-text-danger\">SUMBER</strong>, tindakan dicerminkan secara langsung ke setiap tab <strong class=\"kd-text-accent\">SASARAN</strong>."
+  },
+  "infoStep4": {
+    "message": "Gunakan <strong>Jeda / Sambung</strong> atau <strong>Henti</strong> untuk mengawal sesi."
+  },
+  "infoStep5": {
+    "message": "Muat turun log peristiwa sebagai <strong>JSON</strong> atau <strong>Teks</strong> pada bila-bila masa."
+  },
+  "infoGithub": {
+    "message": "Repositori GitHub"
+  },
+  "infoReport": {
+    "message": "Laporkan isu / ciri"
+  },
+  "infoCreatedBy": {
+    "message": "Dicipta oleh"
+  },
+  "replayLink": {
+    "message": "Buka main semula sesi"
+  },
+  "footerEvents": {
+    "message": "Klik · Input · Kekunci · Fokus · Hover · Tatal · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Main semula sesi"
+  },
+  "replaySubtitle": {
+    "message": "Main semula sesi"
+  },
+  "replayStatusReady": {
+    "message": "Sedia"
+  },
+  "replayStatusPlaying": {
+    "message": "Sedang dimainkan"
+  },
+  "replayStatusPaused": {
+    "message": "Dijeda"
+  },
+  "replayStatusReloading": {
+    "message": "Memuat semula…"
+  },
+  "replayStatusCompleted": {
+    "message": "Selesai"
+  },
+  "replayUrlLabel": {
+    "message": "URL tapak web"
+  },
+  "replayUrlHint": {
+    "message": "Halaman tempat tindakan yang dirakam akan dimainkan semula"
+  },
+  "replayFileLabel": {
+    "message": "Fail sesi"
+  },
+  "replayDropHint": {
+    "message": "Lepaskan fail sesi <strong>.json</strong> atau <strong>.txt</strong> di sini"
+  },
+  "replayOr": {
+    "message": "atau"
+  },
+  "replayBrowse": {
+    "message": "Semak imbas fail"
+  },
+  "replayRemoveFile": {
+    "message": "Buang fail"
+  },
+  "replaySpeedLabel": {
+    "message": "Kelajuan main balik"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× Perlahan"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Biasa"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× Pantas"
+  },
+  "replayStart": {
+    "message": "Mulakan main semula"
+  },
+  "replayOpening": {
+    "message": "Membuka tab…"
+  },
+  "replayHeading": {
+    "message": "Main semula"
+  },
+  "replayProgress": {
+    "message": "Peristiwa $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Teruskan"
+  },
+  "replayRestart": {
+    "message": "Mula semula"
+  },
+  "replayCompletedTitle": {
+    "message": "Main semula selesai"
+  },
+  "replayCompletedText_other": {
+    "message": "Kesemua $COUNT$ peristiwa berjaya dimainkan semula.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Tutup"
+  },
+  "replayFooter": {
+    "message": "Mainkan semula sesi yang dirakam · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Sila muat naik fail .json atau .txt"
+  },
+  "replayNoEvents": {
+    "message": "Tiada peristiwa ditemui dalam fail sesi"
+  },
+  "replayParseError": {
+    "message": "Gagal membaca fail sesi"
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ peristiwa dimuatkan",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Sila masukkan URL yang sah"
+  },
+  "replayFileMissing": {
+    "message": "Sila muat naik fail sesi"
+  },
+  "replayNoResponse": {
+    "message": "Gagal berkomunikasi dengan sambungan"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Menunggu"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - menunggu $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Menunggu untuk dibuka"
+  },
+  "pendingNote": {
+    "message": "Permulaan berperingkat dihidupkan, jadi tab ini akan dibuka selepas kelewatan singkat."
+  },
+  "pendingOpening": {
+    "message": "Membuka sekarang…"
+  },
+  "pendingHint": {
+    "message": "Ubah ini di bawah <strong class=\"kd-text-secondary\">Pembukaan tab berperingkat</strong> dalam tetapan MirrorTab."
+  },
+  "badgeSource": {
+    "message": "SUMBER"
+  },
+  "badgeTarget": {
+    "message": "SASARAN"
+  },
+  "badgeReplay": {
+    "message": "MAIN SEMULA"
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Peilaa DOM-vuorovaikutukset lähdevälilehdeltä kohdevälilehdelle reaaliajassa."
+  },
+  "appTagline": {
+    "message": "DOM-toimien peilaus"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-asetukset"
+  },
+  "settingsOpenTitle": {
+    "message": "Asetukset"
+  },
+  "settingsCloseLabel": {
+    "message": "Sulje asetukset"
+  },
+  "closeTitle": {
+    "message": "Sulje"
+  },
+  "infoOpenLabel": {
+    "message": "Tietoja MirrorTabista"
+  },
+  "infoCloseLabel": {
+    "message": "Sulje tiedot"
+  },
+  "statusIdle": {
+    "message": "Vapaana"
+  },
+  "statusActive": {
+    "message": "Aktiivinen"
+  },
+  "statusPaused": {
+    "message": "Keskeytetty"
+  },
+  "statusError": {
+    "message": "Virhe"
+  },
+  "sourceUrlLabel": {
+    "message": "Lähde-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Täällä tehdyt toimet peilataan"
+  },
+  "targetUrlLabel": {
+    "message": "Kohde-URL"
+  },
+  "targetUrlHint": {
+    "message": "Tapahtumat toistetaan täällä"
+  },
+  "addTarget": {
+    "message": "+ Lisää kohde"
+  },
+  "startSession": {
+    "message": "Aloita istunto"
+  },
+  "removeTarget": {
+    "message": "Poista kohde"
+  },
+  "removeActiveTarget": {
+    "message": "Poista tämä kohde"
+  },
+  "errorUrlRequired": {
+    "message": "URL vaaditaan."
+  },
+  "errorUrlInvalid": {
+    "message": "Virheellinen URL."
+  },
+  "errorUrlScheme": {
+    "message": "Vain http:// ja https:// ovat sallittuja."
+  },
+  "errorUrlDomain": {
+    "message": "Anna koko verkkotunnus (esim. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Virheellinen verkkotunnus."
+  },
+  "errorStartSession": {
+    "message": "Istunnon aloitus epäonnistui: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Laajennuksen virhe: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Välilehtien luonti epäonnistui"
+  },
+  "errorOpenReplayTab": {
+    "message": "Toistovälilehden avaus epäonnistui"
+  },
+  "activeSource": {
+    "message": "Lähde"
+  },
+  "activeTargets": {
+    "message": "Kohteet"
+  },
+  "pause": {
+    "message": "Keskeytä"
+  },
+  "resume": {
+    "message": "Jatka"
+  },
+  "stop": {
+    "message": "Lopeta"
+  },
+  "downloadHeading": {
+    "message": "Lataa istunnon tiedot"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Teksti"
+  },
+  "settingsNote": {
+    "message": "Tallentuu automaattisesti ja tulee heti voimaan käynnissä oleviin istuntoihin."
+  },
+  "settingsPrivacy": {
+    "message": "Yksityisyys"
+  },
+  "settingMirrorPasswords": {
+    "message": "Peilaa salasanakentät"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Pois päältä pitää tunnukset poissa kohdevälilehdiltä ja viedyistä lokeista"
+  },
+  "settingsOverlays": {
+    "message": "Peittokuvat"
+  },
+  "settingShowCursor": {
+    "message": "Näytä haamukohdistin"
+  },
+  "settingShowCursorHint": {
+    "message": "Kohdevälilehdille piirrettävä osoitin"
+  },
+  "settingShowBadge": {
+    "message": "Näytä roolimerkki"
+  },
+  "settingShowBadgeHint": {
+    "message": "LÄHDE / KOHDE -merkintä jokaisella välilehdellä"
+  },
+  "settingsEvents": {
+    "message": "Peilattavat tapahtumat"
+  },
+  "settingMousemove": {
+    "message": "Hiiren liike"
+  },
+  "settingMousemoveHint": {
+    "message": "Yleisin tapahtuma, poista käytöstä vähentääksesi liikennettä"
+  },
+  "settingScroll": {
+    "message": "Vieritys"
+  },
+  "settingKeystrokes": {
+    "message": "Näppäinpainallukset"
+  },
+  "settingKeystrokesHint": {
+    "message": "Näppäin alas / ylös, erillään kirjoitetuista arvoista"
+  },
+  "settingsPlayback": {
+    "message": "Toisto"
+  },
+  "settingSmoothScroll": {
+    "message": "Pehmeä vieritys"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Pois päältä hyppää heti ja pitää nopean vierityksen synkronissa"
+  },
+  "settingScrollDebounce": {
+    "message": "Vierityksen viive"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Hiljainen jakso ennen vierityksen lähetystä"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Istunnon aloitus"
+  },
+  "settingTabDelay": {
+    "message": "Välilehtien porrastettu avaus"
+  },
+  "settingTabDelayHint": {
+    "message": "Viive kohdevälilehtien välillä. 0 avaa kaikki kerralla; hyödyllinen sivustoille, jotka rajoittavat pyyntöpurskeita."
+  },
+  "settingsReset": {
+    "message": "Palauta oletukset"
+  },
+  "infoIntro": {
+    "message": "MirrorTab peilaa DOM-vuorovaikutukset: napsautukset, syötteet, näppäinpainallukset, kohdistuksen, osoittimen viennin ja vierityksen, myös iframeissa, <strong>lähdevälilehdeltä</strong> yhdelle tai useammalle <strong>kohdevälilehdelle</strong> reaaliajassa. Täydellinen demoihin, testaukseen ja live-esityksiin."
+  },
+  "infoStep1": {
+    "message": "Anna <strong>lähde-URL</strong> ja vähintään yksi <strong>kohde-URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Napsauta <strong>Aloita istunto</strong>, välilehdet avautuvat automaattisesti."
+  },
+  "infoStep3": {
+    "message": "Toimi <strong class=\"kd-text-danger\">LÄHDE</strong>-välilehdellä, toimet peilataan suorana jokaiselle <strong class=\"kd-text-accent\">KOHDE</strong>-välilehdelle."
+  },
+  "infoStep4": {
+    "message": "Ohjaa istuntoa painikkeilla <strong>Keskeytä / Jatka</strong> tai <strong>Lopeta</strong>."
+  },
+  "infoStep5": {
+    "message": "Lataa tapahtumaloki milloin tahansa <strong>JSON</strong>- tai <strong>Teksti</strong>-muodossa."
+  },
+  "infoGithub": {
+    "message": "GitHub-tietovarasto"
+  },
+  "infoReport": {
+    "message": "Ilmoita ongelmasta / ideasta"
+  },
+  "infoCreatedBy": {
+    "message": "Tekijä:"
+  },
+  "replayLink": {
+    "message": "Avaa istunnon toisto"
+  },
+  "footerEvents": {
+    "message": "Klikit · Syöte · Näppäimet · Fokus · Hover · Vieritys · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Istunnon toisto"
+  },
+  "replaySubtitle": {
+    "message": "Istunnon toisto"
+  },
+  "replayStatusReady": {
+    "message": "Valmis"
+  },
+  "replayStatusPlaying": {
+    "message": "Toistetaan"
+  },
+  "replayStatusPaused": {
+    "message": "Keskeytetty"
+  },
+  "replayStatusReloading": {
+    "message": "Ladataan uudelleen…"
+  },
+  "replayStatusCompleted": {
+    "message": "Valmis"
+  },
+  "replayUrlLabel": {
+    "message": "Sivuston URL"
+  },
+  "replayUrlHint": {
+    "message": "Sivu, jolla tallennetut toimet toistetaan"
+  },
+  "replayFileLabel": {
+    "message": "Istuntotiedosto"
+  },
+  "replayDropHint": {
+    "message": "Pudota <strong>.json</strong>- tai <strong>.txt</strong>-istuntotiedosto tähän"
+  },
+  "replayOr": {
+    "message": "tai"
+  },
+  "replayBrowse": {
+    "message": "Selaa tiedostoja"
+  },
+  "replayRemoveFile": {
+    "message": "Poista tiedosto"
+  },
+  "replaySpeedLabel": {
+    "message": "Toistonopeus"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Hidas"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normaali"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Nopea"
+  },
+  "replayStart": {
+    "message": "Aloita toisto"
+  },
+  "replayOpening": {
+    "message": "Avataan välilehteä…"
+  },
+  "replayHeading": {
+    "message": "Toisto"
+  },
+  "replayProgress": {
+    "message": "Tapahtuma $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Jatka"
+  },
+  "replayRestart": {
+    "message": "Aloita alusta"
+  },
+  "replayCompletedTitle": {
+    "message": "Toisto valmis"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ tapahtuma toistettiin onnistuneesti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Kaikki $COUNT$ tapahtumaa toistettiin onnistuneesti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Sulje"
+  },
+  "replayFooter": {
+    "message": "Toista tallennettuja istuntoja · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Lataa .json- tai .txt-tiedosto"
+  },
+  "replayNoEvents": {
+    "message": "Istuntotiedostosta ei löytynyt tapahtumia"
+  },
+  "replayParseError": {
+    "message": "Istuntotiedoston luku epäonnistui"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ tapahtuma ladattu",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ tapahtumaa ladattu",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Anna kelvollinen URL"
+  },
+  "replayFileMissing": {
+    "message": "Lataa istuntotiedosto"
+  },
+  "replayNoResponse": {
+    "message": "Yhteys laajennukseen epäonnistui"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Odottaa"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - odottaa: $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Odottaa avaamista"
+  },
+  "pendingNote": {
+    "message": "Porrastettu aloitus on käytössä, joten tämä välilehti avautuu pienen viiveen jälkeen."
+  },
+  "pendingOpening": {
+    "message": "Avataan…"
+  },
+  "pendingHint": {
+    "message": "Muuta tätä kohdassa <strong class=\"kd-text-secondary\">Välilehtien porrastettu avaus</strong> MirrorTabin asetuksissa."
+  },
+  "badgeSource": {
+    "message": "LÄHDE"
+  },
+  "badgeTarget": {
+    "message": "KOHDE"
+  },
+  "badgeReplay": {
+    "message": "TOISTO"
+  }
+}

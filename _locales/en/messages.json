@@ -1,0 +1,542 @@
+{
+  "appName": {
+    "message": "MirrorTab",
+    "description": "Extension name. A brand name, keep it as is in every language."
+  },
+  "appDescription": {
+    "message": "Mirror any DOM interactions from a source tab to a target tab in real time.",
+    "description": "Extension description shown in the browser and the store. Keep it under 132 characters."
+  },
+  "appTagline": {
+    "message": "DOM interaction mirroring",
+    "description": "Short tagline under the name in the popup header."
+  },
+  "logoAlt": {
+    "message": "MirrorTab logo",
+    "description": "Alternative text of the logo image."
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab settings",
+    "description": "Accessible label of the gear button that opens the settings panel."
+  },
+  "settingsOpenTitle": {
+    "message": "Settings",
+    "description": "Tooltip of the gear button."
+  },
+  "settingsCloseLabel": {
+    "message": "Close settings",
+    "description": "Accessible label of the button that closes the settings panel."
+  },
+  "closeTitle": {
+    "message": "Close",
+    "description": "Tooltip of close buttons."
+  },
+  "infoOpenLabel": {
+    "message": "About MirrorTab",
+    "description": "Accessible label and tooltip of the info button."
+  },
+  "infoCloseLabel": {
+    "message": "Close info",
+    "description": "Accessible label of the button that closes the info panel."
+  },
+  "statusIdle": {
+    "message": "Idle",
+    "description": "Session status pill: no session running."
+  },
+  "statusActive": {
+    "message": "Active",
+    "description": "Session status pill: a session is running."
+  },
+  "statusPaused": {
+    "message": "Paused",
+    "description": "Session status pill: the session is paused."
+  },
+  "statusError": {
+    "message": "Error",
+    "description": "Session status pill: the last action failed."
+  },
+  "sourceUrlLabel": {
+    "message": "Source URL",
+    "description": "Label of the field for the tab whose interactions are captured."
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com",
+    "description": "Placeholder of URL fields. Keep as is."
+  },
+  "sourceUrlHint": {
+    "message": "Interactions here will be mirrored",
+    "description": "Hint under the source URL field."
+  },
+  "targetUrlLabel": {
+    "message": "Target URL",
+    "description": "Label of the field for a tab that receives the mirrored interactions."
+  },
+  "targetUrlHint": {
+    "message": "Events will be replayed here",
+    "description": "Hint under a target URL field."
+  },
+  "addTarget": {
+    "message": "+ Add Target",
+    "description": "Button that adds another target URL field. Keep the leading plus sign."
+  },
+  "startSession": {
+    "message": "Start Session",
+    "description": "Main button that opens the tabs and starts mirroring."
+  },
+  "removeTarget": {
+    "message": "Remove target",
+    "description": "Tooltip of the button that removes a target URL field before the session starts."
+  },
+  "removeActiveTarget": {
+    "message": "Remove this target",
+    "description": "Tooltip of the button that drops one target from a running session."
+  },
+  "errorUrlRequired": {
+    "message": "URL is required.",
+    "description": "Validation error under an empty URL field."
+  },
+  "errorUrlInvalid": {
+    "message": "Not a valid URL.",
+    "description": "Validation error for text that is not a URL."
+  },
+  "errorUrlScheme": {
+    "message": "Only http:// and https:// are allowed.",
+    "description": "Validation error for other URL schemes."
+  },
+  "errorUrlDomain": {
+    "message": "Enter a full domain (e.g. example.com).",
+    "description": "Validation error when the host has no dot."
+  },
+  "errorDomainInvalid": {
+    "message": "Not a valid domain.",
+    "description": "Validation error when the host starts or ends with a dot."
+  },
+  "errorStartSession": {
+    "message": "Failed to start session: $REASON$",
+    "description": "Error shown in the popup; REASON is the reason reported by the extension.",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Extension error: $REASON$",
+    "description": "Error shown in the popup when messaging the extension throws; REASON is the thrown message.",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Failed to create tabs",
+    "description": "Reason reported when Chrome did not return tab ids for the session tabs."
+  },
+  "errorOpenReplayTab": {
+    "message": "Failed to open replay tab",
+    "description": "Error on the replay page when the tab for the replay could not be opened."
+  },
+  "activeSource": {
+    "message": "Source",
+    "description": "Heading in the running-session card above the source URL."
+  },
+  "activeTargets": {
+    "message": "Targets",
+    "description": "Heading in the running-session card above the list of target URLs."
+  },
+  "pause": {
+    "message": "Pause",
+    "description": "Button that pauses the running session or the replay."
+  },
+  "resume": {
+    "message": "Resume",
+    "description": "Button that resumes a paused session."
+  },
+  "stop": {
+    "message": "Stop",
+    "description": "Button that ends the session or the replay."
+  },
+  "downloadHeading": {
+    "message": "Download session data",
+    "description": "Label next to the JSON and Text download links."
+  },
+  "downloadJson": {
+    "message": "JSON",
+    "description": "Download link for the JSON export. Keep as is."
+  },
+  "downloadText": {
+    "message": "Text",
+    "description": "Download link for the plain text export."
+  },
+  "settingsNote": {
+    "message": "Saved automatically and applied to running sessions immediately.",
+    "description": "Note at the top of the settings panel."
+  },
+  "settingsPrivacy": {
+    "message": "Privacy",
+    "description": "Settings section heading."
+  },
+  "settingMirrorPasswords": {
+    "message": "Mirror password fields",
+    "description": "Toggle label."
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Off keeps credentials out of target tabs and exported logs",
+    "description": "Hint under the password toggle."
+  },
+  "settingsOverlays": {
+    "message": "Overlays",
+    "description": "Settings section heading for the cursor and badge drawn on pages."
+  },
+  "settingShowCursor": {
+    "message": "Show ghost cursor",
+    "description": "Toggle label. The ghost cursor is the virtual pointer drawn on target tabs."
+  },
+  "settingShowCursorHint": {
+    "message": "The pointer drawn on target tabs",
+    "description": "Hint under the ghost cursor toggle."
+  },
+  "settingShowBadge": {
+    "message": "Show role badge",
+    "description": "Toggle label. The badge is the floating SOURCE / TARGET label."
+  },
+  "settingShowBadgeHint": {
+    "message": "The SOURCE / TARGET label on each tab",
+    "description": "Hint under the role badge toggle. Use the same words as badgeSource and badgeTarget."
+  },
+  "settingsEvents": {
+    "message": "Events to mirror",
+    "description": "Settings section heading."
+  },
+  "settingMousemove": {
+    "message": "Mouse movement",
+    "description": "Toggle label."
+  },
+  "settingMousemoveHint": {
+    "message": "Highest volume event, turn off to cut traffic",
+    "description": "Hint under the mouse movement toggle."
+  },
+  "settingScroll": {
+    "message": "Scrolling",
+    "description": "Toggle label."
+  },
+  "settingKeystrokes": {
+    "message": "Keystrokes",
+    "description": "Toggle label."
+  },
+  "settingKeystrokesHint": {
+    "message": "Key up / down, separate from typed input values",
+    "description": "Hint under the keystrokes toggle."
+  },
+  "settingsPlayback": {
+    "message": "Playback",
+    "description": "Settings section heading."
+  },
+  "settingSmoothScroll": {
+    "message": "Smooth scrolling",
+    "description": "Toggle label."
+  },
+  "settingSmoothScrollHint": {
+    "message": "Off jumps instantly, keeps fast scrolls in sync",
+    "description": "Hint under the smooth scrolling toggle."
+  },
+  "settingScrollDebounce": {
+    "message": "Scroll debounce",
+    "description": "Label of the number field for the scroll debounce in milliseconds."
+  },
+  "settingScrollDebounceHint": {
+    "message": "Quiet period before a scroll is sent",
+    "description": "Hint under the scroll debounce field."
+  },
+  "unitMs": {
+    "message": "ms",
+    "description": "Unit shown after number fields: milliseconds."
+  },
+  "settingsSessionStart": {
+    "message": "Session start",
+    "description": "Settings section heading."
+  },
+  "settingTabDelay": {
+    "message": "Staggered tab opening",
+    "description": "Label of the number field for the delay between opening target tabs."
+  },
+  "settingTabDelayHint": {
+    "message": "Delay between each target tab. 0 opens them all at once; useful for sites that rate-limit bursts.",
+    "description": "Hint under the staggered tab opening field."
+  },
+  "settingsReset": {
+    "message": "Reset to defaults",
+    "description": "Button that restores every setting."
+  },
+  "infoIntro": {
+    "message": "MirrorTab mirrors DOM interactions: clicks, inputs, keystrokes, focus, hover and scrolling, iframes included, from a <strong>Source</strong> tab to one or more <strong>Target</strong> tabs in real time. Perfect for demos, testing and live presentations.",
+    "description": "Intro paragraph of the info panel. HTML: keep the <strong> tags."
+  },
+  "infoStep1": {
+    "message": "Enter a <strong>Source URL</strong> and at least one <strong>Target URL</strong>.",
+    "description": "Info panel step. HTML: keep the <strong> tags."
+  },
+  "infoStep2": {
+    "message": "Click <strong>Start Session</strong>, the tabs open automatically.",
+    "description": "Info panel step. HTML: keep the <strong> tags. Use the same words as startSession."
+  },
+  "infoStep3": {
+    "message": "Interact with the <strong class=\"kd-text-danger\">SOURCE</strong> tab, actions mirror live to every <strong class=\"kd-text-accent\">TARGET</strong> tab.",
+    "description": "Info panel step. HTML: keep both <strong> tags with their class attributes. Use the same words as badgeSource and badgeTarget."
+  },
+  "infoStep4": {
+    "message": "Use <strong>Pause / Resume</strong> or <strong>Stop</strong> to control the session.",
+    "description": "Info panel step. HTML: keep the <strong> tags. Use the same words as pause, resume and stop."
+  },
+  "infoStep5": {
+    "message": "Download the event log as <strong>JSON</strong> or <strong>Text</strong> any time.",
+    "description": "Info panel step. HTML: keep the <strong> tags."
+  },
+  "infoGithub": {
+    "message": "GitHub Repository",
+    "description": "Link in the info panel."
+  },
+  "infoReport": {
+    "message": "Report Issue / Feature",
+    "description": "Link in the info panel that opens the issue templates."
+  },
+  "infoCreatedBy": {
+    "message": "Created by",
+    "description": "Label before the author link in the info panel."
+  },
+  "replayLink": {
+    "message": "Open Session Replay",
+    "description": "Link in the popup that opens the replay page."
+  },
+  "footerEvents": {
+    "message": "Clicks · Inputs · Keystrokes · Focus · Hover · Scroll · Iframes",
+    "description": "Popup footer listing what is mirrored. Must fit on one line of a 360px wide popup at a 10px font, so prefer short words. Keep the middle dots."
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Session Replay",
+    "description": "Browser tab title of the replay page."
+  },
+  "replaySubtitle": {
+    "message": "Session Replay",
+    "description": "Subtitle under the name in the replay page header."
+  },
+  "replayStatusReady": {
+    "message": "Ready",
+    "description": "Replay status pill before a replay starts."
+  },
+  "replayStatusPlaying": {
+    "message": "Playing",
+    "description": "Replay status pill while events are replayed."
+  },
+  "replayStatusPaused": {
+    "message": "Paused",
+    "description": "Replay status pill while paused."
+  },
+  "replayStatusReloading": {
+    "message": "Reloading…",
+    "description": "Replay status pill while the tab reloads for a restart."
+  },
+  "replayStatusCompleted": {
+    "message": "Completed",
+    "description": "Replay status pill when every event was replayed."
+  },
+  "replayUrlLabel": {
+    "message": "Website URL",
+    "description": "Label of the URL field on the replay page."
+  },
+  "replayUrlHint": {
+    "message": "The page where recorded actions will be replayed",
+    "description": "Hint under the URL field on the replay page."
+  },
+  "replayFileLabel": {
+    "message": "Session File",
+    "description": "Label of the file field on the replay page."
+  },
+  "replayDropHint": {
+    "message": "Drop a <strong>.json</strong> or <strong>.txt</strong> session file here",
+    "description": "Drop zone text. HTML: keep the <strong> tags and the file extensions."
+  },
+  "replayOr": {
+    "message": "or",
+    "description": "Word between the drop zone text and the browse button."
+  },
+  "replayBrowse": {
+    "message": "Browse Files",
+    "description": "Button that opens the file picker."
+  },
+  "replayRemoveFile": {
+    "message": "Remove file",
+    "description": "Tooltip of the button that clears the chosen file."
+  },
+  "replaySpeedLabel": {
+    "message": "Playback Speed",
+    "description": "Label of the speed select."
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× Slow",
+    "description": "Speed option. Keep the multiplier."
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal",
+    "description": "Speed option. Keep the multiplier."
+  },
+  "replaySpeedFast": {
+    "message": "1.5× Fast",
+    "description": "Speed option. Keep the multiplier."
+  },
+  "replayStart": {
+    "message": "Start Replay",
+    "description": "Button that starts the replay."
+  },
+  "replayOpening": {
+    "message": "Opening tab…",
+    "description": "Button text while the replay tab is being opened."
+  },
+  "replayHeading": {
+    "message": "Replay",
+    "description": "Heading above the URL in the running-replay card."
+  },
+  "replayProgress": {
+    "message": "Event $CURRENT$ / $TOTAL$",
+    "description": "Progress text; CURRENT is the number of events already replayed, TOTAL the number of events in the file.",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continue",
+    "description": "Button that resumes a paused replay."
+  },
+  "replayRestart": {
+    "message": "Restart",
+    "description": "Button that reloads the tab and replays from the beginning."
+  },
+  "replayCompletedTitle": {
+    "message": "Replay completed",
+    "description": "Heading of the completed card."
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ event has been replayed successfully.",
+    "description": "Completed card text for a count of one; COUNT is the number of events.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "All $COUNT$ events have been replayed successfully.",
+    "description": "Completed card text; COUNT is the number of events. Other plural forms may be added as replayCompletedText_few, replayCompletedText_many.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Close",
+    "description": "Button on the completed card that ends the replay."
+  },
+  "replayFooter": {
+    "message": "Replay recorded sessions · MirrorTab",
+    "description": "Footer of the replay page."
+  },
+  "replayFileTypeError": {
+    "message": "Please upload a .json or .txt file",
+    "description": "Error for a file with another extension."
+  },
+  "replayNoEvents": {
+    "message": "No events found in the session file",
+    "description": "Error for a file that holds no events."
+  },
+  "replayParseError": {
+    "message": "Failed to parse session file",
+    "description": "Error for a file that could not be read."
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ event loaded",
+    "description": "Text under the chosen file for a count of one; COUNT is the number of events.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ events loaded",
+    "description": "Text under the chosen file; COUNT is the number of events. Other plural forms may be added as replayEventsLoaded_few, replayEventsLoaded_many.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Please enter a valid URL",
+    "description": "Error under the URL field on the replay page."
+  },
+  "replayFileMissing": {
+    "message": "Please upload a session file",
+    "description": "Error when starting without a file."
+  },
+  "replayNoResponse": {
+    "message": "Failed to communicate with extension",
+    "description": "Error when the extension did not answer."
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Waiting",
+    "description": "Browser tab title of the waiting page shown while a target tab waits for its turn."
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - waiting for $URL$",
+    "description": "Browser tab title of the waiting page; URL is the page that will open.",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Waiting to open",
+    "description": "Heading of the waiting page."
+  },
+  "pendingNote": {
+    "message": "Staggered start is on, so this tab opens after a short delay.",
+    "description": "Note under the heading of the waiting page."
+  },
+  "pendingOpening": {
+    "message": "Opening now…",
+    "description": "Note on the waiting page once the countdown ended."
+  },
+  "pendingHint": {
+    "message": "Change this under <strong class=\"kd-text-secondary\">Staggered tab opening</strong> in the MirrorTab settings.",
+    "description": "Small print on the waiting page. HTML: keep the <strong> tag with its class. Use the same words as settingTabDelay."
+  },
+  "badgeSource": {
+    "message": "SOURCE",
+    "description": "Floating badge on the tab whose interactions are captured. Upper case where the script has it."
+  },
+  "badgeTarget": {
+    "message": "TARGET",
+    "description": "Floating badge on tabs that receive the mirrored interactions. Upper case where the script has it."
+  },
+  "badgeReplay": {
+    "message": "REPLAY",
+    "description": "Floating badge on the tab that replays a recorded session. Upper case where the script has it."
+  }
+}

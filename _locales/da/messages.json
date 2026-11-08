@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Spejler DOM-interaktioner fra en kildefane til en målfane i realtid."
+  },
+  "appTagline": {
+    "message": "Spejling af DOM-interaktioner"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-indstillinger"
+  },
+  "settingsOpenTitle": {
+    "message": "Indstillinger"
+  },
+  "settingsCloseLabel": {
+    "message": "Luk indstillinger"
+  },
+  "closeTitle": {
+    "message": "Luk"
+  },
+  "infoOpenLabel": {
+    "message": "Om MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Luk info"
+  },
+  "statusIdle": {
+    "message": "Inaktiv"
+  },
+  "statusActive": {
+    "message": "Aktiv"
+  },
+  "statusPaused": {
+    "message": "Sat på pause"
+  },
+  "statusError": {
+    "message": "Fejl"
+  },
+  "sourceUrlLabel": {
+    "message": "Kilde-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaktioner her bliver spejlet"
+  },
+  "targetUrlLabel": {
+    "message": "Mål-URL"
+  },
+  "targetUrlHint": {
+    "message": "Hændelser afspilles her"
+  },
+  "addTarget": {
+    "message": "+ Tilføj mål"
+  },
+  "startSession": {
+    "message": "Start session"
+  },
+  "removeTarget": {
+    "message": "Fjern mål"
+  },
+  "removeActiveTarget": {
+    "message": "Fjern dette mål"
+  },
+  "errorUrlRequired": {
+    "message": "URL er påkrævet."
+  },
+  "errorUrlInvalid": {
+    "message": "Ugyldig URL."
+  },
+  "errorUrlScheme": {
+    "message": "Kun http:// og https:// er tilladt."
+  },
+  "errorUrlDomain": {
+    "message": "Indtast et fuldt domæne (f.eks. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Ugyldigt domæne."
+  },
+  "errorStartSession": {
+    "message": "Sessionen kunne ikke startes: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Udvidelsesfejl: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Fanerne kunne ikke oprettes"
+  },
+  "errorOpenReplayTab": {
+    "message": "Afspilningsfanen kunne ikke åbnes"
+  },
+  "activeSource": {
+    "message": "Kilde"
+  },
+  "activeTargets": {
+    "message": "Mål"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "resume": {
+    "message": "Fortsæt"
+  },
+  "stop": {
+    "message": "Stop"
+  },
+  "downloadHeading": {
+    "message": "Download sessionsdata"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekst"
+  },
+  "settingsNote": {
+    "message": "Gemmes automatisk og gælder straks for kørende sessioner."
+  },
+  "settingsPrivacy": {
+    "message": "Privatliv"
+  },
+  "settingMirrorPasswords": {
+    "message": "Spejl adgangskodefelter"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Slået fra holder loginoplysninger ude af målfaner og eksporterede logfiler"
+  },
+  "settingsOverlays": {
+    "message": "Overlays"
+  },
+  "settingShowCursor": {
+    "message": "Vis spøgelsesmarkør"
+  },
+  "settingShowCursorHint": {
+    "message": "Markøren der tegnes på målfaner"
+  },
+  "settingShowBadge": {
+    "message": "Vis rollebadge"
+  },
+  "settingShowBadgeHint": {
+    "message": "KILDE / MÅL-etiketten på hver fane"
+  },
+  "settingsEvents": {
+    "message": "Hændelser der spejles"
+  },
+  "settingMousemove": {
+    "message": "Musebevægelse"
+  },
+  "settingMousemoveHint": {
+    "message": "Den hyppigste hændelse, slå den fra for mindre trafik"
+  },
+  "settingScroll": {
+    "message": "Scroll"
+  },
+  "settingKeystrokes": {
+    "message": "Tastetryk"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tast ned / op, uafhængigt af indtastede værdier"
+  },
+  "settingsPlayback": {
+    "message": "Afspilning"
+  },
+  "settingSmoothScroll": {
+    "message": "Blød scroll"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Slået fra hopper med det samme og holder hurtig scroll synkron"
+  },
+  "settingScrollDebounce": {
+    "message": "Scroll-forsinkelse"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Stille periode før en scroll sendes"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Sessionsstart"
+  },
+  "settingTabDelay": {
+    "message": "Forskudt åbning af faner"
+  },
+  "settingTabDelayHint": {
+    "message": "Forsinkelse mellem hver målfane. 0 åbner alle på én gang; nyttigt for sider der begrænser bursts af forespørgsler."
+  },
+  "settingsReset": {
+    "message": "Nulstil til standard"
+  },
+  "infoIntro": {
+    "message": "MirrorTab spejler DOM-interaktioner: klik, input, tastetryk, fokus, hover og scroll, også i iframes, fra en <strong>kildefane</strong> til en eller flere <strong>målfaner</strong> i realtid. Perfekt til demoer, test og livepræsentationer."
+  },
+  "infoStep1": {
+    "message": "Indtast en <strong>kilde-URL</strong> og mindst én <strong>mål-URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Klik på <strong>Start session</strong>, fanerne åbnes automatisk."
+  },
+  "infoStep3": {
+    "message": "Arbejd i fanen <strong class=\"kd-text-danger\">KILDE</strong>, handlingerne spejles live i hver <strong class=\"kd-text-accent\">MÅL</strong>-fane."
+  },
+  "infoStep4": {
+    "message": "Brug <strong>Pause / Fortsæt</strong> eller <strong>Stop</strong> til at styre sessionen."
+  },
+  "infoStep5": {
+    "message": "Download hændelsesloggen når som helst som <strong>JSON</strong> eller <strong>Tekst</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub-repository"
+  },
+  "infoReport": {
+    "message": "Rapportér et problem / en idé"
+  },
+  "infoCreatedBy": {
+    "message": "Lavet af"
+  },
+  "replayLink": {
+    "message": "Åbn sessionsafspilning"
+  },
+  "footerEvents": {
+    "message": "Klik · Input · Taster · Fokus · Hover · Scroll · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Sessionsafspilning"
+  },
+  "replaySubtitle": {
+    "message": "Sessionsafspilning"
+  },
+  "replayStatusReady": {
+    "message": "Klar"
+  },
+  "replayStatusPlaying": {
+    "message": "Afspiller"
+  },
+  "replayStatusPaused": {
+    "message": "Sat på pause"
+  },
+  "replayStatusReloading": {
+    "message": "Genindlæser…"
+  },
+  "replayStatusCompleted": {
+    "message": "Fuldført"
+  },
+  "replayUrlLabel": {
+    "message": "Websteds-URL"
+  },
+  "replayUrlHint": {
+    "message": "Siden hvor de optagede handlinger afspilles"
+  },
+  "replayFileLabel": {
+    "message": "Sessionsfil"
+  },
+  "replayDropHint": {
+    "message": "Træk en <strong>.json</strong>- eller <strong>.txt</strong>-sessionsfil hertil"
+  },
+  "replayOr": {
+    "message": "eller"
+  },
+  "replayBrowse": {
+    "message": "Gennemse filer"
+  },
+  "replayRemoveFile": {
+    "message": "Fjern fil"
+  },
+  "replaySpeedLabel": {
+    "message": "Afspilningshastighed"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Langsom"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Hurtig"
+  },
+  "replayStart": {
+    "message": "Start afspilning"
+  },
+  "replayOpening": {
+    "message": "Åbner fane…"
+  },
+  "replayHeading": {
+    "message": "Afspilning"
+  },
+  "replayProgress": {
+    "message": "Hændelse $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Fortsæt"
+  },
+  "replayRestart": {
+    "message": "Start forfra"
+  },
+  "replayCompletedTitle": {
+    "message": "Afspilning fuldført"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ hændelse blev afspillet.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Alle $COUNT$ hændelser blev afspillet.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Luk"
+  },
+  "replayFooter": {
+    "message": "Afspil optagede sessioner · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Upload en .json- eller .txt-fil"
+  },
+  "replayNoEvents": {
+    "message": "Ingen hændelser fundet i sessionsfilen"
+  },
+  "replayParseError": {
+    "message": "Sessionsfilen kunne ikke læses"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ hændelse indlæst",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ hændelser indlæst",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Indtast en gyldig URL"
+  },
+  "replayFileMissing": {
+    "message": "Upload en sessionsfil"
+  },
+  "replayNoResponse": {
+    "message": "Kunne ikke kommunikere med udvidelsen"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Venter"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - venter på $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Venter på at åbne"
+  },
+  "pendingNote": {
+    "message": "Forskudt start er slået til, så denne fane åbnes efter en kort forsinkelse."
+  },
+  "pendingOpening": {
+    "message": "Åbner nu…"
+  },
+  "pendingHint": {
+    "message": "Ændr det under <strong class=\"kd-text-secondary\">Forskudt åbning af faner</strong> i MirrorTab-indstillingerne."
+  },
+  "badgeSource": {
+    "message": "KILDE"
+  },
+  "badgeTarget": {
+    "message": "MÅL"
+  },
+  "badgeReplay": {
+    "message": "AFSPILNING"
+  }
+}

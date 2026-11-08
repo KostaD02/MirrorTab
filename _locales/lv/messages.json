@@ -1,0 +1,438 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Reāllaikā atspoguļo DOM mijiedarbības no avota cilnes uz mērķa cilni."
+  },
+  "appTagline": {
+    "message": "DOM atspoguļošana"
+  },
+  "logoAlt": {
+    "message": "MirrorTab logotips"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab iestatījumi"
+  },
+  "settingsOpenTitle": {
+    "message": "Iestatījumi"
+  },
+  "settingsCloseLabel": {
+    "message": "Aizvērt iestatījumus"
+  },
+  "closeTitle": {
+    "message": "Aizvērt"
+  },
+  "infoOpenLabel": {
+    "message": "Par MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Aizvērt informāciju"
+  },
+  "statusIdle": {
+    "message": "Dīkstāve"
+  },
+  "statusActive": {
+    "message": "Aktīvs"
+  },
+  "statusPaused": {
+    "message": "Pauzēts"
+  },
+  "statusError": {
+    "message": "Kļūda"
+  },
+  "sourceUrlLabel": {
+    "message": "Avota URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Šeit veiktās mijiedarbības tiks atspoguļotas"
+  },
+  "targetUrlLabel": {
+    "message": "Mērķa URL"
+  },
+  "targetUrlHint": {
+    "message": "Notikumi šeit tiks atkārtoti"
+  },
+  "addTarget": {
+    "message": "+ Pievienot mērķi"
+  },
+  "startSession": {
+    "message": "Sākt sesiju"
+  },
+  "removeTarget": {
+    "message": "Noņemt mērķi"
+  },
+  "removeActiveTarget": {
+    "message": "Noņemt šo mērķi"
+  },
+  "errorUrlRequired": {
+    "message": "URL ir obligāts."
+  },
+  "errorUrlInvalid": {
+    "message": "Nederīgs URL."
+  },
+  "errorUrlScheme": {
+    "message": "Atļauti tikai http:// un https://."
+  },
+  "errorUrlDomain": {
+    "message": "Ievadiet pilnu domēnu (piem., example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Nederīgs domēns."
+  },
+  "errorStartSession": {
+    "message": "Neizdevās sākt sesiju: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Paplašinājuma kļūda: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Neizdevās izveidot cilnes"
+  },
+  "errorOpenReplayTab": {
+    "message": "Neizdevās atvērt atkārtošanas cilni"
+  },
+  "activeSource": {
+    "message": "Avots"
+  },
+  "activeTargets": {
+    "message": "Mērķi"
+  },
+  "pause": {
+    "message": "Pauzēt"
+  },
+  "resume": {
+    "message": "Turpināt"
+  },
+  "stop": {
+    "message": "Apturēt"
+  },
+  "downloadHeading": {
+    "message": "Lejupielādēt sesijas datus"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Teksts"
+  },
+  "settingsNote": {
+    "message": "Saglabā automātiski un uzreiz piemēro notiekošajām sesijām."
+  },
+  "settingsPrivacy": {
+    "message": "Privātums"
+  },
+  "settingMirrorPasswords": {
+    "message": "Atspoguļot paroles laukus"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Izslēgts neļauj akreditācijas datiem nokļūt mērķa cilnēs un eksportētajos žurnālos"
+  },
+  "settingsOverlays": {
+    "message": "Pārklājumi"
+  },
+  "settingShowCursor": {
+    "message": "Rādīt spoku kursoru"
+  },
+  "settingShowCursorHint": {
+    "message": "Mērķa cilnēs zīmētais rādītājs"
+  },
+  "settingShowBadge": {
+    "message": "Rādīt lomas nozīmīti"
+  },
+  "settingShowBadgeHint": {
+    "message": "Etiķete AVOTS / MĒRĶIS katrā cilnē"
+  },
+  "settingsEvents": {
+    "message": "Atspoguļojamie notikumi"
+  },
+  "settingMousemove": {
+    "message": "Peles kustība"
+  },
+  "settingMousemoveHint": {
+    "message": "Biežākais notikums, izslēdziet, lai samazinātu datplūsmu"
+  },
+  "settingScroll": {
+    "message": "Ritināšana"
+  },
+  "settingKeystrokes": {
+    "message": "Taustiņu nospiešana"
+  },
+  "settingKeystrokesHint": {
+    "message": "Taustiņa nospiešana / atlaišana, atsevišķi no ievadītajām vērtībām"
+  },
+  "settingsPlayback": {
+    "message": "Atskaņošana"
+  },
+  "settingSmoothScroll": {
+    "message": "Gluda ritināšana"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Izslēgts pārlec uzreiz un uztur ātru ritināšanu sinhronu"
+  },
+  "settingScrollDebounce": {
+    "message": "Ritināšanas aizture"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Klusuma periods pirms ritinājuma nosūtīšanas"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Sesijas sākums"
+  },
+  "settingTabDelay": {
+    "message": "Pakāpeniska ciļņu atvēršana"
+  },
+  "settingTabDelayHint": {
+    "message": "Aizture starp katru mērķa cilni. 0 atver visas uzreiz; noder vietnēm, kas ierobežo pieprasījumu uzplūdus."
+  },
+  "settingsReset": {
+    "message": "Atiestatīt uz noklusējumu"
+  },
+  "infoIntro": {
+    "message": "MirrorTab atspoguļo DOM mijiedarbības: klikšķus, ievadi, taustiņu nospiešanu, fokusu, virzīšanu un ritināšanu, ieskaitot iframe, no <strong>avota</strong> cilnes uz vienu vai vairākām <strong>mērķa</strong> cilnēm reāllaikā. Lieliski piemērots demonstrācijām, testēšanai un tiešraides prezentācijām."
+  },
+  "infoStep1": {
+    "message": "Ievadiet <strong>avota URL</strong> un vismaz vienu <strong>mērķa URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Noklikšķiniet uz <strong>Sākt sesiju</strong>, cilnes atvērsies automātiski."
+  },
+  "infoStep3": {
+    "message": "Strādājiet cilnē <strong class=\"kd-text-danger\">AVOTS</strong>, darbības tiek tiešraidē atspoguļotas katrā cilnē <strong class=\"kd-text-accent\">MĒRĶIS</strong>."
+  },
+  "infoStep4": {
+    "message": "Sesiju vadiet ar <strong>Pauzēt / Turpināt</strong> vai <strong>Apturēt</strong>."
+  },
+  "infoStep5": {
+    "message": "Notikumu žurnālu jebkurā laikā lejupielādējiet kā <strong>JSON</strong> vai <strong>Tekstu</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub repozitorijs"
+  },
+  "infoReport": {
+    "message": "Ziņot par problēmu / ideju"
+  },
+  "infoCreatedBy": {
+    "message": "Izveidoja"
+  },
+  "replayLink": {
+    "message": "Atvērt sesijas atkārtošanu"
+  },
+  "footerEvents": {
+    "message": "Klikšķi · Ievade · Taustiņi · Fokuss · Virzīšana · Ritināšana · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Sesijas atkārtošana"
+  },
+  "replaySubtitle": {
+    "message": "Sesijas atkārtošana"
+  },
+  "replayStatusReady": {
+    "message": "Gatavs"
+  },
+  "replayStatusPlaying": {
+    "message": "Atskaņo"
+  },
+  "replayStatusPaused": {
+    "message": "Pauzēts"
+  },
+  "replayStatusReloading": {
+    "message": "Pārlādē…"
+  },
+  "replayStatusCompleted": {
+    "message": "Pabeigts"
+  },
+  "replayUrlLabel": {
+    "message": "Vietnes URL"
+  },
+  "replayUrlHint": {
+    "message": "Lapa, kurā tiks atkārtotas ierakstītās darbības"
+  },
+  "replayFileLabel": {
+    "message": "Sesijas fails"
+  },
+  "replayDropHint": {
+    "message": "Nometiet šeit sesijas failu <strong>.json</strong> vai <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "vai"
+  },
+  "replayBrowse": {
+    "message": "Pārlūkot failus"
+  },
+  "replayRemoveFile": {
+    "message": "Noņemt failu"
+  },
+  "replaySpeedLabel": {
+    "message": "Atskaņošanas ātrums"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lēni"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Parasti"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Ātri"
+  },
+  "replayStart": {
+    "message": "Sākt atkārtošanu"
+  },
+  "replayOpening": {
+    "message": "Atver cilni…"
+  },
+  "replayHeading": {
+    "message": "Atkārtošana"
+  },
+  "replayProgress": {
+    "message": "Notikums $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Turpināt"
+  },
+  "replayRestart": {
+    "message": "Sākt no sākuma"
+  },
+  "replayCompletedTitle": {
+    "message": "Atkārtošana pabeigta"
+  },
+  "replayCompletedText_zero": {
+    "message": "Visi $COUNT$ notikumi tika sekmīgi atkārtoti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ notikums tika sekmīgi atkārtots.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Visi $COUNT$ notikumi tika sekmīgi atkārtoti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Aizvērt"
+  },
+  "replayFooter": {
+    "message": "Atkārtojiet ierakstītās sesijas · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Augšupielādējiet .json vai .txt failu"
+  },
+  "replayNoEvents": {
+    "message": "Sesijas failā nav notikumu"
+  },
+  "replayParseError": {
+    "message": "Neizdevās nolasīt sesijas failu"
+  },
+  "replayEventsLoaded_zero": {
+    "message": "Ielādēti $COUNT$ notikumi",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_one": {
+    "message": "Ielādēts $COUNT$ notikums",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Ielādēti $COUNT$ notikumi",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Ievadiet derīgu URL"
+  },
+  "replayFileMissing": {
+    "message": "Augšupielādējiet sesijas failu"
+  },
+  "replayNoResponse": {
+    "message": "Neizdevās sazināties ar paplašinājumu"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Gaida"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - gaida $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Gaida atvēršanu"
+  },
+  "pendingNote": {
+    "message": "Pakāpeniskā sākšana ir ieslēgta, tāpēc šī cilne atvērsies pēc neliela brīža."
+  },
+  "pendingOpening": {
+    "message": "Atver…"
+  },
+  "pendingHint": {
+    "message": "Mainiet to sadaļā <strong class=\"kd-text-secondary\">Pakāpeniska ciļņu atvēršana</strong> MirrorTab iestatījumos."
+  },
+  "badgeSource": {
+    "message": "AVOTS"
+  },
+  "badgeTarget": {
+    "message": "MĒRĶIS"
+  },
+  "badgeReplay": {
+    "message": "ATKĀRTOŠANA"
+  }
+}

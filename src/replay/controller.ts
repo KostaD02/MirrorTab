@@ -6,7 +6,13 @@ import {
   SessionRoleEnum,
 } from '@/shared/types';
 import { type ReplaySpeed, REPLAY_SPEEDS } from '@/shared/consts';
-import { normaliseUrl, sendRoleToTab, waitForTabLoad } from '@/shared/util';
+import {
+  normaliseUrl,
+  plural,
+  sendRoleToTab,
+  t,
+  waitForTabLoad,
+} from '@/shared/util';
 
 const INITIAL_DELAY_MS = 500;
 
@@ -66,9 +72,9 @@ export class ReplayPageController {
     restartBtn: document.getElementById('restart-btn') as HTMLButtonElement,
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
 
-    completedCount: document.getElementById(
-      'completed-count',
-    ) as HTMLSpanElement,
+    completedText: document.getElementById(
+      'completed-text',
+    ) as HTMLParagraphElement,
     restartCompletedBtn: document.getElementById(
       'restart-completed-btn',
     ) as HTMLButtonElement,
@@ -87,6 +93,7 @@ export class ReplayPageController {
 
   init(): void {
     this.bindEvents();
+    this.updateProgress();
   }
 
   private bindEvents(): void {
@@ -192,7 +199,7 @@ export class ReplayPageController {
     this.clearError();
     const ext = file.name.split('.').pop()?.toLowerCase();
     if (ext !== 'json' && ext !== 'txt') {
-      this.showFileError('Please upload a .json or .txt file');
+      this.showFileError(t('replayFileTypeError'));
       return;
     }
 
@@ -202,13 +209,13 @@ export class ReplayPageController {
         const content = reader.result as string;
         this.records = this.parseFile(content, ext);
         if (this.records.length === 0) {
-          this.showFileError('No events found in the session file');
+          this.showFileError(t('replayNoEvents'));
           return;
         }
         this.showFileLoaded(file.name, this.records.length);
         this.updateStartButton();
       } catch {
-        this.showFileError('Failed to parse session file');
+        this.showFileError(t('replayParseError'));
         this.records = [];
       }
     };
@@ -269,7 +276,7 @@ export class ReplayPageController {
     this.dom.dropZoneIdle.hidden = true;
     this.dom.dropZoneLoaded.hidden = false;
     this.dom.fileName.textContent = name;
-    this.dom.fileEvents.textContent = `${String(count)} events loaded`;
+    this.dom.fileEvents.textContent = plural('replayEventsLoaded', count);
     this.dom.fileError.hidden = true;
   }
 
@@ -308,13 +315,13 @@ export class ReplayPageController {
 
   private start(): void {
     if (!this.isUrlValid()) {
-      this.dom.urlError.textContent = 'Please enter a valid URL';
+      this.dom.urlError.textContent = t('replayUrlInvalid');
       this.dom.urlError.hidden = false;
       return;
     }
 
     if (this.records.length === 0) {
-      this.showFileError('Please upload a session file');
+      this.showFileError(t('replayFileMissing'));
       return;
     }
 
@@ -332,7 +339,7 @@ export class ReplayPageController {
         this.setLoading(false);
 
         if (!response) {
-          this.showError('Failed to communicate with extension');
+          this.showError(t('replayNoResponse'));
           return;
         }
 
@@ -429,16 +436,16 @@ export class ReplayPageController {
       clearTimeout(this.timerId);
       this.timerId = null;
     }
-    this.dom.pauseLabel.textContent = 'Continue';
+    this.dom.pauseLabel.textContent = t('replayContinue');
     this.dom.pauseBtn.classList.add('is-paused');
-    this.setStatus('paused', 'Paused');
+    this.setStatus('paused', t('replayStatusPaused'));
   }
 
   private continue(): void {
     this.isPaused = false;
-    this.dom.pauseLabel.textContent = 'Pause';
+    this.dom.pauseLabel.textContent = t('pause');
     this.dom.pauseBtn.classList.remove('is-paused');
-    this.setStatus('playing', 'Playing');
+    this.setStatus('playing', t('replayStatusPlaying'));
     this.scheduleNext();
   }
 
@@ -449,7 +456,7 @@ export class ReplayPageController {
     }
     this.currentIndex = 0;
     this.isPaused = false;
-    this.dom.pauseLabel.textContent = 'Pause';
+    this.dom.pauseLabel.textContent = t('pause');
     this.dom.pauseBtn.classList.remove('is-paused');
 
     this.dom.setupCard.hidden = true;
@@ -457,7 +464,7 @@ export class ReplayPageController {
     this.dom.completedCard.hidden = true;
 
     this.updateProgress();
-    this.setStatus('playing', 'Reloading…');
+    this.setStatus('playing', t('replayStatusReloading'));
 
     if (this.targetTabId === null) return;
 
@@ -468,7 +475,7 @@ export class ReplayPageController {
       waitForTabLoad(tabId)
         .then(() => sendRoleToTab(tabId, SessionRoleEnum.Replay))
         .then(() => {
-          this.setStatus('playing', 'Playing');
+          this.setStatus('playing', t('replayStatusPlaying'));
           this.scheduleNext();
         });
     });
@@ -496,7 +503,7 @@ export class ReplayPageController {
     this.dom.activeCard.hidden = true;
     this.dom.completedCard.hidden = true;
 
-    this.setStatus('idle', 'Ready');
+    this.setStatus('idle', t('replayStatusReady'));
   }
 
   private onCompleted(): void {
@@ -507,8 +514,11 @@ export class ReplayPageController {
 
     this.dom.activeCard.hidden = true;
     this.dom.completedCard.hidden = false;
-    this.dom.completedCount.textContent = String(this.records.length);
-    this.setStatus('completed', 'Completed');
+    this.dom.completedText.textContent = plural(
+      'replayCompletedText',
+      this.records.length,
+    );
+    this.setStatus('completed', t('replayStatusCompleted'));
   }
 
   private showActiveCard(url: string): void {
@@ -519,7 +529,7 @@ export class ReplayPageController {
     this.dom.activeUrl.textContent = url;
     this.dom.speedBadge.textContent = `${String(this.speed)}×`;
     this.updateProgress();
-    this.setStatus('playing', 'Playing');
+    this.setStatus('playing', t('replayStatusPlaying'));
   }
 
   private updateProgress(): void {
@@ -527,7 +537,10 @@ export class ReplayPageController {
     const current = this.currentIndex;
     const percent = total > 0 ? Math.round((current / total) * 100) : 0;
 
-    this.dom.progressLabel.textContent = `Event ${String(current)} / ${String(total)}`;
+    this.dom.progressLabel.textContent = t('replayProgress', [
+      String(current),
+      String(total),
+    ]);
     this.dom.progressPercent.textContent = `${String(percent)}%`;
     this.dom.progressBar.style.width = `${String(percent)}%`;
   }
@@ -539,7 +552,9 @@ export class ReplayPageController {
 
   private setLoading(loading: boolean): void {
     this.dom.startBtn.disabled = loading;
-    this.dom.btnLabel.textContent = loading ? 'Opening tab…' : 'Start Replay';
+    this.dom.btnLabel.textContent = loading
+      ? t('replayOpening')
+      : t('replayStart');
     this.dom.btnSpinner.hidden = !loading;
   }
 
