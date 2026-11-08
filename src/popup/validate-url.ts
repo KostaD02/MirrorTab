@@ -1,4 +1,4 @@
-import { setFieldError, normaliseUrl, setFieldValid } from '@/shared/util';
+import { setFieldError, normaliseUrl, setFieldValid, t } from '@/shared/util';
 
 export function validateUrl(
   raw: string,
@@ -8,7 +8,7 @@ export function validateUrl(
   const trimmed = raw.trim();
 
   if (!trimmed) {
-    setFieldError(inputEl, errorEl, 'URL is required.');
+    setFieldError(inputEl, errorEl, t('errorUrlRequired'));
     return null;
   }
 
@@ -18,23 +18,23 @@ export function validateUrl(
   try {
     parsed = new URL(normalised);
   } catch {
-    setFieldError(inputEl, errorEl, 'Not a valid URL.');
+    setFieldError(inputEl, errorEl, t('errorUrlInvalid'));
     return null;
   }
 
   if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
-    setFieldError(inputEl, errorEl, 'Only http:// and https:// are allowed.');
+    setFieldError(inputEl, errorEl, t('errorUrlScheme'));
     return null;
   }
 
   const host = parsed.hostname;
   if (host !== 'localhost' && !host.includes('.')) {
-    setFieldError(inputEl, errorEl, 'Enter a full domain (e.g. example.com).');
+    setFieldError(inputEl, errorEl, t('errorUrlDomain'));
     return null;
   }
 
   if (host.endsWith('.') || host.startsWith('.')) {
-    setFieldError(inputEl, errorEl, 'Not a valid domain.');
+    setFieldError(inputEl, errorEl, t('errorDomainInvalid'));
     return null;
   }
 

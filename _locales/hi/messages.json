@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "स्रोत टैब के DOM इंटरैक्शन को लक्ष्य टैब पर रीयल टाइम में मिरर करता है।"
+  },
+  "appTagline": {
+    "message": "DOM इंटरैक्शन मिररिंग"
+  },
+  "logoAlt": {
+    "message": "MirrorTab लोगो"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab सेटिंग"
+  },
+  "settingsOpenTitle": {
+    "message": "सेटिंग"
+  },
+  "settingsCloseLabel": {
+    "message": "सेटिंग बंद करें"
+  },
+  "closeTitle": {
+    "message": "बंद करें"
+  },
+  "infoOpenLabel": {
+    "message": "MirrorTab के बारे में"
+  },
+  "infoCloseLabel": {
+    "message": "जानकारी बंद करें"
+  },
+  "statusIdle": {
+    "message": "निष्क्रिय"
+  },
+  "statusActive": {
+    "message": "सक्रिय"
+  },
+  "statusPaused": {
+    "message": "रुका हुआ"
+  },
+  "statusError": {
+    "message": "त्रुटि"
+  },
+  "sourceUrlLabel": {
+    "message": "स्रोत URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "यहाँ के इंटरैक्शन मिरर किए जाएँगे"
+  },
+  "targetUrlLabel": {
+    "message": "लक्ष्य URL"
+  },
+  "targetUrlHint": {
+    "message": "इवेंट यहाँ दोहराए जाएँगे"
+  },
+  "addTarget": {
+    "message": "+ लक्ष्य जोड़ें"
+  },
+  "startSession": {
+    "message": "सत्र शुरू करें"
+  },
+  "removeTarget": {
+    "message": "लक्ष्य हटाएँ"
+  },
+  "removeActiveTarget": {
+    "message": "यह लक्ष्य हटाएँ"
+  },
+  "errorUrlRequired": {
+    "message": "URL ज़रूरी है।"
+  },
+  "errorUrlInvalid": {
+    "message": "मान्य URL नहीं है।"
+  },
+  "errorUrlScheme": {
+    "message": "केवल http:// और https:// की अनुमति है।"
+  },
+  "errorUrlDomain": {
+    "message": "पूरा डोमेन दर्ज करें (जैसे example.com)।"
+  },
+  "errorDomainInvalid": {
+    "message": "मान्य डोमेन नहीं है।"
+  },
+  "errorStartSession": {
+    "message": "सत्र शुरू नहीं हो सका: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "एक्सटेंशन त्रुटि: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "टैब नहीं बनाए जा सके"
+  },
+  "errorOpenReplayTab": {
+    "message": "रीप्ले टैब नहीं खोला जा सका"
+  },
+  "activeSource": {
+    "message": "स्रोत"
+  },
+  "activeTargets": {
+    "message": "लक्ष्य"
+  },
+  "pause": {
+    "message": "विराम"
+  },
+  "resume": {
+    "message": "जारी रखें"
+  },
+  "stop": {
+    "message": "रोकें"
+  },
+  "downloadHeading": {
+    "message": "सत्र डेटा डाउनलोड करें"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "टेक्स्ट"
+  },
+  "settingsNote": {
+    "message": "अपने आप सहेजा जाता है और चल रहे सत्रों पर तुरंत लागू होता है।"
+  },
+  "settingsPrivacy": {
+    "message": "गोपनीयता"
+  },
+  "settingMirrorPasswords": {
+    "message": "पासवर्ड फ़ील्ड मिरर करें"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "बंद रखने पर क्रेडेंशियल लक्ष्य टैब और निर्यात किए गए लॉग में नहीं जाते"
+  },
+  "settingsOverlays": {
+    "message": "ओवरले"
+  },
+  "settingShowCursor": {
+    "message": "घोस्ट कर्सर दिखाएँ"
+  },
+  "settingShowCursorHint": {
+    "message": "लक्ष्य टैब पर बनाया गया पॉइंटर"
+  },
+  "settingShowBadge": {
+    "message": "भूमिका बैज दिखाएँ"
+  },
+  "settingShowBadgeHint": {
+    "message": "हर टैब पर स्रोत / लक्ष्य लेबल"
+  },
+  "settingsEvents": {
+    "message": "मिरर किए जाने वाले इवेंट"
+  },
+  "settingMousemove": {
+    "message": "माउस की गति"
+  },
+  "settingMousemoveHint": {
+    "message": "सबसे अधिक होने वाला इवेंट, ट्रैफ़िक घटाने के लिए बंद करें"
+  },
+  "settingScroll": {
+    "message": "स्क्रॉलिंग"
+  },
+  "settingKeystrokes": {
+    "message": "कीस्ट्रोक"
+  },
+  "settingKeystrokesHint": {
+    "message": "की दबाना / छोड़ना, टाइप किए गए मानों से अलग"
+  },
+  "settingsPlayback": {
+    "message": "प्लेबैक"
+  },
+  "settingSmoothScroll": {
+    "message": "स्मूद स्क्रॉलिंग"
+  },
+  "settingSmoothScrollHint": {
+    "message": "बंद रखने पर तुरंत कूदता है और तेज़ स्क्रॉल को सिंक रखता है"
+  },
+  "settingScrollDebounce": {
+    "message": "स्क्रॉल डिबाउंस"
+  },
+  "settingScrollDebounceHint": {
+    "message": "स्क्रॉल भेजने से पहले का शांत समय"
+  },
+  "unitMs": {
+    "message": "मिलीसेकंड"
+  },
+  "settingsSessionStart": {
+    "message": "सत्र आरंभ"
+  },
+  "settingTabDelay": {
+    "message": "टैब क्रमवार खोलना"
+  },
+  "settingTabDelayHint": {
+    "message": "हर लक्ष्य टैब के बीच विलंब। 0 सभी को एक साथ खोलता है; उन साइटों के लिए उपयोगी जो एक साथ कई अनुरोधों को सीमित करती हैं।"
+  },
+  "settingsReset": {
+    "message": "डिफ़ॉल्ट पर रीसेट करें"
+  },
+  "infoIntro": {
+    "message": "MirrorTab DOM इंटरैक्शन को मिरर करता है: क्लिक, इनपुट, कीस्ट्रोक, फ़ोकस, होवर और स्क्रॉलिंग, iframe सहित, एक <strong>स्रोत</strong> टैब से एक या अधिक <strong>लक्ष्य</strong> टैब पर रीयल टाइम में। डेमो, टेस्टिंग और लाइव प्रस्तुतियों के लिए बढ़िया।"
+  },
+  "infoStep1": {
+    "message": "एक <strong>स्रोत URL</strong> और कम से कम एक <strong>लक्ष्य URL</strong> दर्ज करें।"
+  },
+  "infoStep2": {
+    "message": "<strong>सत्र शुरू करें</strong> पर क्लिक करें, टैब अपने आप खुल जाएँगे।"
+  },
+  "infoStep3": {
+    "message": "<strong class=\"kd-text-danger\">स्रोत</strong> टैब में काम करें, कार्रवाइयाँ हर <strong class=\"kd-text-accent\">लक्ष्य</strong> टैब पर लाइव मिरर होंगी।"
+  },
+  "infoStep4": {
+    "message": "सत्र नियंत्रित करने के लिए <strong>विराम / जारी रखें</strong> या <strong>रोकें</strong> का उपयोग करें।"
+  },
+  "infoStep5": {
+    "message": "इवेंट लॉग को कभी भी <strong>JSON</strong> या <strong>टेक्स्ट</strong> के रूप में डाउनलोड करें।"
+  },
+  "infoGithub": {
+    "message": "GitHub रिपॉज़िटरी"
+  },
+  "infoReport": {
+    "message": "समस्या / सुझाव की रिपोर्ट करें"
+  },
+  "infoCreatedBy": {
+    "message": "निर्माता:"
+  },
+  "replayLink": {
+    "message": "सत्र रीप्ले खोलें"
+  },
+  "footerEvents": {
+    "message": "क्लिक · इनपुट · कुंजियाँ · फ़ोकस · होवर · स्क्रॉल · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - सत्र रीप्ले"
+  },
+  "replaySubtitle": {
+    "message": "सत्र रीप्ले"
+  },
+  "replayStatusReady": {
+    "message": "तैयार"
+  },
+  "replayStatusPlaying": {
+    "message": "चल रहा है"
+  },
+  "replayStatusPaused": {
+    "message": "रुका हुआ"
+  },
+  "replayStatusReloading": {
+    "message": "फिर से लोड हो रहा है…"
+  },
+  "replayStatusCompleted": {
+    "message": "पूरा हुआ"
+  },
+  "replayUrlLabel": {
+    "message": "वेबसाइट URL"
+  },
+  "replayUrlHint": {
+    "message": "वह पेज जहाँ रिकॉर्ड की गई कार्रवाइयाँ दोहराई जाएँगी"
+  },
+  "replayFileLabel": {
+    "message": "सत्र फ़ाइल"
+  },
+  "replayDropHint": {
+    "message": "<strong>.json</strong> या <strong>.txt</strong> सत्र फ़ाइल यहाँ छोड़ें"
+  },
+  "replayOr": {
+    "message": "या"
+  },
+  "replayBrowse": {
+    "message": "फ़ाइलें ब्राउज़ करें"
+  },
+  "replayRemoveFile": {
+    "message": "फ़ाइल हटाएँ"
+  },
+  "replaySpeedLabel": {
+    "message": "प्लेबैक गति"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× धीमा"
+  },
+  "replaySpeedNormal": {
+    "message": "1× सामान्य"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× तेज़"
+  },
+  "replayStart": {
+    "message": "रीप्ले शुरू करें"
+  },
+  "replayOpening": {
+    "message": "टैब खुल रहा है…"
+  },
+  "replayHeading": {
+    "message": "रीप्ले"
+  },
+  "replayProgress": {
+    "message": "इवेंट $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "जारी रखें"
+  },
+  "replayRestart": {
+    "message": "फिर से शुरू करें"
+  },
+  "replayCompletedTitle": {
+    "message": "रीप्ले पूरा हुआ"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ इवेंट सफलतापूर्वक दोहराया गया।",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "सभी $COUNT$ इवेंट सफलतापूर्वक दोहराए गए।",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "बंद करें"
+  },
+  "replayFooter": {
+    "message": "रिकॉर्ड किए गए सत्र दोहराएँ · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "कृपया .json या .txt फ़ाइल अपलोड करें"
+  },
+  "replayNoEvents": {
+    "message": "सत्र फ़ाइल में कोई इवेंट नहीं मिला"
+  },
+  "replayParseError": {
+    "message": "सत्र फ़ाइल पढ़ी नहीं जा सकी"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ इवेंट लोड हुआ",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ इवेंट लोड हुए",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "कृपया मान्य URL दर्ज करें"
+  },
+  "replayFileMissing": {
+    "message": "कृपया सत्र फ़ाइल अपलोड करें"
+  },
+  "replayNoResponse": {
+    "message": "एक्सटेंशन से संपर्क नहीं हो सका"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - प्रतीक्षा में"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - $URL$ की प्रतीक्षा में",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "खुलने की प्रतीक्षा में"
+  },
+  "pendingNote": {
+    "message": "क्रमवार शुरुआत चालू है, इसलिए यह टैब थोड़ी देर बाद खुलेगा।"
+  },
+  "pendingOpening": {
+    "message": "अभी खुल रहा है…"
+  },
+  "pendingHint": {
+    "message": "इसे MirrorTab सेटिंग में <strong class=\"kd-text-secondary\">टैब क्रमवार खोलना</strong> के अंतर्गत बदलें।"
+  },
+  "badgeSource": {
+    "message": "स्रोत"
+  },
+  "badgeTarget": {
+    "message": "लक्ष्य"
+  },
+  "badgeReplay": {
+    "message": "रीप्ले"
+  }
+}

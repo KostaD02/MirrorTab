@@ -1,14 +1,15 @@
 import { APP_NAME } from '@/shared/consts';
 import { SessionRole, SessionRoleEnum } from '@/shared/types';
+import { t } from '@/shared/util';
 import { OverlayHost } from './overlay-host';
 
 const ROLE_CONFIG: Record<
   Exclude<SessionRole, typeof SessionRoleEnum.Idle>,
   { label: string; pill: string }
 > = {
-  [SessionRoleEnum.Source]: { label: 'SOURCE', pill: 'danger' },
-  [SessionRoleEnum.Target]: { label: 'TARGET', pill: 'active' },
-  [SessionRoleEnum.Replay]: { label: 'REPLAY', pill: 'warning' },
+  [SessionRoleEnum.Source]: { label: 'badgeSource', pill: 'danger' },
+  [SessionRoleEnum.Target]: { label: 'badgeTarget', pill: 'active' },
+  [SessionRoleEnum.Replay]: { label: 'badgeReplay', pill: 'warning' },
 };
 
 export class RoleBadge {
@@ -38,6 +39,6 @@ export class RoleBadge {
 
     const config = ROLE_CONFIG[role];
     this.element.className = `badge kd-status-pill kd-status-pill--${config.pill}`;
-    this.label.textContent = `${APP_NAME} · ${config.label}`;
+    this.label.textContent = `${APP_NAME} · ${t(config.label)}`;
   }
 }

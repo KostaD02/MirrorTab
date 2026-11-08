@@ -11,6 +11,7 @@ import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 
 jest.mock('@/shared/util', () => ({
+  t: jest.requireActual('@/shared/util').t,
   openTab: jest.fn(),
   sendRoleToTab: jest.fn(),
   waitForTabLoad: jest.fn(),

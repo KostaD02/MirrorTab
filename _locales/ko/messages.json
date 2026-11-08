@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "소스 탭의 DOM 상호작용을 대상 탭에 실시간으로 미러링합니다."
+  },
+  "appTagline": {
+    "message": "DOM 상호작용 미러링"
+  },
+  "logoAlt": {
+    "message": "MirrorTab 로고"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab 설정"
+  },
+  "settingsOpenTitle": {
+    "message": "설정"
+  },
+  "settingsCloseLabel": {
+    "message": "설정 닫기"
+  },
+  "closeTitle": {
+    "message": "닫기"
+  },
+  "infoOpenLabel": {
+    "message": "MirrorTab 정보"
+  },
+  "infoCloseLabel": {
+    "message": "정보 닫기"
+  },
+  "statusIdle": {
+    "message": "대기"
+  },
+  "statusActive": {
+    "message": "활성"
+  },
+  "statusPaused": {
+    "message": "일시정지"
+  },
+  "statusError": {
+    "message": "오류"
+  },
+  "sourceUrlLabel": {
+    "message": "소스 URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "여기서의 상호작용이 미러링됩니다"
+  },
+  "targetUrlLabel": {
+    "message": "대상 URL"
+  },
+  "targetUrlHint": {
+    "message": "이벤트가 여기서 재생됩니다"
+  },
+  "addTarget": {
+    "message": "+ 대상 추가"
+  },
+  "startSession": {
+    "message": "세션 시작"
+  },
+  "removeTarget": {
+    "message": "대상 제거"
+  },
+  "removeActiveTarget": {
+    "message": "이 대상 제거"
+  },
+  "errorUrlRequired": {
+    "message": "URL을 입력하세요."
+  },
+  "errorUrlInvalid": {
+    "message": "유효한 URL이 아닙니다."
+  },
+  "errorUrlScheme": {
+    "message": "http://와 https://만 사용할 수 있습니다."
+  },
+  "errorUrlDomain": {
+    "message": "전체 도메인을 입력하세요(예: example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "유효한 도메인이 아닙니다."
+  },
+  "errorStartSession": {
+    "message": "세션을 시작하지 못했습니다: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "확장 프로그램 오류: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "탭을 만들지 못했습니다"
+  },
+  "errorOpenReplayTab": {
+    "message": "리플레이 탭을 열지 못했습니다"
+  },
+  "activeSource": {
+    "message": "소스"
+  },
+  "activeTargets": {
+    "message": "대상"
+  },
+  "pause": {
+    "message": "일시정지"
+  },
+  "resume": {
+    "message": "재개"
+  },
+  "stop": {
+    "message": "중지"
+  },
+  "downloadHeading": {
+    "message": "세션 데이터 다운로드"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "텍스트"
+  },
+  "settingsNote": {
+    "message": "자동으로 저장되며 실행 중인 세션에 즉시 적용됩니다."
+  },
+  "settingsPrivacy": {
+    "message": "개인정보"
+  },
+  "settingMirrorPasswords": {
+    "message": "비밀번호 필드 미러링"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "끄면 자격 증명이 대상 탭과 내보낸 로그에 포함되지 않습니다"
+  },
+  "settingsOverlays": {
+    "message": "오버레이"
+  },
+  "settingShowCursor": {
+    "message": "고스트 커서 표시"
+  },
+  "settingShowCursorHint": {
+    "message": "대상 탭에 그려지는 포인터"
+  },
+  "settingShowBadge": {
+    "message": "역할 배지 표시"
+  },
+  "settingShowBadgeHint": {
+    "message": "각 탭의 소스 / 대상 레이블"
+  },
+  "settingsEvents": {
+    "message": "미러링할 이벤트"
+  },
+  "settingMousemove": {
+    "message": "마우스 이동"
+  },
+  "settingMousemoveHint": {
+    "message": "가장 빈번한 이벤트입니다. 트래픽을 줄이려면 끄세요"
+  },
+  "settingScroll": {
+    "message": "스크롤"
+  },
+  "settingKeystrokes": {
+    "message": "키 입력"
+  },
+  "settingKeystrokesHint": {
+    "message": "키 누름 / 뗌, 입력된 값과는 별개"
+  },
+  "settingsPlayback": {
+    "message": "재생"
+  },
+  "settingSmoothScroll": {
+    "message": "부드러운 스크롤"
+  },
+  "settingSmoothScrollHint": {
+    "message": "끄면 즉시 이동하여 빠른 스크롤도 동기화됩니다"
+  },
+  "settingScrollDebounce": {
+    "message": "스크롤 디바운스"
+  },
+  "settingScrollDebounceHint": {
+    "message": "스크롤을 전송하기 전 대기 시간"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "세션 시작"
+  },
+  "settingTabDelay": {
+    "message": "탭 순차 열기"
+  },
+  "settingTabDelayHint": {
+    "message": "대상 탭 사이의 지연 시간. 0이면 모두 한꺼번에 엽니다. 단시간 대량 요청을 제한하는 사이트에 유용합니다."
+  },
+  "settingsReset": {
+    "message": "기본값으로 재설정"
+  },
+  "infoIntro": {
+    "message": "MirrorTab은 DOM 상호작용을 미러링합니다. 클릭, 입력, 키 입력, 포커스, 호버, 스크롤을 iframe 안까지 포함해 <strong>소스</strong> 탭에서 하나 이상의 <strong>대상</strong> 탭으로 실시간 전달합니다. 데모, 테스트, 라이브 발표에 안성맞춤입니다."
+  },
+  "infoStep1": {
+    "message": "<strong>소스 URL</strong>과 하나 이상의 <strong>대상 URL</strong>을 입력하세요."
+  },
+  "infoStep2": {
+    "message": "<strong>세션 시작</strong>을 클릭하면 탭이 자동으로 열립니다."
+  },
+  "infoStep3": {
+    "message": "<strong class=\"kd-text-danger\">소스</strong> 탭에서 작업하면 모든 <strong class=\"kd-text-accent\">대상</strong> 탭에 실시간으로 미러링됩니다."
+  },
+  "infoStep4": {
+    "message": "<strong>일시정지 / 재개</strong> 또는 <strong>중지</strong>로 세션을 제어하세요."
+  },
+  "infoStep5": {
+    "message": "이벤트 로그를 언제든 <strong>JSON</strong> 또는 <strong>텍스트</strong>로 다운로드하세요."
+  },
+  "infoGithub": {
+    "message": "GitHub 저장소"
+  },
+  "infoReport": {
+    "message": "문제 / 기능 제안"
+  },
+  "infoCreatedBy": {
+    "message": "만든 사람:"
+  },
+  "replayLink": {
+    "message": "세션 리플레이 열기"
+  },
+  "footerEvents": {
+    "message": "클릭 · 입력 · 키 · 포커스 · 호버 · 스크롤 · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - 세션 리플레이"
+  },
+  "replaySubtitle": {
+    "message": "세션 리플레이"
+  },
+  "replayStatusReady": {
+    "message": "준비됨"
+  },
+  "replayStatusPlaying": {
+    "message": "재생 중"
+  },
+  "replayStatusPaused": {
+    "message": "일시정지"
+  },
+  "replayStatusReloading": {
+    "message": "다시 불러오는 중…"
+  },
+  "replayStatusCompleted": {
+    "message": "완료"
+  },
+  "replayUrlLabel": {
+    "message": "웹사이트 URL"
+  },
+  "replayUrlHint": {
+    "message": "기록된 동작을 재생할 페이지"
+  },
+  "replayFileLabel": {
+    "message": "세션 파일"
+  },
+  "replayDropHint": {
+    "message": "<strong>.json</strong> 또는 <strong>.txt</strong> 세션 파일을 여기에 놓으세요"
+  },
+  "replayOr": {
+    "message": "또는"
+  },
+  "replayBrowse": {
+    "message": "파일 찾기"
+  },
+  "replayRemoveFile": {
+    "message": "파일 제거"
+  },
+  "replaySpeedLabel": {
+    "message": "재생 속도"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× 느리게"
+  },
+  "replaySpeedNormal": {
+    "message": "1× 보통"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× 빠르게"
+  },
+  "replayStart": {
+    "message": "리플레이 시작"
+  },
+  "replayOpening": {
+    "message": "탭 여는 중…"
+  },
+  "replayHeading": {
+    "message": "리플레이"
+  },
+  "replayProgress": {
+    "message": "이벤트 $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "계속"
+  },
+  "replayRestart": {
+    "message": "다시 시작"
+  },
+  "replayCompletedTitle": {
+    "message": "리플레이 완료"
+  },
+  "replayCompletedText_other": {
+    "message": "이벤트 $COUNT$개를 모두 성공적으로 재생했습니다.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "닫기"
+  },
+  "replayFooter": {
+    "message": "기록된 세션 재생 · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": ".json 또는 .txt 파일을 업로드하세요"
+  },
+  "replayNoEvents": {
+    "message": "세션 파일에 이벤트가 없습니다"
+  },
+  "replayParseError": {
+    "message": "세션 파일을 읽지 못했습니다"
+  },
+  "replayEventsLoaded_other": {
+    "message": "이벤트 $COUNT$개 불러옴",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "유효한 URL을 입력하세요"
+  },
+  "replayFileMissing": {
+    "message": "세션 파일을 업로드하세요"
+  },
+  "replayNoResponse": {
+    "message": "확장 프로그램과 통신하지 못했습니다"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - 대기 중"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - $URL$ 대기 중",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "열기 대기 중"
+  },
+  "pendingNote": {
+    "message": "순차 시작이 켜져 있어 이 탭은 잠시 후 열립니다."
+  },
+  "pendingOpening": {
+    "message": "지금 여는 중…"
+  },
+  "pendingHint": {
+    "message": "MirrorTab 설정의 <strong class=\"kd-text-secondary\">탭 순차 열기</strong>에서 변경할 수 있습니다."
+  },
+  "badgeSource": {
+    "message": "소스"
+  },
+  "badgeTarget": {
+    "message": "대상"
+  },
+  "badgeReplay": {
+    "message": "리플레이"
+  }
+}

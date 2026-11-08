@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Peegeldab DOM-i interaktsioone lähtevahekaardilt sihtvahekaardile reaalajas."
+  },
+  "appTagline": {
+    "message": "DOM-i peegeldamine"
+  },
+  "logoAlt": {
+    "message": "MirrorTabi logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTabi seaded"
+  },
+  "settingsOpenTitle": {
+    "message": "Seaded"
+  },
+  "settingsCloseLabel": {
+    "message": "Sulge seaded"
+  },
+  "closeTitle": {
+    "message": "Sulge"
+  },
+  "infoOpenLabel": {
+    "message": "MirrorTabi teave"
+  },
+  "infoCloseLabel": {
+    "message": "Sulge teave"
+  },
+  "statusIdle": {
+    "message": "Ootel"
+  },
+  "statusActive": {
+    "message": "Aktiivne"
+  },
+  "statusPaused": {
+    "message": "Peatatud"
+  },
+  "statusError": {
+    "message": "Viga"
+  },
+  "sourceUrlLabel": {
+    "message": "Lähte-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Siinsed interaktsioonid peegeldatakse"
+  },
+  "targetUrlLabel": {
+    "message": "Siht-URL"
+  },
+  "targetUrlHint": {
+    "message": "Sündmused esitatakse siin uuesti"
+  },
+  "addTarget": {
+    "message": "+ Lisa siht"
+  },
+  "startSession": {
+    "message": "Alusta seanssi"
+  },
+  "removeTarget": {
+    "message": "Eemalda siht"
+  },
+  "removeActiveTarget": {
+    "message": "Eemalda see siht"
+  },
+  "errorUrlRequired": {
+    "message": "URL on kohustuslik."
+  },
+  "errorUrlInvalid": {
+    "message": "Vigane URL."
+  },
+  "errorUrlScheme": {
+    "message": "Lubatud on ainult http:// ja https://."
+  },
+  "errorUrlDomain": {
+    "message": "Sisesta täielik domeen (nt example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Vigane domeen."
+  },
+  "errorStartSession": {
+    "message": "Seansi alustamine ebaõnnestus: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Laienduse viga: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Vahekaartide loomine ebaõnnestus"
+  },
+  "errorOpenReplayTab": {
+    "message": "Taasesituse vahekaardi avamine ebaõnnestus"
+  },
+  "activeSource": {
+    "message": "Lähe"
+  },
+  "activeTargets": {
+    "message": "Sihid"
+  },
+  "pause": {
+    "message": "Peata"
+  },
+  "resume": {
+    "message": "Jätka"
+  },
+  "stop": {
+    "message": "Lõpeta"
+  },
+  "downloadHeading": {
+    "message": "Laadi seansi andmed alla"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekst"
+  },
+  "settingsNote": {
+    "message": "Salvestatakse automaatselt ja rakendub kohe käimasolevatele seanssidele."
+  },
+  "settingsPrivacy": {
+    "message": "Privaatsus"
+  },
+  "settingMirrorPasswords": {
+    "message": "Peegelda paroolivälju"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Väljalülitatuna ei jõua sisselogimisandmed sihtvahekaartidele ega eksporditud logidesse"
+  },
+  "settingsOverlays": {
+    "message": "Ülekatted"
+  },
+  "settingShowCursor": {
+    "message": "Näita kummituskursorit"
+  },
+  "settingShowCursorHint": {
+    "message": "Sihtvahekaartidele joonistatav kursor"
+  },
+  "settingShowBadge": {
+    "message": "Näita rollimärki"
+  },
+  "settingShowBadgeHint": {
+    "message": "Silt LÄHE / SIHT igal vahekaardil"
+  },
+  "settingsEvents": {
+    "message": "Peegeldatavad sündmused"
+  },
+  "settingMousemove": {
+    "message": "Hiire liikumine"
+  },
+  "settingMousemoveHint": {
+    "message": "Kõige sagedasem sündmus, lülita välja liikluse vähendamiseks"
+  },
+  "settingScroll": {
+    "message": "Kerimine"
+  },
+  "settingKeystrokes": {
+    "message": "Klahvivajutused"
+  },
+  "settingKeystrokesHint": {
+    "message": "Klahv alla / üles, eraldi sisestatud väärtustest"
+  },
+  "settingsPlayback": {
+    "message": "Taasesitus"
+  },
+  "settingSmoothScroll": {
+    "message": "Sujuv kerimine"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Väljalülitatuna hüppab kohe ja hoiab kiire kerimise sünkroonis"
+  },
+  "settingScrollDebounce": {
+    "message": "Kerimise viivitus"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Vaikne periood enne kerimise saatmist"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Seansi algus"
+  },
+  "settingTabDelay": {
+    "message": "Vahekaartide astmeline avamine"
+  },
+  "settingTabDelayHint": {
+    "message": "Viivitus iga sihtvahekaardi vahel. 0 avab kõik korraga; kasulik saitidel, mis piiravad päringute puhanguid."
+  },
+  "settingsReset": {
+    "message": "Taasta vaikeväärtused"
+  },
+  "infoIntro": {
+    "message": "MirrorTab peegeldab DOM-i interaktsioone: klõpse, sisestusi, klahvivajutusi, fookust, hõljutamist ja kerimist, ka iframe’ides, <strong>lähtevahekaardilt</strong> ühele või mitmele <strong>sihtvahekaardile</strong> reaalajas. Ideaalne demodeks, testimiseks ja otse-esitlusteks."
+  },
+  "infoStep1": {
+    "message": "Sisesta <strong>lähte-URL</strong> ja vähemalt üks <strong>siht-URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Klõpsa <strong>Alusta seanssi</strong>, vahekaardid avanevad automaatselt."
+  },
+  "infoStep3": {
+    "message": "Tegutse vahekaardil <strong class=\"kd-text-danger\">LÄHE</strong>, toimingud peegeldatakse otse igale vahekaardile <strong class=\"kd-text-accent\">SIHT</strong>."
+  },
+  "infoStep4": {
+    "message": "Juhi seanssi nuppudega <strong>Peata / Jätka</strong> või <strong>Lõpeta</strong>."
+  },
+  "infoStep5": {
+    "message": "Laadi sündmuste logi igal ajal alla <strong>JSON</strong>- või <strong>Tekst</strong>-kujul."
+  },
+  "infoGithub": {
+    "message": "GitHubi hoidla"
+  },
+  "infoReport": {
+    "message": "Teata probleemist / ideest"
+  },
+  "infoCreatedBy": {
+    "message": "Autor:"
+  },
+  "replayLink": {
+    "message": "Ava seansi taasesitus"
+  },
+  "footerEvents": {
+    "message": "Klõpsud · Sisestused · Klahvid · Fookus · Hover · Kerimine · Iframe’id"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Seansi taasesitus"
+  },
+  "replaySubtitle": {
+    "message": "Seansi taasesitus"
+  },
+  "replayStatusReady": {
+    "message": "Valmis"
+  },
+  "replayStatusPlaying": {
+    "message": "Esitatakse"
+  },
+  "replayStatusPaused": {
+    "message": "Peatatud"
+  },
+  "replayStatusReloading": {
+    "message": "Laaditakse uuesti…"
+  },
+  "replayStatusCompleted": {
+    "message": "Lõpetatud"
+  },
+  "replayUrlLabel": {
+    "message": "Saidi URL"
+  },
+  "replayUrlHint": {
+    "message": "Leht, kus salvestatud toimingud uuesti esitatakse"
+  },
+  "replayFileLabel": {
+    "message": "Seansifail"
+  },
+  "replayDropHint": {
+    "message": "Lohista <strong>.json</strong>- või <strong>.txt</strong>-seansifail siia"
+  },
+  "replayOr": {
+    "message": "või"
+  },
+  "replayBrowse": {
+    "message": "Sirvi faile"
+  },
+  "replayRemoveFile": {
+    "message": "Eemalda fail"
+  },
+  "replaySpeedLabel": {
+    "message": "Taasesituse kiirus"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Aeglane"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Tavaline"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Kiire"
+  },
+  "replayStart": {
+    "message": "Alusta taasesitust"
+  },
+  "replayOpening": {
+    "message": "Vahekaardi avamine…"
+  },
+  "replayHeading": {
+    "message": "Taasesitus"
+  },
+  "replayProgress": {
+    "message": "Sündmus $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Jätka"
+  },
+  "replayRestart": {
+    "message": "Alusta uuesti"
+  },
+  "replayCompletedTitle": {
+    "message": "Taasesitus lõpetatud"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ sündmus esitati edukalt uuesti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Kõik $COUNT$ sündmust esitati edukalt uuesti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Sulge"
+  },
+  "replayFooter": {
+    "message": "Esita salvestatud seansse uuesti · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Laadi üles .json- või .txt-fail"
+  },
+  "replayNoEvents": {
+    "message": "Seansifailist ei leitud sündmusi"
+  },
+  "replayParseError": {
+    "message": "Seansifaili lugemine ebaõnnestus"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ sündmus laaditud",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ sündmust laaditud",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Sisesta kehtiv URL"
+  },
+  "replayFileMissing": {
+    "message": "Laadi üles seansifail"
+  },
+  "replayNoResponse": {
+    "message": "Laiendusega suhtlemine ebaõnnestus"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Ootel"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - ootel: $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Avamise ootel"
+  },
+  "pendingNote": {
+    "message": "Astmeline käivitus on sisse lülitatud, seega avaneb see vahekaart pärast lühikest viivitust."
+  },
+  "pendingOpening": {
+    "message": "Avatakse…"
+  },
+  "pendingHint": {
+    "message": "Muuda seda MirrorTabi seadetes jaotises <strong class=\"kd-text-secondary\">Vahekaartide astmeline avamine</strong>."
+  },
+  "badgeSource": {
+    "message": "LÄHE"
+  },
+  "badgeTarget": {
+    "message": "SIHT"
+  },
+  "badgeReplay": {
+    "message": "TAASESITUS"
+  }
+}

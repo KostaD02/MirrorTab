@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Speiler DOM-interaksjoner fra en kildefane til en målfane i sanntid."
+  },
+  "appTagline": {
+    "message": "Speiling av DOM-interaksjoner"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-innstillinger"
+  },
+  "settingsOpenTitle": {
+    "message": "Innstillinger"
+  },
+  "settingsCloseLabel": {
+    "message": "Lukk innstillinger"
+  },
+  "closeTitle": {
+    "message": "Lukk"
+  },
+  "infoOpenLabel": {
+    "message": "Om MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Lukk info"
+  },
+  "statusIdle": {
+    "message": "Inaktiv"
+  },
+  "statusActive": {
+    "message": "Aktiv"
+  },
+  "statusPaused": {
+    "message": "Pauset"
+  },
+  "statusError": {
+    "message": "Feil"
+  },
+  "sourceUrlLabel": {
+    "message": "Kilde-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaksjoner her blir speilet"
+  },
+  "targetUrlLabel": {
+    "message": "Mål-URL"
+  },
+  "targetUrlHint": {
+    "message": "Hendelser spilles av her"
+  },
+  "addTarget": {
+    "message": "+ Legg til mål"
+  },
+  "startSession": {
+    "message": "Start økt"
+  },
+  "removeTarget": {
+    "message": "Fjern mål"
+  },
+  "removeActiveTarget": {
+    "message": "Fjern dette målet"
+  },
+  "errorUrlRequired": {
+    "message": "URL er påkrevd."
+  },
+  "errorUrlInvalid": {
+    "message": "Ugyldig URL."
+  },
+  "errorUrlScheme": {
+    "message": "Bare http:// og https:// er tillatt."
+  },
+  "errorUrlDomain": {
+    "message": "Skriv inn et fullt domene (f.eks. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Ugyldig domene."
+  },
+  "errorStartSession": {
+    "message": "Kunne ikke starte økten: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Utvidelsesfeil: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Kunne ikke opprette fanene"
+  },
+  "errorOpenReplayTab": {
+    "message": "Kunne ikke åpne avspillingsfanen"
+  },
+  "activeSource": {
+    "message": "Kilde"
+  },
+  "activeTargets": {
+    "message": "Mål"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "resume": {
+    "message": "Fortsett"
+  },
+  "stop": {
+    "message": "Stopp"
+  },
+  "downloadHeading": {
+    "message": "Last ned øktdata"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekst"
+  },
+  "settingsNote": {
+    "message": "Lagres automatisk og gjelder straks for pågående økter."
+  },
+  "settingsPrivacy": {
+    "message": "Personvern"
+  },
+  "settingMirrorPasswords": {
+    "message": "Speil passordfelt"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Av holder påloggingsopplysninger unna målfaner og eksporterte logger"
+  },
+  "settingsOverlays": {
+    "message": "Overlegg"
+  },
+  "settingShowCursor": {
+    "message": "Vis spøkelsesmarkør"
+  },
+  "settingShowCursorHint": {
+    "message": "Pekeren som tegnes på målfaner"
+  },
+  "settingShowBadge": {
+    "message": "Vis rollemerke"
+  },
+  "settingShowBadgeHint": {
+    "message": "Etiketten KILDE / MÅL på hver fane"
+  },
+  "settingsEvents": {
+    "message": "Hendelser som speiles"
+  },
+  "settingMousemove": {
+    "message": "Musebevegelse"
+  },
+  "settingMousemoveHint": {
+    "message": "Den vanligste hendelsen, slå av for mindre trafikk"
+  },
+  "settingScroll": {
+    "message": "Rulling"
+  },
+  "settingKeystrokes": {
+    "message": "Tastetrykk"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tast ned / opp, uavhengig av innskrevne verdier"
+  },
+  "settingsPlayback": {
+    "message": "Avspilling"
+  },
+  "settingSmoothScroll": {
+    "message": "Jevn rulling"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Av hopper umiddelbart og holder rask rulling synkron"
+  },
+  "settingScrollDebounce": {
+    "message": "Rulleforsinkelse"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Stille periode før en rulling sendes"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Øktstart"
+  },
+  "settingTabDelay": {
+    "message": "Trinnvis åpning av faner"
+  },
+  "settingTabDelayHint": {
+    "message": "Forsinkelse mellom hver målfane. 0 åpner alle på én gang; nyttig for nettsteder som begrenser byger av forespørsler."
+  },
+  "settingsReset": {
+    "message": "Tilbakestill til standard"
+  },
+  "infoIntro": {
+    "message": "MirrorTab speiler DOM-interaksjoner: klikk, inndata, tastetrykk, fokus, hover og rulling, også i iframes, fra en <strong>kildefane</strong> til én eller flere <strong>målfaner</strong> i sanntid. Perfekt for demoer, testing og direktepresentasjoner."
+  },
+  "infoStep1": {
+    "message": "Skriv inn en <strong>kilde-URL</strong> og minst én <strong>mål-URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Klikk på <strong>Start økt</strong>, fanene åpnes automatisk."
+  },
+  "infoStep3": {
+    "message": "Jobb i fanen <strong class=\"kd-text-danger\">KILDE</strong>, handlingene speiles direkte i hver <strong class=\"kd-text-accent\">MÅL</strong>-fane."
+  },
+  "infoStep4": {
+    "message": "Bruk <strong>Pause / Fortsett</strong> eller <strong>Stopp</strong> for å styre økten."
+  },
+  "infoStep5": {
+    "message": "Last ned hendelsesloggen når som helst som <strong>JSON</strong> eller <strong>Tekst</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub-repositorium"
+  },
+  "infoReport": {
+    "message": "Rapporter et problem / en idé"
+  },
+  "infoCreatedBy": {
+    "message": "Laget av"
+  },
+  "replayLink": {
+    "message": "Åpne øktavspilling"
+  },
+  "footerEvents": {
+    "message": "Klikk · Inndata · Taster · Fokus · Hover · Rulling · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Øktavspilling"
+  },
+  "replaySubtitle": {
+    "message": "Øktavspilling"
+  },
+  "replayStatusReady": {
+    "message": "Klar"
+  },
+  "replayStatusPlaying": {
+    "message": "Spiller av"
+  },
+  "replayStatusPaused": {
+    "message": "Pauset"
+  },
+  "replayStatusReloading": {
+    "message": "Laster inn på nytt…"
+  },
+  "replayStatusCompleted": {
+    "message": "Fullført"
+  },
+  "replayUrlLabel": {
+    "message": "Nettsted-URL"
+  },
+  "replayUrlHint": {
+    "message": "Siden der de innspilte handlingene spilles av"
+  },
+  "replayFileLabel": {
+    "message": "Øktfil"
+  },
+  "replayDropHint": {
+    "message": "Slipp en <strong>.json</strong>- eller <strong>.txt</strong>-øktfil her"
+  },
+  "replayOr": {
+    "message": "eller"
+  },
+  "replayBrowse": {
+    "message": "Bla gjennom filer"
+  },
+  "replayRemoveFile": {
+    "message": "Fjern fil"
+  },
+  "replaySpeedLabel": {
+    "message": "Avspillingshastighet"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Sakte"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rask"
+  },
+  "replayStart": {
+    "message": "Start avspilling"
+  },
+  "replayOpening": {
+    "message": "Åpner fane…"
+  },
+  "replayHeading": {
+    "message": "Avspilling"
+  },
+  "replayProgress": {
+    "message": "Hendelse $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Fortsett"
+  },
+  "replayRestart": {
+    "message": "Start på nytt"
+  },
+  "replayCompletedTitle": {
+    "message": "Avspilling fullført"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ hendelse ble spilt av.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Alle $COUNT$ hendelser ble spilt av.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Lukk"
+  },
+  "replayFooter": {
+    "message": "Spill av innspilte økter · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Last opp en .json- eller .txt-fil"
+  },
+  "replayNoEvents": {
+    "message": "Fant ingen hendelser i øktfilen"
+  },
+  "replayParseError": {
+    "message": "Kunne ikke lese øktfilen"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ hendelse lastet",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ hendelser lastet",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Skriv inn en gyldig URL"
+  },
+  "replayFileMissing": {
+    "message": "Last opp en øktfil"
+  },
+  "replayNoResponse": {
+    "message": "Kunne ikke kommunisere med utvidelsen"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Venter"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - venter på $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Venter på å åpne"
+  },
+  "pendingNote": {
+    "message": "Trinnvis start er på, så denne fanen åpnes etter en kort forsinkelse."
+  },
+  "pendingOpening": {
+    "message": "Åpner nå…"
+  },
+  "pendingHint": {
+    "message": "Endre det under <strong class=\"kd-text-secondary\">Trinnvis åpning av faner</strong> i MirrorTab-innstillingene."
+  },
+  "badgeSource": {
+    "message": "KILDE"
+  },
+  "badgeTarget": {
+    "message": "MÅL"
+  },
+  "badgeReplay": {
+    "message": "AVSPILLING"
+  }
+}

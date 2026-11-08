@@ -1,4 +1,4 @@
-import { formatCountdown, parsePendingParams } from '@/shared/util';
+import { formatCountdown, parsePendingParams, t } from '@/shared/util';
 
 const TICK_MS = 250;
 
@@ -22,7 +22,7 @@ export class PendingPageController {
     }
 
     this.dom.targetUrl.textContent = params.url;
-    document.title = `MirrorTab - waiting for ${params.url}`;
+    document.title = t('pendingTitleFor', [params.url]);
 
     this.tick(params.deadline);
     this.timerId = setInterval(() => {
@@ -52,6 +52,6 @@ export class PendingPageController {
   private showOpening(): void {
     this.dom.countdown.textContent = '';
     this.dom.ring.classList.add('is-opening');
-    this.dom.note.textContent = 'Opening now…';
+    this.dom.note.textContent = t('pendingOpening');
   }
 }

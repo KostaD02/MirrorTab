@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Valós időben tükrözi a DOM-interakciókat egy forráslapról egy céllapra."
+  },
+  "appTagline": {
+    "message": "DOM-interakciók tükrözése"
+  },
+  "logoAlt": {
+    "message": "MirrorTab logó"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab beállítások"
+  },
+  "settingsOpenTitle": {
+    "message": "Beállítások"
+  },
+  "settingsCloseLabel": {
+    "message": "Beállítások bezárása"
+  },
+  "closeTitle": {
+    "message": "Bezárás"
+  },
+  "infoOpenLabel": {
+    "message": "A MirrorTab névjegye"
+  },
+  "infoCloseLabel": {
+    "message": "Információ bezárása"
+  },
+  "statusIdle": {
+    "message": "Tétlen"
+  },
+  "statusActive": {
+    "message": "Aktív"
+  },
+  "statusPaused": {
+    "message": "Szüneteltetve"
+  },
+  "statusError": {
+    "message": "Hiba"
+  },
+  "sourceUrlLabel": {
+    "message": "Forrás URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Az itteni interakciók tükröződnek"
+  },
+  "targetUrlLabel": {
+    "message": "Cél URL"
+  },
+  "targetUrlHint": {
+    "message": "Az események itt játszódnak le"
+  },
+  "addTarget": {
+    "message": "+ Cél hozzáadása"
+  },
+  "startSession": {
+    "message": "Munkamenet indítása"
+  },
+  "removeTarget": {
+    "message": "Cél eltávolítása"
+  },
+  "removeActiveTarget": {
+    "message": "Ennek a célnak az eltávolítása"
+  },
+  "errorUrlRequired": {
+    "message": "Az URL megadása kötelező."
+  },
+  "errorUrlInvalid": {
+    "message": "Érvénytelen URL."
+  },
+  "errorUrlScheme": {
+    "message": "Csak http:// és https:// engedélyezett."
+  },
+  "errorUrlDomain": {
+    "message": "Adj meg egy teljes domaint (pl. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Érvénytelen domain."
+  },
+  "errorStartSession": {
+    "message": "A munkamenet nem indítható: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Bővítményhiba: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "A lapok nem hozhatók létre"
+  },
+  "errorOpenReplayTab": {
+    "message": "A visszajátszási lap nem nyitható meg"
+  },
+  "activeSource": {
+    "message": "Forrás"
+  },
+  "activeTargets": {
+    "message": "Célok"
+  },
+  "pause": {
+    "message": "Szünet"
+  },
+  "resume": {
+    "message": "Folytatás"
+  },
+  "stop": {
+    "message": "Leállítás"
+  },
+  "downloadHeading": {
+    "message": "Munkamenet adatainak letöltése"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Szöveg"
+  },
+  "settingsNote": {
+    "message": "Automatikusan mentődik, és azonnal érvényes a futó munkamenetekre."
+  },
+  "settingsPrivacy": {
+    "message": "Adatvédelem"
+  },
+  "settingMirrorPasswords": {
+    "message": "Jelszómezők tükrözése"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Kikapcsolva a hitelesítő adatok nem kerülnek a céllapokra és az exportált naplókba"
+  },
+  "settingsOverlays": {
+    "message": "Rétegek"
+  },
+  "settingShowCursor": {
+    "message": "Szellemkurzor megjelenítése"
+  },
+  "settingShowCursorHint": {
+    "message": "A céllapokon kirajzolt mutató"
+  },
+  "settingShowBadge": {
+    "message": "Szerepjelvény megjelenítése"
+  },
+  "settingShowBadgeHint": {
+    "message": "A FORRÁS / CÉL címke minden lapon"
+  },
+  "settingsEvents": {
+    "message": "Tükrözendő események"
+  },
+  "settingMousemove": {
+    "message": "Egérmozgás"
+  },
+  "settingMousemoveHint": {
+    "message": "A leggyakoribb esemény, kapcsold ki a forgalom csökkentéséhez"
+  },
+  "settingScroll": {
+    "message": "Görgetés"
+  },
+  "settingKeystrokes": {
+    "message": "Billentyűleütések"
+  },
+  "settingKeystrokesHint": {
+    "message": "Billentyű le / fel, a beírt értékektől függetlenül"
+  },
+  "settingsPlayback": {
+    "message": "Lejátszás"
+  },
+  "settingSmoothScroll": {
+    "message": "Sima görgetés"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Kikapcsolva azonnal ugrik, és szinkronban tartja a gyors görgetést"
+  },
+  "settingScrollDebounce": {
+    "message": "Görgetési késleltetés"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Csendes időszak a görgetés elküldése előtt"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Munkamenet indítása"
+  },
+  "settingTabDelay": {
+    "message": "Lapok lépcsőzetes megnyitása"
+  },
+  "settingTabDelayHint": {
+    "message": "Késleltetés az egyes céllapok között. A 0 egyszerre nyitja meg mindet; hasznos olyan oldalaknál, amelyek korlátozzák a kéréscsomagokat."
+  },
+  "settingsReset": {
+    "message": "Alapértelmezés visszaállítása"
+  },
+  "infoIntro": {
+    "message": "A MirrorTab valós időben tükrözi a DOM-interakciókat: kattintásokat, bevitelt, billentyűleütéseket, fókuszt, rámutatást és görgetést, iframe-ekben is, egy <strong>forráslapról</strong> egy vagy több <strong>céllapra</strong>. Tökéletes demókhoz, teszteléshez és élő bemutatókhoz."
+  },
+  "infoStep1": {
+    "message": "Adj meg egy <strong>forrás URL-t</strong> és legalább egy <strong>cél URL-t</strong>."
+  },
+  "infoStep2": {
+    "message": "Kattints a <strong>Munkamenet indítása</strong> gombra, a lapok automatikusan megnyílnak."
+  },
+  "infoStep3": {
+    "message": "Dolgozz a <strong class=\"kd-text-danger\">FORRÁS</strong> lapon, a műveletek élőben tükröződnek minden <strong class=\"kd-text-accent\">CÉL</strong> lapra."
+  },
+  "infoStep4": {
+    "message": "A munkamenetet a <strong>Szünet / Folytatás</strong> vagy a <strong>Leállítás</strong> gombbal vezérelheted."
+  },
+  "infoStep5": {
+    "message": "Az eseménynaplót bármikor letöltheted <strong>JSON</strong> vagy <strong>Szöveg</strong> formátumban."
+  },
+  "infoGithub": {
+    "message": "GitHub-tároló"
+  },
+  "infoReport": {
+    "message": "Hiba / ötlet bejelentése"
+  },
+  "infoCreatedBy": {
+    "message": "Készítette:"
+  },
+  "replayLink": {
+    "message": "Munkamenet-visszajátszás megnyitása"
+  },
+  "footerEvents": {
+    "message": "Kattintás · Bevitel · Billentyűk · Fókusz · Hover · Görgetés · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Munkamenet visszajátszása"
+  },
+  "replaySubtitle": {
+    "message": "Munkamenet visszajátszása"
+  },
+  "replayStatusReady": {
+    "message": "Kész"
+  },
+  "replayStatusPlaying": {
+    "message": "Lejátszás"
+  },
+  "replayStatusPaused": {
+    "message": "Szüneteltetve"
+  },
+  "replayStatusReloading": {
+    "message": "Újratöltés…"
+  },
+  "replayStatusCompleted": {
+    "message": "Befejezve"
+  },
+  "replayUrlLabel": {
+    "message": "Webhely URL-je"
+  },
+  "replayUrlHint": {
+    "message": "Az oldal, ahol a rögzített műveletek visszajátszódnak"
+  },
+  "replayFileLabel": {
+    "message": "Munkamenetfájl"
+  },
+  "replayDropHint": {
+    "message": "Húzz ide egy <strong>.json</strong> vagy <strong>.txt</strong> munkamenetfájlt"
+  },
+  "replayOr": {
+    "message": "vagy"
+  },
+  "replayBrowse": {
+    "message": "Fájlok tallózása"
+  },
+  "replayRemoveFile": {
+    "message": "Fájl eltávolítása"
+  },
+  "replaySpeedLabel": {
+    "message": "Lejátszási sebesség"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lassú"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normál"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Gyors"
+  },
+  "replayStart": {
+    "message": "Visszajátszás indítása"
+  },
+  "replayOpening": {
+    "message": "Lap megnyitása…"
+  },
+  "replayHeading": {
+    "message": "Visszajátszás"
+  },
+  "replayProgress": {
+    "message": "$CURRENT$. / $TOTAL$ esemény",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Folytatás"
+  },
+  "replayRestart": {
+    "message": "Újraindítás"
+  },
+  "replayCompletedTitle": {
+    "message": "Visszajátszás befejezve"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ esemény sikeresen visszajátszva.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Mind a(z) $COUNT$ esemény sikeresen visszajátszva.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Bezárás"
+  },
+  "replayFooter": {
+    "message": "Rögzített munkamenetek visszajátszása · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Tölts fel egy .json vagy .txt fájlt"
+  },
+  "replayNoEvents": {
+    "message": "A munkamenetfájlban nincsenek események"
+  },
+  "replayParseError": {
+    "message": "A munkamenetfájl nem olvasható"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ esemény betöltve",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ esemény betöltve",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Adj meg egy érvényes URL-t"
+  },
+  "replayFileMissing": {
+    "message": "Tölts fel egy munkamenetfájlt"
+  },
+  "replayNoResponse": {
+    "message": "Nem sikerült kommunikálni a bővítménnyel"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Várakozás"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - várakozás: $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Várakozás a megnyitásra"
+  },
+  "pendingNote": {
+    "message": "A lépcsőzetes indítás be van kapcsolva, ezért ez a lap rövid késleltetés után nyílik meg."
+  },
+  "pendingOpening": {
+    "message": "Megnyitás…"
+  },
+  "pendingHint": {
+    "message": "Ezt a MirrorTab beállításaiban, a <strong class=\"kd-text-secondary\">Lapok lépcsőzetes megnyitása</strong> alatt módosíthatod."
+  },
+  "badgeSource": {
+    "message": "FORRÁS"
+  },
+  "badgeTarget": {
+    "message": "CÉL"
+  },
+  "badgeReplay": {
+    "message": "VISSZAJÁTSZÁS"
+  }
+}

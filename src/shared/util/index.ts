@@ -23,6 +23,7 @@ export {
 export type { PendingParams } from './pending/pending';
 export { setFieldError, setFieldValid, resetFieldState } from './field/field';
 export { isSensitiveField } from './sensitive/sensitive';
+export { t, plural, localizePage, uiLanguage } from './i18n/i18n';
 export {
   loadSettings,
   saveSettings,

@@ -13,7 +13,8 @@
     "lint": "pnpm exec eslint .",
     "test": "pnpm exec jest",
     "test:watch": "pnpm exec jest --watch",
-    "test:coverage": "pnpm exec jest --coverage"
+    "test:coverage": "pnpm exec jest --coverage",
+    "i18n:report": "jiti scripts/i18n-report.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
@@ -23,7 +24,7 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
     "@fontsource/raleway": "^5.3.0",
-    "@kostad/brand": "^1.5.0",
+    "@kostad/brand": "^1.6.0",
     "@release-it/conventional-changelog": "^12.0.2",
     "@types/chrome": "^0.1.42",
     "@types/jest": "^30.0.0",

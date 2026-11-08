@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Αντικατοπτρίζει τις αλληλεπιδράσεις DOM από μια καρτέλα προέλευσης σε μια καρτέλα προορισμού σε πραγματικό χρόνο."
+  },
+  "appTagline": {
+    "message": "Αντικατοπτρισμός DOM"
+  },
+  "logoAlt": {
+    "message": "Λογότυπο MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Ρυθμίσεις MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Ρυθμίσεις"
+  },
+  "settingsCloseLabel": {
+    "message": "Κλείσιμο ρυθμίσεων"
+  },
+  "closeTitle": {
+    "message": "Κλείσιμο"
+  },
+  "infoOpenLabel": {
+    "message": "Σχετικά με το MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Κλείσιμο πληροφοριών"
+  },
+  "statusIdle": {
+    "message": "Αδρανές"
+  },
+  "statusActive": {
+    "message": "Ενεργό"
+  },
+  "statusPaused": {
+    "message": "Σε παύση"
+  },
+  "statusError": {
+    "message": "Σφάλμα"
+  },
+  "sourceUrlLabel": {
+    "message": "URL προέλευσης"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Οι αλληλεπιδράσεις εδώ θα αντικατοπτρίζονται"
+  },
+  "targetUrlLabel": {
+    "message": "URL προορισμού"
+  },
+  "targetUrlHint": {
+    "message": "Τα συμβάντα θα αναπαράγονται εδώ"
+  },
+  "addTarget": {
+    "message": "+ Προσθήκη προορισμού"
+  },
+  "startSession": {
+    "message": "Έναρξη συνεδρίας"
+  },
+  "removeTarget": {
+    "message": "Αφαίρεση προορισμού"
+  },
+  "removeActiveTarget": {
+    "message": "Αφαίρεση αυτού του προορισμού"
+  },
+  "errorUrlRequired": {
+    "message": "Το URL είναι υποχρεωτικό."
+  },
+  "errorUrlInvalid": {
+    "message": "Μη έγκυρο URL."
+  },
+  "errorUrlScheme": {
+    "message": "Επιτρέπονται μόνο http:// και https://."
+  },
+  "errorUrlDomain": {
+    "message": "Εισαγάγετε πλήρες domain (π.χ. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Μη έγκυρο domain."
+  },
+  "errorStartSession": {
+    "message": "Η έναρξη της συνεδρίας απέτυχε: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Σφάλμα επέκτασης: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Η δημιουργία των καρτελών απέτυχε"
+  },
+  "errorOpenReplayTab": {
+    "message": "Το άνοιγμα της καρτέλας αναπαραγωγής απέτυχε"
+  },
+  "activeSource": {
+    "message": "Προέλευση"
+  },
+  "activeTargets": {
+    "message": "Προορισμοί"
+  },
+  "pause": {
+    "message": "Παύση"
+  },
+  "resume": {
+    "message": "Συνέχεια"
+  },
+  "stop": {
+    "message": "Διακοπή"
+  },
+  "downloadHeading": {
+    "message": "Λήψη δεδομένων συνεδρίας"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Κείμενο"
+  },
+  "settingsNote": {
+    "message": "Αποθηκεύεται αυτόματα και εφαρμόζεται αμέσως στις τρέχουσες συνεδρίες."
+  },
+  "settingsPrivacy": {
+    "message": "Απόρρητο"
+  },
+  "settingMirrorPasswords": {
+    "message": "Αντικατοπτρισμός πεδίων κωδικού"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Απενεργοποιημένο κρατά τα διαπιστευτήρια εκτός των καρτελών προορισμού και των εξαγόμενων αρχείων καταγραφής"
+  },
+  "settingsOverlays": {
+    "message": "Επικαλύψεις"
+  },
+  "settingShowCursor": {
+    "message": "Εμφάνιση δρομέα-φάντασμα"
+  },
+  "settingShowCursorHint": {
+    "message": "Ο δείκτης που σχεδιάζεται στις καρτέλες προορισμού"
+  },
+  "settingShowBadge": {
+    "message": "Εμφάνιση σήματος ρόλου"
+  },
+  "settingShowBadgeHint": {
+    "message": "Η ετικέτα ΠΡΟΕΛΕΥΣΗ / ΠΡΟΟΡΙΣΜΟΣ σε κάθε καρτέλα"
+  },
+  "settingsEvents": {
+    "message": "Συμβάντα προς αντικατοπτρισμό"
+  },
+  "settingMousemove": {
+    "message": "Κίνηση ποντικιού"
+  },
+  "settingMousemoveHint": {
+    "message": "Το συχνότερο συμβάν, απενεργοποιήστε το για λιγότερη κίνηση"
+  },
+  "settingScroll": {
+    "message": "Κύλιση"
+  },
+  "settingKeystrokes": {
+    "message": "Πατήματα πλήκτρων"
+  },
+  "settingKeystrokesHint": {
+    "message": "Πάτημα / απελευθέρωση πλήκτρου, ξεχωριστά από τις πληκτρολογημένες τιμές"
+  },
+  "settingsPlayback": {
+    "message": "Αναπαραγωγή"
+  },
+  "settingSmoothScroll": {
+    "message": "Ομαλή κύλιση"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Απενεργοποιημένο μεταπηδά αμέσως και κρατά τη γρήγορη κύλιση συγχρονισμένη"
+  },
+  "settingScrollDebounce": {
+    "message": "Καθυστέρηση κύλισης"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Ήσυχο διάστημα πριν την αποστολή μιας κύλισης"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Έναρξη συνεδρίας"
+  },
+  "settingTabDelay": {
+    "message": "Κλιμακωτό άνοιγμα καρτελών"
+  },
+  "settingTabDelayHint": {
+    "message": "Καθυστέρηση μεταξύ κάθε καρτέλας προορισμού. Το 0 τις ανοίγει όλες μαζί· χρήσιμο για ιστότοπους που περιορίζουν τις ριπές αιτημάτων."
+  },
+  "settingsReset": {
+    "message": "Επαναφορά προεπιλογών"
+  },
+  "infoIntro": {
+    "message": "Το MirrorTab αντικατοπτρίζει αλληλεπιδράσεις DOM: κλικ, εισαγωγές, πατήματα πλήκτρων, εστίαση, hover και κύλιση, μαζί με τα iframe, από μια καρτέλα <strong>προέλευσης</strong> σε μία ή περισσότερες καρτέλες <strong>προορισμού</strong> σε πραγματικό χρόνο. Ιδανικό για demo, δοκιμές και ζωντανές παρουσιάσεις."
+  },
+  "infoStep1": {
+    "message": "Εισαγάγετε ένα <strong>URL προέλευσης</strong> και τουλάχιστον ένα <strong>URL προορισμού</strong>."
+  },
+  "infoStep2": {
+    "message": "Κάντε κλικ στο <strong>Έναρξη συνεδρίας</strong>, οι καρτέλες ανοίγουν αυτόματα."
+  },
+  "infoStep3": {
+    "message": "Αλληλεπιδράστε στην καρτέλα <strong class=\"kd-text-danger\">ΠΡΟΕΛΕΥΣΗ</strong>, οι ενέργειες αντικατοπτρίζονται ζωντανά σε κάθε καρτέλα <strong class=\"kd-text-accent\">ΠΡΟΟΡΙΣΜΟΣ</strong>."
+  },
+  "infoStep4": {
+    "message": "Χρησιμοποιήστε <strong>Παύση / Συνέχεια</strong> ή <strong>Διακοπή</strong> για να ελέγξετε τη συνεδρία."
+  },
+  "infoStep5": {
+    "message": "Κατεβάστε το αρχείο καταγραφής συμβάντων ως <strong>JSON</strong> ή <strong>Κείμενο</strong> οποιαδήποτε στιγμή."
+  },
+  "infoGithub": {
+    "message": "Αποθετήριο GitHub"
+  },
+  "infoReport": {
+    "message": "Αναφορά προβλήματος / ιδέας"
+  },
+  "infoCreatedBy": {
+    "message": "Δημιουργήθηκε από"
+  },
+  "replayLink": {
+    "message": "Άνοιγμα αναπαραγωγής συνεδρίας"
+  },
+  "footerEvents": {
+    "message": "Κλικ · Εισαγωγές · Πλήκτρα · Εστίαση · Hover · Κύλιση · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Αναπαραγωγή συνεδρίας"
+  },
+  "replaySubtitle": {
+    "message": "Αναπαραγωγή συνεδρίας"
+  },
+  "replayStatusReady": {
+    "message": "Έτοιμο"
+  },
+  "replayStatusPlaying": {
+    "message": "Αναπαραγωγή"
+  },
+  "replayStatusPaused": {
+    "message": "Σε παύση"
+  },
+  "replayStatusReloading": {
+    "message": "Επαναφόρτωση…"
+  },
+  "replayStatusCompleted": {
+    "message": "Ολοκληρώθηκε"
+  },
+  "replayUrlLabel": {
+    "message": "URL ιστότοπου"
+  },
+  "replayUrlHint": {
+    "message": "Η σελίδα όπου θα αναπαραχθούν οι καταγεγραμμένες ενέργειες"
+  },
+  "replayFileLabel": {
+    "message": "Αρχείο συνεδρίας"
+  },
+  "replayDropHint": {
+    "message": "Αποθέστε εδώ ένα αρχείο συνεδρίας <strong>.json</strong> ή <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "ή"
+  },
+  "replayBrowse": {
+    "message": "Αναζήτηση αρχείων"
+  },
+  "replayRemoveFile": {
+    "message": "Αφαίρεση αρχείου"
+  },
+  "replaySpeedLabel": {
+    "message": "Ταχύτητα αναπαραγωγής"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Αργή"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Κανονική"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Γρήγορη"
+  },
+  "replayStart": {
+    "message": "Έναρξη αναπαραγωγής"
+  },
+  "replayOpening": {
+    "message": "Άνοιγμα καρτέλας…"
+  },
+  "replayHeading": {
+    "message": "Αναπαραγωγή"
+  },
+  "replayProgress": {
+    "message": "Συμβάν $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Συνέχεια"
+  },
+  "replayRestart": {
+    "message": "Επανεκκίνηση"
+  },
+  "replayCompletedTitle": {
+    "message": "Η αναπαραγωγή ολοκληρώθηκε"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ συμβάν αναπαράχθηκε επιτυχώς.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Και τα $COUNT$ συμβάντα αναπαράχθηκαν επιτυχώς.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Κλείσιμο"
+  },
+  "replayFooter": {
+    "message": "Αναπαραγωγή καταγεγραμμένων συνεδριών · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Ανεβάστε ένα αρχείο .json ή .txt"
+  },
+  "replayNoEvents": {
+    "message": "Δεν βρέθηκαν συμβάντα στο αρχείο συνεδρίας"
+  },
+  "replayParseError": {
+    "message": "Η ανάγνωση του αρχείου συνεδρίας απέτυχε"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Φορτώθηκε $COUNT$ συμβάν",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Φορτώθηκαν $COUNT$ συμβάντα",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Εισαγάγετε ένα έγκυρο URL"
+  },
+  "replayFileMissing": {
+    "message": "Ανεβάστε ένα αρχείο συνεδρίας"
+  },
+  "replayNoResponse": {
+    "message": "Η επικοινωνία με την επέκταση απέτυχε"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Αναμονή"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - αναμονή για $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Αναμονή για άνοιγμα"
+  },
+  "pendingNote": {
+    "message": "Η κλιμακωτή έναρξη είναι ενεργή, οπότε αυτή η καρτέλα θα ανοίξει μετά από μικρή καθυστέρηση."
+  },
+  "pendingOpening": {
+    "message": "Ανοίγει τώρα…"
+  },
+  "pendingHint": {
+    "message": "Αλλάξτε το στο <strong class=\"kd-text-secondary\">Κλιμακωτό άνοιγμα καρτελών</strong> στις ρυθμίσεις του MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ΠΡΟΕΛΕΥΣΗ"
+  },
+  "badgeTarget": {
+    "message": "ΠΡΟΟΡΙΣΜΟΣ"
+  },
+  "badgeReplay": {
+    "message": "ΑΝΑΠΑΡΑΓΩΓΗ"
+  }
+}

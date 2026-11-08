@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Reflecteix les interaccions del DOM d'una pestanya d'origen a una de destinació en temps real."
+  },
+  "appTagline": {
+    "message": "Reflex d’interaccions DOM"
+  },
+  "logoAlt": {
+    "message": "Logotip de MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Configuració de MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Configuració"
+  },
+  "settingsCloseLabel": {
+    "message": "Tanca la configuració"
+  },
+  "closeTitle": {
+    "message": "Tanca"
+  },
+  "infoOpenLabel": {
+    "message": "Quant a MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Tanca la informació"
+  },
+  "statusIdle": {
+    "message": "Inactiu"
+  },
+  "statusActive": {
+    "message": "Actiu"
+  },
+  "statusPaused": {
+    "message": "En pausa"
+  },
+  "statusError": {
+    "message": "Error"
+  },
+  "sourceUrlLabel": {
+    "message": "URL d'origen"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Les interaccions fetes aquí es reflectiran"
+  },
+  "targetUrlLabel": {
+    "message": "URL de destinació"
+  },
+  "targetUrlHint": {
+    "message": "Els esdeveniments es reproduiran aquí"
+  },
+  "addTarget": {
+    "message": "+ Afegeix destinació"
+  },
+  "startSession": {
+    "message": "Inicia la sessió"
+  },
+  "removeTarget": {
+    "message": "Elimina la destinació"
+  },
+  "removeActiveTarget": {
+    "message": "Elimina aquesta destinació"
+  },
+  "errorUrlRequired": {
+    "message": "L'URL és obligatori."
+  },
+  "errorUrlInvalid": {
+    "message": "URL no vàlid."
+  },
+  "errorUrlScheme": {
+    "message": "Només es permeten http:// i https://."
+  },
+  "errorUrlDomain": {
+    "message": "Introdueix un domini complet (p. ex. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domini no vàlid."
+  },
+  "errorStartSession": {
+    "message": "No s'ha pogut iniciar la sessió: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Error de l'extensió: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "No s'han pogut crear les pestanyes"
+  },
+  "errorOpenReplayTab": {
+    "message": "No s'ha pogut obrir la pestanya de reproducció"
+  },
+  "activeSource": {
+    "message": "Origen"
+  },
+  "activeTargets": {
+    "message": "Destinacions"
+  },
+  "pause": {
+    "message": "Pausa"
+  },
+  "resume": {
+    "message": "Reprèn"
+  },
+  "stop": {
+    "message": "Atura"
+  },
+  "downloadHeading": {
+    "message": "Baixa les dades de la sessió"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Es desa automàticament i s'aplica a l'instant a les sessions en curs."
+  },
+  "settingsPrivacy": {
+    "message": "Privadesa"
+  },
+  "settingMirrorPasswords": {
+    "message": "Reflecteix els camps de contrasenya"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Desactivat, manté les credencials fora de les pestanyes de destinació i dels registres exportats"
+  },
+  "settingsOverlays": {
+    "message": "Superposicions"
+  },
+  "settingShowCursor": {
+    "message": "Mostra el cursor fantasma"
+  },
+  "settingShowCursorHint": {
+    "message": "El punter dibuixat a les pestanyes de destinació"
+  },
+  "settingShowBadge": {
+    "message": "Mostra la insígnia de rol"
+  },
+  "settingShowBadgeHint": {
+    "message": "L'etiqueta ORIGEN / DESTINACIÓ a cada pestanya"
+  },
+  "settingsEvents": {
+    "message": "Esdeveniments a reflectir"
+  },
+  "settingMousemove": {
+    "message": "Moviment del ratolí"
+  },
+  "settingMousemoveHint": {
+    "message": "L'esdeveniment més freqüent; desactiva'l per reduir el trànsit"
+  },
+  "settingScroll": {
+    "message": "Desplaçament"
+  },
+  "settingKeystrokes": {
+    "message": "Pulsacions de tecla"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tecla premuda / alliberada, independent dels valors escrits"
+  },
+  "settingsPlayback": {
+    "message": "Reproducció"
+  },
+  "settingSmoothScroll": {
+    "message": "Desplaçament suau"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Desactivat, salta a l’instant i manté sincronitzats els desplaçaments ràpids"
+  },
+  "settingScrollDebounce": {
+    "message": "Retard del desplaçament"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Període de calma abans d'enviar un desplaçament"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Inici de sessió"
+  },
+  "settingTabDelay": {
+    "message": "Obertura esglaonada de pestanyes"
+  },
+  "settingTabDelayHint": {
+    "message": "Retard entre cada pestanya de destinació. 0 les obre totes alhora; útil per a llocs que limiten les ràfegues de peticions."
+  },
+  "settingsReset": {
+    "message": "Restableix els valors per defecte"
+  },
+  "infoIntro": {
+    "message": "MirrorTab reflecteix les interaccions del DOM: clics, entrades, pulsacions de tecla, focus, passar el ratolí i desplaçament, també dins d’iframes, d’una pestanya <strong>d’origen</strong> a una o més pestanyes <strong>de destinació</strong> en temps real. Perfecte per a demostracions, proves i presentacions en directe."
+  },
+  "infoStep1": {
+    "message": "Introdueix un <strong>URL d’origen</strong> i almenys un <strong>URL de destinació</strong>."
+  },
+  "infoStep2": {
+    "message": "Fes clic a <strong>Inicia la sessió</strong>; les pestanyes s’obren automàticament."
+  },
+  "infoStep3": {
+    "message": "Interactua a la pestanya <strong class=\"kd-text-danger\">ORIGEN</strong>; les accions es reflecteixen en directe a cada pestanya <strong class=\"kd-text-accent\">DESTINACIÓ</strong>."
+  },
+  "infoStep4": {
+    "message": "Fes servir <strong>Pausa / Reprèn</strong> o <strong>Atura</strong> per controlar la sessió."
+  },
+  "infoStep5": {
+    "message": "Baixa el registre d’esdeveniments quan vulguis en <strong>JSON</strong> o <strong>Text</strong>."
+  },
+  "infoGithub": {
+    "message": "Repositori de GitHub"
+  },
+  "infoReport": {
+    "message": "Informa d’un problema / idea"
+  },
+  "infoCreatedBy": {
+    "message": "Creat per"
+  },
+  "replayLink": {
+    "message": "Obre la reproducció de sessió"
+  },
+  "footerEvents": {
+    "message": "Clics · Entrades · Tecles · Focus · Hover · Scroll · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Reproducció de sessió"
+  },
+  "replaySubtitle": {
+    "message": "Reproducció de sessió"
+  },
+  "replayStatusReady": {
+    "message": "A punt"
+  },
+  "replayStatusPlaying": {
+    "message": "Reproduint"
+  },
+  "replayStatusPaused": {
+    "message": "En pausa"
+  },
+  "replayStatusReloading": {
+    "message": "Recarregant…"
+  },
+  "replayStatusCompleted": {
+    "message": "Completat"
+  },
+  "replayUrlLabel": {
+    "message": "URL del lloc"
+  },
+  "replayUrlHint": {
+    "message": "La pàgina on es reproduiran les accions enregistrades"
+  },
+  "replayFileLabel": {
+    "message": "Fitxer de sessió"
+  },
+  "replayDropHint": {
+    "message": "Arrossega aquí un fitxer de sessió <strong>.json</strong> o <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "o"
+  },
+  "replayBrowse": {
+    "message": "Explora els fitxers"
+  },
+  "replayRemoveFile": {
+    "message": "Elimina el fitxer"
+  },
+  "replaySpeedLabel": {
+    "message": "Velocitat de reproducció"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lent"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Ràpid"
+  },
+  "replayStart": {
+    "message": "Inicia la reproducció"
+  },
+  "replayOpening": {
+    "message": "Obrint la pestanya…"
+  },
+  "replayHeading": {
+    "message": "Reproducció"
+  },
+  "replayProgress": {
+    "message": "Esdeveniment $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continua"
+  },
+  "replayRestart": {
+    "message": "Reinicia"
+  },
+  "replayCompletedTitle": {
+    "message": "Reproducció completada"
+  },
+  "replayCompletedText_one": {
+    "message": "S'ha reproduït correctament $COUNT$ esdeveniment.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "S'han reproduït correctament els $COUNT$ esdeveniments.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Tanca"
+  },
+  "replayFooter": {
+    "message": "Reprodueix sessions enregistrades · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Puja un fitxer .json o .txt"
+  },
+  "replayNoEvents": {
+    "message": "No s'ha trobat cap esdeveniment al fitxer de sessió"
+  },
+  "replayParseError": {
+    "message": "No s'ha pogut llegir el fitxer de sessió"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ esdeveniment carregat",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ esdeveniments carregats",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Introdueix un URL vàlid"
+  },
+  "replayFileMissing": {
+    "message": "Puja un fitxer de sessió"
+  },
+  "replayNoResponse": {
+    "message": "No s'ha pogut comunicar amb l'extensió"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - En espera"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - esperant $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Esperant per obrir"
+  },
+  "pendingNote": {
+    "message": "L'inici esglaonat està activat, així que aquesta pestanya s'obrirà després d'un breu retard."
+  },
+  "pendingOpening": {
+    "message": "Obrint ara…"
+  },
+  "pendingHint": {
+    "message": "Canvia-ho a <strong class=\"kd-text-secondary\">Obertura esglaonada de pestanyes</strong> a la configuració de MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ORIGEN"
+  },
+  "badgeTarget": {
+    "message": "DESTINACIÓ"
+  },
+  "badgeReplay": {
+    "message": "REPRODUCCIÓ"
+  }
+}

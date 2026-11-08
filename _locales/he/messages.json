@@ -1,0 +1,438 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "משקף אינטראקציות DOM מכרטיסיית מקור לכרטיסיית יעד בזמן אמת."
+  },
+  "appTagline": {
+    "message": "שיקוף אינטראקציות DOM"
+  },
+  "logoAlt": {
+    "message": "הלוגו של MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "הגדרות MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "הגדרות"
+  },
+  "settingsCloseLabel": {
+    "message": "סגירת ההגדרות"
+  },
+  "closeTitle": {
+    "message": "סגירה"
+  },
+  "infoOpenLabel": {
+    "message": "אודות MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "סגירת המידע"
+  },
+  "statusIdle": {
+    "message": "לא פעיל"
+  },
+  "statusActive": {
+    "message": "פעיל"
+  },
+  "statusPaused": {
+    "message": "מושהה"
+  },
+  "statusError": {
+    "message": "שגיאה"
+  },
+  "sourceUrlLabel": {
+    "message": "כתובת URL של המקור"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "אינטראקציות כאן ישוקפו"
+  },
+  "targetUrlLabel": {
+    "message": "כתובת URL של היעד"
+  },
+  "targetUrlHint": {
+    "message": "אירועים יופעלו מחדש כאן"
+  },
+  "addTarget": {
+    "message": "+ הוספת יעד"
+  },
+  "startSession": {
+    "message": "התחלת סשן"
+  },
+  "removeTarget": {
+    "message": "הסרת היעד"
+  },
+  "removeActiveTarget": {
+    "message": "הסרת יעד זה"
+  },
+  "errorUrlRequired": {
+    "message": "יש להזין כתובת URL."
+  },
+  "errorUrlInvalid": {
+    "message": "כתובת URL לא חוקית."
+  },
+  "errorUrlScheme": {
+    "message": "מותר להשתמש רק ב-http:// ו-https://."
+  },
+  "errorUrlDomain": {
+    "message": "יש להזין דומיין מלא (למשל example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "דומיין לא חוקי."
+  },
+  "errorStartSession": {
+    "message": "התחלת הסשן נכשלה: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "שגיאת תוסף: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "יצירת הכרטיסיות נכשלה"
+  },
+  "errorOpenReplayTab": {
+    "message": "פתיחת כרטיסיית ההפעלה מחדש נכשלה"
+  },
+  "activeSource": {
+    "message": "מקור"
+  },
+  "activeTargets": {
+    "message": "יעדים"
+  },
+  "pause": {
+    "message": "השהיה"
+  },
+  "resume": {
+    "message": "המשך"
+  },
+  "stop": {
+    "message": "עצירה"
+  },
+  "downloadHeading": {
+    "message": "הורדת נתוני הסשן"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "טקסט"
+  },
+  "settingsNote": {
+    "message": "נשמר אוטומטית ומוחל מיד על סשנים פעילים."
+  },
+  "settingsPrivacy": {
+    "message": "פרטיות"
+  },
+  "settingMirrorPasswords": {
+    "message": "שיקוף שדות סיסמה"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "כבוי שומר את פרטי ההתחברות מחוץ לכרטיסיות היעד וליומנים המיוצאים"
+  },
+  "settingsOverlays": {
+    "message": "שכבות-על"
+  },
+  "settingShowCursor": {
+    "message": "הצגת סמן רפאים"
+  },
+  "settingShowCursorHint": {
+    "message": "המצביע שמצויר בכרטיסיות היעד"
+  },
+  "settingShowBadge": {
+    "message": "הצגת תג תפקיד"
+  },
+  "settingShowBadgeHint": {
+    "message": "התווית מקור / יעד בכל כרטיסייה"
+  },
+  "settingsEvents": {
+    "message": "אירועים לשיקוף"
+  },
+  "settingMousemove": {
+    "message": "תנועת עכבר"
+  },
+  "settingMousemoveHint": {
+    "message": "האירוע התדיר ביותר, כבו כדי להפחית תעבורה"
+  },
+  "settingScroll": {
+    "message": "גלילה"
+  },
+  "settingKeystrokes": {
+    "message": "הקשות מקלדת"
+  },
+  "settingKeystrokesHint": {
+    "message": "לחיצה ושחרור של מקשים, בנפרד מהערכים שהוקלדו"
+  },
+  "settingsPlayback": {
+    "message": "הפעלה"
+  },
+  "settingSmoothScroll": {
+    "message": "גלילה חלקה"
+  },
+  "settingSmoothScrollHint": {
+    "message": "כבוי קופץ מיד ושומר על סנכרון בגלילה מהירה"
+  },
+  "settingScrollDebounce": {
+    "message": "השהיית גלילה"
+  },
+  "settingScrollDebounceHint": {
+    "message": "זמן שקט לפני שליחת גלילה"
+  },
+  "unitMs": {
+    "message": "אלפיות שנייה"
+  },
+  "settingsSessionStart": {
+    "message": "התחלת הסשן"
+  },
+  "settingTabDelay": {
+    "message": "פתיחת כרטיסיות בהדרגה"
+  },
+  "settingTabDelayHint": {
+    "message": "השהיה בין כל כרטיסיית יעד. 0 פותח את כולן בבת אחת; שימושי לאתרים שמגבילים פרצי בקשות."
+  },
+  "settingsReset": {
+    "message": "איפוס לברירות המחדל"
+  },
+  "infoIntro": {
+    "message": "MirrorTab משקף אינטראקציות DOM: לחיצות, קלט, הקשות מקלדת, פוקוס, ריחוף וגלילה, כולל iframe, מכרטיסיית <strong>מקור</strong> לכרטיסיית <strong>יעד</strong> אחת או יותר בזמן אמת. מושלם להדגמות, לבדיקות ולמצגות חיות."
+  },
+  "infoStep1": {
+    "message": "הזינו <strong>כתובת URL של המקור</strong> ולפחות <strong>כתובת URL של היעד</strong> אחת."
+  },
+  "infoStep2": {
+    "message": "לחצו על <strong>התחלת סשן</strong>, הכרטיסיות ייפתחו אוטומטית."
+  },
+  "infoStep3": {
+    "message": "עבדו בכרטיסיית <strong class=\"kd-text-danger\">המקור</strong>, הפעולות משוקפות בזמן אמת לכל כרטיסיית <strong class=\"kd-text-accent\">יעד</strong>."
+  },
+  "infoStep4": {
+    "message": "השתמשו ב-<strong>השהיה / המשך</strong> או ב-<strong>עצירה</strong> כדי לשלוט בסשן."
+  },
+  "infoStep5": {
+    "message": "הורידו את יומן האירועים כ-<strong>JSON</strong> או כ-<strong>טקסט</strong> בכל עת."
+  },
+  "infoGithub": {
+    "message": "מאגר GitHub"
+  },
+  "infoReport": {
+    "message": "דיווח על בעיה / בקשת תכונה"
+  },
+  "infoCreatedBy": {
+    "message": "נוצר על ידי"
+  },
+  "replayLink": {
+    "message": "פתיחת הפעלה מחדש של סשן"
+  },
+  "footerEvents": {
+    "message": "לחיצות · קלט · מקשים · פוקוס · ריחוף · גלילה · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - הפעלה מחדש של סשן"
+  },
+  "replaySubtitle": {
+    "message": "הפעלה מחדש של סשן"
+  },
+  "replayStatusReady": {
+    "message": "מוכן"
+  },
+  "replayStatusPlaying": {
+    "message": "מופעל"
+  },
+  "replayStatusPaused": {
+    "message": "מושהה"
+  },
+  "replayStatusReloading": {
+    "message": "טוען מחדש…"
+  },
+  "replayStatusCompleted": {
+    "message": "הושלם"
+  },
+  "replayUrlLabel": {
+    "message": "כתובת URL של האתר"
+  },
+  "replayUrlHint": {
+    "message": "הדף שבו יופעלו מחדש הפעולות שהוקלטו"
+  },
+  "replayFileLabel": {
+    "message": "קובץ סשן"
+  },
+  "replayDropHint": {
+    "message": "גררו לכאן קובץ סשן <strong>.json</strong> או <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "או"
+  },
+  "replayBrowse": {
+    "message": "עיון בקבצים"
+  },
+  "replayRemoveFile": {
+    "message": "הסרת הקובץ"
+  },
+  "replaySpeedLabel": {
+    "message": "מהירות הפעלה"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× איטי"
+  },
+  "replaySpeedNormal": {
+    "message": "1× רגיל"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× מהיר"
+  },
+  "replayStart": {
+    "message": "התחלת הפעלה מחדש"
+  },
+  "replayOpening": {
+    "message": "פותח כרטיסייה…"
+  },
+  "replayHeading": {
+    "message": "הפעלה מחדש"
+  },
+  "replayProgress": {
+    "message": "אירוע $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "המשך"
+  },
+  "replayRestart": {
+    "message": "התחלה מחדש"
+  },
+  "replayCompletedTitle": {
+    "message": "ההפעלה מחדש הושלמה"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ אירוע הופעל מחדש בהצלחה.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_two": {
+    "message": "$COUNT$ אירועים הופעלו מחדש בהצלחה.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "כל $COUNT$ האירועים הופעלו מחדש בהצלחה.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "סגירה"
+  },
+  "replayFooter": {
+    "message": "הפעלה מחדש של סשנים מוקלטים · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "יש להעלות קובץ .json או .txt"
+  },
+  "replayNoEvents": {
+    "message": "לא נמצאו אירועים בקובץ הסשן"
+  },
+  "replayParseError": {
+    "message": "קריאת קובץ הסשן נכשלה"
+  },
+  "replayEventsLoaded_one": {
+    "message": "נטען $COUNT$ אירוע",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_two": {
+    "message": "נטענו $COUNT$ אירועים",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "נטענו $COUNT$ אירועים",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "יש להזין כתובת URL חוקית"
+  },
+  "replayFileMissing": {
+    "message": "יש להעלות קובץ סשן"
+  },
+  "replayNoResponse": {
+    "message": "התקשורת עם התוסף נכשלה"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - ממתין"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - ממתין ל-$URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "ממתין לפתיחה"
+  },
+  "pendingNote": {
+    "message": "התחלה בהדרגה פעילה, ולכן כרטיסייה זו תיפתח אחרי השהיה קצרה."
+  },
+  "pendingOpening": {
+    "message": "נפתח עכשיו…"
+  },
+  "pendingHint": {
+    "message": "ניתן לשנות זאת תחת <strong class=\"kd-text-secondary\">פתיחת כרטיסיות בהדרגה</strong> בהגדרות MirrorTab."
+  },
+  "badgeSource": {
+    "message": "מקור"
+  },
+  "badgeTarget": {
+    "message": "יעד"
+  },
+  "badgeReplay": {
+    "message": "הפעלה מחדש"
+  }
+}

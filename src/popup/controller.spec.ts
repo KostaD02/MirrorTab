@@ -138,7 +138,7 @@ describe('PopupController', () => {
         'https://src.test',
       );
       expect(document.getElementById('status-label')?.textContent).toBe(
-        'active',
+        'Active',
       );
     });
 
@@ -159,7 +159,7 @@ describe('PopupController', () => {
       await flushPromises();
 
       expect(document.getElementById('status-label')?.textContent).toBe(
-        'paused',
+        'Paused',
       );
       expect(document.getElementById('pause-label')?.textContent).toBe(
         'Resume',
@@ -266,7 +266,7 @@ describe('PopupController', () => {
         'boom',
       );
       expect(document.getElementById('status-label')?.textContent).toBe(
-        'error',
+        'Error',
       );
     });
 
@@ -351,7 +351,7 @@ describe('PopupController', () => {
         .filter((m) => m.type === ExtensionMessageTypeEnum.PauseSession);
       expect(pauseCalls).toHaveLength(1);
       expect(document.getElementById('status-label')?.textContent).toBe(
-        'paused',
+        'Paused',
       );
     });
 
@@ -383,7 +383,7 @@ describe('PopupController', () => {
         .map((c) => c[0] as ExtensionMessage)
         .filter((m) => m.type === ExtensionMessageTypeEnum.StopSession);
       expect(stopCalls).toHaveLength(1);
-      expect(document.getElementById('status-label')?.textContent).toBe('idle');
+      expect(document.getElementById('status-label')?.textContent).toBe('Idle');
     });
 
     it('download JSON fires DownloadRecord to each target', async () => {
@@ -454,7 +454,7 @@ describe('PopupController', () => {
       await flushPromises();
 
       expect(document.getElementById('active-card')?.hidden).toBe(true);
-      expect(document.getElementById('status-label')?.textContent).toBe('idle');
+      expect(document.getElementById('status-label')?.textContent).toBe('Idle');
     });
   });
 

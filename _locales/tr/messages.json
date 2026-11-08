@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Kaynak sekmedeki DOM etkileşimlerini hedef sekmeye gerçek zamanlı yansıtır."
+  },
+  "appTagline": {
+    "message": "DOM etkileşimi yansıtma"
+  },
+  "logoAlt": {
+    "message": "MirrorTab logosu"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab ayarları"
+  },
+  "settingsOpenTitle": {
+    "message": "Ayarlar"
+  },
+  "settingsCloseLabel": {
+    "message": "Ayarları kapat"
+  },
+  "closeTitle": {
+    "message": "Kapat"
+  },
+  "infoOpenLabel": {
+    "message": "MirrorTab hakkında"
+  },
+  "infoCloseLabel": {
+    "message": "Bilgiyi kapat"
+  },
+  "statusIdle": {
+    "message": "Boşta"
+  },
+  "statusActive": {
+    "message": "Etkin"
+  },
+  "statusPaused": {
+    "message": "Duraklatıldı"
+  },
+  "statusError": {
+    "message": "Hata"
+  },
+  "sourceUrlLabel": {
+    "message": "Kaynak URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Buradaki etkileşimler yansıtılır"
+  },
+  "targetUrlLabel": {
+    "message": "Hedef URL"
+  },
+  "targetUrlHint": {
+    "message": "Olaylar burada yeniden oynatılır"
+  },
+  "addTarget": {
+    "message": "+ Hedef ekle"
+  },
+  "startSession": {
+    "message": "Oturumu başlat"
+  },
+  "removeTarget": {
+    "message": "Hedefi kaldır"
+  },
+  "removeActiveTarget": {
+    "message": "Bu hedefi kaldır"
+  },
+  "errorUrlRequired": {
+    "message": "URL gerekli."
+  },
+  "errorUrlInvalid": {
+    "message": "Geçerli bir URL değil."
+  },
+  "errorUrlScheme": {
+    "message": "Yalnızca http:// ve https:// kullanılabilir."
+  },
+  "errorUrlDomain": {
+    "message": "Tam bir alan adı girin (ör. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Geçerli bir alan adı değil."
+  },
+  "errorStartSession": {
+    "message": "Oturum başlatılamadı: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Uzantı hatası: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Sekmeler oluşturulamadı"
+  },
+  "errorOpenReplayTab": {
+    "message": "Yeniden oynatma sekmesi açılamadı"
+  },
+  "activeSource": {
+    "message": "Kaynak"
+  },
+  "activeTargets": {
+    "message": "Hedefler"
+  },
+  "pause": {
+    "message": "Duraklat"
+  },
+  "resume": {
+    "message": "Sürdür"
+  },
+  "stop": {
+    "message": "Durdur"
+  },
+  "downloadHeading": {
+    "message": "Oturum verilerini indir"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Metin"
+  },
+  "settingsNote": {
+    "message": "Otomatik kaydedilir ve çalışan oturumlara hemen uygulanır."
+  },
+  "settingsPrivacy": {
+    "message": "Gizlilik"
+  },
+  "settingMirrorPasswords": {
+    "message": "Parola alanlarını yansıt"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Kapalıyken kimlik bilgileri hedef sekmelere ve dışa aktarılan günlüklere girmez"
+  },
+  "settingsOverlays": {
+    "message": "Katmanlar"
+  },
+  "settingShowCursor": {
+    "message": "Hayalet imleci göster"
+  },
+  "settingShowCursorHint": {
+    "message": "Hedef sekmelerde çizilen işaretçi"
+  },
+  "settingShowBadge": {
+    "message": "Rol rozetini göster"
+  },
+  "settingShowBadgeHint": {
+    "message": "Her sekmedeki KAYNAK / HEDEF etiketi"
+  },
+  "settingsEvents": {
+    "message": "Yansıtılacak olaylar"
+  },
+  "settingMousemove": {
+    "message": "Fare hareketi"
+  },
+  "settingMousemoveHint": {
+    "message": "En sık olay, trafiği azaltmak için kapatın"
+  },
+  "settingScroll": {
+    "message": "Kaydırma"
+  },
+  "settingKeystrokes": {
+    "message": "Tuş vuruşları"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tuş basma / bırakma, yazılan değerlerden ayrı"
+  },
+  "settingsPlayback": {
+    "message": "Oynatma"
+  },
+  "settingSmoothScroll": {
+    "message": "Yumuşak kaydırma"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Kapalıyken anında atlar, hızlı kaydırmaları eşzamanlı tutar"
+  },
+  "settingScrollDebounce": {
+    "message": "Kaydırma gecikmesi"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Kaydırma gönderilmeden önceki sessiz süre"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Oturum başlangıcı"
+  },
+  "settingTabDelay": {
+    "message": "Sekmeleri kademeli açma"
+  },
+  "settingTabDelayHint": {
+    "message": "Her hedef sekme arasındaki gecikme. 0 hepsini aynı anda açar; ani istek yoğunluğunu sınırlayan siteler için yararlıdır."
+  },
+  "settingsReset": {
+    "message": "Varsayılanlara sıfırla"
+  },
+  "infoIntro": {
+    "message": "MirrorTab, DOM etkileşimlerini yansıtır: tıklamalar, girişler, tuş vuruşları, odak, üzerine gelme ve kaydırma, iframe'ler dahil, bir <strong>kaynak</strong> sekmeden bir veya daha fazla <strong>hedef</strong> sekmeye gerçek zamanlı aktarılır. Demolar, testler ve canlı sunumlar için idealdir."
+  },
+  "infoStep1": {
+    "message": "Bir <strong>Kaynak URL</strong> ve en az bir <strong>Hedef URL</strong> girin."
+  },
+  "infoStep2": {
+    "message": "<strong>Oturumu başlat</strong>'a tıklayın, sekmeler otomatik açılır."
+  },
+  "infoStep3": {
+    "message": "<strong class=\"kd-text-danger\">KAYNAK</strong> sekmesinde çalışın, eylemler her <strong class=\"kd-text-accent\">HEDEF</strong> sekmesine canlı yansıtılır."
+  },
+  "infoStep4": {
+    "message": "Oturumu kontrol etmek için <strong>Duraklat / Sürdür</strong> veya <strong>Durdur</strong>'u kullanın."
+  },
+  "infoStep5": {
+    "message": "Olay günlüğünü istediğiniz zaman <strong>JSON</strong> veya <strong>Metin</strong> olarak indirin."
+  },
+  "infoGithub": {
+    "message": "GitHub deposu"
+  },
+  "infoReport": {
+    "message": "Sorun / özellik bildir"
+  },
+  "infoCreatedBy": {
+    "message": "Geliştiren:"
+  },
+  "replayLink": {
+    "message": "Oturum yeniden oynatmayı aç"
+  },
+  "footerEvents": {
+    "message": "Tıklama · Giriş · Tuşlar · Odak · Üzerine gelme · Kaydırma · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Oturum yeniden oynatma"
+  },
+  "replaySubtitle": {
+    "message": "Oturum yeniden oynatma"
+  },
+  "replayStatusReady": {
+    "message": "Hazır"
+  },
+  "replayStatusPlaying": {
+    "message": "Oynatılıyor"
+  },
+  "replayStatusPaused": {
+    "message": "Duraklatıldı"
+  },
+  "replayStatusReloading": {
+    "message": "Yeniden yükleniyor…"
+  },
+  "replayStatusCompleted": {
+    "message": "Tamamlandı"
+  },
+  "replayUrlLabel": {
+    "message": "Web sitesi URL'si"
+  },
+  "replayUrlHint": {
+    "message": "Kaydedilen eylemlerin yeniden oynatılacağı sayfa"
+  },
+  "replayFileLabel": {
+    "message": "Oturum dosyası"
+  },
+  "replayDropHint": {
+    "message": "<strong>.json</strong> veya <strong>.txt</strong> oturum dosyasını buraya bırakın"
+  },
+  "replayOr": {
+    "message": "veya"
+  },
+  "replayBrowse": {
+    "message": "Dosyalara göz at"
+  },
+  "replayRemoveFile": {
+    "message": "Dosyayı kaldır"
+  },
+  "replaySpeedLabel": {
+    "message": "Oynatma hızı"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Yavaş"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Hızlı"
+  },
+  "replayStart": {
+    "message": "Yeniden oynatmayı başlat"
+  },
+  "replayOpening": {
+    "message": "Sekme açılıyor…"
+  },
+  "replayHeading": {
+    "message": "Yeniden oynatma"
+  },
+  "replayProgress": {
+    "message": "Olay $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Devam et"
+  },
+  "replayRestart": {
+    "message": "Yeniden başlat"
+  },
+  "replayCompletedTitle": {
+    "message": "Yeniden oynatma tamamlandı"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ olay başarıyla yeniden oynatıldı.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "$COUNT$ olayın tamamı başarıyla yeniden oynatıldı.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Kapat"
+  },
+  "replayFooter": {
+    "message": "Kaydedilen oturumları yeniden oynatın · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Lütfen bir .json veya .txt dosyası yükleyin"
+  },
+  "replayNoEvents": {
+    "message": "Oturum dosyasında olay bulunamadı"
+  },
+  "replayParseError": {
+    "message": "Oturum dosyası okunamadı"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ olay yüklendi",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ olay yüklendi",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Lütfen geçerli bir URL girin"
+  },
+  "replayFileMissing": {
+    "message": "Lütfen bir oturum dosyası yükleyin"
+  },
+  "replayNoResponse": {
+    "message": "Uzantıyla iletişim kurulamadı"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Bekliyor"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - $URL$ bekleniyor",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Açılmayı bekliyor"
+  },
+  "pendingNote": {
+    "message": "Kademeli başlatma açık, bu sekme kısa bir gecikmeden sonra açılır."
+  },
+  "pendingOpening": {
+    "message": "Şimdi açılıyor…"
+  },
+  "pendingHint": {
+    "message": "Bunu MirrorTab ayarlarındaki <strong class=\"kd-text-secondary\">Sekmeleri kademeli açma</strong> bölümünden değiştirin."
+  },
+  "badgeSource": {
+    "message": "KAYNAK"
+  },
+  "badgeTarget": {
+    "message": "HEDEF"
+  },
+  "badgeReplay": {
+    "message": "YENİDEN OYNATMA"
+  }
+}

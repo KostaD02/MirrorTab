@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Replica in tempo reale le interazioni DOM da una scheda di origine a una di destinazione."
+  },
+  "appTagline": {
+    "message": "Replica di interazioni DOM"
+  },
+  "logoAlt": {
+    "message": "Logo di MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Impostazioni di MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Impostazioni"
+  },
+  "settingsCloseLabel": {
+    "message": "Chiudi impostazioni"
+  },
+  "closeTitle": {
+    "message": "Chiudi"
+  },
+  "infoOpenLabel": {
+    "message": "Informazioni su MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Chiudi informazioni"
+  },
+  "statusIdle": {
+    "message": "Inattivo"
+  },
+  "statusActive": {
+    "message": "Attivo"
+  },
+  "statusPaused": {
+    "message": "In pausa"
+  },
+  "statusError": {
+    "message": "Errore"
+  },
+  "sourceUrlLabel": {
+    "message": "URL di origine"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Le interazioni qui verranno replicate"
+  },
+  "targetUrlLabel": {
+    "message": "URL di destinazione"
+  },
+  "targetUrlHint": {
+    "message": "Gli eventi verranno riprodotti qui"
+  },
+  "addTarget": {
+    "message": "+ Aggiungi destinazione"
+  },
+  "startSession": {
+    "message": "Avvia sessione"
+  },
+  "removeTarget": {
+    "message": "Rimuovi destinazione"
+  },
+  "removeActiveTarget": {
+    "message": "Rimuovi questa destinazione"
+  },
+  "errorUrlRequired": {
+    "message": "L'URL è obbligatorio."
+  },
+  "errorUrlInvalid": {
+    "message": "URL non valido."
+  },
+  "errorUrlScheme": {
+    "message": "Sono consentiti solo http:// e https://."
+  },
+  "errorUrlDomain": {
+    "message": "Inserisci un dominio completo (es. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Dominio non valido."
+  },
+  "errorStartSession": {
+    "message": "Impossibile avviare la sessione: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Errore dell'estensione: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Impossibile creare le schede"
+  },
+  "errorOpenReplayTab": {
+    "message": "Impossibile aprire la scheda di replay"
+  },
+  "activeSource": {
+    "message": "Origine"
+  },
+  "activeTargets": {
+    "message": "Destinazioni"
+  },
+  "pause": {
+    "message": "Pausa"
+  },
+  "resume": {
+    "message": "Riprendi"
+  },
+  "stop": {
+    "message": "Interrompi"
+  },
+  "downloadHeading": {
+    "message": "Scarica i dati della sessione"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Testo"
+  },
+  "settingsNote": {
+    "message": "Salvato automaticamente e applicato subito alle sessioni in corso."
+  },
+  "settingsPrivacy": {
+    "message": "Privacy"
+  },
+  "settingMirrorPasswords": {
+    "message": "Replica i campi password"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Disattivato tiene le credenziali fuori dalle schede di destinazione e dai log esportati"
+  },
+  "settingsOverlays": {
+    "message": "Overlay"
+  },
+  "settingShowCursor": {
+    "message": "Mostra cursore fantasma"
+  },
+  "settingShowCursorHint": {
+    "message": "Il puntatore disegnato sulle schede di destinazione"
+  },
+  "settingShowBadge": {
+    "message": "Mostra badge del ruolo"
+  },
+  "settingShowBadgeHint": {
+    "message": "L'etichetta ORIGINE / DESTINAZIONE su ogni scheda"
+  },
+  "settingsEvents": {
+    "message": "Eventi da replicare"
+  },
+  "settingMousemove": {
+    "message": "Movimento del mouse"
+  },
+  "settingMousemoveHint": {
+    "message": "L'evento più frequente, disattivalo per ridurre il traffico"
+  },
+  "settingScroll": {
+    "message": "Scorrimento"
+  },
+  "settingKeystrokes": {
+    "message": "Pressioni dei tasti"
+  },
+  "settingKeystrokesHint": {
+    "message": "Tasto premuto / rilasciato, separato dai valori digitati"
+  },
+  "settingsPlayback": {
+    "message": "Riproduzione"
+  },
+  "settingSmoothScroll": {
+    "message": "Scorrimento fluido"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Disattivato salta all'istante e mantiene sincronizzati gli scorrimenti veloci"
+  },
+  "settingScrollDebounce": {
+    "message": "Debounce dello scorrimento"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Periodo di quiete prima di inviare uno scorrimento"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Avvio della sessione"
+  },
+  "settingTabDelay": {
+    "message": "Apertura scaglionata delle schede"
+  },
+  "settingTabDelayHint": {
+    "message": "Ritardo tra una scheda di destinazione e l'altra. 0 le apre tutte insieme; utile per i siti che limitano le raffiche di richieste."
+  },
+  "settingsReset": {
+    "message": "Ripristina predefiniti"
+  },
+  "infoIntro": {
+    "message": "MirrorTab replica le interazioni DOM: clic, input, pressioni dei tasti, focus, hover e scorrimento, iframe inclusi, da una scheda di <strong>origine</strong> a una o più schede di <strong>destinazione</strong> in tempo reale. Perfetto per demo, test e presentazioni dal vivo."
+  },
+  "infoStep1": {
+    "message": "Inserisci un <strong>URL di origine</strong> e almeno un <strong>URL di destinazione</strong>."
+  },
+  "infoStep2": {
+    "message": "Fai clic su <strong>Avvia sessione</strong>, le schede si aprono automaticamente."
+  },
+  "infoStep3": {
+    "message": "Interagisci con la scheda <strong class=\"kd-text-danger\">ORIGINE</strong>, le azioni vengono replicate dal vivo su ogni scheda <strong class=\"kd-text-accent\">DESTINAZIONE</strong>."
+  },
+  "infoStep4": {
+    "message": "Usa <strong>Pausa / Riprendi</strong> o <strong>Interrompi</strong> per controllare la sessione."
+  },
+  "infoStep5": {
+    "message": "Scarica il log degli eventi come <strong>JSON</strong> o <strong>Testo</strong> in qualsiasi momento."
+  },
+  "infoGithub": {
+    "message": "Repository GitHub"
+  },
+  "infoReport": {
+    "message": "Segnala un problema / una funzionalità"
+  },
+  "infoCreatedBy": {
+    "message": "Creato da"
+  },
+  "replayLink": {
+    "message": "Apri il replay della sessione"
+  },
+  "footerEvents": {
+    "message": "Clic · Input · Tasti · Focus · Hover · Scroll · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Replay della sessione"
+  },
+  "replaySubtitle": {
+    "message": "Replay della sessione"
+  },
+  "replayStatusReady": {
+    "message": "Pronto"
+  },
+  "replayStatusPlaying": {
+    "message": "In riproduzione"
+  },
+  "replayStatusPaused": {
+    "message": "In pausa"
+  },
+  "replayStatusReloading": {
+    "message": "Ricaricamento…"
+  },
+  "replayStatusCompleted": {
+    "message": "Completato"
+  },
+  "replayUrlLabel": {
+    "message": "URL del sito"
+  },
+  "replayUrlHint": {
+    "message": "La pagina in cui verranno riprodotte le azioni registrate"
+  },
+  "replayFileLabel": {
+    "message": "File di sessione"
+  },
+  "replayDropHint": {
+    "message": "Trascina qui un file di sessione <strong>.json</strong> o <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "oppure"
+  },
+  "replayBrowse": {
+    "message": "Sfoglia file"
+  },
+  "replayRemoveFile": {
+    "message": "Rimuovi file"
+  },
+  "replaySpeedLabel": {
+    "message": "Velocità di riproduzione"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lenta"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normale"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Veloce"
+  },
+  "replayStart": {
+    "message": "Avvia replay"
+  },
+  "replayOpening": {
+    "message": "Apertura della scheda…"
+  },
+  "replayHeading": {
+    "message": "Replay"
+  },
+  "replayProgress": {
+    "message": "Evento $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continua"
+  },
+  "replayRestart": {
+    "message": "Ricomincia"
+  },
+  "replayCompletedTitle": {
+    "message": "Replay completato"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ evento è stato riprodotto correttamente.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Tutti i $COUNT$ eventi sono stati riprodotti correttamente.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Chiudi"
+  },
+  "replayFooter": {
+    "message": "Riproduci le sessioni registrate · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Carica un file .json o .txt"
+  },
+  "replayNoEvents": {
+    "message": "Nessun evento trovato nel file di sessione"
+  },
+  "replayParseError": {
+    "message": "Impossibile leggere il file di sessione"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ evento caricato",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ eventi caricati",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Inserisci un URL valido"
+  },
+  "replayFileMissing": {
+    "message": "Carica un file di sessione"
+  },
+  "replayNoResponse": {
+    "message": "Impossibile comunicare con l'estensione"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - In attesa"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - in attesa di $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "In attesa di apertura"
+  },
+  "pendingNote": {
+    "message": "L'avvio scaglionato è attivo, quindi questa scheda si aprirà dopo un breve ritardo."
+  },
+  "pendingOpening": {
+    "message": "Apertura in corso…"
+  },
+  "pendingHint": {
+    "message": "Modifica questa impostazione in <strong class=\"kd-text-secondary\">Apertura scaglionata delle schede</strong> nelle impostazioni di MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ORIGINE"
+  },
+  "badgeTarget": {
+    "message": "DESTINAZIONE"
+  },
+  "badgeReplay": {
+    "message": "REPLAY"
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Spiegelt DOM-Interaktionen in Echtzeit von einem Quell-Tab auf einen Ziel-Tab."
+  },
+  "appTagline": {
+    "message": "DOM-Interaktionen spiegeln"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-Logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-Einstellungen"
+  },
+  "settingsOpenTitle": {
+    "message": "Einstellungen"
+  },
+  "settingsCloseLabel": {
+    "message": "Einstellungen schließen"
+  },
+  "closeTitle": {
+    "message": "Schließen"
+  },
+  "infoOpenLabel": {
+    "message": "Über MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Info schließen"
+  },
+  "statusIdle": {
+    "message": "Inaktiv"
+  },
+  "statusActive": {
+    "message": "Aktiv"
+  },
+  "statusPaused": {
+    "message": "Pausiert"
+  },
+  "statusError": {
+    "message": "Fehler"
+  },
+  "sourceUrlLabel": {
+    "message": "Quell-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interaktionen hier werden gespiegelt"
+  },
+  "targetUrlLabel": {
+    "message": "Ziel-URL"
+  },
+  "targetUrlHint": {
+    "message": "Ereignisse werden hier wiedergegeben"
+  },
+  "addTarget": {
+    "message": "+ Ziel hinzufügen"
+  },
+  "startSession": {
+    "message": "Sitzung starten"
+  },
+  "removeTarget": {
+    "message": "Ziel entfernen"
+  },
+  "removeActiveTarget": {
+    "message": "Dieses Ziel entfernen"
+  },
+  "errorUrlRequired": {
+    "message": "URL ist erforderlich."
+  },
+  "errorUrlInvalid": {
+    "message": "Keine gültige URL."
+  },
+  "errorUrlScheme": {
+    "message": "Nur http:// und https:// sind erlaubt."
+  },
+  "errorUrlDomain": {
+    "message": "Vollständige Domain eingeben (z. B. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Keine gültige Domain."
+  },
+  "errorStartSession": {
+    "message": "Sitzung konnte nicht gestartet werden: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Erweiterungsfehler: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Tabs konnten nicht erstellt werden"
+  },
+  "errorOpenReplayTab": {
+    "message": "Wiedergabe-Tab konnte nicht geöffnet werden"
+  },
+  "activeSource": {
+    "message": "Quelle"
+  },
+  "activeTargets": {
+    "message": "Ziele"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "resume": {
+    "message": "Fortsetzen"
+  },
+  "stop": {
+    "message": "Stopp"
+  },
+  "downloadHeading": {
+    "message": "Sitzungsdaten herunterladen"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Wird automatisch gespeichert und sofort auf laufende Sitzungen angewendet."
+  },
+  "settingsPrivacy": {
+    "message": "Datenschutz"
+  },
+  "settingMirrorPasswords": {
+    "message": "Passwortfelder spiegeln"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Aus hält Zugangsdaten aus Ziel-Tabs und exportierten Protokollen fern"
+  },
+  "settingsOverlays": {
+    "message": "Overlays"
+  },
+  "settingShowCursor": {
+    "message": "Geisterzeiger anzeigen"
+  },
+  "settingShowCursorHint": {
+    "message": "Der auf Ziel-Tabs gezeichnete Zeiger"
+  },
+  "settingShowBadge": {
+    "message": "Rollen-Badge anzeigen"
+  },
+  "settingShowBadgeHint": {
+    "message": "Das Label QUELLE / ZIEL auf jedem Tab"
+  },
+  "settingsEvents": {
+    "message": "Zu spiegelnde Ereignisse"
+  },
+  "settingMousemove": {
+    "message": "Mausbewegung"
+  },
+  "settingMousemoveHint": {
+    "message": "Häufigstes Ereignis, zum Senken des Datenverkehrs ausschalten"
+  },
+  "settingScroll": {
+    "message": "Scrollen"
+  },
+  "settingKeystrokes": {
+    "message": "Tastenanschläge"
+  },
+  "settingKeystrokesHint": {
+    "message": "Taste auf / ab, getrennt von eingegebenen Werten"
+  },
+  "settingsPlayback": {
+    "message": "Wiedergabe"
+  },
+  "settingSmoothScroll": {
+    "message": "Sanftes Scrollen"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Aus springt sofort und hält schnelles Scrollen synchron"
+  },
+  "settingScrollDebounce": {
+    "message": "Scroll-Entprellung"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Ruhezeit, bevor ein Scroll gesendet wird"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Sitzungsstart"
+  },
+  "settingTabDelay": {
+    "message": "Gestaffeltes Öffnen der Tabs"
+  },
+  "settingTabDelayHint": {
+    "message": "Verzögerung zwischen den Ziel-Tabs. 0 öffnet alle gleichzeitig; nützlich bei Websites, die viele gleichzeitige Aufrufe drosseln."
+  },
+  "settingsReset": {
+    "message": "Auf Standard zurücksetzen"
+  },
+  "infoIntro": {
+    "message": "MirrorTab spiegelt DOM-Interaktionen: Klicks, Eingaben, Tastenanschläge, Fokus, Hover und Scrollen, Iframes eingeschlossen, in Echtzeit von einem <strong>Quell</strong>-Tab auf einen oder mehrere <strong>Ziel</strong>-Tabs. Ideal für Demos, Tests und Live-Präsentationen."
+  },
+  "infoStep1": {
+    "message": "Eine <strong>Quell-URL</strong> und mindestens eine <strong>Ziel-URL</strong> eingeben."
+  },
+  "infoStep2": {
+    "message": "Auf <strong>Sitzung starten</strong> klicken, die Tabs öffnen sich automatisch."
+  },
+  "infoStep3": {
+    "message": "Im <strong class=\"kd-text-danger\">QUELLE</strong>-Tab arbeiten, die Aktionen werden live auf jeden <strong class=\"kd-text-accent\">ZIEL</strong>-Tab gespiegelt."
+  },
+  "infoStep4": {
+    "message": "Mit <strong>Pause / Fortsetzen</strong> oder <strong>Stopp</strong> die Sitzung steuern."
+  },
+  "infoStep5": {
+    "message": "Das Ereignisprotokoll jederzeit als <strong>JSON</strong> oder <strong>Text</strong> herunterladen."
+  },
+  "infoGithub": {
+    "message": "GitHub-Repository"
+  },
+  "infoReport": {
+    "message": "Problem / Funktion melden"
+  },
+  "infoCreatedBy": {
+    "message": "Erstellt von"
+  },
+  "replayLink": {
+    "message": "Sitzungswiedergabe öffnen"
+  },
+  "footerEvents": {
+    "message": "Klicks · Eingaben · Tasten · Fokus · Hover · Scrollen · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Sitzungswiedergabe"
+  },
+  "replaySubtitle": {
+    "message": "Sitzungswiedergabe"
+  },
+  "replayStatusReady": {
+    "message": "Bereit"
+  },
+  "replayStatusPlaying": {
+    "message": "Läuft"
+  },
+  "replayStatusPaused": {
+    "message": "Pausiert"
+  },
+  "replayStatusReloading": {
+    "message": "Wird neu geladen…"
+  },
+  "replayStatusCompleted": {
+    "message": "Abgeschlossen"
+  },
+  "replayUrlLabel": {
+    "message": "Website-URL"
+  },
+  "replayUrlHint": {
+    "message": "Die Seite, auf der die aufgezeichneten Aktionen wiedergegeben werden"
+  },
+  "replayFileLabel": {
+    "message": "Sitzungsdatei"
+  },
+  "replayDropHint": {
+    "message": "Eine <strong>.json</strong>- oder <strong>.txt</strong>-Sitzungsdatei hier ablegen"
+  },
+  "replayOr": {
+    "message": "oder"
+  },
+  "replayBrowse": {
+    "message": "Dateien durchsuchen"
+  },
+  "replayRemoveFile": {
+    "message": "Datei entfernen"
+  },
+  "replaySpeedLabel": {
+    "message": "Wiedergabegeschwindigkeit"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Langsam"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Schnell"
+  },
+  "replayStart": {
+    "message": "Wiedergabe starten"
+  },
+  "replayOpening": {
+    "message": "Tab wird geöffnet…"
+  },
+  "replayHeading": {
+    "message": "Wiedergabe"
+  },
+  "replayProgress": {
+    "message": "Ereignis $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Weiter"
+  },
+  "replayRestart": {
+    "message": "Neu starten"
+  },
+  "replayCompletedTitle": {
+    "message": "Wiedergabe abgeschlossen"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ Ereignis wurde erfolgreich wiedergegeben.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Alle $COUNT$ Ereignisse wurden erfolgreich wiedergegeben.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Schließen"
+  },
+  "replayFooter": {
+    "message": "Aufgezeichnete Sitzungen wiedergeben · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Bitte eine .json- oder .txt-Datei hochladen"
+  },
+  "replayNoEvents": {
+    "message": "Keine Ereignisse in der Sitzungsdatei gefunden"
+  },
+  "replayParseError": {
+    "message": "Sitzungsdatei konnte nicht gelesen werden"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ Ereignis geladen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ Ereignisse geladen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Bitte eine gültige URL eingeben"
+  },
+  "replayFileMissing": {
+    "message": "Bitte eine Sitzungsdatei hochladen"
+  },
+  "replayNoResponse": {
+    "message": "Kommunikation mit der Erweiterung fehlgeschlagen"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Wartet"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - wartet auf $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Wartet auf das Öffnen"
+  },
+  "pendingNote": {
+    "message": "Gestaffelter Start ist aktiv, dieser Tab öffnet sich nach einer kurzen Verzögerung."
+  },
+  "pendingOpening": {
+    "message": "Wird jetzt geöffnet…"
+  },
+  "pendingHint": {
+    "message": "Änderbar unter <strong class=\"kd-text-secondary\">Gestaffeltes Öffnen der Tabs</strong> in den MirrorTab-Einstellungen."
+  },
+  "badgeSource": {
+    "message": "QUELLE"
+  },
+  "badgeTarget": {
+    "message": "ZIEL"
+  },
+  "badgeReplay": {
+    "message": "WIEDERGABE"
+  }
+}

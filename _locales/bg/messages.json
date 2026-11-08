@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Огледално копира DOM взаимодействията от изходен раздел към целеви раздел в реално време."
+  },
+  "appTagline": {
+    "message": "Отразяване на DOM"
+  },
+  "logoAlt": {
+    "message": "Лого на MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Настройки на MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Настройки"
+  },
+  "settingsCloseLabel": {
+    "message": "Затваряне на настройките"
+  },
+  "closeTitle": {
+    "message": "Затваряне"
+  },
+  "infoOpenLabel": {
+    "message": "Относно MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Затваряне на информацията"
+  },
+  "statusIdle": {
+    "message": "Неактивно"
+  },
+  "statusActive": {
+    "message": "Активно"
+  },
+  "statusPaused": {
+    "message": "На пауза"
+  },
+  "statusError": {
+    "message": "Грешка"
+  },
+  "sourceUrlLabel": {
+    "message": "URL на източника"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Взаимодействията тук ще се копират огледално"
+  },
+  "targetUrlLabel": {
+    "message": "URL на целта"
+  },
+  "targetUrlHint": {
+    "message": "Събитията ще се възпроизвеждат тук"
+  },
+  "addTarget": {
+    "message": "+ Добавяне на цел"
+  },
+  "startSession": {
+    "message": "Начало на сесия"
+  },
+  "removeTarget": {
+    "message": "Премахване на целта"
+  },
+  "removeActiveTarget": {
+    "message": "Премахване на тази цел"
+  },
+  "errorUrlRequired": {
+    "message": "URL адресът е задължителен."
+  },
+  "errorUrlInvalid": {
+    "message": "Невалиден URL адрес."
+  },
+  "errorUrlScheme": {
+    "message": "Разрешени са само http:// и https://."
+  },
+  "errorUrlDomain": {
+    "message": "Въведете пълен домейн (напр. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Невалиден домейн."
+  },
+  "errorStartSession": {
+    "message": "Сесията не можа да започне: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Грешка в разширението: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Разделите не можаха да бъдат създадени"
+  },
+  "errorOpenReplayTab": {
+    "message": "Разделът за повторение не можа да бъде отворен"
+  },
+  "activeSource": {
+    "message": "Източник"
+  },
+  "activeTargets": {
+    "message": "Цели"
+  },
+  "pause": {
+    "message": "Пауза"
+  },
+  "resume": {
+    "message": "Продължаване"
+  },
+  "stop": {
+    "message": "Стоп"
+  },
+  "downloadHeading": {
+    "message": "Изтегляне на данните от сесията"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Текст"
+  },
+  "settingsNote": {
+    "message": "Запазва се автоматично и се прилага веднага към текущите сесии."
+  },
+  "settingsPrivacy": {
+    "message": "Поверителност"
+  },
+  "settingMirrorPasswords": {
+    "message": "Огледално копиране на полетата за парола"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Изключено пази идентификационните данни извън целевите раздели и експортираните дневници"
+  },
+  "settingsOverlays": {
+    "message": "Наслагвания"
+  },
+  "settingShowCursor": {
+    "message": "Показване на призрачен курсор"
+  },
+  "settingShowCursorHint": {
+    "message": "Показалецът, рисуван в целевите раздели"
+  },
+  "settingShowBadge": {
+    "message": "Показване на значка за роля"
+  },
+  "settingShowBadgeHint": {
+    "message": "Етикетът ИЗТОЧНИК / ЦЕЛ във всеки раздел"
+  },
+  "settingsEvents": {
+    "message": "Събития за копиране"
+  },
+  "settingMousemove": {
+    "message": "Движение на мишката"
+  },
+  "settingMousemoveHint": {
+    "message": "Най-честото събитие, изключете го, за да намалите трафика"
+  },
+  "settingScroll": {
+    "message": "Превъртане"
+  },
+  "settingKeystrokes": {
+    "message": "Натискания на клавиши"
+  },
+  "settingKeystrokesHint": {
+    "message": "Натискане / отпускане на клавиш, отделно от въведените стойности"
+  },
+  "settingsPlayback": {
+    "message": "Възпроизвеждане"
+  },
+  "settingSmoothScroll": {
+    "message": "Плавно превъртане"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Изключено прескача мигновено и поддържа бързото превъртане синхронизирано"
+  },
+  "settingScrollDebounce": {
+    "message": "Забавяне на превъртането"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Тих период преди изпращане на превъртане"
+  },
+  "unitMs": {
+    "message": "мс"
+  },
+  "settingsSessionStart": {
+    "message": "Начало на сесията"
+  },
+  "settingTabDelay": {
+    "message": "Поетапно отваряне на разделите"
+  },
+  "settingTabDelayHint": {
+    "message": "Забавяне между всеки целеви раздел. 0 отваря всички наведнъж; полезно за сайтове, които ограничават поредиците от заявки."
+  },
+  "settingsReset": {
+    "message": "Възстановяване на настройките по подразбиране"
+  },
+  "infoIntro": {
+    "message": "MirrorTab огледално копира DOM взаимодействията: кликвания, въвеждане, натискания на клавиши, фокус, посочване и превъртане, включително в iframe, от раздел <strong>източник</strong> към един или повече раздели <strong>цел</strong> в реално време. Идеално за демонстрации, тестване и презентации на живо."
+  },
+  "infoStep1": {
+    "message": "Въведете <strong>URL на източника</strong> и поне един <strong>URL на целта</strong>."
+  },
+  "infoStep2": {
+    "message": "Кликнете върху <strong>Начало на сесия</strong>, разделите се отварят автоматично."
+  },
+  "infoStep3": {
+    "message": "Работете в раздела <strong class=\"kd-text-danger\">ИЗТОЧНИК</strong>, действията се копират на живо във всеки раздел <strong class=\"kd-text-accent\">ЦЕЛ</strong>."
+  },
+  "infoStep4": {
+    "message": "Използвайте <strong>Пауза / Продължаване</strong> или <strong>Стоп</strong>, за да управлявате сесията."
+  },
+  "infoStep5": {
+    "message": "Изтеглете дневника на събитията като <strong>JSON</strong> или <strong>Текст</strong> по всяко време."
+  },
+  "infoGithub": {
+    "message": "Хранилище в GitHub"
+  },
+  "infoReport": {
+    "message": "Докладване на проблем / идея"
+  },
+  "infoCreatedBy": {
+    "message": "Създадено от"
+  },
+  "replayLink": {
+    "message": "Отваряне на повторение на сесия"
+  },
+  "footerEvents": {
+    "message": "Кликове · Въвод · Клавиши · Фокус · Hover · Скрол · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Повторение на сесия"
+  },
+  "replaySubtitle": {
+    "message": "Повторение на сесия"
+  },
+  "replayStatusReady": {
+    "message": "Готово"
+  },
+  "replayStatusPlaying": {
+    "message": "Възпроизвежда се"
+  },
+  "replayStatusPaused": {
+    "message": "На пауза"
+  },
+  "replayStatusReloading": {
+    "message": "Презарежда се…"
+  },
+  "replayStatusCompleted": {
+    "message": "Завършено"
+  },
+  "replayUrlLabel": {
+    "message": "URL на уебсайта"
+  },
+  "replayUrlHint": {
+    "message": "Страницата, на която ще се възпроизведат записаните действия"
+  },
+  "replayFileLabel": {
+    "message": "Файл на сесията"
+  },
+  "replayDropHint": {
+    "message": "Пуснете тук файл на сесия <strong>.json</strong> или <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "или"
+  },
+  "replayBrowse": {
+    "message": "Преглед на файлове"
+  },
+  "replayRemoveFile": {
+    "message": "Премахване на файла"
+  },
+  "replaySpeedLabel": {
+    "message": "Скорост на възпроизвеждане"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Бавно"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Нормално"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Бързо"
+  },
+  "replayStart": {
+    "message": "Начало на повторението"
+  },
+  "replayOpening": {
+    "message": "Отваряне на раздел…"
+  },
+  "replayHeading": {
+    "message": "Повторение"
+  },
+  "replayProgress": {
+    "message": "Събитие $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Продължаване"
+  },
+  "replayRestart": {
+    "message": "Отначало"
+  },
+  "replayCompletedTitle": {
+    "message": "Повторението завърши"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ събитие беше възпроизведено успешно.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Всички $COUNT$ събития бяха възпроизведени успешно.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Затваряне"
+  },
+  "replayFooter": {
+    "message": "Повторение на записани сесии · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Качете файл .json или .txt"
+  },
+  "replayNoEvents": {
+    "message": "Във файла на сесията няма събития"
+  },
+  "replayParseError": {
+    "message": "Файлът на сесията не можа да бъде прочетен"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Заредено е $COUNT$ събитие",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Заредени са $COUNT$ събития",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Въведете валиден URL адрес"
+  },
+  "replayFileMissing": {
+    "message": "Качете файл на сесия"
+  },
+  "replayNoResponse": {
+    "message": "Връзката с разширението е неуспешна"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Изчакване"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - изчакване на $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Изчакване за отваряне"
+  },
+  "pendingNote": {
+    "message": "Поетапното стартиране е включено, затова този раздел ще се отвори след кратко забавяне."
+  },
+  "pendingOpening": {
+    "message": "Отваря се…"
+  },
+  "pendingHint": {
+    "message": "Променете това в <strong class=\"kd-text-secondary\">Поетапно отваряне на разделите</strong> в настройките на MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ИЗТОЧНИК"
+  },
+  "badgeTarget": {
+    "message": "ЦЕЛ"
+  },
+  "badgeReplay": {
+    "message": "ПОВТОРЕНИЕ"
+  }
+}

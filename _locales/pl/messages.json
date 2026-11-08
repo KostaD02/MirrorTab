@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Odzwierciedla interakcje z DOM z karty źródłowej na karcie docelowej w czasie rzeczywistym."
+  },
+  "appTagline": {
+    "message": "Odbicie interakcji DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Ustawienia MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Ustawienia"
+  },
+  "settingsCloseLabel": {
+    "message": "Zamknij ustawienia"
+  },
+  "closeTitle": {
+    "message": "Zamknij"
+  },
+  "infoOpenLabel": {
+    "message": "O MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Zamknij informacje"
+  },
+  "statusIdle": {
+    "message": "Bezczynny"
+  },
+  "statusActive": {
+    "message": "Aktywny"
+  },
+  "statusPaused": {
+    "message": "Wstrzymany"
+  },
+  "statusError": {
+    "message": "Błąd"
+  },
+  "sourceUrlLabel": {
+    "message": "Adres URL źródła"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interakcje tutaj będą odzwierciedlane"
+  },
+  "targetUrlLabel": {
+    "message": "Adres URL celu"
+  },
+  "targetUrlHint": {
+    "message": "Zdarzenia będą odtwarzane tutaj"
+  },
+  "addTarget": {
+    "message": "+ Dodaj cel"
+  },
+  "startSession": {
+    "message": "Rozpocznij sesję"
+  },
+  "removeTarget": {
+    "message": "Usuń cel"
+  },
+  "removeActiveTarget": {
+    "message": "Usuń ten cel"
+  },
+  "errorUrlRequired": {
+    "message": "Adres URL jest wymagany."
+  },
+  "errorUrlInvalid": {
+    "message": "Nieprawidłowy adres URL."
+  },
+  "errorUrlScheme": {
+    "message": "Dozwolone są tylko http:// i https://."
+  },
+  "errorUrlDomain": {
+    "message": "Wpisz pełną domenę (np. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Nieprawidłowa domena."
+  },
+  "errorStartSession": {
+    "message": "Nie udało się rozpocząć sesji: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Błąd rozszerzenia: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Nie udało się utworzyć kart"
+  },
+  "errorOpenReplayTab": {
+    "message": "Nie udało się otworzyć karty odtwarzania"
+  },
+  "activeSource": {
+    "message": "Źródło"
+  },
+  "activeTargets": {
+    "message": "Cele"
+  },
+  "pause": {
+    "message": "Wstrzymaj"
+  },
+  "resume": {
+    "message": "Wznów"
+  },
+  "stop": {
+    "message": "Zatrzymaj"
+  },
+  "downloadHeading": {
+    "message": "Pobierz dane sesji"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekst"
+  },
+  "settingsNote": {
+    "message": "Zapisywane automatycznie i stosowane od razu do trwających sesji."
+  },
+  "settingsPrivacy": {
+    "message": "Prywatność"
+  },
+  "settingMirrorPasswords": {
+    "message": "Odzwierciedlaj pola haseł"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Wyłączone trzyma dane logowania z dala od kart docelowych i eksportowanych dzienników"
+  },
+  "settingsOverlays": {
+    "message": "Nakładki"
+  },
+  "settingShowCursor": {
+    "message": "Pokazuj kursor-widmo"
+  },
+  "settingShowCursorHint": {
+    "message": "Wskaźnik rysowany na kartach docelowych"
+  },
+  "settingShowBadge": {
+    "message": "Pokazuj etykietę roli"
+  },
+  "settingShowBadgeHint": {
+    "message": "Etykieta ŹRÓDŁO / CEL na każdej karcie"
+  },
+  "settingsEvents": {
+    "message": "Odzwierciedlane zdarzenia"
+  },
+  "settingMousemove": {
+    "message": "Ruch myszy"
+  },
+  "settingMousemoveHint": {
+    "message": "Najczęstsze zdarzenie, wyłącz, aby ograniczyć ruch"
+  },
+  "settingScroll": {
+    "message": "Przewijanie"
+  },
+  "settingKeystrokes": {
+    "message": "Naciśnięcia klawiszy"
+  },
+  "settingKeystrokesHint": {
+    "message": "Naciśnięcie i zwolnienie klawisza, niezależnie od wpisanych wartości"
+  },
+  "settingsPlayback": {
+    "message": "Odtwarzanie"
+  },
+  "settingSmoothScroll": {
+    "message": "Płynne przewijanie"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Wyłączone przeskakuje natychmiast i utrzymuje szybkie przewijanie w synchronizacji"
+  },
+  "settingScrollDebounce": {
+    "message": "Opóźnienie przewijania"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Czas spokoju przed wysłaniem przewinięcia"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Start sesji"
+  },
+  "settingTabDelay": {
+    "message": "Stopniowe otwieranie kart"
+  },
+  "settingTabDelayHint": {
+    "message": "Opóźnienie między kolejnymi kartami docelowymi. 0 otwiera wszystkie naraz; przydatne w witrynach ograniczających serie żądań."
+  },
+  "settingsReset": {
+    "message": "Przywróć domyślne"
+  },
+  "infoIntro": {
+    "message": "MirrorTab odzwierciedla interakcje z DOM: kliknięcia, wpisywanie, naciśnięcia klawiszy, fokus, najechanie i przewijanie, łącznie z iframe, z karty <strong>źródłowej</strong> na jedną lub więcej kart <strong>docelowych</strong> w czasie rzeczywistym. Idealne do demonstracji, testów i prezentacji na żywo."
+  },
+  "infoStep1": {
+    "message": "Wpisz <strong>adres URL źródła</strong> i co najmniej jeden <strong>adres URL celu</strong>."
+  },
+  "infoStep2": {
+    "message": "Kliknij <strong>Rozpocznij sesję</strong>, karty otworzą się automatycznie."
+  },
+  "infoStep3": {
+    "message": "Pracuj na karcie <strong class=\"kd-text-danger\">ŹRÓDŁO</strong>, działania są na żywo odzwierciedlane na każdej karcie <strong class=\"kd-text-accent\">CEL</strong>."
+  },
+  "infoStep4": {
+    "message": "Użyj <strong>Wstrzymaj / Wznów</strong> lub <strong>Zatrzymaj</strong>, aby sterować sesją."
+  },
+  "infoStep5": {
+    "message": "Pobierz dziennik zdarzeń jako <strong>JSON</strong> lub <strong>Tekst</strong> w dowolnej chwili."
+  },
+  "infoGithub": {
+    "message": "Repozytorium GitHub"
+  },
+  "infoReport": {
+    "message": "Zgłoś problem / pomysł"
+  },
+  "infoCreatedBy": {
+    "message": "Autor:"
+  },
+  "replayLink": {
+    "message": "Otwórz odtwarzanie sesji"
+  },
+  "footerEvents": {
+    "message": "Kliknięcia · Wpisy · Klawisze · Fokus · Hover · Scroll · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Odtwarzanie sesji"
+  },
+  "replaySubtitle": {
+    "message": "Odtwarzanie sesji"
+  },
+  "replayStatusReady": {
+    "message": "Gotowe"
+  },
+  "replayStatusPlaying": {
+    "message": "Odtwarzanie"
+  },
+  "replayStatusPaused": {
+    "message": "Wstrzymano"
+  },
+  "replayStatusReloading": {
+    "message": "Ponowne ładowanie…"
+  },
+  "replayStatusCompleted": {
+    "message": "Zakończono"
+  },
+  "replayUrlLabel": {
+    "message": "Adres URL witryny"
+  },
+  "replayUrlHint": {
+    "message": "Strona, na której zostaną odtworzone zarejestrowane działania"
+  },
+  "replayFileLabel": {
+    "message": "Plik sesji"
+  },
+  "replayDropHint": {
+    "message": "Upuść tutaj plik sesji <strong>.json</strong> lub <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "lub"
+  },
+  "replayBrowse": {
+    "message": "Przeglądaj pliki"
+  },
+  "replayRemoveFile": {
+    "message": "Usuń plik"
+  },
+  "replaySpeedLabel": {
+    "message": "Prędkość odtwarzania"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Wolno"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normalnie"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Szybko"
+  },
+  "replayStart": {
+    "message": "Rozpocznij odtwarzanie"
+  },
+  "replayOpening": {
+    "message": "Otwieranie karty…"
+  },
+  "replayHeading": {
+    "message": "Odtwarzanie"
+  },
+  "replayProgress": {
+    "message": "Zdarzenie $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Kontynuuj"
+  },
+  "replayRestart": {
+    "message": "Od nowa"
+  },
+  "replayCompletedTitle": {
+    "message": "Odtwarzanie zakończone"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ zdarzenie zostało pomyślnie odtworzone.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Wszystkie $COUNT$ zdarzenia zostały pomyślnie odtworzone.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Wszystkie $COUNT$ zdarzeń zostało pomyślnie odtworzonych.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Wszystkie $COUNT$ zdarzenia zostały pomyślnie odtworzone.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Zamknij"
+  },
+  "replayFooter": {
+    "message": "Odtwarzaj zarejestrowane sesje · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Prześlij plik .json lub .txt"
+  },
+  "replayNoEvents": {
+    "message": "W pliku sesji nie znaleziono zdarzeń"
+  },
+  "replayParseError": {
+    "message": "Nie udało się odczytać pliku sesji"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Załadowano $COUNT$ zdarzenie",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Załadowano $COUNT$ zdarzenia",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Załadowano $COUNT$ zdarzeń",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Załadowano $COUNT$ zdarzenia",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Wpisz prawidłowy adres URL"
+  },
+  "replayFileMissing": {
+    "message": "Prześlij plik sesji"
+  },
+  "replayNoResponse": {
+    "message": "Nie udało się połączyć z rozszerzeniem"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Oczekiwanie"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - oczekiwanie na $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Oczekiwanie na otwarcie"
+  },
+  "pendingNote": {
+    "message": "Stopniowy start jest włączony, więc ta karta otworzy się po krótkiej zwłoce."
+  },
+  "pendingOpening": {
+    "message": "Otwieranie…"
+  },
+  "pendingHint": {
+    "message": "Zmień to w sekcji <strong class=\"kd-text-secondary\">Stopniowe otwieranie kart</strong> w ustawieniach MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ŹRÓDŁO"
+  },
+  "badgeTarget": {
+    "message": "CEL"
+  },
+  "badgeReplay": {
+    "message": "ODTWARZANIE"
+  }
+}

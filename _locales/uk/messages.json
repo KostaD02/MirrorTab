@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Дзеркалює взаємодії з DOM із вкладки-джерела до цільової вкладки в реальному часі."
+  },
+  "appTagline": {
+    "message": "Дзеркалювання DOM"
+  },
+  "logoAlt": {
+    "message": "Логотип MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Налаштування MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Налаштування"
+  },
+  "settingsCloseLabel": {
+    "message": "Закрити налаштування"
+  },
+  "closeTitle": {
+    "message": "Закрити"
+  },
+  "infoOpenLabel": {
+    "message": "Про MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Закрити довідку"
+  },
+  "statusIdle": {
+    "message": "Очікування"
+  },
+  "statusActive": {
+    "message": "Активно"
+  },
+  "statusPaused": {
+    "message": "Пауза"
+  },
+  "statusError": {
+    "message": "Помилка"
+  },
+  "sourceUrlLabel": {
+    "message": "URL джерела"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Дії тут дзеркалюватимуться"
+  },
+  "targetUrlLabel": {
+    "message": "URL цілі"
+  },
+  "targetUrlHint": {
+    "message": "Події відтворюватимуться тут"
+  },
+  "addTarget": {
+    "message": "+ Додати ціль"
+  },
+  "startSession": {
+    "message": "Почати сеанс"
+  },
+  "removeTarget": {
+    "message": "Видалити ціль"
+  },
+  "removeActiveTarget": {
+    "message": "Видалити цю ціль"
+  },
+  "errorUrlRequired": {
+    "message": "Укажіть URL."
+  },
+  "errorUrlInvalid": {
+    "message": "Недійсний URL."
+  },
+  "errorUrlScheme": {
+    "message": "Дозволено лише http:// та https://."
+  },
+  "errorUrlDomain": {
+    "message": "Введіть повний домен (наприклад, example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Недійсний домен."
+  },
+  "errorStartSession": {
+    "message": "Не вдалося почати сеанс: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Помилка розширення: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Не вдалося створити вкладки"
+  },
+  "errorOpenReplayTab": {
+    "message": "Не вдалося відкрити вкладку повтору"
+  },
+  "activeSource": {
+    "message": "Джерело"
+  },
+  "activeTargets": {
+    "message": "Цілі"
+  },
+  "pause": {
+    "message": "Пауза"
+  },
+  "resume": {
+    "message": "Продовжити"
+  },
+  "stop": {
+    "message": "Стоп"
+  },
+  "downloadHeading": {
+    "message": "Завантажити дані сеансу"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Текст"
+  },
+  "settingsNote": {
+    "message": "Зберігається автоматично й одразу застосовується до поточних сеансів."
+  },
+  "settingsPrivacy": {
+    "message": "Конфіденційність"
+  },
+  "settingMirrorPasswords": {
+    "message": "Дзеркалювати поля паролів"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Вимкнено: облікові дані не потраплять до цільових вкладок і експортованих журналів"
+  },
+  "settingsOverlays": {
+    "message": "Накладки"
+  },
+  "settingShowCursor": {
+    "message": "Показувати примарний курсор"
+  },
+  "settingShowCursorHint": {
+    "message": "Вказівник, який малюється на цільових вкладках"
+  },
+  "settingShowBadge": {
+    "message": "Показувати позначку ролі"
+  },
+  "settingShowBadgeHint": {
+    "message": "Позначка ДЖЕРЕЛО / ЦІЛЬ на кожній вкладці"
+  },
+  "settingsEvents": {
+    "message": "Які події дзеркалювати"
+  },
+  "settingMousemove": {
+    "message": "Рух миші"
+  },
+  "settingMousemoveHint": {
+    "message": "Найчастіша подія, вимкніть, щоб зменшити трафік"
+  },
+  "settingScroll": {
+    "message": "Прокручування"
+  },
+  "settingKeystrokes": {
+    "message": "Натискання клавіш"
+  },
+  "settingKeystrokesHint": {
+    "message": "Натискання та відпускання клавіш, окремо від введених значень"
+  },
+  "settingsPlayback": {
+    "message": "Відтворення"
+  },
+  "settingSmoothScroll": {
+    "message": "Плавне прокручування"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Вимкнено: перехід миттєвий, швидке прокручування лишається синхронним"
+  },
+  "settingScrollDebounce": {
+    "message": "Затримка прокручування"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Пауза перед надсиланням прокручування"
+  },
+  "unitMs": {
+    "message": "мс"
+  },
+  "settingsSessionStart": {
+    "message": "Запуск сеансу"
+  },
+  "settingTabDelay": {
+    "message": "Почергове відкриття вкладок"
+  },
+  "settingTabDelayHint": {
+    "message": "Затримка між цільовими вкладками. 0 відкриває всі одразу; корисно для сайтів, що обмежують сплески запитів."
+  },
+  "settingsReset": {
+    "message": "Скинути налаштування"
+  },
+  "infoIntro": {
+    "message": "MirrorTab дзеркалює взаємодії з DOM: кліки, введення, натискання клавіш, фокус, наведення та прокручування, включно з iframe, із вкладки-<strong>джерела</strong> до однієї чи кількох <strong>цільових</strong> вкладок у реальному часі. Ідеально для демонстрацій, тестування та живих презентацій."
+  },
+  "infoStep1": {
+    "message": "Введіть <strong>URL джерела</strong> та принаймні один <strong>URL цілі</strong>."
+  },
+  "infoStep2": {
+    "message": "Натисніть <strong>Почати сеанс</strong>, вкладки відкриються автоматично."
+  },
+  "infoStep3": {
+    "message": "Працюйте у вкладці <strong class=\"kd-text-danger\">ДЖЕРЕЛО</strong>, дії наживо дзеркалюються в кожну вкладку <strong class=\"kd-text-accent\">ЦІЛЬ</strong>."
+  },
+  "infoStep4": {
+    "message": "Використовуйте <strong>Пауза / Продовжити</strong> або <strong>Стоп</strong>, щоб керувати сеансом."
+  },
+  "infoStep5": {
+    "message": "Завантажуйте журнал подій у форматі <strong>JSON</strong> або <strong>Текст</strong> будь-коли."
+  },
+  "infoGithub": {
+    "message": "Репозиторій на GitHub"
+  },
+  "infoReport": {
+    "message": "Повідомити про проблему / ідею"
+  },
+  "infoCreatedBy": {
+    "message": "Автор:"
+  },
+  "replayLink": {
+    "message": "Відкрити повтор сеансу"
+  },
+  "footerEvents": {
+    "message": "Кліки · Ввід · Клавіші · Фокус · Наведення · Прокрутка · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Повтор сеансу"
+  },
+  "replaySubtitle": {
+    "message": "Повтор сеансу"
+  },
+  "replayStatusReady": {
+    "message": "Готово"
+  },
+  "replayStatusPlaying": {
+    "message": "Відтворення"
+  },
+  "replayStatusPaused": {
+    "message": "Пауза"
+  },
+  "replayStatusReloading": {
+    "message": "Перезавантаження…"
+  },
+  "replayStatusCompleted": {
+    "message": "Завершено"
+  },
+  "replayUrlLabel": {
+    "message": "URL сайту"
+  },
+  "replayUrlHint": {
+    "message": "Сторінка, на якій будуть відтворені записані дії"
+  },
+  "replayFileLabel": {
+    "message": "Файл сеансу"
+  },
+  "replayDropHint": {
+    "message": "Перетягніть сюди файл сеансу <strong>.json</strong> або <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "або"
+  },
+  "replayBrowse": {
+    "message": "Вибрати файл"
+  },
+  "replayRemoveFile": {
+    "message": "Видалити файл"
+  },
+  "replaySpeedLabel": {
+    "message": "Швидкість відтворення"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Повільно"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Звичайно"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Швидко"
+  },
+  "replayStart": {
+    "message": "Почати повтор"
+  },
+  "replayOpening": {
+    "message": "Відкриття вкладки…"
+  },
+  "replayHeading": {
+    "message": "Повтор"
+  },
+  "replayProgress": {
+    "message": "Подія $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Продовжити"
+  },
+  "replayRestart": {
+    "message": "Спочатку"
+  },
+  "replayCompletedTitle": {
+    "message": "Повтор завершено"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ подію успішно відтворено.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Усі $COUNT$ події успішно відтворено.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Усі $COUNT$ подій успішно відтворено.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Усі $COUNT$ події успішно відтворено.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Закрити"
+  },
+  "replayFooter": {
+    "message": "Повтор записаних сеансів · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Завантажте файл .json або .txt"
+  },
+  "replayNoEvents": {
+    "message": "У файлі сеансу немає подій"
+  },
+  "replayParseError": {
+    "message": "Не вдалося прочитати файл сеансу"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Завантажено $COUNT$ подію",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Завантажено $COUNT$ події",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Завантажено $COUNT$ подій",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Завантажено $COUNT$ події",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Введіть дійсний URL"
+  },
+  "replayFileMissing": {
+    "message": "Завантажте файл сеансу"
+  },
+  "replayNoResponse": {
+    "message": "Не вдалося зв'язатися з розширенням"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Очікування"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - очікування $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Очікування відкриття"
+  },
+  "pendingNote": {
+    "message": "Увімкнено почергове відкриття, тому ця вкладка відкриється з невеликою затримкою."
+  },
+  "pendingOpening": {
+    "message": "Відкривається…"
+  },
+  "pendingHint": {
+    "message": "Змінити це можна в розділі <strong class=\"kd-text-secondary\">Почергове відкриття вкладок</strong> у налаштуваннях MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ДЖЕРЕЛО"
+  },
+  "badgeTarget": {
+    "message": "ЦІЛЬ"
+  },
+  "badgeReplay": {
+    "message": "ПОВТОР"
+  }
+}

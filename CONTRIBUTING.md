@@ -37,8 +37,10 @@ src/
 └── shared/
     ├── consts/             # APP_NAME, STORAGE_KEY, retry config
     ├── types/              # TypeScript interfaces and enums
-    └── util/               # Pure utility functions (selector, logger, tab helpers, …)
+    └── util/               # Pure utility functions (selector, logger, i18n, tab helpers, …)
 ```
+
+`_locales/<code>/messages.json` holds the UI text of each language, `en` being the default.
 
 `examples/` sits next to `src/` with the pages used for manual testing.
 
@@ -90,6 +92,20 @@ We use formatting and linting rules to keep the codebase clean. Please ensure yo
   pnpm test
   ```
   _(Or `pnpm test:watch` for watch mode)_
+
+## Translations
+
+All user-facing text lives in `_locales/<code>/messages.json` and reaches the UI through `chrome.i18n`: `data-i18n` attributes in the HTML pages (`data-i18n-html` for markup, `data-i18n-attr` for attributes) and `t()` / `plural()` from `src/shared/util` in TypeScript. English is the default locale and the only file with `description` fields, which tell translators where a string appears.
+
+To add or fix a language:
+
+1. Copy `_locales/en/messages.json` to `_locales/<code>/messages.json`, using one of Chrome's [supported locale codes](https://developer.chrome.com/docs/extensions/reference/api/i18n#locales).
+2. Translate the `message` values. Keep the `$PLACEHOLDER$` tokens and the `<strong>` markup as they are, and keep `appName` within 45 and `appDescription` within 132 characters, the limits Chrome puts on the manifest.
+3. Messages that count things come in plural forms (`replayEventsLoaded_one`, `replayEventsLoaded_other`). Provide every form your language uses according to the [CLDR plural rules](https://cldr.unicode.org/index/cldr-spec/plural-rules): `other` is always required, Polish or Russian also need `few` and `many`, Arabic needs all six.
+4. Run `pnpm i18n:report`. It prints the coverage table, writes `tmp/i18n-report.md` and fails on missing plural forms, stray placeholders or markup that differs from English. CI runs the same script on every pull request and keeps the table in a sticky comment.
+5. Load the unpacked build with `chrome --lang=<code>`, or switch the browser language, to see the result in place. `pnpm test` also checks every locale against English.
+
+Right-to-left languages (Arabic, Hebrew, Persian) flip the layout through `dir="rtl"` on the document, set from Chrome's `@@bidi_dir` message with a fallback on the UI language. `@kostad/brand` mirrors its components from that attribute on its own, so no RTL rules live in this repository; prefer logical properties (`margin-inline-start`, `padding-inline-end`) in any CSS added here.
 
 ## Pull Requests
 
