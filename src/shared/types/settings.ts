@@ -1,5 +1,6 @@
 export interface MirrorSettings {
   mirrorPasswordFields: boolean;
+  mirrorClipboard: boolean;
   showGhostCursor: boolean;
   showRoleBadge: boolean;
   mirrorMousemove: boolean;

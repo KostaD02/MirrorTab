@@ -408,6 +408,74 @@
 
             <div class="kd-card kd-card--surface">
               <div class="kd-card__header">
+                <span class="kd-card__title">Gestures</span>
+                <span class="kd-chip">drag, paste, wheel</span>
+              </div>
+              <p class="kd-card__text kd-fs-xxs">
+                Drag a label onto the release, paste a note, double or right
+                click the badge, turn the wheel over the dial and select the
+                sentence.
+              </p>
+              <div class="kd-d-flex kd-flex-column kd-gap-3">
+                <div class="kd-d-flex kd-gap-2 kd-flex-wrap">
+                  <span
+                    class="drag-chip kd-fs-xxs"
+                    draggable="true"
+                    data-label="blocker"
+                    >blocker</span
+                  >
+                  <span
+                    class="drag-chip kd-fs-xxs"
+                    draggable="true"
+                    data-label="ready"
+                    >ready</span
+                  >
+                  <span
+                    class="drag-chip kd-fs-xxs"
+                    draggable="true"
+                    data-label="wontfix"
+                    >wontfix</span
+                  >
+                </div>
+                <div id="label-drop" class="drop-zone kd-fs-xs">
+                  Drop a label here
+                </div>
+                <div class="kd-field">
+                  <label class="kd-field__label" for="paste-note"
+                    >Paste a note</label
+                  >
+                  <textarea
+                    id="paste-note"
+                    class="kd-field__input"
+                    rows="2"
+                  ></textarea>
+                  <span id="paste-readout" class="kd-fs-micro"></span>
+                </div>
+                <div class="kd-d-flex kd-items-center kd-gap-3">
+                  <button
+                    id="gesture-badge"
+                    class="kd-btn kd-btn--outline kd-btn--sm"
+                    type="button"
+                    data-hover
+                  >
+                    Double or right click
+                  </button>
+                  <span id="gesture-readout" class="kd-fs-micro"></span>
+                </div>
+                <div id="wheel-dial" class="dial kd-fs-xs">
+                  Wheel over me:
+                  <span id="wheel-value" class="kd-font-mono">0</span>
+                </div>
+                <p class="kd-card__text kd-fs-xxs kd-m-0" id="selection-sample">
+                  Select any words in this sentence and the other tab highlights
+                  the same ones.
+                </p>
+                <span id="selection-readout" class="kd-fs-micro"></span>
+              </div>
+            </div>
+
+            <div class="kd-card kd-card--surface">
+              <div class="kd-card__header">
                 <span class="kd-card__title">Shadow DOM</span>
                 <span class="kd-chip">open root</span>
               </div>
@@ -480,6 +548,41 @@
                   </tr>
                   <tr data-event="mousemove">
                     <td>mousemove</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="dblclick">
+                    <td>dblclick</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="contextmenu">
+                    <td>contextmenu</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="wheel">
+                    <td>wheel</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="dragstart">
+                    <td>dragstart</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="drop">
+                    <td>drop</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="paste">
+                    <td>paste</td>
+                    <td data-count>0</td>
+                    <td data-target class="kd-font-mono"></td>
+                  </tr>
+                  <tr data-event="selectionchange">
+                    <td>selectionchange</td>
                     <td data-count>0</td>
                     <td data-target class="kd-font-mono"></td>
                   </tr>

@@ -13,6 +13,8 @@ if (typeof CSS === 'undefined') {
 import { chrome } from 'jest-chrome';
 import {
   DomClickEventPayload,
+  DomEventContent,
+  DomEventType,
   DomEventTypeEnum,
   DomInputEventPayload,
   DomKeyboardEventPayload,
@@ -38,6 +40,14 @@ jest.mock('@/shared/util', () => ({
 }));
 
 const MOCK_DATE = new Date('2026-04-24T10:00:00.000Z');
+
+interface DomEventPayloadLike {
+  type: string;
+  selector: string;
+  framePath: string;
+  content: unknown;
+  timestamp: string;
+}
 
 function getLastDomEvent(): {
   type: string;
@@ -451,6 +461,364 @@ describe('EventCapture', () => {
       btn.click();
 
       expect(chrome.runtime.sendMessage).not.toHaveBeenCalled();
+    });
+
+    describe('gestures', () => {
+      function addBox(id: string): HTMLElement {
+        const box = document.createElement('div');
+        box.id = id;
+        document.body.appendChild(box);
+        jest.spyOn(box, 'getBoundingClientRect').mockReturnValue({
+          left: 0,
+          top: 0,
+          width: 100,
+          height: 50,
+          right: 100,
+          bottom: 50,
+          x: 0,
+          y: 0,
+          toJSON: () => ({}),
+        } as DOMRect);
+        return box;
+      }
+
+      // jsdom has no DataTransfer, so a drag or paste carries this stand-in
+      function transferStub(
+        data: Record<string, string>,
+        extra: Record<string, unknown> = {},
+      ): DataTransfer {
+        return {
+          types: Object.keys(data),
+          files: [],
+          effectAllowed: 'none',
+          dropEffect: 'none',
+          getData: (type: string) => data[type] ?? '',
+          ...extra,
+        } as unknown as DataTransfer;
+      }
+
+      function dragEvent(
+        type: string,
+        transfer: DataTransfer | null,
+        clientX = 50,
+        clientY = 25,
+      ): Event {
+        const event = new MouseEvent(type, { bubbles: true, clientX, clientY });
+        Object.defineProperty(event, 'dataTransfer', { value: transfer });
+        return event;
+      }
+
+      function pasteEvent(data: Record<string, string>): Event {
+        const event = new Event('paste', { bubbles: true });
+        Object.defineProperty(event, 'clipboardData', {
+          value: transferStub(data),
+        });
+        return event;
+      }
+
+      function eventsOfType(type: DomEventType): DomEventPayloadLike[] {
+        return (chrome.runtime.sendMessage as jest.Mock).mock.calls
+          .map((call) => call[0] as ExtensionMessage)
+          .filter(
+            (message) => message.type === ExtensionMessageTypeEnum.DomEvent,
+          )
+          .map(
+            (message) => (message as { payload: DomEventPayloadLike }).payload,
+          )
+          .filter((payload) => payload.type === type);
+      }
+
+      function onNextFrame(): jest.SpyInstance {
+        return jest
+          .spyOn(window, 'requestAnimationFrame')
+          .mockImplementation((cb) => {
+            setTimeout(() => cb(0), 0);
+            return 1;
+          });
+      }
+
+      it('captures a double click with ratio offsets', () => {
+        addBox('card').dispatchEvent(
+          new MouseEvent('dblclick', {
+            bubbles: true,
+            clientX: 50,
+            clientY: 25,
+          }),
+        );
+
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Dblclick,
+          selector: '#card',
+          content: { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        });
+      });
+
+      it('captures a right click', () => {
+        addBox('card').dispatchEvent(
+          new MouseEvent('contextmenu', {
+            bubbles: true,
+            clientX: 25,
+            clientY: 25,
+          }),
+        );
+
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Contextmenu,
+          selector: '#card',
+          content: { offsetXRatio: 0.25, offsetYRatio: 0.5 },
+        });
+      });
+
+      it('sums the wheel deltas of a frame into one event per element', () => {
+        const raf = onNextFrame();
+        const box = addBox('list');
+
+        box.dispatchEvent(
+          new WheelEvent('wheel', {
+            bubbles: true,
+            deltaY: 40,
+            clientX: 50,
+            clientY: 25,
+          }),
+        );
+        box.dispatchEvent(
+          new WheelEvent('wheel', {
+            bubbles: true,
+            deltaY: 60,
+            clientX: 50,
+            clientY: 25,
+          }),
+        );
+        jest.runAllTimers();
+
+        const wheels = eventsOfType(DomEventTypeEnum.Wheel);
+        expect(wheels).toHaveLength(1);
+        expect(wheels[0].selector).toBe('#list');
+        expect(wheels[0].content).toMatchObject({
+          deltaX: 0,
+          deltaY: 100,
+          deltaMode: 0,
+          offsetXRatio: 0.5,
+        });
+
+        raf.mockRestore();
+      });
+
+      it('skips the wheel when scrolling is not mirrored', () => {
+        const raf = onNextFrame();
+        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorScroll: false });
+
+        addBox('list').dispatchEvent(
+          new WheelEvent('wheel', { bubbles: true, deltaY: 40 }),
+        );
+        jest.runAllTimers();
+
+        expect(getLastDomEvent()).toBeNull();
+        raf.mockRestore();
+      });
+
+      it('captures a dragstart with the dragged payload, minus the files', () => {
+        addBox('chip').dispatchEvent(
+          dragEvent(
+            'dragstart',
+            transferStub(
+              { 'text/plain': 'task-7', Files: '' },
+              { effectAllowed: 'copyMove' },
+            ),
+          ),
+        );
+
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Dragstart,
+          selector: '#chip',
+          content: {
+            types: ['text/plain', 'Files'],
+            data: { 'text/plain': 'task-7' },
+            effectAllowed: 'copyMove',
+            offsetXRatio: 0.5,
+          },
+        });
+      });
+
+      it('coalesces dragover to the latest position of the frame', () => {
+        const raf = onNextFrame();
+        const zone = addBox('zone');
+
+        zone.dispatchEvent(dragEvent('dragover', null, 25, 25));
+        zone.dispatchEvent(dragEvent('dragover', null, 75, 25));
+        jest.runAllTimers();
+
+        const overs = eventsOfType(DomEventTypeEnum.Dragover);
+        expect(overs).toHaveLength(1);
+        expect(overs[0].content).toEqual({
+          offsetXRatio: 0.75,
+          offsetYRatio: 0.5,
+        });
+
+        raf.mockRestore();
+      });
+
+      it('sends the last dragover before the drop that follows it', () => {
+        const raf = onNextFrame();
+        const zone = addBox('zone');
+
+        zone.dispatchEvent(dragEvent('dragover', null, 75, 25));
+        zone.dispatchEvent(
+          dragEvent('drop', transferStub({ 'text/plain': 'task-7' })),
+        );
+        jest.runAllTimers();
+
+        const order = (chrome.runtime.sendMessage as jest.Mock).mock.calls
+          .map((call) => call[0] as ExtensionMessage)
+          .filter(
+            (message) => message.type === ExtensionMessageTypeEnum.DomEvent,
+          )
+          .map(
+            (message) =>
+              (message as { payload: DomEventPayloadLike }).payload.type,
+          );
+
+        expect(order).toEqual([
+          DomEventTypeEnum.Dragover,
+          DomEventTypeEnum.Drop,
+        ]);
+
+        raf.mockRestore();
+      });
+
+      it('captures a drop with its payload and a dragend without one', () => {
+        const zone = addBox('zone');
+
+        zone.dispatchEvent(
+          dragEvent(
+            'drop',
+            transferStub({ 'text/plain': 'task-7' }, { dropEffect: 'move' }),
+          ),
+        );
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Drop,
+          content: { data: { 'text/plain': 'task-7' }, dropEffect: 'move' },
+        });
+
+        zone.dispatchEvent(
+          dragEvent('dragend', transferStub({ 'text/plain': 'task-7' })),
+        );
+        const payload = getLastDomEvent();
+        expect(payload?.type).toBe(DomEventTypeEnum.Dragend);
+        expect(payload?.content).toEqual({
+          offsetXRatio: 0.5,
+          offsetYRatio: 0.5,
+        });
+      });
+
+      it('captures pasted text and markup', () => {
+        const field = document.createElement('textarea');
+        field.id = 'note';
+        document.body.appendChild(field);
+
+        field.dispatchEvent(
+          pasteEvent({
+            'text/plain': 'from the clipboard',
+            'text/html': '<b>from</b>',
+          }),
+        );
+
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Paste,
+          selector: '#note',
+          content: { text: 'from the clipboard', html: '<b>from</b>' },
+        });
+      });
+
+      it('skips a paste when the clipboard setting is off', () => {
+        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorClipboard: false });
+        const field = document.createElement('textarea');
+        document.body.appendChild(field);
+
+        field.dispatchEvent(pasteEvent({ 'text/plain': 'secret' }));
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('skips a paste into a password field when opted out', () => {
+        capture.setSettings({
+          ...DEFAULT_SETTINGS,
+          mirrorPasswordFields: false,
+        });
+        const field = document.createElement('input');
+        field.type = 'password';
+        document.body.appendChild(field);
+
+        field.dispatchEvent(pasteEvent({ 'text/plain': 'hunter2' }));
+
+        expect(getLastDomEvent()).toBeNull();
+      });
+
+      it('captures a field selection once it settles', () => {
+        const field = document.createElement('input');
+        field.id = 'title';
+        field.value = 'release notes';
+        document.body.appendChild(field);
+        field.setSelectionRange(0, 7);
+
+        field.dispatchEvent(new Event('select', { bubbles: true }));
+        expect(getLastDomEvent()).toBeNull();
+
+        jest.advanceTimersByTime(150);
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Selection,
+          selector: '#title',
+          content: { start: 0, end: 7 },
+        });
+      });
+
+      it('captures a page selection as anchor and focus points', () => {
+        const para = document.createElement('p');
+        para.id = 'intro';
+        para.textContent = 'mirror every gesture';
+        document.body.appendChild(para);
+        const text = para.firstChild as Text;
+        document.getSelection()?.setBaseAndExtent(text, 0, text, 6);
+
+        document.dispatchEvent(new Event('selectionchange'));
+        jest.advanceTimersByTime(150);
+
+        expect(getLastDomEvent()).toMatchObject({
+          type: DomEventTypeEnum.Selection,
+          selector: '#intro',
+          content: {
+            anchor: { selector: '#intro', childIndex: 0, offset: 0 },
+            focus: { selector: '#intro', childIndex: 0, offset: 6 },
+          },
+        });
+      });
+
+      it('asks the target to clear a dropped selection just once', () => {
+        const para = document.createElement('p');
+        para.id = 'intro';
+        para.textContent = 'mirror every gesture';
+        document.body.appendChild(para);
+        const text = para.firstChild as Text;
+
+        document.getSelection()?.setBaseAndExtent(text, 0, text, 6);
+        document.dispatchEvent(new Event('selectionchange'));
+        jest.advanceTimersByTime(150);
+        expect(getLastDomEvent()?.type).toBe(DomEventTypeEnum.Selection);
+
+        document.getSelection()?.removeAllRanges();
+        document.dispatchEvent(new Event('selectionchange'));
+        jest.advanceTimersByTime(150);
+        expect(getLastDomEvent()).toMatchObject({
+          selector: '#intro',
+          content: { collapsed: true },
+        });
+
+        // nothing is selected any more, so a further change is not worth a message
+        jest.clearAllMocks();
+        document.dispatchEvent(new Event('selectionchange'));
+        jest.advanceTimersByTime(150);
+        expect(chrome.runtime.sendMessage).not.toHaveBeenCalled();
+      });
     });
 
     describe('settings', () => {
@@ -1404,5 +1772,256 @@ describe('EventReplay', () => {
     });
 
     expect(clickSpy).not.toHaveBeenCalled();
+  });
+
+  describe('gestures', () => {
+    function addBox(id: string): HTMLElement {
+      const box = document.createElement('div');
+      box.id = id;
+      document.body.appendChild(box);
+      jest.spyOn(box, 'getBoundingClientRect').mockReturnValue({
+        left: 0,
+        top: 0,
+        width: 100,
+        height: 40,
+        right: 100,
+        bottom: 40,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      } as DOMRect);
+      return box;
+    }
+
+    function play(
+      type: DomEventType,
+      content: DomEventContent,
+      selector = '#root',
+    ): void {
+      replay.replay({ ...basePayload, selector, type, content });
+    }
+
+    it('replays a double click as one dblclick and records it', () => {
+      const box = addBox('root');
+      const details: number[] = [];
+      box.addEventListener('dblclick', (e) => {
+        details.push(e.detail);
+      });
+
+      play(DomEventTypeEnum.Dblclick, {
+        offsetXRatio: 0.5,
+        offsetYRatio: 0.5,
+      });
+
+      expect(details).toEqual([2]);
+      expect(frame.animateClick).toHaveBeenCalledWith(50, 20);
+      expect(sentRecords()[0]).toMatchObject({
+        type: DomEventTypeEnum.Dblclick,
+        selector: 'div#root',
+        content: { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+      });
+    });
+
+    it('replays a right click as the whole secondary-button gesture', () => {
+      const box = addBox('root');
+      const seen: string[] = [];
+      for (const type of ['mousedown', 'contextmenu', 'mouseup']) {
+        box.addEventListener(type, (e) => {
+          seen.push(type + ':' + String((e as MouseEvent).button));
+        });
+      }
+
+      play(DomEventTypeEnum.Contextmenu, {
+        offsetXRatio: 0.5,
+        offsetYRatio: 0.5,
+      });
+
+      expect(seen).toEqual(['mousedown:2', 'contextmenu:2', 'mouseup:2']);
+    });
+
+    it('replays a wheel turn with its deltas and modifiers', () => {
+      const box = addBox('root');
+      const seen: WheelEvent[] = [];
+      box.addEventListener('wheel', (e) => {
+        seen.push(e);
+      });
+
+      play(DomEventTypeEnum.Wheel, {
+        offsetXRatio: 0.5,
+        offsetYRatio: 0.5,
+        deltaX: 0,
+        deltaY: 120,
+        deltaZ: 0,
+        deltaMode: 0,
+        ctrlKey: true,
+        shiftKey: false,
+        altKey: false,
+        metaKey: false,
+      });
+
+      expect(seen).toHaveLength(1);
+      expect(seen[0].deltaY).toBe(120);
+      expect(seen[0].ctrlKey).toBe(true);
+      expect(seen[0].clientX).toBe(50);
+    });
+
+    it('replays a drag as enter, over, drop and end carrying the payload', () => {
+      const chip = addBox('chip');
+      const zone = addBox('zone');
+      const seen: string[] = [];
+      const log = (e: Event) => {
+        const transfer = (e as DragEvent).dataTransfer;
+        seen.push(e.type + ':' + (transfer?.getData('text/plain') ?? ''));
+      };
+      for (const type of [
+        'dragstart',
+        'dragenter',
+        'dragover',
+        'dragleave',
+        'drop',
+        'dragend',
+      ]) {
+        chip.addEventListener(type, log);
+        zone.addEventListener(type, log);
+      }
+
+      play(
+        DomEventTypeEnum.Dragstart,
+        {
+          offsetXRatio: 0.5,
+          offsetYRatio: 0.5,
+          data: { 'text/plain': 'task-7' },
+          effectAllowed: 'move',
+        },
+        '#chip',
+      );
+      play(
+        DomEventTypeEnum.Dragover,
+        { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        '#zone',
+      );
+      play(
+        DomEventTypeEnum.Dragover,
+        { offsetXRatio: 0.6, offsetYRatio: 0.5 },
+        '#zone',
+      );
+      play(
+        DomEventTypeEnum.Drop,
+        { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        '#zone',
+      );
+      play(
+        DomEventTypeEnum.Dragend,
+        { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        '#chip',
+      );
+
+      // ? dragenter fires once: the second dragover is over the same element
+      expect(seen).toEqual([
+        'dragstart:task-7',
+        'dragenter:task-7',
+        'dragover:task-7',
+        'dragover:task-7',
+        'drop:task-7',
+        'dragend:task-7',
+      ]);
+      expect(frame.moveTo).toHaveBeenCalledWith(50, 20);
+    });
+
+    it('leaves the element the drag left', () => {
+      const first = addBox('first');
+      const second = addBox('second');
+      const seen: string[] = [];
+      for (const type of ['dragenter', 'dragleave']) {
+        first.addEventListener(type, (e) => {
+          seen.push('first:' + e.type);
+        });
+        second.addEventListener(type, (e) => {
+          seen.push('second:' + e.type);
+        });
+      }
+
+      play(
+        DomEventTypeEnum.Dragover,
+        { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        '#first',
+      );
+      play(
+        DomEventTypeEnum.Dragover,
+        { offsetXRatio: 0.5, offsetYRatio: 0.5 },
+        '#second',
+      );
+
+      expect(seen).toEqual([
+        'first:dragenter',
+        'first:dragleave',
+        'second:dragenter',
+      ]);
+    });
+
+    it('replays a paste without inserting the text itself', () => {
+      const field = document.createElement('textarea');
+      field.id = 'root';
+      document.body.appendChild(field);
+      const seen: string[] = [];
+      field.addEventListener('paste', (e) => {
+        seen.push(
+          (e as ClipboardEvent).clipboardData?.getData('text/plain') ?? '',
+        );
+      });
+
+      play(DomEventTypeEnum.Paste, { text: 'from the clipboard' });
+
+      expect(seen).toEqual(['from the clipboard']);
+      // ? the value arrives as its own input event, so the paste must not insert it twice
+      expect(field.value).toBe('');
+    });
+
+    it('replays a field selection through the field itself', () => {
+      const field = document.createElement('input');
+      field.id = 'root';
+      field.value = 'release notes';
+      document.body.appendChild(field);
+
+      play(DomEventTypeEnum.Selection, {
+        start: 0,
+        end: 7,
+        direction: 'forward',
+      });
+
+      expect(field.selectionStart).toBe(0);
+      expect(field.selectionEnd).toBe(7);
+    });
+
+    it('replays a page selection and clears it again', () => {
+      const para = document.createElement('p');
+      para.id = 'root';
+      para.textContent = 'mirror every gesture';
+      document.body.appendChild(para);
+
+      play(DomEventTypeEnum.Selection, {
+        anchor: { selector: '#root', childIndex: 0, offset: 0 },
+        focus: { selector: '#root', childIndex: 0, offset: 6 },
+      });
+      expect(document.getSelection()?.toString()).toBe('mirror');
+
+      play(DomEventTypeEnum.Selection, { collapsed: true });
+      expect(document.getSelection()?.rangeCount).toBe(0);
+    });
+
+    it('warns instead of throwing when the selected nodes are gone', async () => {
+      const logger = (await import('@/shared/util')).logger;
+      addBox('root');
+
+      play(DomEventTypeEnum.Selection, {
+        anchor: { selector: '#gone', childIndex: 0, offset: 0 },
+        focus: { selector: '#gone', childIndex: 0, offset: 3 },
+      });
+
+      expect(logger.warn).toHaveBeenCalledWith(
+        '[replay selection] could not resolve the selected nodes:',
+        '#gone',
+      );
+    });
   });
 });

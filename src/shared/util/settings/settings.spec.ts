@@ -77,6 +77,7 @@ describe('normaliseSettings', () => {
   it('keeps stored booleans', () => {
     const stored = {
       mirrorPasswordFields: true,
+      mirrorClipboard: false,
       showGhostCursor: false,
       showRoleBadge: false,
       mirrorMousemove: false,

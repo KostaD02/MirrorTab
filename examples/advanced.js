@@ -8,6 +8,7 @@ initTooltips();
 initRepoList();
 initEnvironments();
 initShadowCounter();
+initGestures();
 
 function initDropdown() {
   const button = document.querySelector('#assignee-btn');
@@ -234,6 +235,90 @@ function initEnvironments() {
       body.append(...rows);
     });
   }
+}
+
+function initGestures() {
+  const drop = document.querySelector('#label-drop');
+  const badge = document.querySelector('#gesture-badge');
+  const gestureReadout = document.querySelector('#gesture-readout');
+  const dial = document.querySelector('#wheel-dial');
+  const wheelValue = document.querySelector('#wheel-value');
+  const pasteNote = document.querySelector('#paste-note');
+  const pasteReadout = document.querySelector('#paste-readout');
+  const selectionReadout = document.querySelector('#selection-readout');
+  const applied = [];
+  let turns = 0;
+
+  for (const label of document.querySelectorAll('[data-label]')) {
+    label.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', label.dataset.label);
+      e.dataTransfer.effectAllowed = 'copy';
+      label.classList.add('is-dragging');
+    });
+
+    label.addEventListener('dragend', () => {
+      label.classList.remove('is-dragging');
+    });
+  }
+
+  drop.addEventListener('dragenter', () => {
+    drop.classList.add('is-over');
+  });
+
+  drop.addEventListener('dragleave', () => {
+    drop.classList.remove('is-over');
+  });
+
+  // ? without preventDefault here the browser never raises the drop
+  drop.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  });
+
+  drop.addEventListener('drop', (e) => {
+    e.preventDefault();
+    drop.classList.remove('is-over');
+
+    const label = e.dataTransfer.getData('text/plain');
+
+    if (!label || applied.includes(label)) {
+      return;
+    }
+
+    applied.push(label);
+    drop.textContent = 'Applied: ' + applied.join(', ');
+  });
+
+  // ? the pasted text lands through the input event; this shows the paste itself arrived
+  pasteNote.addEventListener('paste', (e) => {
+    const text = e.clipboardData.getData('text/plain');
+
+    pasteReadout.textContent = text
+      ? 'pasted ' + text.length + ' characters'
+      : 'pasted nothing';
+  });
+
+  badge.addEventListener('dblclick', () => {
+    gestureReadout.textContent = 'double click';
+  });
+
+  // ? the page menu replaces the browser one, which no extension can open
+  badge.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    gestureReadout.textContent = 'right click';
+  });
+
+  dial.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    turns += Math.sign(e.deltaY);
+    wheelValue.textContent = String(turns);
+  });
+
+  document.addEventListener('selectionchange', () => {
+    const text = document.getSelection().toString().trim();
+
+    selectionReadout.textContent = text ? 'selected: ' + text : '';
+  });
 }
 
 function initShadowCounter() {

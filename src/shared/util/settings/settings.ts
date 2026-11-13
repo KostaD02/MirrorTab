@@ -39,6 +39,10 @@ export function normaliseSettings(raw: unknown): MirrorSettings {
       stored.mirrorPasswordFields,
       DEFAULT_SETTINGS.mirrorPasswordFields,
     ),
+    mirrorClipboard: bool(
+      stored.mirrorClipboard,
+      DEFAULT_SETTINGS.mirrorClipboard,
+    ),
     showGhostCursor: bool(
       stored.showGhostCursor,
       DEFAULT_SETTINGS.showGhostCursor,
