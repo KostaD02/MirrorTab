@@ -212,8 +212,7 @@ export class PopupController {
   private async restoreInputs(): Promise<void> {
     const data = await chrome.storage.local.get(INPUT_STORAGE_KEY);
     const inputs = data[INPUT_STORAGE_KEY] as
-      | { source?: string; targets?: string[] }
-      | undefined;
+      { source?: string; targets?: string[] } | undefined;
 
     if (inputs && !this.session) {
       if (inputs.source) this.domRefs.sourceInput.value = inputs.source;

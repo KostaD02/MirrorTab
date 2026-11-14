@@ -14,8 +14,8 @@ function initActivityLog() {
   }
 
   const rows = new Map();
-  let pendingMove = null;
-  let moveScheduled = false;
+  const perFrame = new Map();
+  let frameScheduled = false;
 
   for (const row of table.querySelectorAll('tbody tr')) {
     rows.set(row.dataset.event, {
@@ -55,19 +55,38 @@ function initActivityLog() {
     capture,
   );
 
-  // ? mousemove arrives many times a frame, so the table is updated once per frame
+  document.addEventListener(
+    'dblclick',
+    (e) => record('dblclick', e.target),
+    capture,
+  );
+  document.addEventListener(
+    'contextmenu',
+    (e) => record('contextmenu', e.target),
+    capture,
+  );
+  document.addEventListener(
+    'dragstart',
+    (e) => record('dragstart', e.target),
+    capture,
+  );
+  document.addEventListener('drop', (e) => record('drop', e.target), capture);
+  document.addEventListener('paste', (e) => record('paste', e.target), capture);
+  document.addEventListener(
+    'selectionchange',
+    () => record('selectionchange', document),
+    capture,
+  );
+
+  // ? mousemove and wheel arrive many times a frame, so the table is updated once per frame
   document.addEventListener(
     'mousemove',
-    (e) => {
-      pendingMove = e.target;
-      if (!moveScheduled) {
-        moveScheduled = true;
-        requestAnimationFrame(() => {
-          moveScheduled = false;
-          record('mousemove', pendingMove);
-        });
-      }
-    },
+    (e) => recordPerFrame('mousemove', e.target),
+    capture,
+  );
+  document.addEventListener(
+    'wheel',
+    (e) => recordPerFrame('wheel', e.target),
     capture,
   );
 
@@ -78,6 +97,25 @@ function initActivityLog() {
         entry.countRef.textContent = '0';
         entry.targetRef.textContent = '';
       }
+    });
+  }
+
+  function recordPerFrame(type, target) {
+    perFrame.set(type, target);
+
+    if (frameScheduled) {
+      return;
+    }
+
+    frameScheduled = true;
+    requestAnimationFrame(() => {
+      frameScheduled = false;
+
+      for (const [frameType, frameTarget] of perFrame) {
+        record(frameType, frameTarget);
+      }
+
+      perFrame.clear();
     });
   }
 

@@ -110,6 +110,44 @@ dialog::backdrop {
   border-color: var(--kd-accent);
 }
 
+/* ? the drag chips, drop zone and wheel dial of the gestures card */
+.drag-chip {
+  padding: 0.25rem 0.625rem;
+  border: var(--kd-border-width-1) solid var(--kd-border);
+  border-radius: var(--kd-radius-pill);
+  background: var(--kd-bg-elevated);
+  color: var(--kd-text-primary);
+  cursor: grab;
+  user-select: none;
+}
+
+.drag-chip.is-dragging {
+  border-color: var(--kd-accent);
+  color: var(--kd-accent);
+}
+
+.drop-zone {
+  padding: 0.75rem;
+  border: var(--kd-border-width-1) dashed var(--kd-border);
+  border-radius: var(--kd-radius-md);
+  text-align: center;
+}
+
+.drop-zone.is-over {
+  border-color: var(--kd-accent);
+  background: var(--kd-accent-soft);
+  color: var(--kd-accent);
+}
+
+.dial {
+  padding: 0.75rem;
+  border: var(--kd-border-width-1) solid var(--kd-border);
+  border-radius: var(--kd-radius-md);
+  background: var(--kd-bg-elevated);
+  text-align: center;
+  overscroll-behavior: contain;
+}
+
 /* ? the activity table is read side by side on two tabs, so it follows the scroll and never reflows */
 .activity-card {
   position: sticky;

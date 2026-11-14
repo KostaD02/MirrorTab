@@ -1,13 +1,18 @@
 import {
   DomClickEventPayload,
+  DomDragEventPayload,
   DomEventPayload,
   DomEventTypeEnum,
   DomFocusEventPayload,
   DomInputEventPayload,
   DomKeyboardEventPayload,
   DomMousemoveEventPayload,
+  DomPasteEventPayload,
   DomResizeEventPayload,
   DomScrollEventPayload,
+  DomSelectionEventPayload,
+  DomSelectionPoint,
+  DomWheelEventPayload,
   ExtensionMessage,
   ExtensionMessageTypeEnum,
   MirrorSettings,
@@ -30,6 +35,7 @@ import { PseudoStyleTarget } from './pseudo-styles';
 let isReplaying = false;
 
 const RESIZE_DEBOUNCE_MS = 100;
+const SELECTION_DEBOUNCE_MS = 120;
 
 const POINTER_INIT: PointerEventInit = {
   pointerId: 1,
@@ -130,6 +136,120 @@ function resizable(el: Node | null): el is HTMLElement {
   return el instanceof HTMLElement && getComputedStyle(el).resize !== 'none';
 }
 
+function pointIn(
+  element: Element,
+  xRatio: number,
+  yRatio: number,
+): { x: number; y: number } {
+  const rect = element.getBoundingClientRect();
+  return {
+    x: rect.left + xRatio * rect.width,
+    y: rect.top + yRatio * rect.height,
+  };
+}
+
+function offsetRatios(element: Element, e: MouseEvent): DomClickEventPayload {
+  const rect = element.getBoundingClientRect();
+  return {
+    offsetXRatio: rect.width > 0 ? (e.clientX - rect.left) / rect.width : 0.5,
+    offsetYRatio: rect.height > 0 ? (e.clientY - rect.top) / rect.height : 0.5,
+  };
+}
+
+// ? only the string entries travel; a dragged file's bytes cannot cross the message boundary, so its name goes instead
+function transferContent(
+  transfer: DataTransfer | null,
+): Partial<DomDragEventPayload> {
+  if (!transfer) return {};
+
+  const content: Partial<DomDragEventPayload> = {};
+  const types = Array.from(transfer.types);
+  if (types.length > 0) content.types = types;
+
+  const data: Record<string, string> = {};
+  for (const type of types) {
+    if (type === 'Files') continue;
+    try {
+      const value = transfer.getData(type);
+      if (value) data[type] = value;
+    } catch {
+      // ? the browser hides the payload everywhere but dragstart and drop
+    }
+  }
+  if (Object.keys(data).length > 0) content.data = data;
+
+  const files = Array.from(transfer.files).map((file) => file.name);
+  if (files.length > 0) content.files = files;
+
+  if (transfer.effectAllowed !== 'none') {
+    content.effectAllowed = transfer.effectAllowed;
+  }
+  if (transfer.dropEffect !== 'none') {
+    content.dropEffect = transfer.dropEffect;
+  }
+
+  return content;
+}
+
+// ? a field keeps a flat selection over its value, with no DOM nodes to point at
+function fieldSelection(
+  el: Element | null,
+): { selector: string; content: DomSelectionEventPayload } | null {
+  if (!(el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement)) {
+    return null;
+  }
+
+  let start: number | null = null;
+  let end: number | null = null;
+  try {
+    start = el.selectionStart;
+    end = el.selectionEnd;
+  } catch {
+    // ? types such as email and number keep no selection
+    return null;
+  }
+  if (start === null || end === null) return null;
+
+  const selector = getSemanticSelector(el);
+  if (start === end) {
+    return { selector, content: { start, end, collapsed: true } };
+  }
+  return {
+    selector,
+    content: { start, end, direction: el.selectionDirection ?? 'none' },
+  };
+}
+
+function selectionPoint(node: Node, offset: number): DomSelectionPoint | null {
+  if (node instanceof Element) {
+    return { selector: getSemanticSelector(node), childIndex: -1, offset };
+  }
+  const parent = node.parentElement;
+  if (!parent) return null;
+  return {
+    selector: getSemanticSelector(parent),
+    childIndex: Array.from<Node>(parent.childNodes).indexOf(node),
+    offset,
+  };
+}
+
+function documentSelection(): {
+  selector: string;
+  content: DomSelectionEventPayload;
+} | null {
+  const selection = document.getSelection();
+  if (!selection?.anchorNode || !selection.focusNode) return null;
+
+  const anchor = selectionPoint(selection.anchorNode, selection.anchorOffset);
+  const focus = selectionPoint(selection.focusNode, selection.focusOffset);
+  if (!anchor || !focus) return null;
+
+  if (selection.isCollapsed) {
+    return { selector: anchor.selector, content: { collapsed: true } };
+  }
+  return { selector: anchor.selector, content: { anchor, focus } };
+}
+
 export class EventCapture {
   private readonly scrollTimers = new Map<
     string,
@@ -140,7 +260,17 @@ export class EventCapture {
     HTMLElement,
     ReturnType<typeof setTimeout>
   >();
+  private readonly pendingWheel = new Map<string, DomWheelEventPayload>();
+  private pendingDragover: {
+    selector: string;
+    content: DomClickEventPayload;
+  } | null = null;
   private rafPending = false;
+  private wheelRafPending = false;
+  private dragRafPending = false;
+  private selectionTimer: ReturnType<typeof setTimeout> | null = null;
+  // ? the element the last mirrored selection pointed at, so a dropped selection can still be cleared
+  private selectedAt: string | null = null;
   private lastMouseXRatio = 0;
   private lastMouseYRatio = 0;
   private role: SessionRole = SessionRoleEnum.Idle;
@@ -184,22 +314,23 @@ export class EventCapture {
     document.addEventListener(
       DomEventTypeEnum.Click,
       (e: MouseEvent) => {
-        if (!this.active()) return;
-        const element = targetOf(e);
-        if (!element || element === document.documentElement) return;
-        const rect = element.getBoundingClientRect();
-        const selector = getSemanticSelector(element);
-        const content = {
-          offsetXRatio:
-            rect.width > 0 ? (e.clientX - rect.left) / rect.width : 0.5,
-          offsetYRatio:
-            rect.height > 0 ? (e.clientY - rect.top) / rect.height : 0.5,
-        };
-        this.emit({
-          content,
-          selector,
-          type: DomEventTypeEnum.Click,
-        });
+        this.emitPointer(DomEventTypeEnum.Click, e);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Dblclick,
+      (e: MouseEvent) => {
+        this.emitPointer(DomEventTypeEnum.Dblclick, e);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Contextmenu,
+      (e: MouseEvent) => {
+        this.emitPointer(DomEventTypeEnum.Contextmenu, e);
       },
       true,
     );
@@ -340,6 +471,71 @@ export class EventCapture {
       },
       true,
     );
+
+    document.addEventListener(
+      DomEventTypeEnum.Wheel,
+      (e: WheelEvent) => {
+        this.queueWheel(e);
+      },
+      { capture: true, passive: true },
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Dragstart,
+      (e: DragEvent) => {
+        this.emitDrag(DomEventTypeEnum.Dragstart, e, true);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Dragover,
+      (e: DragEvent) => {
+        this.queueDragover(e);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Drop,
+      (e: DragEvent) => {
+        this.emitDrag(DomEventTypeEnum.Drop, e, true);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Dragend,
+      (e: DragEvent) => {
+        this.emitDrag(DomEventTypeEnum.Dragend, e, false);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Paste,
+      (e: ClipboardEvent) => {
+        this.emitPaste(e);
+      },
+      true,
+    );
+
+    // ? a field raises select, the rest of the page selectionchange; both end up as one mirrored selection
+    document.addEventListener(
+      'select',
+      (e: Event) => {
+        this.queueSelection(targetOf(e));
+      },
+      true,
+    );
+
+    document.addEventListener(
+      DomEventTypeEnum.Selection,
+      () => {
+        this.queueSelection(null);
+      },
+      true,
+    );
   }
 
   // ? dragging a resize handle raises no DOM event, but the browser writes the new size into the inline style
@@ -427,12 +623,246 @@ export class EventCapture {
       content,
     });
   }
+
+  private emitPointer(
+    type:
+      | typeof DomEventTypeEnum.Click
+      | typeof DomEventTypeEnum.Dblclick
+      | typeof DomEventTypeEnum.Contextmenu,
+    e: MouseEvent,
+  ): void {
+    if (!this.active()) return;
+    const element = targetOf(e);
+    if (!element || element === document.documentElement) return;
+    this.emit({
+      type,
+      selector: getSemanticSelector(element),
+      content: offsetRatios(element, e),
+    });
+  }
+
+  // ? a wheel turn arrives many times a frame, so the deltas are summed per element and sent once
+  private queueWheel(e: WheelEvent): void {
+    if (!this.active()) return;
+    if (!this.settings.mirrorScroll) return;
+    const element = targetOf(e);
+    if (!element) return;
+
+    const selector = getSemanticSelector(element);
+    const pending = this.pendingWheel.get(selector);
+    if (pending) {
+      pending.deltaX += e.deltaX;
+      pending.deltaY += e.deltaY;
+      pending.deltaZ += e.deltaZ;
+      Object.assign(pending, offsetRatios(element, e));
+    } else {
+      this.pendingWheel.set(selector, {
+        ...offsetRatios(element, e),
+        deltaX: e.deltaX,
+        deltaY: e.deltaY,
+        deltaZ: e.deltaZ,
+        deltaMode: e.deltaMode,
+        ctrlKey: e.ctrlKey,
+        shiftKey: e.shiftKey,
+        altKey: e.altKey,
+        metaKey: e.metaKey,
+      });
+    }
+
+    if (this.wheelRafPending) return;
+    this.wheelRafPending = true;
+    requestAnimationFrame(() => {
+      this.wheelRafPending = false;
+      const batch = [...this.pendingWheel];
+      this.pendingWheel.clear();
+      if (!this.active()) return;
+      for (const [wheelSelector, content] of batch) {
+        this.emit({
+          type: DomEventTypeEnum.Wheel,
+          selector: wheelSelector,
+          content,
+        });
+      }
+    });
+  }
+
+  // ? dragover fires as fast as the pointer moves; only the latest position is worth sending
+  private queueDragover(e: DragEvent): void {
+    if (!this.active()) return;
+    const element = targetOf(e);
+    if (!element) return;
+
+    this.pendingDragover = {
+      selector: getSemanticSelector(element),
+      content: offsetRatios(element, e),
+    };
+
+    if (this.dragRafPending) return;
+    this.dragRafPending = true;
+    requestAnimationFrame(() => {
+      this.dragRafPending = false;
+      this.flushDragover();
+    });
+  }
+
+  private flushDragover(): void {
+    const pending = this.pendingDragover;
+    this.pendingDragover = null;
+    if (!pending || !this.active()) return;
+    this.emit({ type: DomEventTypeEnum.Dragover, ...pending });
+  }
+
+  private emitDrag(
+    type:
+      | typeof DomEventTypeEnum.Dragstart
+      | typeof DomEventTypeEnum.Drop
+      | typeof DomEventTypeEnum.Dragend,
+    e: DragEvent,
+    withPayload: boolean,
+  ): void {
+    if (!this.active()) return;
+    const element = targetOf(e);
+    if (!element) return;
+
+    // ? a drop and the end of a drag follow the last dragover, which is still waiting on a frame
+    if (type !== DomEventTypeEnum.Dragstart) this.flushDragover();
+
+    const content: DomDragEventPayload = offsetRatios(element, e);
+    if (withPayload) Object.assign(content, transferContent(e.dataTransfer));
+
+    this.emit({
+      type,
+      selector: getSemanticSelector(element),
+      content,
+    });
+  }
+
+  private emitPaste(e: ClipboardEvent): void {
+    if (!this.active()) return;
+    const target = targetOf(e);
+    if (!target) return;
+    if (this.blocked(target)) return;
+
+    const clipboard = e.clipboardData;
+    const content: DomPasteEventPayload = {
+      text: clipboard?.getData('text/plain') ?? '',
+    };
+    const html = clipboard?.getData('text/html');
+    if (html) content.html = html;
+
+    this.emit({
+      type: DomEventTypeEnum.Paste,
+      selector: getSemanticSelector(target),
+      content,
+    });
+  }
+
+  // ? dragging a selection changes it on every pointer move, so only the settled one is sent
+  private queueSelection(target: Element | null): void {
+    if (!this.active()) return;
+    if (this.selectionTimer) clearTimeout(this.selectionTimer);
+    this.selectionTimer = setTimeout(() => {
+      this.selectionTimer = null;
+      this.emitSelection(target);
+    }, SELECTION_DEBOUNCE_MS);
+  }
+
+  private emitSelection(target: Element | null): void {
+    if (!this.active()) return;
+
+    const next =
+      fieldSelection(target) ??
+      fieldSelection(document.activeElement) ??
+      documentSelection();
+
+    if (!next) {
+      // ? the selection is gone with its nodes, so the target is told where to clear its own
+      const selector = this.selectedAt;
+      if (selector === null) return;
+      this.selectedAt = null;
+      this.emit({
+        type: DomEventTypeEnum.Selection,
+        selector,
+        content: { collapsed: true },
+      });
+      return;
+    }
+
+    const collapsed = next.content.collapsed === true;
+    // ? nothing was selected and nothing is now, so the target has nothing to clear
+    if (collapsed && this.selectedAt === null) return;
+    this.selectedAt = collapsed ? null : next.selector;
+
+    this.emit({
+      type: DomEventTypeEnum.Selection,
+      selector: next.selector,
+      content: next.content,
+    });
+  }
+}
+
+interface TransferInit {
+  data?: Record<string, string>;
+  effectAllowed?: string;
+  dropEffect?: string;
+}
+
+// ? jsdom has no DataTransfer; this stands in so a replayed drag or paste still carries its payload
+function stubTransfer(): DataTransfer {
+  const store = new Map<string, string>();
+  const stub = {
+    dropEffect: 'none',
+    effectAllowed: 'uninitialized',
+    files: [],
+    items: [],
+    get types(): string[] {
+      return [...store.keys()];
+    },
+    clearData: (type?: string) => {
+      if (type === undefined) {
+        store.clear();
+      } else {
+        store.delete(type);
+      }
+    },
+    getData: (type: string) => store.get(type) ?? '',
+    setData: (type: string, value: string) => {
+      store.set(type, value);
+    },
+    setDragImage: () => undefined,
+  };
+  return stub as unknown as DataTransfer;
+}
+
+// ? the source's transfer object cannot cross the message boundary, so the target builds its own
+function makeTransfer(init: TransferInit): DataTransfer {
+  const transfer =
+    'DataTransfer' in window ? new DataTransfer() : stubTransfer();
+
+  for (const [type, value] of Object.entries(init.data ?? {})) {
+    try {
+      transfer.setData(type, value);
+    } catch {
+      // ? a type this engine refuses to hold
+    }
+  }
+  if (init.effectAllowed) {
+    transfer.effectAllowed =
+      init.effectAllowed as DataTransfer['effectAllowed'];
+  }
+  if (init.dropEffect) {
+    transfer.dropEffect = init.dropEffect as DataTransfer['dropEffect'];
+  }
+
+  return transfer;
 }
 
 export class EventReplay {
   private settings: MirrorSettings = { ...DEFAULT_SETTINGS };
   private hovered: Element | null = null;
   private lastPointer: { x: number; y: number } | null = null;
+  private drag: DataTransfer | null = null;
+  private dragTarget: Element | null = null;
 
   constructor(
     private readonly frame: FrameContext,
@@ -523,12 +953,152 @@ export class EventReplay {
         case DomEventTypeEnum.Click: {
           const { offsetXRatio, offsetYRatio } =
             payload.content as DomClickEventPayload;
-          const rect = element.getBoundingClientRect();
-          const clickX = rect.left + offsetXRatio * rect.width;
-          const clickY = rect.top + offsetYRatio * rect.height;
+          const { x, y } = pointIn(element, offsetXRatio, offsetYRatio);
           record({ offsetXRatio, offsetYRatio });
-          this.frame.animateClick(clickX, clickY);
-          this.pressAt(element, clickX, clickY);
+          this.frame.animateClick(x, y);
+          this.pressAt(element, x, y);
+          break;
+        }
+
+        case DomEventTypeEnum.Dblclick: {
+          const { offsetXRatio, offsetYRatio } =
+            payload.content as DomClickEventPayload;
+          const { x, y } = pointIn(element, offsetXRatio, offsetYRatio);
+          record({ offsetXRatio, offsetYRatio });
+          this.frame.animateClick(x, y);
+          this.setHovered(element, x, y);
+          // ? the two clicks of the gesture were mirrored on their own; this is the event they add up to
+          this.fire(element, 'dblclick', x, y, {
+            button: 0,
+            buttons: 0,
+            detail: 2,
+          });
+          break;
+        }
+
+        // ? the page's own context menu opens; only a real pointer can open the browser's
+        case DomEventTypeEnum.Contextmenu: {
+          const { offsetXRatio, offsetYRatio } =
+            payload.content as DomClickEventPayload;
+          const { x, y } = pointIn(element, offsetXRatio, offsetYRatio);
+          record({ offsetXRatio, offsetYRatio });
+          this.setHovered(element, x, y);
+          this.fire(element, 'pointerdown', x, y, { button: 2, buttons: 2 });
+          this.fire(element, 'mousedown', x, y, { button: 2, buttons: 2 });
+          this.fire(element, 'contextmenu', x, y, { button: 2, buttons: 0 });
+          this.fire(element, 'pointerup', x, y, { button: 2, buttons: 0 });
+          this.fire(element, 'mouseup', x, y, { button: 2, buttons: 0 });
+          break;
+        }
+
+        // ? the scroll it caused is mirrored on its own; this is for pages that read the turn itself
+        case DomEventTypeEnum.Wheel: {
+          const content = payload.content as DomWheelEventPayload;
+          const { x, y } = pointIn(
+            element,
+            content.offsetXRatio,
+            content.offsetYRatio,
+          );
+          record(content);
+          this.setHovered(element, x, y);
+          element.dispatchEvent(
+            new WheelEvent(DomEventTypeEnum.Wheel, {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              view: window,
+              clientX: x,
+              clientY: y,
+              deltaX: content.deltaX,
+              deltaY: content.deltaY,
+              deltaZ: content.deltaZ,
+              deltaMode: content.deltaMode,
+              ctrlKey: content.ctrlKey,
+              shiftKey: content.shiftKey,
+              altKey: content.altKey,
+              metaKey: content.metaKey,
+            }),
+          );
+          break;
+        }
+
+        case DomEventTypeEnum.Dragstart: {
+          const content = payload.content as DomDragEventPayload;
+          const { x, y } = pointIn(
+            element,
+            content.offsetXRatio,
+            content.offsetYRatio,
+          );
+          record(content);
+          this.drag = makeTransfer(content);
+          this.dragTarget = null;
+          this.fireDrag(element, DomEventTypeEnum.Dragstart, x, y);
+          break;
+        }
+
+        case DomEventTypeEnum.Dragover: {
+          const content = payload.content as DomDragEventPayload;
+          const { x, y } = pointIn(
+            element,
+            content.offsetXRatio,
+            content.offsetYRatio,
+          );
+          record(content);
+          // ? no mouse event fires during a drag, so the ghost cursor follows the drag instead
+          this.frame.moveTo(x, y);
+          if (this.dragTarget !== element) {
+            if (this.dragTarget) {
+              this.fireDrag(this.dragTarget, 'dragleave', x, y, element);
+            }
+            this.dragTarget = element;
+            this.fireDrag(element, 'dragenter', x, y);
+          }
+          this.fireDrag(element, DomEventTypeEnum.Dragover, x, y);
+          break;
+        }
+
+        case DomEventTypeEnum.Drop: {
+          const content = payload.content as DomDragEventPayload;
+          const { x, y } = pointIn(
+            element,
+            content.offsetXRatio,
+            content.offsetYRatio,
+          );
+          record(content);
+          // ? a drag that began outside the page had no dragstart to carry the payload
+          this.drag ??= makeTransfer(content);
+          this.frame.moveTo(x, y);
+          this.fireDrag(element, DomEventTypeEnum.Drop, x, y);
+          this.dragTarget = null;
+          break;
+        }
+
+        case DomEventTypeEnum.Dragend: {
+          const content = payload.content as DomDragEventPayload;
+          const { x, y } = pointIn(
+            element,
+            content.offsetXRatio,
+            content.offsetYRatio,
+          );
+          record(content);
+          this.fireDrag(element, DomEventTypeEnum.Dragend, x, y);
+          this.drag = null;
+          this.dragTarget = null;
+          break;
+        }
+
+        // ? the pasted value arrives as its own input event; this is for pages that handle the paste themselves
+        case DomEventTypeEnum.Paste: {
+          const content = payload.content as DomPasteEventPayload;
+          record(content);
+          this.firePaste(element, content);
+          break;
+        }
+
+        case DomEventTypeEnum.Selection: {
+          const content = payload.content as DomSelectionEventPayload;
+          record(content);
+          this.applySelection(element, content);
           break;
         }
 
@@ -748,6 +1318,120 @@ export class EventReplay {
         this.fire(el, 'mouseenter', x, y, { relatedTarget: previous }, false);
       }
     }
+  }
+
+  private fireDrag(
+    element: Element,
+    type: string,
+    x: number,
+    y: number,
+    relatedTarget: Element | null = null,
+  ): void {
+    const init: MouseEventInit = {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      view: window,
+      clientX: x,
+      clientY: y,
+      screenX: x,
+      screenY: y,
+      relatedTarget,
+    };
+    const event =
+      'DragEvent' in window
+        ? new DragEvent(type, { ...init, dataTransfer: this.drag })
+        : new MouseEvent(type, init);
+    if (!('dataTransfer' in event)) {
+      Object.defineProperty(event, 'dataTransfer', {
+        value: this.drag,
+        configurable: true,
+      });
+    }
+    element.dispatchEvent(event);
+  }
+
+  private firePaste(element: Element, content: DomPasteEventPayload): void {
+    const data: Record<string, string> = { 'text/plain': content.text };
+    if (content.html !== undefined) data['text/html'] = content.html;
+    const clipboardData = makeTransfer({ data });
+
+    const init: EventInit = {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+    };
+    const event =
+      'ClipboardEvent' in window
+        ? new ClipboardEvent(DomEventTypeEnum.Paste, { ...init, clipboardData })
+        : new Event(DomEventTypeEnum.Paste, init);
+    if (!('clipboardData' in event)) {
+      Object.defineProperty(event, 'clipboardData', {
+        value: clipboardData,
+        configurable: true,
+      });
+    }
+    element.dispatchEvent(event);
+  }
+
+  private applySelection(
+    element: HTMLElement,
+    content: DomSelectionEventPayload,
+  ): void {
+    if (
+      element instanceof HTMLInputElement ||
+      element instanceof HTMLTextAreaElement
+    ) {
+      const start = content.start ?? 0;
+      const end = content.end ?? start;
+      try {
+        element.setSelectionRange(
+          start,
+          end,
+          content.direction as 'forward' | 'backward' | 'none' | undefined,
+        );
+      } catch {
+        // ? a field type that keeps no selection
+      }
+      return;
+    }
+
+    const selection = document.getSelection();
+    if (!selection) return;
+
+    if (content.collapsed === true || !content.anchor || !content.focus) {
+      selection.removeAllRanges();
+      return;
+    }
+
+    const anchor = this.resolvePoint(content.anchor);
+    const focus = this.resolvePoint(content.focus);
+    if (!anchor || !focus) {
+      logger.warn(
+        '[replay selection] could not resolve the selected nodes:',
+        content.anchor.selector,
+      );
+      return;
+    }
+
+    try {
+      selection.setBaseAndExtent(
+        anchor,
+        content.anchor.offset,
+        focus,
+        content.focus.offset,
+      );
+    } catch {
+      // ? the target's text is shorter than the source's, so the offset falls outside it
+      logger.warn('[replay selection] offset outside the target node');
+    }
+  }
+
+  private resolvePoint(point: DomSelectionPoint): Node | null {
+    const element = this.resolveElement(point.selector);
+    if (!element) return null;
+    if (point.childIndex < 0) return element;
+    return element.childNodes[point.childIndex] ?? null;
   }
 
   private fire(
