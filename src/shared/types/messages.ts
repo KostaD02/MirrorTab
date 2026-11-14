@@ -1,5 +1,6 @@
 import { DomEventPayload } from './dom-events';
 import { DownloadFormat } from './download';
+import { ScreenArea, ViewportSize } from './layout';
 import {
   ActiveSession,
   SessionConfig,
@@ -27,6 +28,8 @@ export const ExtensionMessageTypeEnum = {
   StartReplay: 'start-replay',
   ReplayReady: 'replay-ready',
   StopReplay: 'stop-replay',
+  Viewport: 'viewport',
+  TileWindows: 'tile-windows',
 } as const;
 
 // prettier-ignore
@@ -49,6 +52,8 @@ export type ExtensionMessage =
   | { type: typeof ExtensionMessageTypeEnum.DownloadRecord, payload: { format: DownloadFormat } }
   | { type: typeof ExtensionMessageTypeEnum.StartReplay; payload: { url: string } }
   | { type: typeof ExtensionMessageTypeEnum.ReplayReady; payload: { targetTabId: number } }
-  | { type: typeof ExtensionMessageTypeEnum.StopReplay; payload: { targetTabId: number } };
+  | { type: typeof ExtensionMessageTypeEnum.StopReplay; payload: { targetTabId: number } }
+  | { type: typeof ExtensionMessageTypeEnum.Viewport; payload: ViewportSize }
+  | { type: typeof ExtensionMessageTypeEnum.TileWindows; payload: { screen: ScreenArea } };
 
 export type ExtensionMessageType = ExtensionMessage['type'];

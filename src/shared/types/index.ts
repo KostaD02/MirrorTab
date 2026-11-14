@@ -25,6 +25,8 @@ export type {
 } from './dom-events';
 export { DomEventTypeEnum } from './dom-events';
 
+export type { ViewportSize, ScreenArea } from './layout';
+
 export type { ExtensionMessage, ExtensionMessageType } from './messages';
 export { ExtensionMessageTypeEnum } from './messages';
 

@@ -122,6 +122,12 @@
   "stop": {
     "message": "Ustavi"
   },
+  "tileWindows": {
+    "message": "Eno ob drugem"
+  },
+  "tileWindowsTitle": {
+    "message": "Vir v enem oknu, cilji v drugem"
+  },
   "downloadHeading": {
     "message": "Prenesi podatke seje"
   },

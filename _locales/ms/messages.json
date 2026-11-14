@@ -122,6 +122,12 @@
   "stop": {
     "message": "Henti"
   },
+  "tileWindows": {
+    "message": "Susun bersebelahan"
+  },
+  "tileWindowsTitle": {
+    "message": "Sumber dalam satu tetingkap, sasaran dalam tetingkap lain"
+  },
   "downloadHeading": {
     "message": "Muat turun data sesi"
   },

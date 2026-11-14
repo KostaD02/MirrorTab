@@ -122,6 +122,12 @@
   "stop": {
     "message": "Detener"
   },
+  "tileWindows": {
+    "message": "Organizar en paralelo"
+  },
+  "tileWindowsTitle": {
+    "message": "El origen en una ventana y los destinos en otra"
+  },
   "downloadHeading": {
     "message": "Descargar datos de la sesión"
   },

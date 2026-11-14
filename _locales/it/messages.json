@@ -122,6 +122,12 @@
   "stop": {
     "message": "Interrompi"
   },
+  "tileWindows": {
+    "message": "Affianca le finestre"
+  },
+  "tileWindowsTitle": {
+    "message": "L’origine in una finestra, le destinazioni in un’altra"
+  },
   "downloadHeading": {
     "message": "Scarica i dati della sessione"
   },

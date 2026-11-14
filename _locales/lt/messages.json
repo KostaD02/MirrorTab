@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stabdyti"
   },
+  "tileWindows": {
+    "message": "Vienas šalia kito"
+  },
+  "tileWindowsTitle": {
+    "message": "Šaltinis viename lange, paskirtys kitame"
+  },
   "downloadHeading": {
     "message": "Atsisiųsti seanso duomenis"
   },

@@ -122,6 +122,12 @@
   "stop": {
     "message": "Arrêter"
   },
+  "tileWindows": {
+    "message": "Côte à côte"
+  },
+  "tileWindowsTitle": {
+    "message": "La source dans une fenêtre, les cibles dans une autre"
+  },
   "downloadHeading": {
     "message": "Télécharger les données de session"
   },

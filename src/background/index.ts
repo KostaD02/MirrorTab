@@ -3,14 +3,16 @@ import { SessionRoleEnum } from '@/shared/types';
 import { createMessageRouter } from './message-router';
 import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
+import { WindowSync } from './window-sync';
 
 const recordStore = new RecordStore();
 const sessionManager = new SessionManager(recordStore);
+const windowSync = new WindowSync();
 
 sessionManager.restore();
 recordStore.restore();
 
-createMessageRouter(sessionManager, recordStore);
+createMessageRouter(sessionManager, recordStore, windowSync);
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   const session = sessionManager.currentSession;
@@ -26,6 +28,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
 chrome.tabs.onRemoved.addListener((tabId) => {
   recordStore.clear(tabId);
+  windowSync.forget(tabId);
 
   const session = sessionManager.currentSession;
   if (!session) return;

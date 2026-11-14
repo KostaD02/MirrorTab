@@ -122,6 +122,12 @@
   "stop": {
     "message": "Zastaviť"
   },
+  "tileWindows": {
+    "message": "Vedľa seba"
+  },
+  "tileWindowsTitle": {
+    "message": "Zdroj v jednom okne, ciele v druhom"
+  },
   "downloadHeading": {
     "message": "Stiahnuť údaje relácie"
   },

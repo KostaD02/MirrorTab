@@ -122,6 +122,12 @@
   "stop": {
     "message": "중지"
   },
+  "tileWindows": {
+    "message": "나란히 배치"
+  },
+  "tileWindowsTitle": {
+    "message": "소스는 한 창에, 대상은 다른 창에"
+  },
   "downloadHeading": {
     "message": "세션 데이터 다운로드"
   },

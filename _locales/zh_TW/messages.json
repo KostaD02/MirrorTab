@@ -122,6 +122,12 @@
   "stop": {
     "message": "停止"
   },
+  "tileWindows": {
+    "message": "並排顯示"
+  },
+  "tileWindowsTitle": {
+    "message": "來源在一個視窗，目標在另一個視窗"
+  },
   "downloadHeading": {
     "message": "下載工作階段資料"
   },

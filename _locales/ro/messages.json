@@ -122,6 +122,12 @@
   "stop": {
     "message": "Oprește"
   },
+  "tileWindows": {
+    "message": "Alături"
+  },
+  "tileWindowsTitle": {
+    "message": "Sursa într-o fereastră, țintele în alta"
+  },
   "downloadHeading": {
     "message": "Descarcă datele sesiunii"
   },

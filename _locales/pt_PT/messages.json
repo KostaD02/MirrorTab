@@ -122,6 +122,12 @@
   "stop": {
     "message": "Parar"
   },
+  "tileWindows": {
+    "message": "Lado a lado"
+  },
+  "tileWindowsTitle": {
+    "message": "A origem numa janela, os destinos noutra"
+  },
   "downloadHeading": {
     "message": "Transferir dados da sessão"
   },

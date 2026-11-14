@@ -122,6 +122,12 @@
   "stop": {
     "message": "停止"
   },
+  "tileWindows": {
+    "message": "左右に並べる"
+  },
+  "tileWindowsTitle": {
+    "message": "ソースを一方のウィンドウ、ターゲットをもう一方に"
+  },
   "downloadHeading": {
     "message": "セッションデータをダウンロード"
   },

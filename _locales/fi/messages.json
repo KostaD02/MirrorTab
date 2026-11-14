@@ -122,6 +122,12 @@
   "stop": {
     "message": "Lopeta"
   },
+  "tileWindows": {
+    "message": "Rinnakkain"
+  },
+  "tileWindowsTitle": {
+    "message": "Lähde yhdessä ikkunassa, kohteet toisessa"
+  },
   "downloadHeading": {
     "message": "Lataa istunnon tiedot"
   },

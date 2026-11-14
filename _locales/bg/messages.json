@@ -122,6 +122,12 @@
   "stop": {
     "message": "Стоп"
   },
+  "tileWindows": {
+    "message": "Подреди едно до друго"
+  },
+  "tileWindowsTitle": {
+    "message": "Източникът в един прозорец, целите в друг"
+  },
   "downloadHeading": {
     "message": "Изтегляне на данните от сесията"
   },

@@ -122,6 +122,12 @@
   "stop": {
     "message": "Leállítás"
   },
+  "tileWindows": {
+    "message": "Egymás mellé"
+  },
+  "tileWindowsTitle": {
+    "message": "A forrás az egyik ablakban, a célok a másikban"
+  },
   "downloadHeading": {
     "message": "Munkamenet adatainak letöltése"
   },

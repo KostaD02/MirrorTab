@@ -122,6 +122,12 @@
   "stop": {
     "message": "Durdur"
   },
+  "tileWindows": {
+    "message": "Yan yana diz"
+  },
+  "tileWindowsTitle": {
+    "message": "Kaynak bir pencerede, hedefler diğerinde"
+  },
   "downloadHeading": {
     "message": "Oturum verilerini indir"
   },

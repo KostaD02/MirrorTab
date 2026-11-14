@@ -9,6 +9,7 @@ import { openTab, sendRoleToTab, waitForTabLoad } from '@/shared/util';
 import { createMessageRouter } from './message-router';
 import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
+import { WindowSync } from './window-sync';
 
 jest.mock('@/shared/util', () => ({
   t: jest.requireActual('@/shared/util').t,
@@ -37,6 +38,10 @@ describe('createMessageRouter', () => {
   > & { currentSession: ActiveSession | null };
 
   let store: jest.Mocked<Pick<RecordStore, 'add' | 'get' | 'clear'>>;
+
+  let windows: jest.Mocked<
+    Pick<WindowSync, 'report' | 'forget' | 'apply' | 'tile'>
+  >;
 
   let listener: Listener;
 
@@ -68,9 +73,17 @@ describe('createMessageRouter', () => {
       clear: jest.fn(),
     };
 
+    windows = {
+      report: jest.fn(),
+      forget: jest.fn(),
+      apply: jest.fn().mockResolvedValue(undefined),
+      tile: jest.fn().mockResolvedValue(undefined),
+    };
+
     createMessageRouter(
       manager as unknown as SessionManager,
       store as unknown as RecordStore,
+      windows as unknown as WindowSync,
     );
 
     if (!captured.fn) throw new Error('listener was not registered');
@@ -451,6 +464,113 @@ describe('createMessageRouter', () => {
     await flushPromises();
 
     expect(chrome.tabs.sendMessage).toHaveBeenCalledTimes(1);
+  });
+
+  it('matches the target windows to a viewport reported by the source', () => {
+    manager.currentSession = {
+      sourceTabId: 1,
+      targetTabIds: [2],
+      isPaused: false,
+      sourceUrl: 'a',
+      targetUrls: ['b'],
+    };
+    const payload = { width: 1024, height: 768 };
+
+    listener(
+      { type: ExtensionMessageTypeEnum.Viewport, payload },
+      { tab: { id: 1 } } as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+
+    expect(windows.report).toHaveBeenCalledWith(1, payload);
+    expect(windows.apply).toHaveBeenCalledWith(manager.currentSession, payload);
+  });
+
+  it('only remembers a viewport reported by a target', () => {
+    manager.currentSession = {
+      sourceTabId: 1,
+      targetTabIds: [2],
+      isPaused: false,
+      sourceUrl: 'a',
+      targetUrls: ['b'],
+    };
+    const payload = { width: 800, height: 600 };
+
+    listener(
+      { type: ExtensionMessageTypeEnum.Viewport, payload },
+      { tab: { id: 2 } } as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+
+    expect(windows.report).toHaveBeenCalledWith(2, payload);
+    expect(windows.apply).not.toHaveBeenCalled();
+  });
+
+  it('does not resize anything while the session is paused', () => {
+    manager.currentSession = {
+      sourceTabId: 1,
+      targetTabIds: [2],
+      isPaused: true,
+      sourceUrl: 'a',
+      targetUrls: ['b'],
+    };
+
+    listener(
+      {
+        type: ExtensionMessageTypeEnum.Viewport,
+        payload: { width: 800, height: 600 },
+      },
+      { tab: { id: 1 } } as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+
+    expect(windows.apply).not.toHaveBeenCalled();
+  });
+
+  it('tiles the session windows and answers with the session', async () => {
+    manager.currentSession = {
+      sourceTabId: 1,
+      targetTabIds: [2],
+      isPaused: false,
+      sourceUrl: 'a',
+      targetUrls: ['b'],
+    };
+    const screen = { left: 0, top: 0, width: 1600, height: 900 };
+    const sendResponse = jest.fn();
+
+    const result = listener(
+      { type: ExtensionMessageTypeEnum.TileWindows, payload: { screen } },
+      {} as chrome.runtime.MessageSender,
+      sendResponse,
+    );
+
+    expect(result).toBe(true);
+    await flushPromises();
+
+    expect(windows.tile).toHaveBeenCalledWith(manager.currentSession, screen);
+    expect(sendResponse).toHaveBeenCalledWith({
+      type: ExtensionMessageTypeEnum.SessionStatus,
+      payload: manager.currentSession,
+    });
+  });
+
+  it('answers a tile request without a session with no session', () => {
+    const sendResponse = jest.fn();
+
+    listener(
+      {
+        type: ExtensionMessageTypeEnum.TileWindows,
+        payload: { screen: { left: 0, top: 0, width: 1600, height: 900 } },
+      },
+      {} as chrome.runtime.MessageSender,
+      sendResponse,
+    );
+
+    expect(windows.tile).not.toHaveBeenCalled();
+    expect(sendResponse).toHaveBeenCalledWith({
+      type: ExtensionMessageTypeEnum.SessionStatus,
+      payload: null,
+    });
   });
 
   it('sends Idle role and clears records on StopReplay', () => {

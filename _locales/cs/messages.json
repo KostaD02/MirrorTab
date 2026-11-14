@@ -122,6 +122,12 @@
   "stop": {
     "message": "Zastavit"
   },
+  "tileWindows": {
+    "message": "Vedle sebe"
+  },
+  "tileWindowsTitle": {
+    "message": "Zdroj v jednom okně, cíle ve druhém"
+  },
   "downloadHeading": {
     "message": "Stáhnout data relace"
   },
