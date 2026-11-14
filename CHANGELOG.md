@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.0](https://github.com/KostaD02/MirrorTab/compare/v1.7.0...v1.8.0) (2026-11-14)
+
+### Features
+
+* mirror missing gestures ([#75](https://github.com/KostaD02/MirrorTab/issues/75)) ([c0b5cc5](https://github.com/KostaD02/MirrorTab/commit/c0b5cc535e6fbeedcc463ab6040006e84de239b3))
+* usage-based review reminder ([#77](https://github.com/KostaD02/MirrorTab/issues/77)) ([8321f8c](https://github.com/KostaD02/MirrorTab/commit/8321f8c35139720b0c0aaaa68316fa075df494c3))
+* window layout and viewport sync ([#76](https://github.com/KostaD02/MirrorTab/issues/76)) ([1874b5a](https://github.com/KostaD02/MirrorTab/commit/1874b5aa08db275226c5c193aa0cf0ae47449699))
+
 ## [1.7.0](https://github.com/KostaD02/MirrorTab/compare/v1.6.0...v1.7.0) (2026-11-08)
 
 ### Features
