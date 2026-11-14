@@ -32,3 +32,17 @@ jobs:
         ## Try it
 
         Unzip the artifact, then load the unzipped folder as an unpacked extension from `chrome://extensions`.
+
+  i18n:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: KostaD02/ci/.github/workflows/node-run.yml@v1
+    with:
+      name: Validate i18n
+      run: pnpm i18n:report
+      comment-file: tmp/i18n-report.md
+      comment-marker: '<!-- i18n-coverage-report -->'
+      env: |
+        I18N_COMMIT_SHA=${{ github.event.pull_request.head.sha || github.sha }}
+        PR_COMMIT_COUNT=${{ github.event.pull_request.commits }}

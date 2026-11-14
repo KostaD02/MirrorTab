@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "ソースタブでの DOM 操作をターゲットタブへリアルタイムにミラーリングします。"
+  },
+  "appTagline": {
+    "message": "DOM 操作のミラーリング"
+  },
+  "logoAlt": {
+    "message": "MirrorTab のロゴ"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab の設定"
+  },
+  "settingsOpenTitle": {
+    "message": "設定"
+  },
+  "settingsCloseLabel": {
+    "message": "設定を閉じる"
+  },
+  "closeTitle": {
+    "message": "閉じる"
+  },
+  "infoOpenLabel": {
+    "message": "MirrorTab について"
+  },
+  "infoCloseLabel": {
+    "message": "情報を閉じる"
+  },
+  "statusIdle": {
+    "message": "待機中"
+  },
+  "statusActive": {
+    "message": "実行中"
+  },
+  "statusPaused": {
+    "message": "一時停止"
+  },
+  "statusError": {
+    "message": "エラー"
+  },
+  "sourceUrlLabel": {
+    "message": "ソース URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "ここでの操作がミラーリングされます"
+  },
+  "targetUrlLabel": {
+    "message": "ターゲット URL"
+  },
+  "targetUrlHint": {
+    "message": "ここでイベントが再現されます"
+  },
+  "addTarget": {
+    "message": "+ ターゲットを追加"
+  },
+  "startSession": {
+    "message": "セッションを開始"
+  },
+  "removeTarget": {
+    "message": "ターゲットを削除"
+  },
+  "removeActiveTarget": {
+    "message": "このターゲットを削除"
+  },
+  "errorUrlRequired": {
+    "message": "URL を入力してください。"
+  },
+  "errorUrlInvalid": {
+    "message": "有効な URL ではありません。"
+  },
+  "errorUrlScheme": {
+    "message": "http:// と https:// のみ使用できます。"
+  },
+  "errorUrlDomain": {
+    "message": "完全なドメインを入力してください（例: example.com）。"
+  },
+  "errorDomainInvalid": {
+    "message": "有効なドメインではありません。"
+  },
+  "errorStartSession": {
+    "message": "セッションを開始できませんでした: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "拡張機能のエラー: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "タブを作成できませんでした"
+  },
+  "errorOpenReplayTab": {
+    "message": "リプレイタブを開けませんでした"
+  },
+  "activeSource": {
+    "message": "ソース"
+  },
+  "activeTargets": {
+    "message": "ターゲット"
+  },
+  "pause": {
+    "message": "一時停止"
+  },
+  "resume": {
+    "message": "再開"
+  },
+  "stop": {
+    "message": "停止"
+  },
+  "downloadHeading": {
+    "message": "セッションデータをダウンロード"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "テキスト"
+  },
+  "settingsNote": {
+    "message": "自動的に保存され、実行中のセッションにすぐ適用されます。"
+  },
+  "settingsPrivacy": {
+    "message": "プライバシー"
+  },
+  "settingMirrorPasswords": {
+    "message": "パスワード欄をミラーリング"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "オフにすると認証情報がターゲットタブやエクスポートしたログに含まれません"
+  },
+  "settingsOverlays": {
+    "message": "オーバーレイ"
+  },
+  "settingShowCursor": {
+    "message": "ゴーストカーソルを表示"
+  },
+  "settingShowCursorHint": {
+    "message": "ターゲットタブに描画されるポインター"
+  },
+  "settingShowBadge": {
+    "message": "役割バッジを表示"
+  },
+  "settingShowBadgeHint": {
+    "message": "各タブの「ソース / ターゲット」ラベル"
+  },
+  "settingsEvents": {
+    "message": "ミラーリングするイベント"
+  },
+  "settingMousemove": {
+    "message": "マウスの移動"
+  },
+  "settingMousemoveHint": {
+    "message": "最も頻度の高いイベントです。通信量を減らすにはオフにします"
+  },
+  "settingScroll": {
+    "message": "スクロール"
+  },
+  "settingKeystrokes": {
+    "message": "キー入力"
+  },
+  "settingKeystrokesHint": {
+    "message": "キーの押下と解放。入力された値とは別に扱われます"
+  },
+  "settingsPlayback": {
+    "message": "再生"
+  },
+  "settingSmoothScroll": {
+    "message": "スムーズスクロール"
+  },
+  "settingSmoothScrollHint": {
+    "message": "オフにすると即座に移動し、速いスクロールでも同期を保ちます"
+  },
+  "settingScrollDebounce": {
+    "message": "スクロールのデバウンス"
+  },
+  "settingScrollDebounceHint": {
+    "message": "スクロールを送信するまでの待機時間"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "セッション開始"
+  },
+  "settingTabDelay": {
+    "message": "タブを順番に開く"
+  },
+  "settingTabDelayHint": {
+    "message": "ターゲットタブを開く間隔。0 ですべて同時に開きます。短時間の大量アクセスを制限するサイトに便利です。"
+  },
+  "settingsReset": {
+    "message": "既定値に戻す"
+  },
+  "infoIntro": {
+    "message": "MirrorTab は DOM 操作をミラーリングします。クリック、入力、キー入力、フォーカス、ホバー、スクロールを、iframe 内も含めて、<strong>ソース</strong>タブから 1 つ以上の<strong>ターゲット</strong>タブへリアルタイムで反映します。デモ、テスト、ライブプレゼンテーションに最適です。"
+  },
+  "infoStep1": {
+    "message": "<strong>ソース URL</strong> と 1 つ以上の<strong>ターゲット URL</strong> を入力します。"
+  },
+  "infoStep2": {
+    "message": "<strong>セッションを開始</strong>をクリックすると、タブが自動的に開きます。"
+  },
+  "infoStep3": {
+    "message": "<strong class=\"kd-text-danger\">ソース</strong>タブで操作すると、すべての<strong class=\"kd-text-accent\">ターゲット</strong>タブにリアルタイムで反映されます。"
+  },
+  "infoStep4": {
+    "message": "<strong>一時停止 / 再開</strong>や<strong>停止</strong>でセッションを制御します。"
+  },
+  "infoStep5": {
+    "message": "イベントログはいつでも <strong>JSON</strong> または<strong>テキスト</strong>としてダウンロードできます。"
+  },
+  "infoGithub": {
+    "message": "GitHub リポジトリ"
+  },
+  "infoReport": {
+    "message": "問題・要望を報告"
+  },
+  "infoCreatedBy": {
+    "message": "作者:"
+  },
+  "replayLink": {
+    "message": "セッションリプレイを開く"
+  },
+  "footerEvents": {
+    "message": "クリック · 入力 · キー · フォーカス · ホバー · スクロール · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - セッションリプレイ"
+  },
+  "replaySubtitle": {
+    "message": "セッションリプレイ"
+  },
+  "replayStatusReady": {
+    "message": "準備完了"
+  },
+  "replayStatusPlaying": {
+    "message": "再生中"
+  },
+  "replayStatusPaused": {
+    "message": "一時停止"
+  },
+  "replayStatusReloading": {
+    "message": "再読み込み中…"
+  },
+  "replayStatusCompleted": {
+    "message": "完了"
+  },
+  "replayUrlLabel": {
+    "message": "ウェブサイトの URL"
+  },
+  "replayUrlHint": {
+    "message": "記録した操作を再現するページ"
+  },
+  "replayFileLabel": {
+    "message": "セッションファイル"
+  },
+  "replayDropHint": {
+    "message": "<strong>.json</strong> または <strong>.txt</strong> のセッションファイルをここにドロップ"
+  },
+  "replayOr": {
+    "message": "または"
+  },
+  "replayBrowse": {
+    "message": "ファイルを選択"
+  },
+  "replayRemoveFile": {
+    "message": "ファイルを削除"
+  },
+  "replaySpeedLabel": {
+    "message": "再生速度"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× 遅い"
+  },
+  "replaySpeedNormal": {
+    "message": "1× 標準"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× 速い"
+  },
+  "replayStart": {
+    "message": "リプレイを開始"
+  },
+  "replayOpening": {
+    "message": "タブを開いています…"
+  },
+  "replayHeading": {
+    "message": "リプレイ"
+  },
+  "replayProgress": {
+    "message": "イベント $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "続行"
+  },
+  "replayRestart": {
+    "message": "最初から"
+  },
+  "replayCompletedTitle": {
+    "message": "リプレイ完了"
+  },
+  "replayCompletedText_other": {
+    "message": "$COUNT$ 件のイベントをすべて正常に再現しました。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "閉じる"
+  },
+  "replayFooter": {
+    "message": "記録したセッションを再現 · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": ".json または .txt ファイルをアップロードしてください"
+  },
+  "replayNoEvents": {
+    "message": "セッションファイルにイベントがありません"
+  },
+  "replayParseError": {
+    "message": "セッションファイルを読み込めませんでした"
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ 件のイベントを読み込みました",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "有効な URL を入力してください"
+  },
+  "replayFileMissing": {
+    "message": "セッションファイルをアップロードしてください"
+  },
+  "replayNoResponse": {
+    "message": "拡張機能と通信できませんでした"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - 待機中"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - $URL$ を待機中",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "開くのを待っています"
+  },
+  "pendingNote": {
+    "message": "順番に開く設定が有効なため、このタブは少し遅れて開きます。"
+  },
+  "pendingOpening": {
+    "message": "今すぐ開いています…"
+  },
+  "pendingHint": {
+    "message": "この設定は MirrorTab の設定にある<strong class=\"kd-text-secondary\">タブを順番に開く</strong>で変更できます。"
+  },
+  "badgeSource": {
+    "message": "ソース"
+  },
+  "badgeTarget": {
+    "message": "ターゲット"
+  },
+  "badgeReplay": {
+    "message": "リプレイ"
+  }
+}

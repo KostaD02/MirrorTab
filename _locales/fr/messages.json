@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Reflète les interactions DOM d'un onglet source vers un onglet cible en temps réel."
+  },
+  "appTagline": {
+    "message": "Miroir d'interactions DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Paramètres de MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Paramètres"
+  },
+  "settingsCloseLabel": {
+    "message": "Fermer les paramètres"
+  },
+  "closeTitle": {
+    "message": "Fermer"
+  },
+  "infoOpenLabel": {
+    "message": "À propos de MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Fermer les infos"
+  },
+  "statusIdle": {
+    "message": "Inactif"
+  },
+  "statusActive": {
+    "message": "Actif"
+  },
+  "statusPaused": {
+    "message": "En pause"
+  },
+  "statusError": {
+    "message": "Erreur"
+  },
+  "sourceUrlLabel": {
+    "message": "URL source"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Les interactions ici seront répliquées"
+  },
+  "targetUrlLabel": {
+    "message": "URL cible"
+  },
+  "targetUrlHint": {
+    "message": "Les événements seront rejoués ici"
+  },
+  "addTarget": {
+    "message": "+ Ajouter une cible"
+  },
+  "startSession": {
+    "message": "Démarrer la session"
+  },
+  "removeTarget": {
+    "message": "Retirer la cible"
+  },
+  "removeActiveTarget": {
+    "message": "Retirer cette cible"
+  },
+  "errorUrlRequired": {
+    "message": "L'URL est obligatoire."
+  },
+  "errorUrlInvalid": {
+    "message": "URL non valide."
+  },
+  "errorUrlScheme": {
+    "message": "Seuls http:// et https:// sont autorisés."
+  },
+  "errorUrlDomain": {
+    "message": "Saisissez un domaine complet (ex. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Domaine non valide."
+  },
+  "errorStartSession": {
+    "message": "Impossible de démarrer la session : $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Erreur de l'extension : $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Impossible de créer les onglets"
+  },
+  "errorOpenReplayTab": {
+    "message": "Impossible d'ouvrir l'onglet de relecture"
+  },
+  "activeSource": {
+    "message": "Source"
+  },
+  "activeTargets": {
+    "message": "Cibles"
+  },
+  "pause": {
+    "message": "Pause"
+  },
+  "resume": {
+    "message": "Reprendre"
+  },
+  "stop": {
+    "message": "Arrêter"
+  },
+  "downloadHeading": {
+    "message": "Télécharger les données de session"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Texte"
+  },
+  "settingsNote": {
+    "message": "Enregistré automatiquement et appliqué immédiatement aux sessions en cours."
+  },
+  "settingsPrivacy": {
+    "message": "Confidentialité"
+  },
+  "settingMirrorPasswords": {
+    "message": "Répliquer les champs mot de passe"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Désactivé garde les identifiants hors des onglets cibles et des journaux exportés"
+  },
+  "settingsOverlays": {
+    "message": "Superpositions"
+  },
+  "settingShowCursor": {
+    "message": "Afficher le curseur fantôme"
+  },
+  "settingShowCursorHint": {
+    "message": "Le pointeur dessiné sur les onglets cibles"
+  },
+  "settingShowBadge": {
+    "message": "Afficher le badge de rôle"
+  },
+  "settingShowBadgeHint": {
+    "message": "L'étiquette SOURCE / CIBLE sur chaque onglet"
+  },
+  "settingsEvents": {
+    "message": "Événements à répliquer"
+  },
+  "settingMousemove": {
+    "message": "Mouvement de la souris"
+  },
+  "settingMousemoveHint": {
+    "message": "L'événement le plus fréquent, désactivez-le pour réduire le trafic"
+  },
+  "settingScroll": {
+    "message": "Défilement"
+  },
+  "settingKeystrokes": {
+    "message": "Frappes clavier"
+  },
+  "settingKeystrokesHint": {
+    "message": "Touche enfoncée / relâchée, distinct des valeurs saisies"
+  },
+  "settingsPlayback": {
+    "message": "Lecture"
+  },
+  "settingSmoothScroll": {
+    "message": "Défilement fluide"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Désactivé saute instantanément et garde les défilements rapides synchronisés"
+  },
+  "settingScrollDebounce": {
+    "message": "Temporisation du défilement"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Délai de calme avant l'envoi d'un défilement"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Démarrage de la session"
+  },
+  "settingTabDelay": {
+    "message": "Ouverture échelonnée des onglets"
+  },
+  "settingTabDelayHint": {
+    "message": "Délai entre chaque onglet cible. 0 les ouvre tous en même temps ; utile pour les sites qui limitent les rafales de requêtes."
+  },
+  "settingsReset": {
+    "message": "Rétablir les valeurs par défaut"
+  },
+  "infoIntro": {
+    "message": "MirrorTab réplique les interactions DOM : clics, saisies, frappes clavier, focus, survol et défilement, iframes compris, d'un onglet <strong>source</strong> vers un ou plusieurs onglets <strong>cibles</strong> en temps réel. Idéal pour les démos, les tests et les présentations en direct."
+  },
+  "infoStep1": {
+    "message": "Saisissez une <strong>URL source</strong> et au moins une <strong>URL cible</strong>."
+  },
+  "infoStep2": {
+    "message": "Cliquez sur <strong>Démarrer la session</strong>, les onglets s'ouvrent automatiquement."
+  },
+  "infoStep3": {
+    "message": "Interagissez avec l'onglet <strong class=\"kd-text-danger\">SOURCE</strong>, les actions sont répliquées en direct sur chaque onglet <strong class=\"kd-text-accent\">CIBLE</strong>."
+  },
+  "infoStep4": {
+    "message": "Utilisez <strong>Pause / Reprendre</strong> ou <strong>Arrêter</strong> pour contrôler la session."
+  },
+  "infoStep5": {
+    "message": "Téléchargez le journal des événements en <strong>JSON</strong> ou en <strong>Texte</strong> à tout moment."
+  },
+  "infoGithub": {
+    "message": "Dépôt GitHub"
+  },
+  "infoReport": {
+    "message": "Signaler un problème / une idée"
+  },
+  "infoCreatedBy": {
+    "message": "Créé par"
+  },
+  "replayLink": {
+    "message": "Ouvrir la relecture de session"
+  },
+  "footerEvents": {
+    "message": "Clics · Saisies · Touches · Focus · Survol · Défilement · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Relecture de session"
+  },
+  "replaySubtitle": {
+    "message": "Relecture de session"
+  },
+  "replayStatusReady": {
+    "message": "Prêt"
+  },
+  "replayStatusPlaying": {
+    "message": "Lecture en cours"
+  },
+  "replayStatusPaused": {
+    "message": "En pause"
+  },
+  "replayStatusReloading": {
+    "message": "Rechargement…"
+  },
+  "replayStatusCompleted": {
+    "message": "Terminé"
+  },
+  "replayUrlLabel": {
+    "message": "URL du site"
+  },
+  "replayUrlHint": {
+    "message": "La page sur laquelle les actions enregistrées seront rejouées"
+  },
+  "replayFileLabel": {
+    "message": "Fichier de session"
+  },
+  "replayDropHint": {
+    "message": "Déposez ici un fichier de session <strong>.json</strong> ou <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "ou"
+  },
+  "replayBrowse": {
+    "message": "Parcourir les fichiers"
+  },
+  "replayRemoveFile": {
+    "message": "Retirer le fichier"
+  },
+  "replaySpeedLabel": {
+    "message": "Vitesse de lecture"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lente"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normale"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rapide"
+  },
+  "replayStart": {
+    "message": "Démarrer la relecture"
+  },
+  "replayOpening": {
+    "message": "Ouverture de l'onglet…"
+  },
+  "replayHeading": {
+    "message": "Relecture"
+  },
+  "replayProgress": {
+    "message": "Événement $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Continuer"
+  },
+  "replayRestart": {
+    "message": "Redémarrer"
+  },
+  "replayCompletedTitle": {
+    "message": "Relecture terminée"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ événement a été rejoué avec succès.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Les $COUNT$ événements ont été rejoués avec succès.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Fermer"
+  },
+  "replayFooter": {
+    "message": "Rejouez les sessions enregistrées · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Veuillez importer un fichier .json ou .txt"
+  },
+  "replayNoEvents": {
+    "message": "Aucun événement trouvé dans le fichier de session"
+  },
+  "replayParseError": {
+    "message": "Impossible de lire le fichier de session"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ événement chargé",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ événements chargés",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Veuillez saisir une URL valide"
+  },
+  "replayFileMissing": {
+    "message": "Veuillez importer un fichier de session"
+  },
+  "replayNoResponse": {
+    "message": "Impossible de communiquer avec l'extension"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - En attente"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - en attente de $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "En attente d'ouverture"
+  },
+  "pendingNote": {
+    "message": "L'ouverture échelonnée est activée, cet onglet s'ouvrira après un court délai."
+  },
+  "pendingOpening": {
+    "message": "Ouverture en cours…"
+  },
+  "pendingHint": {
+    "message": "Modifiez ce réglage sous <strong class=\"kd-text-secondary\">Ouverture échelonnée des onglets</strong> dans les paramètres de MirrorTab."
+  },
+  "badgeSource": {
+    "message": "SOURCE"
+  },
+  "badgeTarget": {
+    "message": "CIBLE"
+  },
+  "badgeReplay": {
+    "message": "RELECTURE"
+  }
+}

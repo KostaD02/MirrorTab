@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Зеркалирует взаимодействия с DOM из вкладки-источника в целевую вкладку в реальном времени."
+  },
+  "appTagline": {
+    "message": "Зеркалирование DOM"
+  },
+  "logoAlt": {
+    "message": "Логотип MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Настройки MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Настройки"
+  },
+  "settingsCloseLabel": {
+    "message": "Закрыть настройки"
+  },
+  "closeTitle": {
+    "message": "Закрыть"
+  },
+  "infoOpenLabel": {
+    "message": "О MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Закрыть справку"
+  },
+  "statusIdle": {
+    "message": "Ожидание"
+  },
+  "statusActive": {
+    "message": "Активно"
+  },
+  "statusPaused": {
+    "message": "Пауза"
+  },
+  "statusError": {
+    "message": "Ошибка"
+  },
+  "sourceUrlLabel": {
+    "message": "URL источника"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Действия здесь будут зеркалироваться"
+  },
+  "targetUrlLabel": {
+    "message": "URL цели"
+  },
+  "targetUrlHint": {
+    "message": "События будут воспроизводиться здесь"
+  },
+  "addTarget": {
+    "message": "+ Добавить цель"
+  },
+  "startSession": {
+    "message": "Начать сеанс"
+  },
+  "removeTarget": {
+    "message": "Удалить цель"
+  },
+  "removeActiveTarget": {
+    "message": "Удалить эту цель"
+  },
+  "errorUrlRequired": {
+    "message": "Укажите URL."
+  },
+  "errorUrlInvalid": {
+    "message": "Недопустимый URL."
+  },
+  "errorUrlScheme": {
+    "message": "Разрешены только http:// и https://."
+  },
+  "errorUrlDomain": {
+    "message": "Введите полный домен (например, example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Недопустимый домен."
+  },
+  "errorStartSession": {
+    "message": "Не удалось начать сеанс: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Ошибка расширения: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Не удалось создать вкладки"
+  },
+  "errorOpenReplayTab": {
+    "message": "Не удалось открыть вкладку повтора"
+  },
+  "activeSource": {
+    "message": "Источник"
+  },
+  "activeTargets": {
+    "message": "Цели"
+  },
+  "pause": {
+    "message": "Пауза"
+  },
+  "resume": {
+    "message": "Продолжить"
+  },
+  "stop": {
+    "message": "Стоп"
+  },
+  "downloadHeading": {
+    "message": "Скачать данные сеанса"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Текст"
+  },
+  "settingsNote": {
+    "message": "Сохраняется автоматически и сразу применяется к текущим сеансам."
+  },
+  "settingsPrivacy": {
+    "message": "Конфиденциальность"
+  },
+  "settingMirrorPasswords": {
+    "message": "Зеркалировать поля паролей"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Выключено: учётные данные не попадут в целевые вкладки и экспортированные журналы"
+  },
+  "settingsOverlays": {
+    "message": "Наложения"
+  },
+  "settingShowCursor": {
+    "message": "Показывать призрачный курсор"
+  },
+  "settingShowCursorHint": {
+    "message": "Указатель, рисуемый на целевых вкладках"
+  },
+  "settingShowBadge": {
+    "message": "Показывать метку роли"
+  },
+  "settingShowBadgeHint": {
+    "message": "Метка ИСТОЧНИК / ЦЕЛЬ на каждой вкладке"
+  },
+  "settingsEvents": {
+    "message": "Какие события зеркалировать"
+  },
+  "settingMousemove": {
+    "message": "Движение мыши"
+  },
+  "settingMousemoveHint": {
+    "message": "Самое частое событие, выключите, чтобы снизить трафик"
+  },
+  "settingScroll": {
+    "message": "Прокрутка"
+  },
+  "settingKeystrokes": {
+    "message": "Нажатия клавиш"
+  },
+  "settingKeystrokesHint": {
+    "message": "Нажатие и отпускание клавиш, отдельно от введённых значений"
+  },
+  "settingsPlayback": {
+    "message": "Воспроизведение"
+  },
+  "settingSmoothScroll": {
+    "message": "Плавная прокрутка"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Выключено: переход мгновенный, быстрая прокрутка остаётся синхронной"
+  },
+  "settingScrollDebounce": {
+    "message": "Задержка прокрутки"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Пауза перед отправкой прокрутки"
+  },
+  "unitMs": {
+    "message": "мс"
+  },
+  "settingsSessionStart": {
+    "message": "Запуск сеанса"
+  },
+  "settingTabDelay": {
+    "message": "Поочерёдное открытие вкладок"
+  },
+  "settingTabDelayHint": {
+    "message": "Задержка между целевыми вкладками. 0 открывает все сразу; полезно для сайтов, ограничивающих всплески запросов."
+  },
+  "settingsReset": {
+    "message": "Сбросить настройки"
+  },
+  "infoIntro": {
+    "message": "MirrorTab зеркалирует взаимодействия с DOM: клики, ввод, нажатия клавиш, фокус, наведение и прокрутку, включая iframe, из вкладки-<strong>источника</strong> в одну или несколько <strong>целевых</strong> вкладок в реальном времени. Идеально для демонстраций, тестирования и живых презентаций."
+  },
+  "infoStep1": {
+    "message": "Введите <strong>URL источника</strong> и хотя бы один <strong>URL цели</strong>."
+  },
+  "infoStep2": {
+    "message": "Нажмите <strong>Начать сеанс</strong>, вкладки откроются автоматически."
+  },
+  "infoStep3": {
+    "message": "Работайте во вкладке <strong class=\"kd-text-danger\">ИСТОЧНИК</strong>, действия вживую зеркалируются в каждую вкладку <strong class=\"kd-text-accent\">ЦЕЛЬ</strong>."
+  },
+  "infoStep4": {
+    "message": "Используйте <strong>Пауза / Продолжить</strong> или <strong>Стоп</strong>, чтобы управлять сеансом."
+  },
+  "infoStep5": {
+    "message": "Скачивайте журнал событий в формате <strong>JSON</strong> или <strong>Текст</strong> в любой момент."
+  },
+  "infoGithub": {
+    "message": "Репозиторий на GitHub"
+  },
+  "infoReport": {
+    "message": "Сообщить о проблеме / идее"
+  },
+  "infoCreatedBy": {
+    "message": "Автор:"
+  },
+  "replayLink": {
+    "message": "Открыть повтор сеанса"
+  },
+  "footerEvents": {
+    "message": "Клики · Ввод · Клавиши · Фокус · Наведение · Прокрутка · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Повтор сеанса"
+  },
+  "replaySubtitle": {
+    "message": "Повтор сеанса"
+  },
+  "replayStatusReady": {
+    "message": "Готово"
+  },
+  "replayStatusPlaying": {
+    "message": "Воспроизведение"
+  },
+  "replayStatusPaused": {
+    "message": "Пауза"
+  },
+  "replayStatusReloading": {
+    "message": "Перезагрузка…"
+  },
+  "replayStatusCompleted": {
+    "message": "Завершено"
+  },
+  "replayUrlLabel": {
+    "message": "URL сайта"
+  },
+  "replayUrlHint": {
+    "message": "Страница, на которой будут воспроизведены записанные действия"
+  },
+  "replayFileLabel": {
+    "message": "Файл сеанса"
+  },
+  "replayDropHint": {
+    "message": "Перетащите сюда файл сеанса <strong>.json</strong> или <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "или"
+  },
+  "replayBrowse": {
+    "message": "Выбрать файл"
+  },
+  "replayRemoveFile": {
+    "message": "Удалить файл"
+  },
+  "replaySpeedLabel": {
+    "message": "Скорость воспроизведения"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Медленно"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Обычно"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Быстро"
+  },
+  "replayStart": {
+    "message": "Начать повтор"
+  },
+  "replayOpening": {
+    "message": "Открытие вкладки…"
+  },
+  "replayHeading": {
+    "message": "Повтор"
+  },
+  "replayProgress": {
+    "message": "Событие $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Продолжить"
+  },
+  "replayRestart": {
+    "message": "Заново"
+  },
+  "replayCompletedTitle": {
+    "message": "Повтор завершён"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ событие успешно воспроизведено.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Все $COUNT$ события успешно воспроизведены.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Все $COUNT$ событий успешно воспроизведены.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Все $COUNT$ события успешно воспроизведены.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Закрыть"
+  },
+  "replayFooter": {
+    "message": "Повтор записанных сеансов · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Загрузите файл .json или .txt"
+  },
+  "replayNoEvents": {
+    "message": "В файле сеанса нет событий"
+  },
+  "replayParseError": {
+    "message": "Не удалось прочитать файл сеанса"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Загружено $COUNT$ событие",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Загружено $COUNT$ события",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Загружено $COUNT$ событий",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Загружено $COUNT$ события",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Введите корректный URL"
+  },
+  "replayFileMissing": {
+    "message": "Загрузите файл сеанса"
+  },
+  "replayNoResponse": {
+    "message": "Не удалось связаться с расширением"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Ожидание"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - ожидание $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Ожидание открытия"
+  },
+  "pendingNote": {
+    "message": "Включено поочерёдное открытие, поэтому эта вкладка откроется с небольшой задержкой."
+  },
+  "pendingOpening": {
+    "message": "Открывается…"
+  },
+  "pendingHint": {
+    "message": "Изменить это можно в разделе <strong class=\"kd-text-secondary\">Поочерёдное открытие вкладок</strong> в настройках MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ИСТОЧНИК"
+  },
+  "badgeTarget": {
+    "message": "ЦЕЛЬ"
+  },
+  "badgeReplay": {
+    "message": "ПОВТОР"
+  }
+}

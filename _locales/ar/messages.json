@@ -1,0 +1,492 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "ينسخ تفاعلات DOM من علامة تبويب مصدر إلى علامة تبويب هدف في الوقت الفعلي."
+  },
+  "appTagline": {
+    "message": "نسخ تفاعلات DOM"
+  },
+  "logoAlt": {
+    "message": "شعار MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "إعدادات MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "الإعدادات"
+  },
+  "settingsCloseLabel": {
+    "message": "إغلاق الإعدادات"
+  },
+  "closeTitle": {
+    "message": "إغلاق"
+  },
+  "infoOpenLabel": {
+    "message": "حول MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "إغلاق المعلومات"
+  },
+  "statusIdle": {
+    "message": "خامل"
+  },
+  "statusActive": {
+    "message": "نشط"
+  },
+  "statusPaused": {
+    "message": "متوقف مؤقتًا"
+  },
+  "statusError": {
+    "message": "خطأ"
+  },
+  "sourceUrlLabel": {
+    "message": "عنوان URL للمصدر"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "ستُنسخ التفاعلات هنا"
+  },
+  "targetUrlLabel": {
+    "message": "عنوان URL للهدف"
+  },
+  "targetUrlHint": {
+    "message": "ستُعاد الأحداث هنا"
+  },
+  "addTarget": {
+    "message": "+ إضافة هدف"
+  },
+  "startSession": {
+    "message": "بدء الجلسة"
+  },
+  "removeTarget": {
+    "message": "إزالة الهدف"
+  },
+  "removeActiveTarget": {
+    "message": "إزالة هذا الهدف"
+  },
+  "errorUrlRequired": {
+    "message": "عنوان URL مطلوب."
+  },
+  "errorUrlInvalid": {
+    "message": "عنوان URL غير صالح."
+  },
+  "errorUrlScheme": {
+    "message": "يُسمح فقط بـ http:// و https://."
+  },
+  "errorUrlDomain": {
+    "message": "أدخل نطاقًا كاملاً (مثل example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "نطاق غير صالح."
+  },
+  "errorStartSession": {
+    "message": "تعذّر بدء الجلسة: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "خطأ في الإضافة: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "تعذّر إنشاء علامات التبويب"
+  },
+  "errorOpenReplayTab": {
+    "message": "تعذّر فتح علامة تبويب الإعادة"
+  },
+  "activeSource": {
+    "message": "المصدر"
+  },
+  "activeTargets": {
+    "message": "الأهداف"
+  },
+  "pause": {
+    "message": "إيقاف مؤقت"
+  },
+  "resume": {
+    "message": "استئناف"
+  },
+  "stop": {
+    "message": "إيقاف"
+  },
+  "downloadHeading": {
+    "message": "تنزيل بيانات الجلسة"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "نص"
+  },
+  "settingsNote": {
+    "message": "يُحفظ تلقائيًا ويُطبَّق فورًا على الجلسات الجارية."
+  },
+  "settingsPrivacy": {
+    "message": "الخصوصية"
+  },
+  "settingMirrorPasswords": {
+    "message": "نسخ حقول كلمات المرور"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "الإيقاف يُبقي بيانات الاعتماد خارج علامات تبويب الهدف والسجلات المُصدَّرة"
+  },
+  "settingsOverlays": {
+    "message": "الطبقات العلوية"
+  },
+  "settingShowCursor": {
+    "message": "إظهار المؤشر الشبح"
+  },
+  "settingShowCursorHint": {
+    "message": "المؤشر المرسوم على علامات تبويب الهدف"
+  },
+  "settingShowBadge": {
+    "message": "إظهار شارة الدور"
+  },
+  "settingShowBadgeHint": {
+    "message": "تسمية المصدر / الهدف على كل علامة تبويب"
+  },
+  "settingsEvents": {
+    "message": "الأحداث المراد نسخها"
+  },
+  "settingMousemove": {
+    "message": "حركة الماوس"
+  },
+  "settingMousemoveHint": {
+    "message": "الحدث الأكثر تكرارًا، أوقفه لتقليل حركة البيانات"
+  },
+  "settingScroll": {
+    "message": "التمرير"
+  },
+  "settingKeystrokes": {
+    "message": "ضغطات المفاتيح"
+  },
+  "settingKeystrokesHint": {
+    "message": "ضغط المفتاح وتحريره، بمعزل عن القيم المكتوبة"
+  },
+  "settingsPlayback": {
+    "message": "التشغيل"
+  },
+  "settingSmoothScroll": {
+    "message": "تمرير سلس"
+  },
+  "settingSmoothScrollHint": {
+    "message": "الإيقاف ينتقل فورًا ويُبقي التمرير السريع متزامنًا"
+  },
+  "settingScrollDebounce": {
+    "message": "مهلة التمرير"
+  },
+  "settingScrollDebounceHint": {
+    "message": "فترة الهدوء قبل إرسال التمرير"
+  },
+  "unitMs": {
+    "message": "مللي ثانية"
+  },
+  "settingsSessionStart": {
+    "message": "بدء الجلسة"
+  },
+  "settingTabDelay": {
+    "message": "فتح علامات التبويب على مراحل"
+  },
+  "settingTabDelayHint": {
+    "message": "التأخير بين كل علامة تبويب هدف. القيمة 0 تفتحها كلها دفعة واحدة؛ مفيد للمواقع التي تحدّ من الطلبات المتتالية."
+  },
+  "settingsReset": {
+    "message": "إعادة الضبط إلى الإعدادات الافتراضية"
+  },
+  "infoIntro": {
+    "message": "ينسخ MirrorTab تفاعلات DOM: النقرات والإدخال وضغطات المفاتيح والتركيز والتمرير بالمؤشر والتمرير، بما في ذلك إطارات iframe، من علامة تبويب <strong>المصدر</strong> إلى علامة تبويب <strong>هدف</strong> واحدة أو أكثر في الوقت الفعلي. مثالي للعروض التوضيحية والاختبار والعروض المباشرة."
+  },
+  "infoStep1": {
+    "message": "أدخل <strong>عنوان URL للمصدر</strong> و<strong>عنوان URL للهدف</strong> واحدًا على الأقل."
+  },
+  "infoStep2": {
+    "message": "انقر على <strong>بدء الجلسة</strong>، فتُفتح علامات التبويب تلقائيًا."
+  },
+  "infoStep3": {
+    "message": "تفاعل مع علامة تبويب <strong class=\"kd-text-danger\">المصدر</strong>، فتُنسخ الإجراءات مباشرةً إلى كل علامة تبويب <strong class=\"kd-text-accent\">هدف</strong>."
+  },
+  "infoStep4": {
+    "message": "استخدم <strong>إيقاف مؤقت / استئناف</strong> أو <strong>إيقاف</strong> للتحكم في الجلسة."
+  },
+  "infoStep5": {
+    "message": "نزّل سجل الأحداث بصيغة <strong>JSON</strong> أو <strong>نص</strong> في أي وقت."
+  },
+  "infoGithub": {
+    "message": "مستودع GitHub"
+  },
+  "infoReport": {
+    "message": "الإبلاغ عن مشكلة / اقتراح ميزة"
+  },
+  "infoCreatedBy": {
+    "message": "من إنشاء"
+  },
+  "replayLink": {
+    "message": "فتح إعادة الجلسة"
+  },
+  "footerEvents": {
+    "message": "نقرات · إدخال · مفاتيح · تركيز · تحويم · تمرير · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - إعادة الجلسة"
+  },
+  "replaySubtitle": {
+    "message": "إعادة الجلسة"
+  },
+  "replayStatusReady": {
+    "message": "جاهز"
+  },
+  "replayStatusPlaying": {
+    "message": "قيد التشغيل"
+  },
+  "replayStatusPaused": {
+    "message": "متوقف مؤقتًا"
+  },
+  "replayStatusReloading": {
+    "message": "جارٍ إعادة التحميل…"
+  },
+  "replayStatusCompleted": {
+    "message": "اكتمل"
+  },
+  "replayUrlLabel": {
+    "message": "عنوان URL للموقع"
+  },
+  "replayUrlHint": {
+    "message": "الصفحة التي ستُعاد فيها الإجراءات المسجّلة"
+  },
+  "replayFileLabel": {
+    "message": "ملف الجلسة"
+  },
+  "replayDropHint": {
+    "message": "أفلت ملف جلسة <strong>.json</strong> أو <strong>.txt</strong> هنا"
+  },
+  "replayOr": {
+    "message": "أو"
+  },
+  "replayBrowse": {
+    "message": "استعراض الملفات"
+  },
+  "replayRemoveFile": {
+    "message": "إزالة الملف"
+  },
+  "replaySpeedLabel": {
+    "message": "سرعة التشغيل"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× بطيء"
+  },
+  "replaySpeedNormal": {
+    "message": "1× عادي"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× سريع"
+  },
+  "replayStart": {
+    "message": "بدء الإعادة"
+  },
+  "replayOpening": {
+    "message": "جارٍ فتح علامة التبويب…"
+  },
+  "replayHeading": {
+    "message": "الإعادة"
+  },
+  "replayProgress": {
+    "message": "الحدث $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "متابعة"
+  },
+  "replayRestart": {
+    "message": "إعادة البدء"
+  },
+  "replayCompletedTitle": {
+    "message": "اكتملت الإعادة"
+  },
+  "replayCompletedText_zero": {
+    "message": "تمت إعادة $COUNT$ من الأحداث بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_one": {
+    "message": "تمت إعادة $COUNT$ حدث بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_two": {
+    "message": "تمت إعادة $COUNT$ حدثين بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "تمت إعادة $COUNT$ أحداث بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "تمت إعادة $COUNT$ حدثًا بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "تمت إعادة $COUNT$ حدث بنجاح.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "إغلاق"
+  },
+  "replayFooter": {
+    "message": "إعادة الجلسات المسجّلة · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "يرجى رفع ملف .json أو .txt"
+  },
+  "replayNoEvents": {
+    "message": "لم يُعثر على أحداث في ملف الجلسة"
+  },
+  "replayParseError": {
+    "message": "تعذّر قراءة ملف الجلسة"
+  },
+  "replayEventsLoaded_zero": {
+    "message": "تم تحميل $COUNT$ من الأحداث",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_one": {
+    "message": "تم تحميل $COUNT$ حدث",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_two": {
+    "message": "تم تحميل $COUNT$ حدثين",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "تم تحميل $COUNT$ أحداث",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "تم تحميل $COUNT$ حدثًا",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "تم تحميل $COUNT$ حدث",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "يرجى إدخال عنوان URL صالح"
+  },
+  "replayFileMissing": {
+    "message": "يرجى رفع ملف جلسة"
+  },
+  "replayNoResponse": {
+    "message": "تعذّر التواصل مع الإضافة"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - في الانتظار"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - في انتظار $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "في انتظار الفتح"
+  },
+  "pendingNote": {
+    "message": "البدء على مراحل مفعّل، لذا ستُفتح علامة التبويب هذه بعد تأخير قصير."
+  },
+  "pendingOpening": {
+    "message": "جارٍ الفتح الآن…"
+  },
+  "pendingHint": {
+    "message": "غيّر ذلك من <strong class=\"kd-text-secondary\">فتح علامات التبويب على مراحل</strong> في إعدادات MirrorTab."
+  },
+  "badgeSource": {
+    "message": "المصدر"
+  },
+  "badgeTarget": {
+    "message": "الهدف"
+  },
+  "badgeReplay": {
+    "message": "الإعادة"
+  }
+}

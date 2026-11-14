@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MirrorTab - Waiting</title>
+    <title data-i18n="pendingTitle">MirrorTab - Waiting</title>
   </head>
   <body class="kd-d-flex kd-items-center kd-py-5">
     <main class="kd-container-xs kd-empty kd-gap-3">
@@ -20,8 +20,14 @@
         >
       </div>
 
-      <h1 class="kd-m-0 kd-fs-xl kd-fw-bold">Waiting to open</h1>
-      <p id="note" class="kd-fs-xs kd-lh-xxl kd-text-secondary">
+      <h1 class="kd-m-0 kd-fs-xl kd-fw-bold" data-i18n="pendingHeading">
+        Waiting to open
+      </h1>
+      <p
+        id="note"
+        class="kd-fs-xs kd-lh-xxl kd-text-secondary"
+        data-i18n="pendingNote"
+      >
         Staggered start is on, so this tab opens after a short delay.
       </p>
 
@@ -29,7 +35,7 @@
         <span id="target-url" class="kd-text-ellipsis"></span>
       </span>
 
-      <p class="kd-fs-xxxs kd-text-muted">
+      <p class="kd-fs-xxxs kd-text-muted" data-i18n-html="pendingHint">
         Change this under
         <strong class="kd-text-secondary">Staggered tab opening</strong> in the
         MirrorTab settings.

@@ -1,0 +1,420 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Spiegelt DOM-interacties in realtime van een brontabblad naar een doeltabblad."
+  },
+  "appTagline": {
+    "message": "DOM-interacties spiegelen"
+  },
+  "logoAlt": {
+    "message": "MirrorTab-logo"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab-instellingen"
+  },
+  "settingsOpenTitle": {
+    "message": "Instellingen"
+  },
+  "settingsCloseLabel": {
+    "message": "Instellingen sluiten"
+  },
+  "closeTitle": {
+    "message": "Sluiten"
+  },
+  "infoOpenLabel": {
+    "message": "Over MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Info sluiten"
+  },
+  "statusIdle": {
+    "message": "Inactief"
+  },
+  "statusActive": {
+    "message": "Actief"
+  },
+  "statusPaused": {
+    "message": "Gepauzeerd"
+  },
+  "statusError": {
+    "message": "Fout"
+  },
+  "sourceUrlLabel": {
+    "message": "Bron-URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interacties hier worden gespiegeld"
+  },
+  "targetUrlLabel": {
+    "message": "Doel-URL"
+  },
+  "targetUrlHint": {
+    "message": "Gebeurtenissen worden hier afgespeeld"
+  },
+  "addTarget": {
+    "message": "+ Doel toevoegen"
+  },
+  "startSession": {
+    "message": "Sessie starten"
+  },
+  "removeTarget": {
+    "message": "Doel verwijderen"
+  },
+  "removeActiveTarget": {
+    "message": "Dit doel verwijderen"
+  },
+  "errorUrlRequired": {
+    "message": "URL is verplicht."
+  },
+  "errorUrlInvalid": {
+    "message": "Geen geldige URL."
+  },
+  "errorUrlScheme": {
+    "message": "Alleen http:// en https:// zijn toegestaan."
+  },
+  "errorUrlDomain": {
+    "message": "Voer een volledig domein in (bijv. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Geen geldig domein."
+  },
+  "errorStartSession": {
+    "message": "Sessie starten mislukt: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Extensiefout: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Tabbladen aanmaken mislukt"
+  },
+  "errorOpenReplayTab": {
+    "message": "Afspeeltabblad openen mislukt"
+  },
+  "activeSource": {
+    "message": "Bron"
+  },
+  "activeTargets": {
+    "message": "Doelen"
+  },
+  "pause": {
+    "message": "Pauzeren"
+  },
+  "resume": {
+    "message": "Hervatten"
+  },
+  "stop": {
+    "message": "Stoppen"
+  },
+  "downloadHeading": {
+    "message": "Sessiegegevens downloaden"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekst"
+  },
+  "settingsNote": {
+    "message": "Wordt automatisch opgeslagen en direct toegepast op lopende sessies."
+  },
+  "settingsPrivacy": {
+    "message": "Privacy"
+  },
+  "settingMirrorPasswords": {
+    "message": "Wachtwoordvelden spiegelen"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Uit houdt inloggegevens uit doeltabbladen en geëxporteerde logs"
+  },
+  "settingsOverlays": {
+    "message": "Overlays"
+  },
+  "settingShowCursor": {
+    "message": "Spookcursor tonen"
+  },
+  "settingShowCursorHint": {
+    "message": "De aanwijzer die op doeltabbladen wordt getekend"
+  },
+  "settingShowBadge": {
+    "message": "Rolbadge tonen"
+  },
+  "settingShowBadgeHint": {
+    "message": "Het label BRON / DOEL op elk tabblad"
+  },
+  "settingsEvents": {
+    "message": "Te spiegelen gebeurtenissen"
+  },
+  "settingMousemove": {
+    "message": "Muisbeweging"
+  },
+  "settingMousemoveHint": {
+    "message": "Meest voorkomende gebeurtenis, zet uit om verkeer te beperken"
+  },
+  "settingScroll": {
+    "message": "Scrollen"
+  },
+  "settingKeystrokes": {
+    "message": "Toetsaanslagen"
+  },
+  "settingKeystrokesHint": {
+    "message": "Toets omlaag / omhoog, los van getypte waarden"
+  },
+  "settingsPlayback": {
+    "message": "Afspelen"
+  },
+  "settingSmoothScroll": {
+    "message": "Vloeiend scrollen"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Uit springt direct en houdt snel scrollen synchroon"
+  },
+  "settingScrollDebounce": {
+    "message": "Scrollvertraging"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Rustperiode voordat een scroll wordt verzonden"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Sessiestart"
+  },
+  "settingTabDelay": {
+    "message": "Tabbladen gespreid openen"
+  },
+  "settingTabDelayHint": {
+    "message": "Vertraging tussen de doeltabbladen. 0 opent ze allemaal tegelijk; handig voor sites die pieken in aanvragen beperken."
+  },
+  "settingsReset": {
+    "message": "Standaardwaarden herstellen"
+  },
+  "infoIntro": {
+    "message": "MirrorTab spiegelt DOM-interacties: klikken, invoer, toetsaanslagen, focus, hover en scrollen, inclusief iframes, in realtime van een <strong>bron</strong>tabblad naar een of meer <strong>doel</strong>tabbladen. Perfect voor demo's, tests en livepresentaties."
+  },
+  "infoStep1": {
+    "message": "Voer een <strong>bron-URL</strong> en minstens één <strong>doel-URL</strong> in."
+  },
+  "infoStep2": {
+    "message": "Klik op <strong>Sessie starten</strong>, de tabbladen openen automatisch."
+  },
+  "infoStep3": {
+    "message": "Werk in het <strong class=\"kd-text-danger\">BRON</strong>-tabblad, acties worden live gespiegeld naar elk <strong class=\"kd-text-accent\">DOEL</strong>-tabblad."
+  },
+  "infoStep4": {
+    "message": "Gebruik <strong>Pauzeren / Hervatten</strong> of <strong>Stoppen</strong> om de sessie te besturen."
+  },
+  "infoStep5": {
+    "message": "Download het gebeurtenissenlog op elk moment als <strong>JSON</strong> of <strong>Tekst</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub-repository"
+  },
+  "infoReport": {
+    "message": "Probleem / idee melden"
+  },
+  "infoCreatedBy": {
+    "message": "Gemaakt door"
+  },
+  "replayLink": {
+    "message": "Sessie afspelen openen"
+  },
+  "footerEvents": {
+    "message": "Klikken · Invoer · Toetsen · Focus · Hover · Scrollen · Iframes"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Sessie afspelen"
+  },
+  "replaySubtitle": {
+    "message": "Sessie afspelen"
+  },
+  "replayStatusReady": {
+    "message": "Gereed"
+  },
+  "replayStatusPlaying": {
+    "message": "Speelt af"
+  },
+  "replayStatusPaused": {
+    "message": "Gepauzeerd"
+  },
+  "replayStatusReloading": {
+    "message": "Opnieuw laden…"
+  },
+  "replayStatusCompleted": {
+    "message": "Voltooid"
+  },
+  "replayUrlLabel": {
+    "message": "Website-URL"
+  },
+  "replayUrlHint": {
+    "message": "De pagina waarop de opgenomen acties worden afgespeeld"
+  },
+  "replayFileLabel": {
+    "message": "Sessiebestand"
+  },
+  "replayDropHint": {
+    "message": "Sleep hier een <strong>.json</strong>- of <strong>.txt</strong>-sessiebestand naartoe"
+  },
+  "replayOr": {
+    "message": "of"
+  },
+  "replayBrowse": {
+    "message": "Bestanden kiezen"
+  },
+  "replayRemoveFile": {
+    "message": "Bestand verwijderen"
+  },
+  "replaySpeedLabel": {
+    "message": "Afspeelsnelheid"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Langzaam"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normaal"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Snel"
+  },
+  "replayStart": {
+    "message": "Afspelen starten"
+  },
+  "replayOpening": {
+    "message": "Tabblad openen…"
+  },
+  "replayHeading": {
+    "message": "Afspelen"
+  },
+  "replayProgress": {
+    "message": "Gebeurtenis $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Doorgaan"
+  },
+  "replayRestart": {
+    "message": "Opnieuw"
+  },
+  "replayCompletedTitle": {
+    "message": "Afspelen voltooid"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ gebeurtenis is succesvol afgespeeld.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Alle $COUNT$ gebeurtenissen zijn succesvol afgespeeld.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Sluiten"
+  },
+  "replayFooter": {
+    "message": "Opgenomen sessies afspelen · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Upload een .json- of .txt-bestand"
+  },
+  "replayNoEvents": {
+    "message": "Geen gebeurtenissen gevonden in het sessiebestand"
+  },
+  "replayParseError": {
+    "message": "Sessiebestand lezen mislukt"
+  },
+  "replayEventsLoaded_one": {
+    "message": "$COUNT$ gebeurtenis geladen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "$COUNT$ gebeurtenissen geladen",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Voer een geldige URL in"
+  },
+  "replayFileMissing": {
+    "message": "Upload een sessiebestand"
+  },
+  "replayNoResponse": {
+    "message": "Communicatie met de extensie mislukt"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Wachten"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - wacht op $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Wacht op openen"
+  },
+  "pendingNote": {
+    "message": "Gespreid starten staat aan, dus dit tabblad opent na een korte vertraging."
+  },
+  "pendingOpening": {
+    "message": "Wordt nu geopend…"
+  },
+  "pendingHint": {
+    "message": "Wijzig dit onder <strong class=\"kd-text-secondary\">Tabbladen gespreid openen</strong> in de MirrorTab-instellingen."
+  },
+  "badgeSource": {
+    "message": "BRON"
+  },
+  "badgeTarget": {
+    "message": "DOEL"
+  },
+  "badgeReplay": {
+    "message": "AFSPELEN"
+  }
+}

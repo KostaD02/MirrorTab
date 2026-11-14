@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Zrcadlí interakce s DOM ze zdrojové karty na cílovou kartu v reálném čase."
+  },
+  "appTagline": {
+    "message": "Zrcadlení interakcí s DOM"
+  },
+  "logoAlt": {
+    "message": "Logo MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Nastavení MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Nastavení"
+  },
+  "settingsCloseLabel": {
+    "message": "Zavřít nastavení"
+  },
+  "closeTitle": {
+    "message": "Zavřít"
+  },
+  "infoOpenLabel": {
+    "message": "O MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Zavřít informace"
+  },
+  "statusIdle": {
+    "message": "Nečinné"
+  },
+  "statusActive": {
+    "message": "Aktivní"
+  },
+  "statusPaused": {
+    "message": "Pozastaveno"
+  },
+  "statusError": {
+    "message": "Chyba"
+  },
+  "sourceUrlLabel": {
+    "message": "Zdrojová URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interakce zde budou zrcadleny"
+  },
+  "targetUrlLabel": {
+    "message": "Cílová URL"
+  },
+  "targetUrlHint": {
+    "message": "Události se zde budou přehrávat"
+  },
+  "addTarget": {
+    "message": "+ Přidat cíl"
+  },
+  "startSession": {
+    "message": "Spustit relaci"
+  },
+  "removeTarget": {
+    "message": "Odebrat cíl"
+  },
+  "removeActiveTarget": {
+    "message": "Odebrat tento cíl"
+  },
+  "errorUrlRequired": {
+    "message": "URL je povinná."
+  },
+  "errorUrlInvalid": {
+    "message": "Neplatná URL."
+  },
+  "errorUrlScheme": {
+    "message": "Povoleny jsou jen http:// a https://."
+  },
+  "errorUrlDomain": {
+    "message": "Zadejte celou doménu (např. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Neplatná doména."
+  },
+  "errorStartSession": {
+    "message": "Relaci se nepodařilo spustit: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Chyba rozšíření: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Karty se nepodařilo vytvořit"
+  },
+  "errorOpenReplayTab": {
+    "message": "Kartu pro přehrání se nepodařilo otevřít"
+  },
+  "activeSource": {
+    "message": "Zdroj"
+  },
+  "activeTargets": {
+    "message": "Cíle"
+  },
+  "pause": {
+    "message": "Pozastavit"
+  },
+  "resume": {
+    "message": "Pokračovat"
+  },
+  "stop": {
+    "message": "Zastavit"
+  },
+  "downloadHeading": {
+    "message": "Stáhnout data relace"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Text"
+  },
+  "settingsNote": {
+    "message": "Ukládá se automaticky a hned se použije na běžící relace."
+  },
+  "settingsPrivacy": {
+    "message": "Soukromí"
+  },
+  "settingMirrorPasswords": {
+    "message": "Zrcadlit pole s heslem"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Vypnuto udrží přihlašovací údaje mimo cílové karty a exportované záznamy"
+  },
+  "settingsOverlays": {
+    "message": "Překryvy"
+  },
+  "settingShowCursor": {
+    "message": "Zobrazit kurzor-přízrak"
+  },
+  "settingShowCursorHint": {
+    "message": "Ukazatel vykreslený na cílových kartách"
+  },
+  "settingShowBadge": {
+    "message": "Zobrazit odznak role"
+  },
+  "settingShowBadgeHint": {
+    "message": "Štítek ZDROJ / CÍL na každé kartě"
+  },
+  "settingsEvents": {
+    "message": "Zrcadlené události"
+  },
+  "settingMousemove": {
+    "message": "Pohyb myši"
+  },
+  "settingMousemoveHint": {
+    "message": "Nejčastější událost, vypněte pro snížení provozu"
+  },
+  "settingScroll": {
+    "message": "Posouvání"
+  },
+  "settingKeystrokes": {
+    "message": "Stisky kláves"
+  },
+  "settingKeystrokesHint": {
+    "message": "Stisk a uvolnění klávesy, nezávisle na zadaných hodnotách"
+  },
+  "settingsPlayback": {
+    "message": "Přehrávání"
+  },
+  "settingSmoothScroll": {
+    "message": "Plynulé posouvání"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Vypnuto skočí okamžitě a udrží rychlé posouvání synchronní"
+  },
+  "settingScrollDebounce": {
+    "message": "Prodleva posouvání"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Klidová doba před odesláním posunu"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Spuštění relace"
+  },
+  "settingTabDelay": {
+    "message": "Postupné otevírání karet"
+  },
+  "settingTabDelayHint": {
+    "message": "Prodleva mezi jednotlivými cílovými kartami. 0 otevře všechny najednou; užitečné pro weby, které omezují nárazové požadavky."
+  },
+  "settingsReset": {
+    "message": "Obnovit výchozí"
+  },
+  "infoIntro": {
+    "message": "MirrorTab zrcadlí interakce s DOM: kliknutí, zadávání, stisky kláves, fokus, najetí myší a posouvání, včetně iframe, ze <strong>zdrojové</strong> karty na jednu nebo více <strong>cílových</strong> karet v reálném čase. Ideální pro ukázky, testování a živé prezentace."
+  },
+  "infoStep1": {
+    "message": "Zadejte <strong>zdrojovou URL</strong> a alespoň jednu <strong>cílovou URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Klikněte na <strong>Spustit relaci</strong>, karty se otevřou automaticky."
+  },
+  "infoStep3": {
+    "message": "Pracujte na kartě <strong class=\"kd-text-danger\">ZDROJ</strong>, akce se živě zrcadlí na každou kartu <strong class=\"kd-text-accent\">CÍL</strong>."
+  },
+  "infoStep4": {
+    "message": "Relaci ovládejte pomocí <strong>Pozastavit / Pokračovat</strong> nebo <strong>Zastavit</strong>."
+  },
+  "infoStep5": {
+    "message": "Záznam událostí si kdykoli stáhněte jako <strong>JSON</strong> nebo <strong>Text</strong>."
+  },
+  "infoGithub": {
+    "message": "Repozitář na GitHubu"
+  },
+  "infoReport": {
+    "message": "Nahlásit problém / nápad"
+  },
+  "infoCreatedBy": {
+    "message": "Autor:"
+  },
+  "replayLink": {
+    "message": "Otevřít přehrání relace"
+  },
+  "footerEvents": {
+    "message": "Kliknutí · Zadávání · Klávesy · Fokus · Najetí · Posun · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Přehrání relace"
+  },
+  "replaySubtitle": {
+    "message": "Přehrání relace"
+  },
+  "replayStatusReady": {
+    "message": "Připraveno"
+  },
+  "replayStatusPlaying": {
+    "message": "Přehrává se"
+  },
+  "replayStatusPaused": {
+    "message": "Pozastaveno"
+  },
+  "replayStatusReloading": {
+    "message": "Znovu se načítá…"
+  },
+  "replayStatusCompleted": {
+    "message": "Dokončeno"
+  },
+  "replayUrlLabel": {
+    "message": "URL webu"
+  },
+  "replayUrlHint": {
+    "message": "Stránka, na které se přehrají zaznamenané akce"
+  },
+  "replayFileLabel": {
+    "message": "Soubor relace"
+  },
+  "replayDropHint": {
+    "message": "Sem přetáhněte soubor relace <strong>.json</strong> nebo <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "nebo"
+  },
+  "replayBrowse": {
+    "message": "Procházet soubory"
+  },
+  "replayRemoveFile": {
+    "message": "Odebrat soubor"
+  },
+  "replaySpeedLabel": {
+    "message": "Rychlost přehrávání"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Pomalu"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Normálně"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Rychle"
+  },
+  "replayStart": {
+    "message": "Spustit přehrání"
+  },
+  "replayOpening": {
+    "message": "Otevírá se karta…"
+  },
+  "replayHeading": {
+    "message": "Přehrání"
+  },
+  "replayProgress": {
+    "message": "Událost $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Pokračovat"
+  },
+  "replayRestart": {
+    "message": "Znovu"
+  },
+  "replayCompletedTitle": {
+    "message": "Přehrání dokončeno"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ událost byla úspěšně přehrána.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Všechny $COUNT$ události byly úspěšně přehrány.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Všech $COUNT$ událostí bylo úspěšně přehráno.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Všech $COUNT$ událostí bylo úspěšně přehráno.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Zavřít"
+  },
+  "replayFooter": {
+    "message": "Přehrávejte zaznamenané relace · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Nahrajte soubor .json nebo .txt"
+  },
+  "replayNoEvents": {
+    "message": "V souboru relace nebyly nalezeny žádné události"
+  },
+  "replayParseError": {
+    "message": "Soubor relace se nepodařilo přečíst"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Načtena $COUNT$ událost",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Načteny $COUNT$ události",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Načteno $COUNT$ událostí",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Načteno $COUNT$ událostí",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Zadejte platnou URL"
+  },
+  "replayFileMissing": {
+    "message": "Nahrajte soubor relace"
+  },
+  "replayNoResponse": {
+    "message": "Komunikace s rozšířením se nezdařila"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Čeká se"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - čeká se na $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Čeká se na otevření"
+  },
+  "pendingNote": {
+    "message": "Postupné spouštění je zapnuto, takže se tato karta otevře po krátké prodlevě."
+  },
+  "pendingOpening": {
+    "message": "Otevírá se…"
+  },
+  "pendingHint": {
+    "message": "Změňte to v části <strong class=\"kd-text-secondary\">Postupné otevírání karet</strong> v nastavení MirrorTab."
+  },
+  "badgeSource": {
+    "message": "ZDROJ"
+  },
+  "badgeTarget": {
+    "message": "CÍL"
+  },
+  "badgeReplay": {
+    "message": "PŘEHRÁNÍ"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "將來源分頁上的 DOM 互動即時鏡像到目標分頁。"
+  },
+  "appTagline": {
+    "message": "DOM 互動鏡像"
+  },
+  "logoAlt": {
+    "message": "MirrorTab 標誌"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab 設定"
+  },
+  "settingsOpenTitle": {
+    "message": "設定"
+  },
+  "settingsCloseLabel": {
+    "message": "關閉設定"
+  },
+  "closeTitle": {
+    "message": "關閉"
+  },
+  "infoOpenLabel": {
+    "message": "關於 MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "關閉資訊"
+  },
+  "statusIdle": {
+    "message": "閒置"
+  },
+  "statusActive": {
+    "message": "執行中"
+  },
+  "statusPaused": {
+    "message": "已暫停"
+  },
+  "statusError": {
+    "message": "錯誤"
+  },
+  "sourceUrlLabel": {
+    "message": "來源 URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "此處的互動將被鏡像"
+  },
+  "targetUrlLabel": {
+    "message": "目標 URL"
+  },
+  "targetUrlHint": {
+    "message": "事件將在此處重播"
+  },
+  "addTarget": {
+    "message": "+ 新增目標"
+  },
+  "startSession": {
+    "message": "開始工作階段"
+  },
+  "removeTarget": {
+    "message": "移除目標"
+  },
+  "removeActiveTarget": {
+    "message": "移除此目標"
+  },
+  "errorUrlRequired": {
+    "message": "請輸入 URL。"
+  },
+  "errorUrlInvalid": {
+    "message": "URL 無效。"
+  },
+  "errorUrlScheme": {
+    "message": "僅允許 http:// 與 https://。"
+  },
+  "errorUrlDomain": {
+    "message": "請輸入完整網域（例如 example.com）。"
+  },
+  "errorDomainInvalid": {
+    "message": "網域無效。"
+  },
+  "errorStartSession": {
+    "message": "無法開始工作階段：$REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "擴充功能錯誤：$REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "無法建立分頁"
+  },
+  "errorOpenReplayTab": {
+    "message": "無法開啟重播分頁"
+  },
+  "activeSource": {
+    "message": "來源"
+  },
+  "activeTargets": {
+    "message": "目標"
+  },
+  "pause": {
+    "message": "暫停"
+  },
+  "resume": {
+    "message": "繼續"
+  },
+  "stop": {
+    "message": "停止"
+  },
+  "downloadHeading": {
+    "message": "下載工作階段資料"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "文字"
+  },
+  "settingsNote": {
+    "message": "自動儲存，並立即套用到執行中的工作階段。"
+  },
+  "settingsPrivacy": {
+    "message": "隱私權"
+  },
+  "settingMirrorPasswords": {
+    "message": "鏡像密碼欄位"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "關閉後，憑證不會進入目標分頁與匯出的記錄"
+  },
+  "settingsOverlays": {
+    "message": "覆蓋層"
+  },
+  "settingShowCursor": {
+    "message": "顯示幽靈游標"
+  },
+  "settingShowCursorHint": {
+    "message": "繪製在目標分頁上的指標"
+  },
+  "settingShowBadge": {
+    "message": "顯示角色標記"
+  },
+  "settingShowBadgeHint": {
+    "message": "每個分頁上的「來源 / 目標」標記"
+  },
+  "settingsEvents": {
+    "message": "要鏡像的事件"
+  },
+  "settingMousemove": {
+    "message": "滑鼠移動"
+  },
+  "settingMousemoveHint": {
+    "message": "最頻繁的事件，關閉可減少流量"
+  },
+  "settingScroll": {
+    "message": "捲動"
+  },
+  "settingKeystrokes": {
+    "message": "按鍵"
+  },
+  "settingKeystrokesHint": {
+    "message": "按鍵按下 / 放開，與輸入的值分開處理"
+  },
+  "settingsPlayback": {
+    "message": "重播"
+  },
+  "settingSmoothScroll": {
+    "message": "平滑捲動"
+  },
+  "settingSmoothScrollHint": {
+    "message": "關閉後立即跳轉，讓快速捲動保持同步"
+  },
+  "settingScrollDebounce": {
+    "message": "捲動防抖"
+  },
+  "settingScrollDebounceHint": {
+    "message": "送出捲動前的靜默時間"
+  },
+  "unitMs": {
+    "message": "毫秒"
+  },
+  "settingsSessionStart": {
+    "message": "工作階段啟動"
+  },
+  "settingTabDelay": {
+    "message": "錯開開啟分頁"
+  },
+  "settingTabDelayHint": {
+    "message": "各目標分頁之間的延遲。0 表示同時全部開啟；適用於限制突發請求的網站。"
+  },
+  "settingsReset": {
+    "message": "還原預設值"
+  },
+  "infoIntro": {
+    "message": "MirrorTab 鏡像 DOM 互動：點擊、輸入、按鍵、焦點、懸停與捲動（含 iframe），從<strong>來源</strong>分頁即時同步到一個或多個<strong>目標</strong>分頁。非常適合示範、測試與現場簡報。"
+  },
+  "infoStep1": {
+    "message": "輸入一個<strong>來源 URL</strong> 與至少一個<strong>目標 URL</strong>。"
+  },
+  "infoStep2": {
+    "message": "點擊<strong>開始工作階段</strong>，分頁會自動開啟。"
+  },
+  "infoStep3": {
+    "message": "在<strong class=\"kd-text-danger\">來源</strong>分頁中操作，動作會即時鏡像到每個<strong class=\"kd-text-accent\">目標</strong>分頁。"
+  },
+  "infoStep4": {
+    "message": "使用<strong>暫停 / 繼續</strong>或<strong>停止</strong>控制工作階段。"
+  },
+  "infoStep5": {
+    "message": "隨時將事件記錄下載為 <strong>JSON</strong> 或<strong>文字</strong>。"
+  },
+  "infoGithub": {
+    "message": "GitHub 存放庫"
+  },
+  "infoReport": {
+    "message": "回報問題 / 功能建議"
+  },
+  "infoCreatedBy": {
+    "message": "作者："
+  },
+  "replayLink": {
+    "message": "開啟工作階段重播"
+  },
+  "footerEvents": {
+    "message": "點擊 · 輸入 · 按鍵 · 焦點 · 懸停 · 捲動 · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - 工作階段重播"
+  },
+  "replaySubtitle": {
+    "message": "工作階段重播"
+  },
+  "replayStatusReady": {
+    "message": "就緒"
+  },
+  "replayStatusPlaying": {
+    "message": "重播中"
+  },
+  "replayStatusPaused": {
+    "message": "已暫停"
+  },
+  "replayStatusReloading": {
+    "message": "正在重新載入…"
+  },
+  "replayStatusCompleted": {
+    "message": "已完成"
+  },
+  "replayUrlLabel": {
+    "message": "網站 URL"
+  },
+  "replayUrlHint": {
+    "message": "重播已記錄操作的頁面"
+  },
+  "replayFileLabel": {
+    "message": "工作階段檔案"
+  },
+  "replayDropHint": {
+    "message": "將 <strong>.json</strong> 或 <strong>.txt</strong> 工作階段檔案拖曳到此處"
+  },
+  "replayOr": {
+    "message": "或"
+  },
+  "replayBrowse": {
+    "message": "瀏覽檔案"
+  },
+  "replayRemoveFile": {
+    "message": "移除檔案"
+  },
+  "replaySpeedLabel": {
+    "message": "重播速度"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× 慢"
+  },
+  "replaySpeedNormal": {
+    "message": "1× 正常"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× 快"
+  },
+  "replayStart": {
+    "message": "開始重播"
+  },
+  "replayOpening": {
+    "message": "正在開啟分頁…"
+  },
+  "replayHeading": {
+    "message": "重播"
+  },
+  "replayProgress": {
+    "message": "事件 $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "繼續"
+  },
+  "replayRestart": {
+    "message": "重新開始"
+  },
+  "replayCompletedTitle": {
+    "message": "重播完成"
+  },
+  "replayCompletedText_other": {
+    "message": "全部 $COUNT$ 個事件已成功重播。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "關閉"
+  },
+  "replayFooter": {
+    "message": "重播已記錄的工作階段 · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "請上傳 .json 或 .txt 檔案"
+  },
+  "replayNoEvents": {
+    "message": "工作階段檔案中沒有事件"
+  },
+  "replayParseError": {
+    "message": "無法解析工作階段檔案"
+  },
+  "replayEventsLoaded_other": {
+    "message": "已載入 $COUNT$ 個事件",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "請輸入有效的 URL"
+  },
+  "replayFileMissing": {
+    "message": "請上傳工作階段檔案"
+  },
+  "replayNoResponse": {
+    "message": "無法與擴充功能通訊"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - 等待中"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - 正在等待 $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "等待開啟"
+  },
+  "pendingNote": {
+    "message": "已啟用錯開啟動，此分頁稍後會開啟。"
+  },
+  "pendingOpening": {
+    "message": "正在開啟…"
+  },
+  "pendingHint": {
+    "message": "可在 MirrorTab 設定中的<strong class=\"kd-text-secondary\">錯開開啟分頁</strong>處變更。"
+  },
+  "badgeSource": {
+    "message": "來源"
+  },
+  "badgeTarget": {
+    "message": "目標"
+  },
+  "badgeReplay": {
+    "message": "重播"
+  }
+}

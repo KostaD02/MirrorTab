@@ -1,0 +1,402 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "将源标签页上的 DOM 交互实时镜像到目标标签页。"
+  },
+  "appTagline": {
+    "message": "DOM 交互镜像"
+  },
+  "logoAlt": {
+    "message": "MirrorTab 标志"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab 设置"
+  },
+  "settingsOpenTitle": {
+    "message": "设置"
+  },
+  "settingsCloseLabel": {
+    "message": "关闭设置"
+  },
+  "closeTitle": {
+    "message": "关闭"
+  },
+  "infoOpenLabel": {
+    "message": "关于 MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "关闭信息"
+  },
+  "statusIdle": {
+    "message": "空闲"
+  },
+  "statusActive": {
+    "message": "运行中"
+  },
+  "statusPaused": {
+    "message": "已暂停"
+  },
+  "statusError": {
+    "message": "错误"
+  },
+  "sourceUrlLabel": {
+    "message": "源 URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "此处的交互将被镜像"
+  },
+  "targetUrlLabel": {
+    "message": "目标 URL"
+  },
+  "targetUrlHint": {
+    "message": "事件将在此处回放"
+  },
+  "addTarget": {
+    "message": "+ 添加目标"
+  },
+  "startSession": {
+    "message": "开始会话"
+  },
+  "removeTarget": {
+    "message": "移除目标"
+  },
+  "removeActiveTarget": {
+    "message": "移除此目标"
+  },
+  "errorUrlRequired": {
+    "message": "请输入 URL。"
+  },
+  "errorUrlInvalid": {
+    "message": "URL 无效。"
+  },
+  "errorUrlScheme": {
+    "message": "仅允许 http:// 和 https://。"
+  },
+  "errorUrlDomain": {
+    "message": "请输入完整域名（例如 example.com）。"
+  },
+  "errorDomainInvalid": {
+    "message": "域名无效。"
+  },
+  "errorStartSession": {
+    "message": "无法开始会话：$REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "扩展程序错误：$REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "无法创建标签页"
+  },
+  "errorOpenReplayTab": {
+    "message": "无法打开回放标签页"
+  },
+  "activeSource": {
+    "message": "源"
+  },
+  "activeTargets": {
+    "message": "目标"
+  },
+  "pause": {
+    "message": "暂停"
+  },
+  "resume": {
+    "message": "继续"
+  },
+  "stop": {
+    "message": "停止"
+  },
+  "downloadHeading": {
+    "message": "下载会话数据"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "文本"
+  },
+  "settingsNote": {
+    "message": "自动保存，并立即应用到正在运行的会话。"
+  },
+  "settingsPrivacy": {
+    "message": "隐私"
+  },
+  "settingMirrorPasswords": {
+    "message": "镜像密码字段"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "关闭后，凭据不会进入目标标签页和导出的日志"
+  },
+  "settingsOverlays": {
+    "message": "覆盖层"
+  },
+  "settingShowCursor": {
+    "message": "显示幽灵光标"
+  },
+  "settingShowCursorHint": {
+    "message": "绘制在目标标签页上的指针"
+  },
+  "settingShowBadge": {
+    "message": "显示角色标记"
+  },
+  "settingShowBadgeHint": {
+    "message": "每个标签页上的“源 / 目标”标记"
+  },
+  "settingsEvents": {
+    "message": "要镜像的事件"
+  },
+  "settingMousemove": {
+    "message": "鼠标移动"
+  },
+  "settingMousemoveHint": {
+    "message": "最频繁的事件，关闭可减少流量"
+  },
+  "settingScroll": {
+    "message": "滚动"
+  },
+  "settingKeystrokes": {
+    "message": "按键"
+  },
+  "settingKeystrokesHint": {
+    "message": "按键按下 / 抬起，与输入的值分开处理"
+  },
+  "settingsPlayback": {
+    "message": "回放"
+  },
+  "settingSmoothScroll": {
+    "message": "平滑滚动"
+  },
+  "settingSmoothScrollHint": {
+    "message": "关闭后立即跳转，让快速滚动保持同步"
+  },
+  "settingScrollDebounce": {
+    "message": "滚动防抖"
+  },
+  "settingScrollDebounceHint": {
+    "message": "发送滚动前的静默时间"
+  },
+  "unitMs": {
+    "message": "毫秒"
+  },
+  "settingsSessionStart": {
+    "message": "会话启动"
+  },
+  "settingTabDelay": {
+    "message": "错开打开标签页"
+  },
+  "settingTabDelayHint": {
+    "message": "各目标标签页之间的延迟。0 表示同时全部打开；适用于限制突发请求的网站。"
+  },
+  "settingsReset": {
+    "message": "恢复默认值"
+  },
+  "infoIntro": {
+    "message": "MirrorTab 镜像 DOM 交互：点击、输入、按键、焦点、悬停和滚动（含 iframe），从<strong>源</strong>标签页实时同步到一个或多个<strong>目标</strong>标签页。非常适合演示、测试和现场讲解。"
+  },
+  "infoStep1": {
+    "message": "输入一个<strong>源 URL</strong> 和至少一个<strong>目标 URL</strong>。"
+  },
+  "infoStep2": {
+    "message": "点击<strong>开始会话</strong>，标签页会自动打开。"
+  },
+  "infoStep3": {
+    "message": "在<strong class=\"kd-text-danger\">源</strong>标签页中操作，动作会实时镜像到每个<strong class=\"kd-text-accent\">目标</strong>标签页。"
+  },
+  "infoStep4": {
+    "message": "使用<strong>暂停 / 继续</strong>或<strong>停止</strong>控制会话。"
+  },
+  "infoStep5": {
+    "message": "随时将事件日志下载为 <strong>JSON</strong> 或<strong>文本</strong>。"
+  },
+  "infoGithub": {
+    "message": "GitHub 仓库"
+  },
+  "infoReport": {
+    "message": "报告问题 / 功能建议"
+  },
+  "infoCreatedBy": {
+    "message": "作者："
+  },
+  "replayLink": {
+    "message": "打开会话回放"
+  },
+  "footerEvents": {
+    "message": "点击 · 输入 · 按键 · 焦点 · 悬停 · 滚动 · iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - 会话回放"
+  },
+  "replaySubtitle": {
+    "message": "会话回放"
+  },
+  "replayStatusReady": {
+    "message": "就绪"
+  },
+  "replayStatusPlaying": {
+    "message": "回放中"
+  },
+  "replayStatusPaused": {
+    "message": "已暂停"
+  },
+  "replayStatusReloading": {
+    "message": "正在重新加载…"
+  },
+  "replayStatusCompleted": {
+    "message": "已完成"
+  },
+  "replayUrlLabel": {
+    "message": "网站 URL"
+  },
+  "replayUrlHint": {
+    "message": "回放已记录操作的页面"
+  },
+  "replayFileLabel": {
+    "message": "会话文件"
+  },
+  "replayDropHint": {
+    "message": "将 <strong>.json</strong> 或 <strong>.txt</strong> 会话文件拖到此处"
+  },
+  "replayOr": {
+    "message": "或"
+  },
+  "replayBrowse": {
+    "message": "浏览文件"
+  },
+  "replayRemoveFile": {
+    "message": "移除文件"
+  },
+  "replaySpeedLabel": {
+    "message": "回放速度"
+  },
+  "replaySpeedSlow": {
+    "message": "0.5× 慢"
+  },
+  "replaySpeedNormal": {
+    "message": "1× 正常"
+  },
+  "replaySpeedFast": {
+    "message": "1.5× 快"
+  },
+  "replayStart": {
+    "message": "开始回放"
+  },
+  "replayOpening": {
+    "message": "正在打开标签页…"
+  },
+  "replayHeading": {
+    "message": "回放"
+  },
+  "replayProgress": {
+    "message": "事件 $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "继续"
+  },
+  "replayRestart": {
+    "message": "重新开始"
+  },
+  "replayCompletedTitle": {
+    "message": "回放完成"
+  },
+  "replayCompletedText_other": {
+    "message": "全部 $COUNT$ 个事件已成功回放。",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "关闭"
+  },
+  "replayFooter": {
+    "message": "回放已记录的会话 · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "请上传 .json 或 .txt 文件"
+  },
+  "replayNoEvents": {
+    "message": "会话文件中没有事件"
+  },
+  "replayParseError": {
+    "message": "无法解析会话文件"
+  },
+  "replayEventsLoaded_other": {
+    "message": "已加载 $COUNT$ 个事件",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "请输入有效的 URL"
+  },
+  "replayFileMissing": {
+    "message": "请上传会话文件"
+  },
+  "replayNoResponse": {
+    "message": "无法与扩展程序通信"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - 等待中"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - 正在等待 $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "等待打开"
+  },
+  "pendingNote": {
+    "message": "已启用错开启动，此标签页将稍后打开。"
+  },
+  "pendingOpening": {
+    "message": "正在打开…"
+  },
+  "pendingHint": {
+    "message": "可在 MirrorTab 设置中的<strong class=\"kd-text-secondary\">错开打开标签页</strong>处更改。"
+  },
+  "badgeSource": {
+    "message": "源"
+  },
+  "badgeTarget": {
+    "message": "目标"
+  },
+  "badgeReplay": {
+    "message": "回放"
+  }
+}

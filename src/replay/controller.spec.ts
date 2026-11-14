@@ -185,7 +185,7 @@ describe('ReplayPageController', () => {
         'session.json',
       );
       expect(document.getElementById('file-events')?.textContent).toBe(
-        '1 events loaded',
+        '1 event loaded',
       );
     });
 
@@ -211,7 +211,7 @@ describe('ReplayPageController', () => {
 
       expect(document.getElementById('drop-zone-loaded')?.hidden).toBe(false);
       expect(document.getElementById('file-events')?.textContent).toBe(
-        '1 events loaded',
+        '1 event loaded',
       );
     });
 
@@ -222,7 +222,7 @@ describe('ReplayPageController', () => {
       await loadFile('session.txt', content);
 
       expect(document.getElementById('file-events')?.textContent).toBe(
-        '1 events loaded',
+        '1 event loaded',
       );
     });
 
@@ -233,7 +233,7 @@ describe('ReplayPageController', () => {
       await loadFile('legacy.json', JSON.stringify([legacy]));
 
       expect(document.getElementById('file-events')?.textContent).toBe(
-        '1 events loaded',
+        '1 event loaded',
       );
     });
 
@@ -305,7 +305,7 @@ describe('ReplayPageController', () => {
       await flushPromises();
 
       expect(document.getElementById('file-events')?.textContent).toContain(
-        '1 events',
+        '1 event',
       );
     });
 

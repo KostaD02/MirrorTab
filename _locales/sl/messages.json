@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Zrcali interakcije z DOM z izvornega zavihka na ciljni zavihek v realnem času."
+  },
+  "appTagline": {
+    "message": "Zrcaljenje interakcij z DOM"
+  },
+  "logoAlt": {
+    "message": "Logotip MirrorTab"
+  },
+  "settingsOpenLabel": {
+    "message": "Nastavitve MirrorTab"
+  },
+  "settingsOpenTitle": {
+    "message": "Nastavitve"
+  },
+  "settingsCloseLabel": {
+    "message": "Zapri nastavitve"
+  },
+  "closeTitle": {
+    "message": "Zapri"
+  },
+  "infoOpenLabel": {
+    "message": "O MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Zapri informacije"
+  },
+  "statusIdle": {
+    "message": "Nedejavno"
+  },
+  "statusActive": {
+    "message": "Dejavno"
+  },
+  "statusPaused": {
+    "message": "Začasno ustavljeno"
+  },
+  "statusError": {
+    "message": "Napaka"
+  },
+  "sourceUrlLabel": {
+    "message": "Izvorni URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Interakcije tukaj bodo zrcaljene"
+  },
+  "targetUrlLabel": {
+    "message": "Ciljni URL"
+  },
+  "targetUrlHint": {
+    "message": "Dogodki se bodo tukaj ponovno predvajali"
+  },
+  "addTarget": {
+    "message": "+ Dodaj cilj"
+  },
+  "startSession": {
+    "message": "Začni sejo"
+  },
+  "removeTarget": {
+    "message": "Odstrani cilj"
+  },
+  "removeActiveTarget": {
+    "message": "Odstrani ta cilj"
+  },
+  "errorUrlRequired": {
+    "message": "URL je obvezen."
+  },
+  "errorUrlInvalid": {
+    "message": "Neveljaven URL."
+  },
+  "errorUrlScheme": {
+    "message": "Dovoljena sta samo http:// in https://."
+  },
+  "errorUrlDomain": {
+    "message": "Vnesite celotno domeno (npr. example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Neveljavna domena."
+  },
+  "errorStartSession": {
+    "message": "Seje ni bilo mogoče začeti: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Napaka razširitve: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Zavihkov ni bilo mogoče ustvariti"
+  },
+  "errorOpenReplayTab": {
+    "message": "Zavihka za ponovno predvajanje ni bilo mogoče odpreti"
+  },
+  "activeSource": {
+    "message": "Vir"
+  },
+  "activeTargets": {
+    "message": "Cilji"
+  },
+  "pause": {
+    "message": "Premor"
+  },
+  "resume": {
+    "message": "Nadaljuj"
+  },
+  "stop": {
+    "message": "Ustavi"
+  },
+  "downloadHeading": {
+    "message": "Prenesi podatke seje"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Besedilo"
+  },
+  "settingsNote": {
+    "message": "Shrani se samodejno in takoj uveljavi v tekočih sejah."
+  },
+  "settingsPrivacy": {
+    "message": "Zasebnost"
+  },
+  "settingMirrorPasswords": {
+    "message": "Zrcali polja za geslo"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Izklopljeno obdrži poverilnice zunaj ciljnih zavihkov in izvoženih dnevnikov"
+  },
+  "settingsOverlays": {
+    "message": "Prekrivke"
+  },
+  "settingShowCursor": {
+    "message": "Pokaži kazalec duh"
+  },
+  "settingShowCursorHint": {
+    "message": "Kazalec, narisan na ciljnih zavihkih"
+  },
+  "settingShowBadge": {
+    "message": "Pokaži značko vloge"
+  },
+  "settingShowBadgeHint": {
+    "message": "Oznaka VIR / CILJ na vsakem zavihku"
+  },
+  "settingsEvents": {
+    "message": "Dogodki za zrcaljenje"
+  },
+  "settingMousemove": {
+    "message": "Premikanje miške"
+  },
+  "settingMousemoveHint": {
+    "message": "Najpogostejši dogodek, izklopite ga za manj prometa"
+  },
+  "settingScroll": {
+    "message": "Drsenje"
+  },
+  "settingKeystrokes": {
+    "message": "Pritiski tipk"
+  },
+  "settingKeystrokesHint": {
+    "message": "Pritisk / spust tipke, ločeno od vnesenih vrednosti"
+  },
+  "settingsPlayback": {
+    "message": "Predvajanje"
+  },
+  "settingSmoothScroll": {
+    "message": "Gladko drsenje"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Izklopljeno skoči takoj in ohrani hitro drsenje usklajeno"
+  },
+  "settingScrollDebounce": {
+    "message": "Zakasnitev drsenja"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Mirno obdobje pred pošiljanjem drsenja"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Začetek seje"
+  },
+  "settingTabDelay": {
+    "message": "Postopno odpiranje zavihkov"
+  },
+  "settingTabDelayHint": {
+    "message": "Zakasnitev med posameznimi ciljnimi zavihki. 0 jih odpre vse hkrati; uporabno za spletna mesta, ki omejujejo navale zahtev."
+  },
+  "settingsReset": {
+    "message": "Ponastavi na privzeto"
+  },
+  "infoIntro": {
+    "message": "MirrorTab zrcali interakcije z DOM: klike, vnose, pritiske tipk, fokus, lebdenje in drsenje, vključno z iframe, z <strong>izvornega</strong> zavihka na enega ali več <strong>ciljnih</strong> zavihkov v realnem času. Odlično za predstavitve, testiranje in predstavitve v živo."
+  },
+  "infoStep1": {
+    "message": "Vnesite <strong>izvorni URL</strong> in vsaj en <strong>ciljni URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Kliknite <strong>Začni sejo</strong>, zavihki se odprejo samodejno."
+  },
+  "infoStep3": {
+    "message": "Delajte v zavihku <strong class=\"kd-text-danger\">VIR</strong>, dejanja se v živo zrcalijo v vsak zavihek <strong class=\"kd-text-accent\">CILJ</strong>."
+  },
+  "infoStep4": {
+    "message": "Sejo upravljajte s <strong>Premor / Nadaljuj</strong> ali <strong>Ustavi</strong>."
+  },
+  "infoStep5": {
+    "message": "Dnevnik dogodkov kadar koli prenesite kot <strong>JSON</strong> ali <strong>Besedilo</strong>."
+  },
+  "infoGithub": {
+    "message": "Repozitorij GitHub"
+  },
+  "infoReport": {
+    "message": "Prijavi težavo / zamisel"
+  },
+  "infoCreatedBy": {
+    "message": "Ustvaril:"
+  },
+  "replayLink": {
+    "message": "Odpri ponovno predvajanje seje"
+  },
+  "footerEvents": {
+    "message": "Kliki · Vnosi · Tipke · Fokus · Lebdenje · Drsenje · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Ponovno predvajanje seje"
+  },
+  "replaySubtitle": {
+    "message": "Ponovno predvajanje seje"
+  },
+  "replayStatusReady": {
+    "message": "Pripravljeno"
+  },
+  "replayStatusPlaying": {
+    "message": "Predvaja se"
+  },
+  "replayStatusPaused": {
+    "message": "Začasno ustavljeno"
+  },
+  "replayStatusReloading": {
+    "message": "Ponovno nalaganje…"
+  },
+  "replayStatusCompleted": {
+    "message": "Dokončano"
+  },
+  "replayUrlLabel": {
+    "message": "URL spletnega mesta"
+  },
+  "replayUrlHint": {
+    "message": "Stran, na kateri bodo ponovno predvajana posneta dejanja"
+  },
+  "replayFileLabel": {
+    "message": "Datoteka seje"
+  },
+  "replayDropHint": {
+    "message": "Sem spustite datoteko seje <strong>.json</strong> ali <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "ali"
+  },
+  "replayBrowse": {
+    "message": "Prebrskaj datoteke"
+  },
+  "replayRemoveFile": {
+    "message": "Odstrani datoteko"
+  },
+  "replaySpeedLabel": {
+    "message": "Hitrost predvajanja"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Počasi"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Običajno"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Hitro"
+  },
+  "replayStart": {
+    "message": "Začni ponovno predvajanje"
+  },
+  "replayOpening": {
+    "message": "Odpiranje zavihka…"
+  },
+  "replayHeading": {
+    "message": "Ponovno predvajanje"
+  },
+  "replayProgress": {
+    "message": "Dogodek $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Nadaljuj"
+  },
+  "replayRestart": {
+    "message": "Znova"
+  },
+  "replayCompletedTitle": {
+    "message": "Ponovno predvajanje dokončano"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ dogodek je bil uspešno ponovno predvajan.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_two": {
+    "message": "Oba $COUNT$ dogodka sta bila uspešno ponovno predvajana.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Vsi $COUNT$ dogodki so bili uspešno ponovno predvajani.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Vseh $COUNT$ dogodkov je bilo uspešno ponovno predvajanih.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Zapri"
+  },
+  "replayFooter": {
+    "message": "Ponovno predvajajte posnete seje · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Naložite datoteko .json ali .txt"
+  },
+  "replayNoEvents": {
+    "message": "V datoteki seje ni dogodkov"
+  },
+  "replayParseError": {
+    "message": "Datoteke seje ni bilo mogoče prebrati"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Naložen $COUNT$ dogodek",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_two": {
+    "message": "Naložena $COUNT$ dogodka",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Naloženi $COUNT$ dogodki",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Naloženih $COUNT$ dogodkov",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Vnesite veljaven URL"
+  },
+  "replayFileMissing": {
+    "message": "Naložite datoteko seje"
+  },
+  "replayNoResponse": {
+    "message": "Komunikacija z razširitvijo ni uspela"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Čakanje"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - čakanje na $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Čakanje na odprtje"
+  },
+  "pendingNote": {
+    "message": "Postopni začetek je vklopljen, zato se bo ta zavihek odprl po kratki zakasnitvi."
+  },
+  "pendingOpening": {
+    "message": "Odpiranje…"
+  },
+  "pendingHint": {
+    "message": "To spremenite v razdelku <strong class=\"kd-text-secondary\">Postopno odpiranje zavihkov</strong> v nastavitvah MirrorTab."
+  },
+  "badgeSource": {
+    "message": "VIR"
+  },
+  "badgeTarget": {
+    "message": "CILJ"
+  },
+  "badgeReplay": {
+    "message": "PONOVNO PREDVAJANJE"
+  }
+}

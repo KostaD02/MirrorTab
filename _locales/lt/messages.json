@@ -1,0 +1,456 @@
+{
+  "appName": {
+    "message": "MirrorTab"
+  },
+  "appDescription": {
+    "message": "Realiuoju laiku atkartoja DOM sąveikas iš šaltinio skirtuko į paskirties skirtuką."
+  },
+  "appTagline": {
+    "message": "DOM sąveikų atkartojimas"
+  },
+  "logoAlt": {
+    "message": "MirrorTab logotipas"
+  },
+  "settingsOpenLabel": {
+    "message": "MirrorTab nustatymai"
+  },
+  "settingsOpenTitle": {
+    "message": "Nustatymai"
+  },
+  "settingsCloseLabel": {
+    "message": "Uždaryti nustatymus"
+  },
+  "closeTitle": {
+    "message": "Uždaryti"
+  },
+  "infoOpenLabel": {
+    "message": "Apie MirrorTab"
+  },
+  "infoCloseLabel": {
+    "message": "Uždaryti informaciją"
+  },
+  "statusIdle": {
+    "message": "Neaktyvu"
+  },
+  "statusActive": {
+    "message": "Aktyvu"
+  },
+  "statusPaused": {
+    "message": "Pristabdyta"
+  },
+  "statusError": {
+    "message": "Klaida"
+  },
+  "sourceUrlLabel": {
+    "message": "Šaltinio URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://example.com"
+  },
+  "sourceUrlHint": {
+    "message": "Čia atliktos sąveikos bus atkartotos"
+  },
+  "targetUrlLabel": {
+    "message": "Paskirties URL"
+  },
+  "targetUrlHint": {
+    "message": "Įvykiai bus pakartoti čia"
+  },
+  "addTarget": {
+    "message": "+ Pridėti paskirtį"
+  },
+  "startSession": {
+    "message": "Pradėti seansą"
+  },
+  "removeTarget": {
+    "message": "Pašalinti paskirtį"
+  },
+  "removeActiveTarget": {
+    "message": "Pašalinti šią paskirtį"
+  },
+  "errorUrlRequired": {
+    "message": "URL privalomas."
+  },
+  "errorUrlInvalid": {
+    "message": "Netinkamas URL."
+  },
+  "errorUrlScheme": {
+    "message": "Leidžiami tik http:// ir https://."
+  },
+  "errorUrlDomain": {
+    "message": "Įveskite visą domeną (pvz., example.com)."
+  },
+  "errorDomainInvalid": {
+    "message": "Netinkamas domenas."
+  },
+  "errorStartSession": {
+    "message": "Nepavyko pradėti seanso: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorExtension": {
+    "message": "Plėtinio klaida: $REASON$",
+    "placeholders": {
+      "REASON": {
+        "content": "$1",
+        "example": "Failed to create tabs"
+      }
+    }
+  },
+  "errorCreateTabs": {
+    "message": "Nepavyko sukurti skirtukų"
+  },
+  "errorOpenReplayTab": {
+    "message": "Nepavyko atidaryti pakartojimo skirtuko"
+  },
+  "activeSource": {
+    "message": "Šaltinis"
+  },
+  "activeTargets": {
+    "message": "Paskirtys"
+  },
+  "pause": {
+    "message": "Pristabdyti"
+  },
+  "resume": {
+    "message": "Tęsti"
+  },
+  "stop": {
+    "message": "Stabdyti"
+  },
+  "downloadHeading": {
+    "message": "Atsisiųsti seanso duomenis"
+  },
+  "downloadJson": {
+    "message": "JSON"
+  },
+  "downloadText": {
+    "message": "Tekstas"
+  },
+  "settingsNote": {
+    "message": "Įrašoma automatiškai ir iškart pritaikoma vykstantiems seansams."
+  },
+  "settingsPrivacy": {
+    "message": "Privatumas"
+  },
+  "settingMirrorPasswords": {
+    "message": "Atkartoti slaptažodžio laukus"
+  },
+  "settingMirrorPasswordsHint": {
+    "message": "Išjungus prisijungimo duomenys nepatenka į paskirties skirtukus ir eksportuotus žurnalus"
+  },
+  "settingsOverlays": {
+    "message": "Perdangos"
+  },
+  "settingShowCursor": {
+    "message": "Rodyti žymeklį-vaiduoklį"
+  },
+  "settingShowCursorHint": {
+    "message": "Paskirties skirtukuose piešiamas žymeklis"
+  },
+  "settingShowBadge": {
+    "message": "Rodyti vaidmens ženklelį"
+  },
+  "settingShowBadgeHint": {
+    "message": "Etiketė ŠALTINIS / PASKIRTIS kiekviename skirtuke"
+  },
+  "settingsEvents": {
+    "message": "Atkartojami įvykiai"
+  },
+  "settingMousemove": {
+    "message": "Pelės judėjimas"
+  },
+  "settingMousemoveHint": {
+    "message": "Dažniausias įvykis, išjunkite, kad sumažintumėte srautą"
+  },
+  "settingScroll": {
+    "message": "Slinkimas"
+  },
+  "settingKeystrokes": {
+    "message": "Klavišų paspaudimai"
+  },
+  "settingKeystrokesHint": {
+    "message": "Klavišo paspaudimas / atleidimas, atskirai nuo įvestų reikšmių"
+  },
+  "settingsPlayback": {
+    "message": "Atkūrimas"
+  },
+  "settingSmoothScroll": {
+    "message": "Sklandus slinkimas"
+  },
+  "settingSmoothScrollHint": {
+    "message": "Išjungus peršoka iškart ir išlaiko greitą slinkimą sinchronišką"
+  },
+  "settingScrollDebounce": {
+    "message": "Slinkimo delsa"
+  },
+  "settingScrollDebounceHint": {
+    "message": "Ramus laikotarpis prieš siunčiant slinkimą"
+  },
+  "unitMs": {
+    "message": "ms"
+  },
+  "settingsSessionStart": {
+    "message": "Seanso pradžia"
+  },
+  "settingTabDelay": {
+    "message": "Laipsniškas skirtukų atidarymas"
+  },
+  "settingTabDelayHint": {
+    "message": "Delsa tarp kiekvieno paskirties skirtuko. 0 atidaro visus iš karto; naudinga svetainėms, ribojančioms užklausų pliūpsnius."
+  },
+  "settingsReset": {
+    "message": "Atkurti numatytąsias"
+  },
+  "infoIntro": {
+    "message": "MirrorTab atkartoja DOM sąveikas: spustelėjimus, įvestis, klavišų paspaudimus, fokusą, užvedimą ir slinkimą, įskaitant iframe, iš <strong>šaltinio</strong> skirtuko į vieną ar kelis <strong>paskirties</strong> skirtukus realiuoju laiku. Puikiai tinka demonstracijoms, testavimui ir tiesioginėms prezentacijoms."
+  },
+  "infoStep1": {
+    "message": "Įveskite <strong>šaltinio URL</strong> ir bent vieną <strong>paskirties URL</strong>."
+  },
+  "infoStep2": {
+    "message": "Spustelėkite <strong>Pradėti seansą</strong>, skirtukai atsidarys automatiškai."
+  },
+  "infoStep3": {
+    "message": "Dirbkite skirtuke <strong class=\"kd-text-danger\">ŠALTINIS</strong>, veiksmai tiesiogiai atkartojami kiekviename skirtuke <strong class=\"kd-text-accent\">PASKIRTIS</strong>."
+  },
+  "infoStep4": {
+    "message": "Seansą valdykite naudodami <strong>Pristabdyti / Tęsti</strong> arba <strong>Stabdyti</strong>."
+  },
+  "infoStep5": {
+    "message": "Įvykių žurnalą bet kada atsisiųskite kaip <strong>JSON</strong> arba <strong>Tekstą</strong>."
+  },
+  "infoGithub": {
+    "message": "GitHub saugykla"
+  },
+  "infoReport": {
+    "message": "Pranešti apie problemą / idėją"
+  },
+  "infoCreatedBy": {
+    "message": "Sukūrė"
+  },
+  "replayLink": {
+    "message": "Atidaryti seanso pakartojimą"
+  },
+  "footerEvents": {
+    "message": "Klikai · Įvestis · Klavišai · Fokusas · Hover · Slinktis · Iframe"
+  },
+  "replayTitle": {
+    "message": "MirrorTab - Seanso pakartojimas"
+  },
+  "replaySubtitle": {
+    "message": "Seanso pakartojimas"
+  },
+  "replayStatusReady": {
+    "message": "Paruošta"
+  },
+  "replayStatusPlaying": {
+    "message": "Atkuriama"
+  },
+  "replayStatusPaused": {
+    "message": "Pristabdyta"
+  },
+  "replayStatusReloading": {
+    "message": "Įkeliama iš naujo…"
+  },
+  "replayStatusCompleted": {
+    "message": "Baigta"
+  },
+  "replayUrlLabel": {
+    "message": "Svetainės URL"
+  },
+  "replayUrlHint": {
+    "message": "Puslapis, kuriame bus pakartoti įrašyti veiksmai"
+  },
+  "replayFileLabel": {
+    "message": "Seanso failas"
+  },
+  "replayDropHint": {
+    "message": "Nutempkite čia seanso failą <strong>.json</strong> arba <strong>.txt</strong>"
+  },
+  "replayOr": {
+    "message": "arba"
+  },
+  "replayBrowse": {
+    "message": "Naršyti failus"
+  },
+  "replayRemoveFile": {
+    "message": "Pašalinti failą"
+  },
+  "replaySpeedLabel": {
+    "message": "Atkūrimo greitis"
+  },
+  "replaySpeedSlow": {
+    "message": "0,5× Lėtai"
+  },
+  "replaySpeedNormal": {
+    "message": "1× Įprastai"
+  },
+  "replaySpeedFast": {
+    "message": "1,5× Greitai"
+  },
+  "replayStart": {
+    "message": "Pradėti pakartojimą"
+  },
+  "replayOpening": {
+    "message": "Atidaromas skirtukas…"
+  },
+  "replayHeading": {
+    "message": "Pakartojimas"
+  },
+  "replayProgress": {
+    "message": "Įvykis $CURRENT$ / $TOTAL$",
+    "placeholders": {
+      "CURRENT": {
+        "content": "$1",
+        "example": "3"
+      },
+      "TOTAL": {
+        "content": "$2",
+        "example": "12"
+      }
+    }
+  },
+  "replayContinue": {
+    "message": "Tęsti"
+  },
+  "replayRestart": {
+    "message": "Iš naujo"
+  },
+  "replayCompletedTitle": {
+    "message": "Pakartojimas baigtas"
+  },
+  "replayCompletedText_one": {
+    "message": "$COUNT$ įvykis sėkmingai pakartotas.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_few": {
+    "message": "Visi $COUNT$ įvykiai sėkmingai pakartoti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_many": {
+    "message": "Visi $COUNT$ įvykio sėkmingai pakartoti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayCompletedText_other": {
+    "message": "Visi $COUNT$ įvykių sėkmingai pakartoti.",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayClose": {
+    "message": "Uždaryti"
+  },
+  "replayFooter": {
+    "message": "Pakartokite įrašytus seansus · MirrorTab"
+  },
+  "replayFileTypeError": {
+    "message": "Įkelkite .json arba .txt failą"
+  },
+  "replayNoEvents": {
+    "message": "Seanso faile įvykių nerasta"
+  },
+  "replayParseError": {
+    "message": "Nepavyko perskaityti seanso failo"
+  },
+  "replayEventsLoaded_one": {
+    "message": "Įkeltas $COUNT$ įvykis",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_few": {
+    "message": "Įkelti $COUNT$ įvykiai",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_many": {
+    "message": "Įkelta $COUNT$ įvykio",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayEventsLoaded_other": {
+    "message": "Įkelta $COUNT$ įvykių",
+    "placeholders": {
+      "COUNT": {
+        "content": "$1",
+        "example": "12"
+      }
+    }
+  },
+  "replayUrlInvalid": {
+    "message": "Įveskite tinkamą URL"
+  },
+  "replayFileMissing": {
+    "message": "Įkelkite seanso failą"
+  },
+  "replayNoResponse": {
+    "message": "Nepavyko susisiekti su plėtiniu"
+  },
+  "pendingTitle": {
+    "message": "MirrorTab - Laukiama"
+  },
+  "pendingTitleFor": {
+    "message": "MirrorTab - laukiama $URL$",
+    "placeholders": {
+      "URL": {
+        "content": "$1",
+        "example": "https://example.com"
+      }
+    }
+  },
+  "pendingHeading": {
+    "message": "Laukiama atidarymo"
+  },
+  "pendingNote": {
+    "message": "Laipsniška pradžia įjungta, todėl šis skirtukas atsidarys po trumpos delsos."
+  },
+  "pendingOpening": {
+    "message": "Atidaroma…"
+  },
+  "pendingHint": {
+    "message": "Tai pakeiskite skiltyje <strong class=\"kd-text-secondary\">Laipsniškas skirtukų atidarymas</strong> MirrorTab nustatymuose."
+  },
+  "badgeSource": {
+    "message": "ŠALTINIS"
+  },
+  "badgeTarget": {
+    "message": "PASKIRTIS"
+  },
+  "badgeReplay": {
+    "message": "PAKARTOJIMAS"
+  }
+}

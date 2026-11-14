@@ -13,6 +13,7 @@ import {
   loadSettings,
   resetFieldState,
   saveSettings,
+  t,
 } from '@/shared/util';
 import { validateUrl } from './validate-url';
 import { DEFAULT_SETTINGS, INPUT_STORAGE_KEY } from '@/shared/consts';
@@ -33,6 +34,13 @@ const STATUS_PILL: Record<Status, string> = {
   active: 'active',
   paused: 'warning',
   error: 'danger',
+};
+
+const STATUS_MESSAGE: Record<Status, string> = {
+  idle: 'statusIdle',
+  active: 'statusActive',
+  paused: 'statusPaused',
+  error: 'statusError',
 };
 
 const REMOVE_ICON =
@@ -287,7 +295,7 @@ export class PopupController {
       if (multiTarget) {
         const removeBtn = createRemoveButton(
           'btn-remove-target',
-          'Remove this target',
+          t('removeActiveTarget'),
         );
         const tabId = s.targetTabIds[i];
         removeBtn.addEventListener('click', () => {
@@ -304,11 +312,11 @@ export class PopupController {
     if (s.isPaused) {
       this.setStatus(StatusEnum.Paused);
       pauseBtn.classList.add('is-paused');
-      pauseLabel.textContent = 'Resume';
+      pauseLabel.textContent = t('resume');
     } else {
       this.setStatus(StatusEnum.Active);
       pauseBtn.classList.remove('is-paused');
-      pauseLabel.textContent = 'Pause';
+      pauseLabel.textContent = t('pause');
     }
   }
 
@@ -327,7 +335,7 @@ export class PopupController {
   private setStatus(status: Status): void {
     const { statusPill, statusLabel } = this.domRefs;
     statusPill.className = `kd-status-pill kd-status-pill--${STATUS_PILL[status]}`;
-    statusLabel.textContent = status;
+    statusLabel.textContent = t(STATUS_MESSAGE[status]);
   }
 
   private clearError(): void {
@@ -384,10 +392,13 @@ export class PopupController {
     const label = document.createElement('label');
     label.className = 'kd-field__label';
     label.htmlFor = `target-url-${id.toString()}`;
-    label.innerHTML =
-      '<span class="kd-fs-micro kd-text-accent" aria-hidden="true">●</span> Target URL';
+    const dot = document.createElement('span');
+    dot.className = 'kd-fs-micro kd-text-accent';
+    dot.setAttribute('aria-hidden', 'true');
+    dot.textContent = '●';
+    label.append(dot, ` ${t('targetUrlLabel')}`);
 
-    const removeBtn = createRemoveButton('btn-remove-input', 'Remove target');
+    const removeBtn = createRemoveButton('btn-remove-input', t('removeTarget'));
 
     labelRow.appendChild(label);
     labelRow.appendChild(removeBtn);
@@ -405,7 +416,7 @@ export class PopupController {
 
     const hint = document.createElement('span');
     hint.className = 'kd-field__hint';
-    hint.textContent = 'Events will be replayed here';
+    hint.textContent = t('targetUrlHint');
     wrapper.appendChild(hint);
 
     const error = document.createElement('span');
@@ -619,12 +630,12 @@ export class PopupController {
       if (response.type === ExtensionMessageTypeEnum.SessionStarted) {
         this.applySessionState(response.payload);
       } else if (response.type === ExtensionMessageTypeEnum.SessionError) {
-        this.showError(`Failed to start session: ${response.error}`);
+        this.showError(t('errorStartSession', [response.error]));
       }
     } catch (err) {
       this.setLoading(false);
       this.showError(
-        `Extension error: ${err instanceof Error ? err.message : String(err)}`,
+        t('errorExtension', [err instanceof Error ? err.message : String(err)]),
       );
     }
   }

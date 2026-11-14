@@ -3,10 +3,11 @@ import pkg from './package.json';
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'MirrorTab',
+  // ? __MSG_ keys resolve from _locales/<locale>/messages.json, see https://developer.chrome.com/docs/extensions/reference/api/i18n
+  name: '__MSG_appName__',
   version: pkg.version,
-  description:
-    'Mirror any DOM interactions from a source tab to a target tab in real time.',
+  description: '__MSG_appDescription__',
+  default_locale: 'en',
   icons: {
     48: 'public/logo.png',
   },
@@ -15,7 +16,7 @@ export default defineManifest({
       48: 'public/logo.png',
     },
     default_popup: 'src/popup/index.html',
-    default_title: 'MirrorTab',
+    default_title: '__MSG_appName__',
   },
   background: {
     service_worker: 'src/background/index.ts',
