@@ -29,7 +29,7 @@ All processing happens entirely on your device:
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | Session configuration (source URL, target URL, tab IDs) | `chrome.storage.local` on your device only                                                       |
 | Captured DOM events forwarded between tabs              | Passed in-memory via `chrome.runtime` messaging; never written to disk or sent to any server     |
-| Text you paste or drag in a mirrored tab                | Forwarded with the event and written into a log you download; see **Mirror pasted text**         |
+| Text you paste or drag in a mirrored tab                | Forwarded with the event and written into a log you download, like anything typed                |
 | Downloaded session logs (JSON / text)                   | Saved to your local filesystem by your browser when you click Download; not transmitted anywhere |
 | Uploaded session logs for replay                        | Parsed strictly in-memory within your browser; never transmitted to any external server          |
 

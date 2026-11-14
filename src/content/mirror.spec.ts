@@ -730,16 +730,6 @@ describe('EventCapture', () => {
         });
       });
 
-      it('skips a paste when the clipboard setting is off', () => {
-        capture.setSettings({ ...DEFAULT_SETTINGS, mirrorClipboard: false });
-        const field = document.createElement('textarea');
-        document.body.appendChild(field);
-
-        field.dispatchEvent(pasteEvent({ 'text/plain': 'secret' }));
-
-        expect(getLastDomEvent()).toBeNull();
-      });
-
       it('skips a paste into a password field when opted out', () => {
         capture.setSettings({
           ...DEFAULT_SETTINGS,

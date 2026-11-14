@@ -739,7 +739,6 @@ export class EventCapture {
 
   private emitPaste(e: ClipboardEvent): void {
     if (!this.active()) return;
-    if (!this.settings.mirrorClipboard) return;
     const target = targetOf(e);
     if (!target) return;
     if (this.blocked(target)) return;

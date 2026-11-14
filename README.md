@@ -61,18 +61,17 @@ The production bundle can be downloaded from [releases](https://github.com/Kosta
 
 Open the **gear icon** in the popup header. Changes are saved to `chrome.storage.local` and picked up by every open tab straight away - no need to restart a session.
 
-| Setting                    | Default | Effect                                                                                                                                               |
-| -------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Mirror password fields** | On      | Turn off to keep values and keystrokes from credential inputs out of target tabs and exported logs                                                   |
-| **Mirror pasted text**     | On      | Turn off to keep clipboard content out of target tabs and exported logs. The pasted value still arrives as an `input` event if the field is mirrored |
-| **Show ghost cursor**      | On      | The virtual pointer drawn on target and replay tabs                                                                                                  |
-| **Show role badge**        | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos                                                               |
-| **Mouse movement**         | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic                                                        |
-| **Scrolling**              | On      | Forward scroll position changes, and the `wheel` turns behind them                                                                                   |
-| **Keystrokes**             | On      | Forward `keydown` / `keyup`, which are separate from typed input values                                                                              |
-| **Smooth scrolling**       | On      | When off, replayed scrolls jump instantly, which keeps fast scrolling in sync                                                                        |
-| **Scroll debounce**        | 50 ms   | Quiet period before a settled scroll position is forwarded (0-2000 ms)                                                                               |
-| **Staggered tab opening**  | 0 ms    | Delay between each target tab opening (0-60000 ms). `0` opens them all at once                                                                       |
+| Setting                    | Default | Effect                                                                                             |
+| -------------------------- | ------- | -------------------------------------------------------------------------------------------------- |
+| **Mirror password fields** | On      | Turn off to keep values and keystrokes from credential inputs out of target tabs and exported logs |
+| **Show ghost cursor**      | On      | The virtual pointer drawn on target and replay tabs                                                |
+| **Show role badge**        | On      | The floating SOURCE / TARGET / REPLAY label - turn off for clean screenshots and demos             |
+| **Mouse movement**         | On      | Forward `mousemove`. The highest-volume event; turning it off sharply reduces message traffic      |
+| **Scrolling**              | On      | Forward scroll position changes, and the `wheel` turns behind them                                 |
+| **Keystrokes**             | On      | Forward `keydown` / `keyup`, which are separate from typed input values                            |
+| **Smooth scrolling**       | On      | When off, replayed scrolls jump instantly, which keeps fast scrolling in sync                      |
+| **Scroll debounce**        | 50 ms   | Quiet period before a settled scroll position is forwarded (0-2000 ms)                             |
+| **Staggered tab opening**  | 0 ms    | Delay between each target tab opening (0-60000 ms). `0` opens them all at once                     |
 
 ### Staggered tab opening
 
@@ -86,7 +85,7 @@ All tabs still appear immediately so you can see the full set, but each target p
 
 Replayed events are synthetic DOM events, so pages see them through their JavaScript listeners: a click arrives as the full `pointerdown` / `mousedown` / `mouseup` / `click` gesture and focuses the element, the pointer position raises `mouseover` / `mouseenter` / `mousemove` / `mouseleave` on whatever sits under the ghost cursor, focus changes call `focus()` / `blur()`, checkboxes, radios, contenteditable text and resized textareas follow the source, and selectors reach into open shadow roots.
 
-The later gestures follow the same rule, each as the event a page actually listens for. A double click arrives as `dblclick` after the two clicks it is made of, a right click as `mousedown` / `contextmenu` / `mouseup` with button 2, and a wheel turn as `wheel` with the deltas of the frame summed, which is what pages that zoom or jack the scroll read. A drag is rebuilt event by event - `dragstart`, `dragenter`, `dragover`, `dragleave`, `drop`, `dragend` - with a `DataTransfer` the target builds from the string entries the source could read, so a drop handler sees the same payload; the ghost cursor follows the drag, since no mouse event fires while one is in flight. A paste arrives as `paste` with its `clipboardData`, and the pasted value reaches the field through its own `input` event, so nothing is inserted twice. A text selection is re-made on the target with `setBaseAndExtent`, or `setSelectionRange` inside an input or textarea.
+The later gestures follow the same rule, each as the event a page actually listens for. A double click arrives as `dblclick` after the two clicks it is made of, a right click as `mousedown` / `contextmenu` / `mouseup` with button 2, and a wheel turn as `wheel` with the deltas of the frame summed, which is what pages that zoom or jack the scroll read. A drag is rebuilt event by event - `dragstart`, `dragenter`, `dragover`, `dragleave`, `drop`, `dragend` - with a `DataTransfer` the target builds from the string entries the source could read, so a drop handler sees the same payload; the ghost cursor follows the drag, since no mouse event fires while one is in flight. A paste arrives as `paste` with its `clipboardData`, and the pasted value reaches the field through its own `input` event, so nothing is inserted twice; a paste into a credential input follows **Mirror password fields** like everything else typed there. A text selection is re-made on the target with `setBaseAndExtent`, or `setSelectionRange` inside an input or textarea.
 
 What stays behind: a dragged file's bytes, since they cannot cross the message boundary - its name is recorded and the drop arrives without it. A page that ignores the HTML drag events and tracks `mousedown` and `mousemove` itself gets the mouse gesture mirrored, not a drag. And the browser's own context menu, like a native `<select>` dropdown, cannot be opened by an extension without the `debugger` permission; a context menu the page draws itself opens as usual.
 
