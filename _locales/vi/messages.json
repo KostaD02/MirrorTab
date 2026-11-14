@@ -122,6 +122,12 @@
   "stop": {
     "message": "Dừng"
   },
+  "tileWindows": {
+    "message": "Xếp cạnh nhau"
+  },
+  "tileWindowsTitle": {
+    "message": "Nguồn ở một cửa sổ, đích ở cửa sổ khác"
+  },
   "downloadHeading": {
     "message": "Tải dữ liệu phiên"
   },

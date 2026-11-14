@@ -122,6 +122,12 @@
   "stop": {
     "message": "หยุด"
   },
+  "tileWindows": {
+    "message": "จัดเรียงเคียงกัน"
+  },
+  "tileWindowsTitle": {
+    "message": "ต้นทางอยู่หน้าต่างหนึ่ง ปลายทางอีกหน้าต่าง"
+  },
   "downloadHeading": {
     "message": "ดาวน์โหลดข้อมูลเซสชัน"
   },

@@ -122,6 +122,12 @@
   "stop": {
     "message": "إيقاف"
   },
+  "tileWindows": {
+    "message": "ترتيب جنبًا إلى جنب"
+  },
+  "tileWindowsTitle": {
+    "message": "المصدر في نافذة والأهداف في أخرى"
+  },
   "downloadHeading": {
     "message": "تنزيل بيانات الجلسة"
   },

@@ -122,6 +122,12 @@
   "stop": {
     "message": "Стоп"
   },
+  "tileWindows": {
+    "message": "Розташувати поруч"
+  },
+  "tileWindowsTitle": {
+    "message": "Джерело в одному вікні, цілі в іншому"
+  },
   "downloadHeading": {
     "message": "Завантажити дані сеансу"
   },

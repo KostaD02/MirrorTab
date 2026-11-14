@@ -122,6 +122,12 @@
   "stop": {
     "message": "Apturēt"
   },
+  "tileWindows": {
+    "message": "Blakus"
+  },
+  "tileWindowsTitle": {
+    "message": "Avots vienā logā, mērķi citā"
+  },
   "downloadHeading": {
     "message": "Lejupielādēt sesijas datus"
   },

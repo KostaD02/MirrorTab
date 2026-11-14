@@ -87,6 +87,7 @@ export class PopupController {
     pauseBtn: document.getElementById('pause-btn') as HTMLButtonElement,
     pauseLabel: document.getElementById('pause-label') as HTMLSpanElement,
     stopBtn: document.getElementById('stop-btn') as HTMLButtonElement,
+    tileBtn: document.getElementById('tile-btn') as HTMLButtonElement,
     downloadJson: document.getElementById('download-json') as HTMLAnchorElement,
     downloadText: document.getElementById('download-text') as HTMLAnchorElement,
     infoBtn: document.getElementById('info-btn') as HTMLButtonElement,
@@ -476,6 +477,7 @@ export class PopupController {
       form,
       pauseBtn,
       stopBtn,
+      tileBtn,
       downloadJson,
       downloadText,
       infoBtn,
@@ -493,6 +495,9 @@ export class PopupController {
     });
     stopBtn.addEventListener('click', () => {
       this.onStop();
+    });
+    tileBtn.addEventListener('click', () => {
+      this.onTile();
     });
     downloadJson.addEventListener('click', (e) => {
       e.preventDefault();
@@ -657,6 +662,38 @@ export class PopupController {
       }
     } finally {
       pauseBtn.disabled = false;
+    }
+  }
+
+  // ? only a page can read the screen it sits on, so the popup hands the work area to the worker
+  private async onTile(): Promise<void> {
+    const { tileBtn } = this.domRefs;
+    const screen = window.screen as Screen & {
+      availLeft?: number;
+      availTop?: number;
+    };
+    const extensionMessage: ExtensionMessage = {
+      type: ExtensionMessageTypeEnum.TileWindows,
+      payload: {
+        screen: {
+          left: screen.availLeft ?? 0,
+          top: screen.availTop ?? 0,
+          width: screen.availWidth,
+          height: screen.availHeight,
+        },
+      },
+    };
+
+    tileBtn.disabled = true;
+    try {
+      const response = (await chrome.runtime.sendMessage(
+        extensionMessage,
+      )) as unknown as ExtensionMessage;
+      if (response.type === ExtensionMessageTypeEnum.SessionError) {
+        this.showError(t('errorExtension', response.error));
+      }
+    } finally {
+      tileBtn.disabled = false;
     }
   }
 

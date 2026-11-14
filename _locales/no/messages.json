@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stopp"
   },
+  "tileWindows": {
+    "message": "Side ved side"
+  },
+  "tileWindowsTitle": {
+    "message": "Kilden i ett vindu, målene i et annet"
+  },
   "downloadHeading": {
     "message": "Last ned øktdata"
   },

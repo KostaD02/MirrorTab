@@ -6,10 +6,12 @@ import {
 import { openTab, sendRoleToTab, t, waitForTabLoad } from '@/shared/util';
 import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
+import { WindowSync } from './window-sync';
 
 export function createMessageRouter(
   sessionManager: SessionManager,
   recordStore: RecordStore,
+  windowSync: WindowSync = new WindowSync(),
 ): void {
   chrome.runtime.onMessage.addListener(
     (
@@ -121,6 +123,44 @@ export function createMessageRouter(
               sendResponse({
                 type: ExtensionMessageTypeEnum.SessionError,
                 error: t('errorOpenReplayTab'),
+              });
+            });
+          return true;
+        }
+
+        case ExtensionMessageTypeEnum.Viewport: {
+          const tabId = sender.tab?.id;
+          if (tabId === undefined) break;
+          void windowSync.report(tabId, message.payload);
+
+          const session = sessionManager.currentSession;
+          if (!session || session.isPaused) break;
+          if (tabId !== session.sourceTabId) break;
+          void windowSync.apply(session, message.payload);
+          break;
+        }
+
+        case ExtensionMessageTypeEnum.TileWindows: {
+          const session = sessionManager.currentSession;
+          if (!session) {
+            sendResponse({
+              type: ExtensionMessageTypeEnum.SessionStatus,
+              payload: null,
+            });
+            break;
+          }
+          windowSync
+            .tile(session, message.payload.screen)
+            .then(() => {
+              sendResponse({
+                type: ExtensionMessageTypeEnum.SessionStatus,
+                payload: sessionManager.currentSession,
+              });
+            })
+            .catch((err: unknown) => {
+              sendResponse({
+                type: ExtensionMessageTypeEnum.SessionError,
+                error: err instanceof Error ? err.message : String(err),
               });
             });
           return true;

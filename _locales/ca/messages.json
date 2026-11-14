@@ -122,6 +122,12 @@
   "stop": {
     "message": "Atura"
   },
+  "tileWindows": {
+    "message": "Organitza en paral·lel"
+  },
+  "tileWindowsTitle": {
+    "message": "L’origen en una finestra, les destinacions en una altra"
+  },
   "downloadHeading": {
     "message": "Baixa les dades de la sessió"
   },

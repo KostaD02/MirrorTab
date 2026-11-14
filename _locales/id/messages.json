@@ -122,6 +122,12 @@
   "stop": {
     "message": "Berhenti"
   },
+  "tileWindows": {
+    "message": "Susun berdampingan"
+  },
+  "tileWindowsTitle": {
+    "message": "Sumber di satu jendela, target di jendela lain"
+  },
   "downloadHeading": {
     "message": "Unduh data sesi"
   },

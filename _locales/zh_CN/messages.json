@@ -122,6 +122,12 @@
   "stop": {
     "message": "停止"
   },
+  "tileWindows": {
+    "message": "并排平铺"
+  },
+  "tileWindowsTitle": {
+    "message": "源在一个窗口，目标在另一个窗口"
+  },
   "downloadHeading": {
     "message": "下载会话数据"
   },

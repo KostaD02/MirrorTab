@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stoppa"
   },
+  "tileWindows": {
+    "message": "Sida vid sida"
+  },
+  "tileWindowsTitle": {
+    "message": "Källan i ett fönster, målen i ett annat"
+  },
   "downloadHeading": {
     "message": "Ladda ned sessionsdata"
   },

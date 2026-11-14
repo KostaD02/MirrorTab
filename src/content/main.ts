@@ -12,6 +12,7 @@ import { EventCapture, EventReplay } from './mirror';
 import { OverlayHost } from './overlay-host';
 import { PseudoStyles } from './pseudo-styles';
 import { RoleBadge } from './role-badge';
+import { ViewportReporter } from './viewport';
 import { VirtualCursor } from './virtual-cursor';
 import { loadSettings, logger, watchSettings } from '@/shared/util';
 import { DEFAULT_SETTINGS } from '@/shared/consts';
@@ -25,6 +26,8 @@ const bridge = new FrameBridge(cursor);
 const capture = new EventCapture(bridge);
 const pseudo = new PseudoStyles();
 const replay = new EventReplay(bridge, pseudo);
+// ? the window belongs to the tab, so only the top frame speaks for its size
+const viewport = topFrame ? new ViewportReporter() : null;
 
 let currentRole: SessionRole = SessionRoleEnum.Idle;
 let settings: MirrorSettings = { ...DEFAULT_SETTINGS };
@@ -55,6 +58,7 @@ function applyRole(role: SessionRole): void {
   if (role === SessionRoleEnum.Idle) pseudo.reset();
   capture.setRole(role);
   bridge.setRole(role);
+  viewport?.setRole(role);
   applyOverlays();
   logger.log(`Role set to: ${role}`);
 }

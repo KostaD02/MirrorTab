@@ -122,6 +122,12 @@
   "stop": {
     "message": "עצירה"
   },
+  "tileWindows": {
+    "message": "זה לצד זה"
+  },
+  "tileWindowsTitle": {
+    "message": "המקור בחלון אחד, היעדים בחלון אחר"
+  },
   "downloadHeading": {
     "message": "הורדת נתוני הסשן"
   },

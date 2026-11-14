@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stop"
   },
+  "tileWindows": {
+    "message": "Side om side"
+  },
+  "tileWindowsTitle": {
+    "message": "Kilden i ét vindue, målene i et andet"
+  },
   "downloadHeading": {
     "message": "Download sessionsdata"
   },

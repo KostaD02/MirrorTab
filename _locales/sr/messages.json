@@ -122,6 +122,12 @@
   "stop": {
     "message": "Заустави"
   },
+  "tileWindows": {
+    "message": "Једно поред другог"
+  },
+  "tileWindowsTitle": {
+    "message": "Извор у једном прозору, одредишта у другом"
+  },
   "downloadHeading": {
     "message": "Преузми податке сесије"
   },

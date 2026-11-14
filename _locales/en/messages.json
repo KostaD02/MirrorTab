@@ -159,6 +159,14 @@
     "message": "Stop",
     "description": "Button that ends the session or the replay."
   },
+  "tileWindows": {
+    "message": "Tile side by side",
+    "description": "Button that puts the session windows side by side."
+  },
+  "tileWindowsTitle": {
+    "message": "Source in one window, targets in another",
+    "description": "Tooltip for the tile button."
+  },
   "downloadHeading": {
     "message": "Download session data",
     "description": "Label next to the JSON and Text download links."

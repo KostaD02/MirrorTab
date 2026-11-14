@@ -122,6 +122,12 @@
   "stop": {
     "message": "Lõpeta"
   },
+  "tileWindows": {
+    "message": "Kõrvuti"
+  },
+  "tileWindowsTitle": {
+    "message": "Lähe ühes aknas, sihid teises"
+  },
   "downloadHeading": {
     "message": "Laadi seansi andmed alla"
   },

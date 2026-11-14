@@ -122,6 +122,12 @@
   "stop": {
     "message": "रोकें"
   },
+  "tileWindows": {
+    "message": "साथ-साथ दिखाएँ"
+  },
+  "tileWindowsTitle": {
+    "message": "स्रोत एक विंडो में, लक्ष्य दूसरी में"
+  },
   "downloadHeading": {
     "message": "सत्र डेटा डाउनलोड करें"
   },

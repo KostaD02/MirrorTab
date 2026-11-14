@@ -122,6 +122,12 @@
   "stop": {
     "message": "پایان"
   },
+  "tileWindows": {
+    "message": "کنار هم بچین"
+  },
+  "tileWindowsTitle": {
+    "message": "مبدأ در یک پنجره، مقصدها در پنجره دیگر"
+  },
   "downloadHeading": {
     "message": "بارگیری داده‌های نشست"
   },

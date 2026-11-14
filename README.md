@@ -29,6 +29,7 @@ MirrorTab is a Chrome extension that captures user interactions on one browser t
 - **Multi-target sync** - mirror a single source to multiple targets at once; add up to 10 target URLs per session and manage each one independently
 - **Iframe support** - interactions inside embedded frames, including cross-origin ones, are mirrored into the matching frame on every target tab, and the ghost cursor follows into the frame
 - **Ghost cursor** - a virtual cursor on the target tab shows exactly where the source user is pointing and clicking
+- **Window layout** - tile the session side by side in one click, after which the target windows follow the source's viewport so both tabs sit on the same responsive breakpoint
 - **Session control** - start, pause, resume, and stop a mirroring session from the popup
 - **Role badges** - a floating badge on each tab shows whether it is SOURCE or TARGET
 - **Session recording** - all events replayed on the target tab are recorded with timestamps
@@ -80,6 +81,12 @@ Some sites rate-limit or throttle a burst of simultaneous page loads. Setting a 
 All tabs still appear immediately so you can see the full set, but each target parks on a MirrorTab waiting page showing a live countdown and the URL it is queued for. The session becomes active as soon as the source tab is ready - each target joins as its timer elapses, so the popup is never left waiting on a long queue.
 
 > **Password fields are mirrored by default**, so login flows keep working as before. While it is on, credentials reach the target tabs and appear in plaintext in exported session logs - turn it off when mirroring anything you would not want in an exported file. Credential inputs are detected by `type="password"` and by `autocomplete="current-password"` / `"new-password"`, so fields unmasked by a "show password" toggle are covered too.
+
+## Window layout
+
+Targets open as tabs of the source's own window, where they already share its viewport. **Tile side by side**, in the active session card, moves the targets into a window of their own and gives each window half of the screen.
+
+From there the target windows follow the source: resize the source window and every target window is resized so that the viewport inside it matches, which keeps both tabs on the same responsive breakpoint. Each tab reports the viewport it has, and the room the browser's own toolbars take is measured against it, so windows that are not built the same still end up with the same viewport. A target still sharing the source's window is left alone, and a window the browser refuses to place - because it measures the screen differently, or treats the bounds as off-screen - keeps its tabs anyway, where the browser put them. None of this needs a permission beyond the ones MirrorTab already asks for.
 
 ## What replays as real input
 

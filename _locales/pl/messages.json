@@ -122,6 +122,12 @@
   "stop": {
     "message": "Zatrzymaj"
   },
+  "tileWindows": {
+    "message": "Obok siebie"
+  },
+  "tileWindowsTitle": {
+    "message": "Źródło w jednym oknie, cele w drugim"
+  },
   "downloadHeading": {
     "message": "Pobierz dane sesji"
   },

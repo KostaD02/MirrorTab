@@ -122,6 +122,12 @@
   "stop": {
     "message": "Διακοπή"
   },
+  "tileWindows": {
+    "message": "Δίπλα-δίπλα"
+  },
+  "tileWindowsTitle": {
+    "message": "Η προέλευση σε ένα παράθυρο, οι προορισμοί σε άλλο"
+  },
   "downloadHeading": {
     "message": "Λήψη δεδομένων συνεδρίας"
   },

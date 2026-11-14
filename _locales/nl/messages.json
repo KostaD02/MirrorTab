@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stoppen"
   },
+  "tileWindows": {
+    "message": "Naast elkaar"
+  },
+  "tileWindowsTitle": {
+    "message": "Bron in het ene venster, doelen in het andere"
+  },
   "downloadHeading": {
     "message": "Sessiegegevens downloaden"
   },

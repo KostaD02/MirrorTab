@@ -122,6 +122,12 @@
   "stop": {
     "message": "Stopp"
   },
+  "tileWindows": {
+    "message": "Nebeneinander anordnen"
+  },
+  "tileWindowsTitle": {
+    "message": "Quelle in einem Fenster, Ziele im anderen"
+  },
   "downloadHeading": {
     "message": "Sitzungsdaten herunterladen"
   },
