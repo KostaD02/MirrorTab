@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Dicipta oleh"
   },
+  "reviewTitle": {
+    "message": "Suka MirrorTab?"
+  },
+  "reviewText": {
+    "message": "Ulasan ringkas di Chrome Web Store membantu pembangun lain menemuinya."
+  },
+  "reviewRate": {
+    "message": "Tulis ulasan"
+  },
+  "reviewLater": {
+    "message": "Nanti"
+  },
+  "reviewNever": {
+    "message": "Jangan tanya lagi"
+  },
   "replayLink": {
     "message": "Buka main semula sesi"
   },

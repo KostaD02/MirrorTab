@@ -119,6 +119,63 @@
         </div>
       </header>
 
+      <div
+        id="review-card"
+        class="kd-card kd-card--surface kd-d-flex kd-flex-column kd-gap-2 kd-p-3 kd-mb-3"
+        hidden
+      >
+        <div class="kd-d-flex kd-items-center kd-justify-between kd-gap-2">
+          <span
+            class="kd-fs-xs kd-fw-medium kd-text-primary"
+            data-i18n="reviewTitle"
+            >Enjoying MirrorTab?</span
+          >
+          <button
+            id="review-later"
+            class="kd-icon-link kd-bg-transparent kd-border-0 kd-cursor-pointer kd-shrink-0"
+            style="--kd-icon-link-size: 14px; --kd-icon-link-padding: 0.25rem"
+            type="button"
+            data-i18n-attr="aria-label:reviewLater;title:reviewLater"
+            aria-label="Later"
+            title="Later"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4l8 8M12 4l-8 8" />
+            </svg>
+          </button>
+        </div>
+        <span class="kd-fs-xxxs" data-i18n="reviewText"
+          >A short review on the Chrome Web Store helps other developers find
+          it.</span
+        >
+        <div class="kd-d-flex kd-flex-wrap kd-gap-2">
+          <button
+            id="review-rate"
+            class="kd-btn kd-btn--primary kd-btn--sm"
+            type="button"
+            data-i18n="reviewRate"
+          >
+            Leave a review
+          </button>
+          <button
+            id="review-never"
+            class="kd-btn kd-btn--ghost kd-btn--sm"
+            type="button"
+            data-i18n="reviewNever"
+          >
+            Don't ask again
+          </button>
+        </div>
+      </div>
+
       <form
         id="session-form"
         class="kd-d-flex kd-flex-column kd-gap-3"

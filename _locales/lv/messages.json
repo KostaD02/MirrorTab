@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Izveidoja"
   },
+  "reviewTitle": {
+    "message": "Vai MirrorTab jums patīk?"
+  },
+  "reviewText": {
+    "message": "Īsa atsauksme Chrome Web Store palīdz citiem izstrādātājiem to atrast."
+  },
+  "reviewRate": {
+    "message": "Rakstīt atsauksmi"
+  },
+  "reviewLater": {
+    "message": "Vēlāk"
+  },
+  "reviewNever": {
+    "message": "Vairs nejautāt"
+  },
   "replayLink": {
     "message": "Atvērt sesijas atkārtošanu"
   },

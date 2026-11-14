@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Geliştiren:"
   },
+  "reviewTitle": {
+    "message": "MirrorTab’i beğendiniz mi?"
+  },
+  "reviewText": {
+    "message": "Chrome Web Store’da kısa bir değerlendirme, diğer geliştiricilerin onu bulmasına yardımcı olur."
+  },
+  "reviewRate": {
+    "message": "Değerlendirme yaz"
+  },
+  "reviewLater": {
+    "message": "Daha sonra"
+  },
+  "reviewNever": {
+    "message": "Bir daha sorma"
+  },
   "replayLink": {
     "message": "Oturum yeniden oynatmayı aç"
   },

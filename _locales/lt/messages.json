@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Sukūrė"
   },
+  "reviewTitle": {
+    "message": "Patinka MirrorTab?"
+  },
+  "reviewText": {
+    "message": "Trumpas atsiliepimas Chrome Web Store padeda kitiems kūrėjams jį rasti."
+  },
+  "reviewRate": {
+    "message": "Įvertinti"
+  },
+  "reviewLater": {
+    "message": "Vėliau"
+  },
+  "reviewNever": {
+    "message": "Daugiau nebeklausti"
+  },
   "replayLink": {
     "message": "Atidaryti seanso pakartojimą"
   },

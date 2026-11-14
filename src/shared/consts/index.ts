@@ -4,6 +4,7 @@ export {
   INPUT_STORAGE_KEY,
   RECORDS_STORAGE_KEY,
   SETTINGS_STORAGE_KEY,
+  REVIEW_STORAGE_KEY,
 } from './storage';
 export { APP_NAME, REPLAY_SPEEDS } from './config';
 export type { ReplaySpeed } from './config';

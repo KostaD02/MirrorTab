@@ -1,4 +1,4 @@
-import { sendRoleToTab } from '@/shared/util';
+import { sendRoleToTab, usageCounter } from '@/shared/util';
 import { SessionRoleEnum } from '@/shared/types';
 import { createMessageRouter } from './message-router';
 import { RecordStore } from './record-store';
@@ -6,13 +6,15 @@ import { SessionManager } from './session-manager';
 import { WindowSync } from './window-sync';
 
 const recordStore = new RecordStore();
-const sessionManager = new SessionManager(recordStore);
+// ? one counter for the whole worker, so a session and a replay never overwrite each other's count
+const usage = usageCounter();
+const sessionManager = new SessionManager(recordStore, usage);
 const windowSync = new WindowSync();
 
 sessionManager.restore();
 recordStore.restore();
 
-createMessageRouter(sessionManager, recordStore, windowSync);
+createMessageRouter(sessionManager, recordStore, windowSync, usage);
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   const session = sessionManager.currentSession;

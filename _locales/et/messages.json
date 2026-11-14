@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Autor:"
   },
+  "reviewTitle": {
+    "message": "Kas MirrorTab meeldib?"
+  },
+  "reviewText": {
+    "message": "Lühike arvustus Chrome Web Store’is aitab teistel arendajatel selle üles leida."
+  },
+  "reviewRate": {
+    "message": "Kirjuta arvustus"
+  },
+  "reviewLater": {
+    "message": "Hiljem"
+  },
+  "reviewNever": {
+    "message": "Ära enam küsi"
+  },
   "replayLink": {
     "message": "Ava seansi taasesitus"
   },

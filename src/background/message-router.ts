@@ -3,7 +3,14 @@ import {
   ExtensionMessageTypeEnum,
   SessionRoleEnum,
 } from '@/shared/types';
-import { openTab, sendRoleToTab, t, waitForTabLoad } from '@/shared/util';
+import {
+  openTab,
+  sendRoleToTab,
+  t,
+  UsageCounter,
+  usageCounter,
+  waitForTabLoad,
+} from '@/shared/util';
 import { RecordStore } from './record-store';
 import { SessionManager } from './session-manager';
 import { WindowSync } from './window-sync';
@@ -12,6 +19,7 @@ export function createMessageRouter(
   sessionManager: SessionManager,
   recordStore: RecordStore,
   windowSync: WindowSync = new WindowSync(),
+  usage: UsageCounter = usageCounter(),
 ): void {
   chrome.runtime.onMessage.addListener(
     (
@@ -114,6 +122,7 @@ export function createMessageRouter(
               );
             })
             .then((targetTabId) => {
+              usage.count();
               sendResponse({
                 type: ExtensionMessageTypeEnum.ReplayReady,
                 payload: { targetTabId },

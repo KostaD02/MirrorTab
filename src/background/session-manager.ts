@@ -16,6 +16,8 @@ import {
   sendRoleToTab,
   sleepKeepingWorkerAlive,
   t,
+  UsageCounter,
+  usageCounter,
   waitForTabLoad,
 } from '@/shared/util';
 import { RecordStore } from './record-store';
@@ -23,7 +25,10 @@ import { RecordStore } from './record-store';
 export class SessionManager {
   private session: ActiveSession | null = null;
 
-  constructor(private readonly records: RecordStore = new RecordStore()) {}
+  constructor(
+    private readonly records: RecordStore = new RecordStore(),
+    private readonly usage: UsageCounter = usageCounter(),
+  ) {}
 
   get currentSession(): ActiveSession | null {
     return this.session;
@@ -90,6 +95,7 @@ export class SessionManager {
       };
 
       await this.persist();
+      this.usage.count();
 
       sendResponse({
         type: ExtensionMessageTypeEnum.SessionStarted,

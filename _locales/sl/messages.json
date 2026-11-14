@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Ustvaril:"
   },
+  "reviewTitle": {
+    "message": "Vam je MirrorTab všeč?"
+  },
+  "reviewText": {
+    "message": "Kratka ocena v Chrome Web Store pomaga drugim razvijalcem, da ga najdejo."
+  },
+  "reviewRate": {
+    "message": "Napišite oceno"
+  },
+  "reviewLater": {
+    "message": "Pozneje"
+  },
+  "reviewNever": {
+    "message": "Ne sprašuj več"
+  },
   "replayLink": {
     "message": "Odpri ponovno predvajanje seje"
   },

@@ -16,7 +16,11 @@ jest.mock('@/shared/util', () => ({
   openTab: jest.fn(),
   sendRoleToTab: jest.fn(),
   waitForTabLoad: jest.fn(),
+  usageCounter: jest.fn(() => ({ count: countUse })),
 }));
+
+// ? stands in for the worker's own counter, so the tests can watch what each action adds to it
+const countUse = jest.fn();
 
 const mockedOpenTab = openTab as jest.MockedFunction<typeof openTab>;
 const mockedSendRoleToTab = sendRoleToTab as jest.MockedFunction<
@@ -571,6 +575,38 @@ describe('createMessageRouter', () => {
       type: ExtensionMessageTypeEnum.SessionStatus,
       payload: null,
     });
+  });
+
+  it('counts a use for the review reminder once a replay tab is ready', async () => {
+    mockedOpenTab.mockResolvedValue({ id: 99 } as chrome.tabs.Tab);
+
+    listener(
+      {
+        type: ExtensionMessageTypeEnum.StartReplay,
+        payload: { url: 'https://replay.test' },
+      },
+      {} as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+    await flushPromises();
+
+    expect(countUse).toHaveBeenCalledTimes(1);
+  });
+
+  it('counts nothing when the replay tab could not be opened', async () => {
+    mockedOpenTab.mockRejectedValue(new Error('no tab'));
+
+    listener(
+      {
+        type: ExtensionMessageTypeEnum.StartReplay,
+        payload: { url: 'https://replay.test' },
+      },
+      {} as chrome.runtime.MessageSender,
+      jest.fn(),
+    );
+    await flushPromises();
+
+    expect(countUse).not.toHaveBeenCalled();
   });
 
   it('sends Idle role and clears records on StopReplay', () => {

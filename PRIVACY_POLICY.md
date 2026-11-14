@@ -16,7 +16,7 @@ MirrorTab is a browser extension that mirrors DOM interactions (clicks, keyboard
 - No page content or URLs beyond what you explicitly type into the extension popup
 - No keystrokes, form values or pasted text are stored outside your own browser
 - No contents of a dragged file; only its name travels with the event
-- No analytics, telemetry, or crash reporting
+- No analytics, telemetry, or crash reporting; the one counter it keeps (below) never leaves your device
 - No account registration or login of any kind
 
 ---
@@ -25,13 +25,14 @@ MirrorTab is a browser extension that mirrors DOM interactions (clicks, keyboard
 
 All processing happens entirely on your device:
 
-| What                                                    | Where it stays                                                                                   |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Session configuration (source URL, target URL, tab IDs) | `chrome.storage.local` on your device only                                                       |
-| Captured DOM events forwarded between tabs              | Passed in-memory via `chrome.runtime` messaging; never written to disk or sent to any server     |
-| Text you paste or drag in a mirrored tab                | Forwarded with the event and written into a log you download, like anything typed                |
-| Downloaded session logs (JSON / text)                   | Saved to your local filesystem by your browser when you click Download; not transmitted anywhere |
-| Uploaded session logs for replay                        | Parsed strictly in-memory within your browser; never transmitted to any external server          |
+| What                                                    | Where it stays                                                                                                                         |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Session configuration (source URL, target URL, tab IDs) | `chrome.storage.local` on your device only                                                                                             |
+| Captured DOM events forwarded between tabs              | Passed in-memory via `chrome.runtime` messaging; never written to disk or sent to any server                                           |
+| Text you paste or drag in a mirrored tab                | Forwarded with the event and written into a log you download, like anything typed                                                      |
+| Downloaded session logs (JSON / text)                   | Saved to your local filesystem by your browser when you click Download; not transmitted anywhere                                       |
+| Uploaded session logs for replay                        | Parsed strictly in-memory within your browser; never transmitted to any external server                                                |
+| Review reminder                                         | `chrome.storage.local`: how many sessions and replays you have started, and your answer to the review prompt; no page, site or content |
 
 The extension communicates solely between the browser's own internal extension APIs (`chrome.tabs`, `chrome.scripting`, `chrome.storage`, `chrome.runtime`). No external servers, APIs, or third-party services are contacted.
 

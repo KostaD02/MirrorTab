@@ -23,6 +23,22 @@ export {
 export type { PendingParams } from './pending/pending';
 export { setFieldError, setFieldValid, resetFieldState } from './field/field';
 export { isSensitiveField } from './sensitive/sensitive';
+export {
+  loadReview,
+  chooseReview,
+  normaliseReview,
+  shouldAsk,
+  usageCounter,
+  REVIEW_URL,
+  REVIEW_THRESHOLD,
+  REVIEW_SNOOZE,
+} from './review/review';
+export type {
+  ReviewState,
+  ReviewStatus,
+  ReviewChoice,
+  UsageCounter,
+} from './review/review';
 export { t, plural, localizePage, uiLanguage } from './i18n/i18n';
 export {
   loadSettings,

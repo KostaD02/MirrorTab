@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "ساختهٔ"
   },
+  "reviewTitle": {
+    "message": "از MirrorTab راضی هستید؟"
+  },
+  "reviewText": {
+    "message": "یک نقد کوتاه در Chrome Web Store به توسعه‌دهندگان دیگر کمک می‌کند آن را پیدا کنند."
+  },
+  "reviewRate": {
+    "message": "نوشتن نقد"
+  },
+  "reviewLater": {
+    "message": "بعداً"
+  },
+  "reviewNever": {
+    "message": "دیگر نپرس"
+  },
   "replayLink": {
     "message": "باز کردن بازپخش نشست"
   },

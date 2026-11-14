@@ -30,7 +30,11 @@ jest.mock('@/shared/util', () => ({
   sleepKeepingWorkerAlive: jest.fn(),
   buildPendingUrl: jest.fn(),
   clampTabOpenDelay: jest.fn(),
+  usageCounter: jest.fn(() => ({ count: countUse })),
 }));
+
+// ? one counter stands in for the module's own, so the tests can watch what a session adds to it
+const countUse = jest.fn();
 
 const mockedOpenTab = openTab as jest.MockedFunction<typeof openTab>;
 const mockedSendRoleToTab = sendRoleToTab as jest.MockedFunction<
@@ -347,6 +351,30 @@ describe('SessionManager', () => {
           SessionRoleEnum.Target,
         );
       });
+    });
+
+    it('counts a use for the review reminder once the session is live', async () => {
+      mockedOpenTab
+        .mockResolvedValueOnce(makeTab(1))
+        .mockResolvedValueOnce(makeTab(2));
+
+      await manager.start(
+        { sourceUrl: 'https://src.test', targetUrls: ['https://a.test'] },
+        jest.fn(),
+      );
+
+      expect(countUse).toHaveBeenCalledTimes(1);
+    });
+
+    it('counts nothing when the session could not start', async () => {
+      mockedOpenTab.mockRejectedValue(new Error('no tab'));
+
+      await manager.start(
+        { sourceUrl: 'https://src.test', targetUrls: ['https://a.test'] },
+        jest.fn(),
+      );
+
+      expect(countUse).not.toHaveBeenCalled();
     });
 
     it('responds with SessionError when tab creation returns an invalid id', async () => {
