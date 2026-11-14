@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Készítette:"
   },
+  "reviewTitle": {
+    "message": "Tetszik a MirrorTab?"
+  },
+  "reviewText": {
+    "message": "Egy rövid értékelés a Chrome Web Store-ban segít más fejlesztőknek megtalálni."
+  },
+  "reviewRate": {
+    "message": "Értékelés írása"
+  },
+  "reviewLater": {
+    "message": "Később"
+  },
+  "reviewNever": {
+    "message": "Ne kérdezze újra"
+  },
   "replayLink": {
     "message": "Munkamenet-visszajátszás megnyitása"
   },

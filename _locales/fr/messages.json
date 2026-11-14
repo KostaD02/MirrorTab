@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Créé par"
   },
+  "reviewTitle": {
+    "message": "MirrorTab vous plaît ?"
+  },
+  "reviewText": {
+    "message": "Un court avis sur le Chrome Web Store aide d’autres développeurs à le découvrir."
+  },
+  "reviewRate": {
+    "message": "Laisser un avis"
+  },
+  "reviewLater": {
+    "message": "Plus tard"
+  },
+  "reviewNever": {
+    "message": "Ne plus demander"
+  },
   "replayLink": {
     "message": "Ouvrir la relecture de session"
   },

@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "作者："
   },
+  "reviewTitle": {
+    "message": "喜欢 MirrorTab 吗？"
+  },
+  "reviewText": {
+    "message": "在 Chrome 应用商店留下简短评价，能帮助其他开发者发现它。"
+  },
+  "reviewRate": {
+    "message": "写评价"
+  },
+  "reviewLater": {
+    "message": "以后再说"
+  },
+  "reviewNever": {
+    "message": "不再询问"
+  },
   "replayLink": {
     "message": "打开会话回放"
   },

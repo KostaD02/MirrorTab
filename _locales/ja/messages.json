@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "作者:"
   },
+  "reviewTitle": {
+    "message": "MirrorTab はいかがですか？"
+  },
+  "reviewText": {
+    "message": "Chrome ウェブストアで短いレビューをいただけると、ほかの開発者が見つけやすくなります。"
+  },
+  "reviewRate": {
+    "message": "レビューを書く"
+  },
+  "reviewLater": {
+    "message": "あとで"
+  },
+  "reviewNever": {
+    "message": "今後表示しない"
+  },
   "replayLink": {
     "message": "セッションリプレイを開く"
   },

@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "作者："
   },
+  "reviewTitle": {
+    "message": "喜歡 MirrorTab 嗎？"
+  },
+  "reviewText": {
+    "message": "在 Chrome 線上應用程式商店留下簡短評論，能幫助其他開發者找到它。"
+  },
+  "reviewRate": {
+    "message": "撰寫評論"
+  },
+  "reviewLater": {
+    "message": "稍後再說"
+  },
+  "reviewNever": {
+    "message": "不要再問"
+  },
   "replayLink": {
     "message": "開啟工作階段重播"
   },

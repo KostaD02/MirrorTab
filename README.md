@@ -164,9 +164,9 @@ Each entry in the exported session log contains:
 
 ## Permissions
 
-| Permission | Reason                                                                      |
-| ---------- | --------------------------------------------------------------------------- |
-| `storage`  | Persist the active session and your settings across service worker restarts |
+| Permission | Reason                                                                                                                |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| `storage`  | Persist the active session and your settings across service worker restarts, and the count behind the review reminder |
 
 ## Contributing
 

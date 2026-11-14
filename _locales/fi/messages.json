@@ -239,6 +239,21 @@
   "infoCreatedBy": {
     "message": "Tekijä:"
   },
+  "reviewTitle": {
+    "message": "Pidätkö MirrorTabistä?"
+  },
+  "reviewText": {
+    "message": "Lyhyt arvostelu Chrome Web Storessa auttaa muita kehittäjiä löytämään sen."
+  },
+  "reviewRate": {
+    "message": "Kirjoita arvostelu"
+  },
+  "reviewLater": {
+    "message": "Myöhemmin"
+  },
+  "reviewNever": {
+    "message": "Älä kysy uudelleen"
+  },
   "replayLink": {
     "message": "Avaa istunnon toisto"
   },
