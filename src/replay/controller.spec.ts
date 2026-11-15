@@ -140,7 +140,6 @@ describe('ReplayPageController', () => {
   });
 
   async function loadFile(name: string, content: string): Promise<void> {
-    const reader = MockFileReader.instances[MockFileReader.instances.length];
     const file = fakeFile(name, content);
     const fileInput = document.getElementById(
       'session-file',
@@ -155,7 +154,6 @@ describe('ReplayPageController', () => {
     r.result = content;
     r.onload?.call(r as unknown as FileReader, new ProgressEvent(''));
     await flushPromises();
-    void reader;
   }
 
   describe('file handling', () => {
