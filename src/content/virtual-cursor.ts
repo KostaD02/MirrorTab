@@ -20,7 +20,7 @@ export class VirtualCursor {
     r.style.setProperty('--rx', `${String(Math.round(x - 16))}px`);
     r.style.setProperty('--ry', `${String(Math.round(y - 16))}px`);
     r.classList.remove('active');
-    void r.offsetWidth;
+    r.getBoundingClientRect();
     r.classList.add('active');
   }
 
