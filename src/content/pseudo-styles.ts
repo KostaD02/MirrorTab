@@ -51,6 +51,14 @@ function isGroupingRule(rule: CSSRule): rule is CSSGroupingRule {
   return 'cssRules' in rule && 'insertRule' in rule;
 }
 
+function canReadRules(sheet: CSSStyleSheet): boolean {
+  try {
+    return Boolean(sheet.cssRules);
+  } catch {
+    return false;
+  }
+}
+
 export interface RuleEdit {
   group: CSSStyleSheet | CSSGroupingRule;
   original: CSSStyleRule;
@@ -193,14 +201,7 @@ export class PseudoStyles implements PseudoStyleTarget {
       if (this.processed.has(sheet) || sheet.disabled) continue;
       this.processed.add(sheet);
 
-      let readable = true;
-      try {
-        void sheet.cssRules;
-      } catch {
-        readable = false;
-      }
-
-      if (readable) {
+      if (canReadRules(sheet)) {
         copyRulesInPlace(sheet, this.edits);
       } else if (
         sheet.href &&
