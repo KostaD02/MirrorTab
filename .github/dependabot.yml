@@ -8,7 +8,7 @@ updates:
       time: '09:00'
       timezone: Asia/Tbilisi
     open-pull-requests-limit: 5
-    rebase-strategy: disabled
+    rebase-strategy: auto
     commit-message:
       prefix: chore
       include: scope
@@ -49,6 +49,6 @@ updates:
       time: '09:00'
       timezone: Asia/Tbilisi
     open-pull-requests-limit: 3
-    rebase-strategy: disabled
+    rebase-strategy: auto
     commit-message:
       prefix: ci
