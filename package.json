@@ -39,7 +39,7 @@
     "jest-environment-jsdom": "^30.5.2",
     "jiti": "^2.7.0",
     "release-it": "^21.1.1",
-    "sass": "1.105.1",
+    "sass": "1.108.2",
     "ts-jest": "^29.4.15",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
